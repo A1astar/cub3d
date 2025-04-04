@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:31:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/03/01 18:51:25 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/04 14:57:43 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_list
 
 typedef struct s_dynarray
 {
-	void 			*data;
+	void			*data;
 	size_t			element_size;
 	size_t			len;
 	size_t			capacity;
@@ -90,8 +90,9 @@ t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstnew(void *content);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-int 				ft_dynarray_init(t_dinnaray *arr, size_t elem_size, size_t init_capacity);
+int					ft_dynarray_init(t_dinnaray *arr, size_t elem_size,
+						size_t init_capacity);
 int					ft_dynarray_push(t_dinnaray *arr, void *elem);
-void 				ft_dynarray_free(t_dinnaray *arr);
+void				ft_dynarray_free(t_dinnaray *arr);
 
 #endif
