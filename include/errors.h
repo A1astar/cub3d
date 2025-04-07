@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/07 17:38:27 by alacroix         ###   ########.fr       */
+/*   Created: 2025/04/07 17:37:54 by alacroix          #+#    #+#             */
+/*   Updated: 2025/04/07 17:49:08 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef ERRORS_H
+# define ERRORS_H
 
-# include "errors.h"
-# include "keycodes.h"
-# include "libft/includes/libft.h"
-# include "mlx.h"
-# include "textures.h"
-# include <limits.h>
-# include <math.h>
-# include <pthread.h>
-# include <stdbool.h>
+# define MEM "Cannot allocate memory at function "
+# define ARG "Map not found"
+# define MAP_EXT "Incorrect map_file extention (should be .cub)"
+# define MAP_ELEM "Incorrect map (unidentified element)"
+# define MAP_UNCL "Incorrect map (unclosed)"
+# define TEXT "Cannot load textute"
 
 #endif
