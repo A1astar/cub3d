@@ -4,7 +4,9 @@ SRCDIR = src
 OBJDIR = obj
 INCDIR = includes
 
-SRC =
+SRC_MAIN = src/main.c src/error.c
+
+SRC = $(SRC_MAIN)
 SRC := $(addprefix $(SRCDIR)/, $(SRC))
 OBJ := $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 

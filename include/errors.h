@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:37:54 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/07 17:49:08 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:48:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define ERRORS_H
 
 # define MEM "Cannot allocate memory at function "
-# define ARG "Map not found"
+# define OPEN "Cannot open file "
+# define ARG "Wrong arguments number (please provide only one map)"
 # define MAP_EXT "Incorrect map_file extention (should be .cub)"
 # define MAP_ELEM "Incorrect map (unidentified element)"
 # define MAP_UNCL "Incorrect map (unclosed)"

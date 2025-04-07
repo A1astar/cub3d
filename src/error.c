@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/07 18:54:37 by alacroix         ###   ########.fr       */
+/*   Created: 2025/04/07 17:55:25 by alacroix          #+#    #+#             */
+/*   Updated: 2025/04/07 18:03:49 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	error_msg(const char *msg, const char *context)
 {
-	t_game	game;
-
-	if (map_parsing(argc, argv, &game) == -1)
-		return (1);
+	ft_putendl_fd("Error", STDERR_FILENO);
+	if (!context)
+		ft_putendl_fd(msg, STDERR_FILENO);
+	else
+	{
+		ft_putstr_fd(msg, STDERR_FILENO);
+		ft_putendl_fd(context, STDERR_FILENO);
+	}
 }
