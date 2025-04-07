@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/07 18:53:56 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/07 19:31:46 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "libft/includes/libft.h"
 //# include "mlx.h"
 # include "textures.h"
+# include <sys/stat.h>
+# include <fcntl.h>
 # include <limits.h>
 # include <math.h>
 # include <pthread.h>
@@ -62,7 +64,7 @@ typedef struct s_game
 {
 	t_map		map;
 	t_player	player;
-	t_enemy		randy[3];
+	t_enemy		randy[4];
 	t_struct
 }				t_game;
 
