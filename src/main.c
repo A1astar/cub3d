@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 03:12:35 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/08 05:06:08 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ void	init_struct_attributes(t_cub3d *cub3d)
 
 }
 
-void	init_program(t_cub3d *cub3d)
+void	init_program(t_cub3d *cub3d, int argc, char **argv)
 {
 	init_struct_attributes(cub3d);
-	init_mlx(cub3d);
 	init_thread(cub3d);
+	init_mlx(cub3d);
+	init_asset(cub3d);
+	parse_map(argc, argv, &cub3d);
 }
 
 void	launch_game(t_cub3d *cub3d)
@@ -35,12 +37,24 @@ void	launch_game(t_cub3d *cub3d)
 
 }
 
+bool	argument_count_correct(int argc)
+{
+	if (argc == 2)
+		return (true);
+	return (false);
+}
+
 int	main(int argc, char **argv)
 {
 	t_cub3d	cub3d;
 
-	init_program(&cub3d);
-	if (map_parsing(argc, argv, &cub3d) == -1)
-		return (1);
-	launch_game(&cub3d);
+	if (argument_count_correct(argc))
+	{
+		init_program(&cub3d, argc, argv);
+		launch_game(&cub3d);
+		free_program(&cub3d);
+		return (EXIT_SUCCESS);
+	}
+	print_usage();
+	return (EXIT_FAILURE);
 }

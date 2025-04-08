@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/08 03:34:53 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/08 04:40:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_mlx(t_cub3d *cub3d, t_scene *scene)
 {
-	scene->scene->mlx_ptr = mlx_init();
+	scene->mlx_ptr = mlx_init();
 	if (scene->mlx_ptr == NULL)
 	{
 		ft_printf(BOLD RED"ERROR MLX_INIT\n"DEFAULT);
