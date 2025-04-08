@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 18:05:02 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/07 19:54:47 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/08 03:03:35 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	load_textures(char *file, t_map *map)
 }
 
 /*WIP*/
-int	map_checking(char *file, t_game *game)
+int	map_checking(char *file, t_cub3d *game)
 {
 	char	*line;
 	char	**map;
@@ -71,7 +71,7 @@ int	map_checking(char *file, t_game *game)
 		return (-1);
 }
 
-int	map_parsing(int argc, char **argv, t_game *game)
+int	map_parsing(int argc, char **argv, t_cub3d *game)
 {
 	if (argc != 2)
 		return (error_msg(ARG, NULL), -1);

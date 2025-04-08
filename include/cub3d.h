@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/07 19:31:46 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/08 03:06:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,18 @@
 # include <math.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <inttypes.h>
 
 /*STRUCTS*/
 
-typedef	struct minimap
+enum e_error {err_none, err_malloc, err_file, };
+
+typedef struct s_error
+{
+	uint8_t number;
+}	t_error;
+
+typedef	struct s_minimap
 {
 	//whatever
 } t_minimap;
@@ -60,18 +68,19 @@ typedef struct s_enemy
 	void		*angry;
 }				t_enemy;
 
-typedef struct s_game
+typedef struct s_cub3d
 {
+	t_error		error;
 	t_map		map;
 	t_player	player;
 	t_enemy		randy[4];
 	t_struct
-}				t_game;
+}				t_cub3d;
 
 /*ERROR*/
 void			error_msg(const char *msg, const char *context);
 
 /*PARSING*/
-int				map_parsing(int argc, char **argv, t_game *game);
+int				map_parsing(int argc, char **argv, t_cub3d *game);
 
 #endif
