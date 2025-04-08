@@ -6,9 +6,15 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/08 03:35:22 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:12:23 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
+
+void	free_program(t_cub3d *game)
+{
+	// if (vub)
+	(void)game;
+}
 

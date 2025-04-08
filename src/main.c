@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 12:05:18 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:47:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../include/cub3d.h"
 
 void	init_struct_attributes(t_cub3d *cub3d)
 {
@@ -31,11 +31,11 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	cub3d;
 
-	if(init_program(argc, argv, &cub3d) == -1)
-		return (EXIT_FAILURE);
-	launch_game(&cub3d);
-	free_program(&cub3d);
-	return (EXIT_SUCCESS);
-	print_usage();
-	return (EXIT_FAILURE);
+	init_program(argc, argv, &cub3d);
+	exit(0);
+	// launch_game(&cub3d);
+	// free_program(&cub3d);
+	// return (EXIT_SUCCESS);
+	// print_usage();
+	// return (EXIT_FAILURE);
 }

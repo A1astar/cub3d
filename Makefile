@@ -1,70 +1,124 @@
-NAME = cube3D
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
+#    Updated: 2025/04/08 19:12:09 by algadea          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCDIR = src
-OBJDIR = obj
-INCDIR = includes
+###########################		     TARGET			###########################
 
-SRC_MAIN = src/main.c src/error.c
+NAME				= cub3d
+MLX					= minilibx-linux/libmlx.a
+LIBFT				= libft/libft.a
 
-SRC = $(SRC_MAIN)
-SRC := $(addprefix $(SRCDIR)/, $(SRC))
-OBJ := $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
+###########################		 	  FLAG			###########################
 
-LIBFT_DIR := libft
-LIBFT := $(LIBFT_DIR)/libft.a
-LIBFT_INCLUDE := $(LIBFT_DIR)
-MINILIBX_DIR := ./minilibx-linux
-MLX := $(MINILIBX_DIR)/libmlx.a
-LDFLAGS =  -L$(MINILIBX_DIR) -L$(LIBFT_DIR)
-LIBS =  $(MLX) $(LIBFT)
+CC					= clang
+CFLAGS				= -g3 -Wall -Wextra -Werror
+LIBFLAGS			= -Llibft -lft -lX11 -lXext -Lminilibx-linux -lmlx -lm
 
-AR = ar
-ARFLAGS = rcs
+###########################		 	 INCLUDE		###########################
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g3 -I$(MINILIBX_DIR) -I/usr/include/X11 -I$(LIBFT_INCLUDE)
+INCLUDE_DIR			:= include
+INCLUDE				:= cub3d.h \
+					error.h
+INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-	MLXFLAGS += -lmlx -lXext -lX11
-else ifeq ($(UNAME_S),Darwin)
-	MLXFLAGS += -L/opt/X11/lib -lX11 -lXext -lXrandr -lXcursor
-endif
+###########################		 	 SOURCE			###########################
 
-all: $(OBJDIR) $(MINILIBX_DIR) $(LIBFT) $(NAME)
+SRC_DIR				:= src
+SRC					:= main.c \
+					print.c \
+					parsing/is_valid.c \
+					parsing/parse_map.c \
+					parsing/parsing.c \
+					error.c \
+					memory/free.c
+SRC					:= $(addprefix $(SRC_DIR)/, $(SRC))
 
-$(OBJDIR):
-	$(V)mkdir -p $(OBJDIR) || true
+###########################		  COMPILATION		###########################
 
-DEP = $(OBJ:.o=.d)
+PP_DIR				:= pp
+PP					:= $(patsubst $(SRC_DIR)/%.c, $(PP_DIR)/%.i, $(SRC))
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	@mkdir -p $(dir $@)
-	$(V)$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+ASM_DIR				:= asm
+ASM					:= $(patsubst $(SRC_DIR)/%.c, $(ASM_DIR)/%.s, $(SRC))
 
--include $(DEP)
+OBJ_DIR				:= obj
+OBJ					:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+
+###########################		 	 RULE			###########################
+
+all: $(MLX) $(LIBFT) $(NAME)
+
+pp: $(PP)
+
+asm: $(ASM)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(V)$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(BONUS_OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME)
-	$(V)echo $(GREEN)"[$(NAME)] $(RESET)
+	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
+	@echo "$(GREEN)> $(NAME) creation successful!$(DEFAULT)"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(MLX):
+	@git submodule init
+	@git submodule update
+	@$(MAKE) -C minilibx-linux
 
 $(LIBFT):
-	$(V)$(MAKE) --silent -C $(LIBFT_DIR)
+	$(MAKE) -C libft
 
-$(MINILIBX_DIR):
-	@git clone https://github.com/42Paris/minilibx-linux.git $(MINILIBX_DIR) > /dev/null 2>&1
-	@$(MAKE) -C $(MINILIBX_DIR) > /dev/null 2>&1
+# PREPROCESSING
+$(PP_DIR)/%.i: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -E $< -o $@
+
+# ASSEMBLY
+$(ASM_DIR)/%.s: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -S $< -o $@
 
 clean:
-	$(V)rm -rf $(OBJDIR)
+	@$(RM) -rf $(OBJ) $(OBJ_BONUS)
+	@echo "$(YELLOW)> $(NAME) objects files removed!$(DEFAULT)"
 
-fclean: clean
-	$(V)rm -f $(NAME)
-	$(V)$(MAKE) --silent -C $(LIBFT_DIR) fclean
-	$(V)echo $(RED)'[mlx] Remove directory'$(RESET)
-	@rm -rf $(MINILIBX_DIR)
+clean-pp:
+	@$(RM) -rf $(PP)
+	@echo "$(YELLOW)> $(NAME) preprocessed files removed!$(DEFAULT)"
+
+clean-asm:
+	@$(RM) -rf $(ASM)
+	@echo "$(YELLOW)> $(NAME) assembly files removed!$(DEFAULT)"
+
+fclean: clean clean-pp clean-asm
+	@$(MAKE) fclean -C libft
+	@$(RM) -rf $(OBJ_DIR) $(PP_DIR) $(ASM_DIR)
+	@$(RM) $(NAME) $(NAME_BONUS)
+	@echo "$(YELLOW)> $(NAME) entirely cleaned!$(DEFAULT)"
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus regen
-.DEFAULT_GOAL := all
+.PHONY: all pp asm libft clean clean-pp clean-asm fclean re
+
+###########################		ESCAPE SEQUENCE		###########################
+
+DEFAULT=\033[0m
+BOLD=\033[1m
+ITALIC=\033[3m
+
+BLACK=\033[30m
+RED=\033[31m
+GREEN=\033[32m
+YELLOW=\033[33m
+BLUE=\033[34m
+MAGENTA=\033[35m
+CYAN=\033[36m
+WHITE=\033[37m 

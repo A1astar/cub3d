@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2024/12/29 20:42:02 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/08 17:19:34 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(MLX):
-	@git submodule init
-	@git submodule update
+# @git submodule init
+# @git submodule update
 	@$(MAKE) -C minilibx-linux
 
 $(LIBFT):

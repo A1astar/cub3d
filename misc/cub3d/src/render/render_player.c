@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 00:33:26 by agadea            #+#    #+#             */
-/*   Updated: 2024/10/15 14:14:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/08 17:27:31 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 // }
 
-void	transform_player_coordinate(t_cub3d *cub3d, t_player *player)
-{
+// void	transform_player_coordinate(t_cub3d *cub3d, t_player *player)
+// {
 
-}
+// }
 
 void	render_player(t_cub3d *cub3d, t_player *player)
 {

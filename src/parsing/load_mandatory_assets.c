@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_mandatory_assets.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:08:07 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 16:14:54 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:27:13 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static bool	no_assets_missing(t_map *map)
 {
-	if (!map->n_wall)
+	if (!map->n_texture_wall)
 		return (false);
-	if (!map->s_wall)
+	if (!map->s_texture_wall)
 		return (false);
-	if (!map->e_wall)
+	if (!map->e_texture_wall)
 		return (false);
-	if (!map->w_wall)
+	if (!map->w_texture_wall)
 		return (false);
 	if (!map->ceilling_rgb && !map->bonus)
 		return (false);
@@ -80,16 +80,16 @@ static int	search_load_assets(char *line, t_map *map)
 	asset_path = NULL;
 	asset_path = ft_strnstr(line, "NO", line_len);
 	if (asset_path)
-		return (load_asset(map->n_wall, asset_path, "n_wall"));
+		return (load_asset(map->n_texture_wall, asset_path, "n_wall"));
 	asset_path = ft_strnstr(line, "SO", line_len);
 	if (asset_path)
-		return (load_asset(map->s_wall, asset_path, "s_wall"));
+		return (load_asset(map->s_texture_wall, asset_path, "s_wall"));
 	asset_path = ft_strnstr(line, "WE", line_len);
 	if (asset_path)
-		return (load_asset(map->w_wall, asset_path, "w_wall"));
+		return (load_asset(map->w_texture_wall, asset_path, "w_wall"));
 	asset_path = ft_strnstr(line, "EA", line_len);
 	if (asset_path)
-		return (load_asset(map->e_wall, asset_path, "e_wall"));
+		return (load_asset(map->e_texture_wall, asset_path, "e_wall"));
 	asset_path = ft_strnstr(line, "F", line_len);
 	if (asset_path)
 		return (load_rgb(map->floor_rgb, asset_path));

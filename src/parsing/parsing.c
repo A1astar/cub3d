@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 18:05:02 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 15:55:54 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:49:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../include/cub3d.h"
 
 bool	is_cub_file(char *file)
 {
@@ -19,12 +19,18 @@ bool	is_cub_file(char *file)
 	return (true);
 }
 
-int	init_program(int argc, char **argv, t_cub3d *game)
+void	init_program(t_cub3d *game, int argc, char **argv)
 {
 	if (argc != 2)
-		return (error_msg(ARG, NULL), -1);
-	if (!is_cub_file(argv[2]))
-		return (error_msg(MAP_EXT, NULL), -1);
-	if (parse_map(argv[2], game) == -1)
-		return (-1);
+	{
+		error_msg(ARG, NULL);
+		exit(EXIT_FAILURE);
+	}
+	else if (!is_cub_file(argv[1]))
+	{
+		error_msg(MAP_EXT, NULL);
+		exit(EXIT_FAILURE);
+	}
+	extract_data(game, argv[1]);
+	parse_map(game);
 }

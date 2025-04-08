@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 16:34:07 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:49:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/includes/libft.h"
 # include "errors.h"
 # include "keycodes.h"
-# include "mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include "textures.h"
 # include <fcntl.h>
 # include <inttypes.h>
@@ -24,6 +24,7 @@
 # include <math.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <sys/stat.h>
 
 /*		TEXT FORMATING		*/
@@ -70,13 +71,15 @@ typedef struct s_minimap
 typedef struct s_map
 {
 	bool			bonus;
+	char			**data;
+	char			**map;
 	char			**ceilling_rgb;
 	char			**floor_rgb;
 	void			*viewmodel;
-	void			*n_wall;
-	void			*s_wall;
-	void			*e_wall;
-	void			*w_wall;
+	void			*n_texture_wall;
+	void			*s_texture_wall;
+	void			*e_texture_wall;
+	void			*w_texture_wall;
 	void			*floor;
 	void			*ceiling;
 	void			*closed_door;
@@ -117,7 +120,7 @@ typedef struct s_scene
 
 typedef struct s_setting
 {
-	uint8_t difficulty; // Hardcore is the only option
+	uint8_t			difficulty; // Hardcore is the only option
 	uint8_t			fov;
 	uint8_t			velocity;
 	bool			god_mod;
@@ -151,8 +154,15 @@ typedef struct s_cub3d
 void				error_msg(const char *msg, const char *context);
 
 /*		PARSING		*/
-int					init_program(int argc, char **argv, t_cub3d *game);
+void				init_program(t_cub3d *game, int argc, char **argv);
 int					load_asset(char **map_tab, t_cub3d *game);
-int					parse_map(char *file, t_cub3d *game);
+void				extract_data(t_cub3d *game, char *filename);
+void				parse_map(t_cub3d *game);
+bool				is_valid_map(t_cub3d *game, t_map *map);
+
+void	free_program(t_cub3d *game);
+
+/*		PRINT		*/
+void	print_2d_array_string(char **str);
 
 #endif

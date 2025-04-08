@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agadea <agadea@student.42.fr>              +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:52:19 by agadea            #+#    #+#             */
-/*   Updated: 2024/07/29 17:56:10 by agadea           ###   ########.fr       */
+/*   Updated: 2025/04/08 18:37:30 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		init_cub3d(&cub3d, argv[1]);
+		print_map_data(cub3d.map->data);
 		start_game_loop(&cub3d);
 		return (EXIT_SUCCESS);
 	}
