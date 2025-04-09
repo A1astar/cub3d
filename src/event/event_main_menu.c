@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 19:27:39 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 19:37:36 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int	main_menu_key_hook(int keynum, t_cub3d *cub3d)
 		cub3d->main_menu.index--;
 	else if (keynum == XK_s && cub3d->main_menu.index != 2)
 		cub3d->main_menu.index++;
+	// printf("%d\n", cub3d->main_menu.index);
 	return (0);
 }

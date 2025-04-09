@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 19:28:48 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 19:56:15 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@
 
 # define RUNNING 1
 
-// # define WINDOW_WIDTH 1280
-// # define WINDOW_HEIGHT 720
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
+// # define WINDOW_WIDTH 1920
+// # define WINDOW_HEIGHT 1080
 
 enum e_program_state {playing, level_menu, main_menu};
 // enum e_error {err_none, err_malloc, err_file, };
@@ -194,6 +194,7 @@ int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
 int		exit_cub3d(int keynum, t_cub3d *cub3d);
 
 /*		INIT		*/
+void	update_mlx_hook(t_cub3d *cub3d, t_scene *scene, int which);
 void	init_struct_attributes(t_cub3d *cub3d);
 void	init_mlx(t_cub3d *cub3d, t_scene *scene);
 void	init_asset(t_cub3d *cub3d);

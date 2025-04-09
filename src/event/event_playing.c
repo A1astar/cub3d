@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 18:29:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 19:37:24 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	playing_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
 		exit_cub3d(keynum, cub3d);
+	printf("%d\n", cub3d->main_menu.index);
 	return (0);
 }
