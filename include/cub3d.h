@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 11:23:55 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:54:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,10 @@ typedef struct s_cub3d
 	t_menu			main_menu;
 	t_menu			level_menu;
 }					t_cub3d;
+
+
+/*		INIT		*/
+void	init_mlx(t_cub3d *game, t_scene *scene);
 
 /*		ERROR		*/
 void				error_msg(const char *msg, const char *context);
