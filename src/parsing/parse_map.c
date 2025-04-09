@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 11:28:17 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:53:36 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ bool	is_valid_map_element(char c)
 
 bool	is_map_line(char *line)
 {
+	if (!line)
+		return (true);
 	while (*line && *line <= ' ')
 		line++;
 	if (!line)
@@ -84,6 +86,20 @@ bool	is_map_line(char *line)
 	return (true);
 }
 
+bool	is_only_map_lines(char **data)
+{
+	int	i;
+
+	i = 0;
+	while (data[i])
+	{
+		if (!is_map_line(data[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 void	extract_map(t_cub3d *game, char **data)
 {
 	int		i;
@@ -91,20 +107,22 @@ void	extract_map(t_cub3d *game, char **data)
 
 	i = 0;
 	buffer = NULL;
-	while (data[i + 1])
+	while (data[i])
 	{
-		if (is_map_line(data[i]) && (is_map_line(data[i + 1]) || !data[i + 1]))
-			buffer = append_line(game, buffer, data[i]);
+		while (!is_only_map_lines(&data[i]))
+			i++;
+		buffer = append_line(game, buffer, data[i]);
+		buffer = append_line(game, buffer, "\\n");
 		i++;
 	}
-	game->map.map = ft_split(buffer, "\n");
-	if (game->map.map)
+	game->map.map = ft_split(buffer, "\\n");
+	if (!game->map.map)
 	{
 		error_msg(MEM, "extract_data");
 		free_program(game);
 	}
-	print_2d_array_string(game->map.map);
 }
+
 
 void	extract_data(t_cub3d *game, char *filename)
 {
@@ -137,5 +155,9 @@ void	check_bonus(char *line, t_map *map)
 
 void	parse_map(t_cub3d *game)
 {
+	ft_printf("\n\nFULL_FILE\n\n");
 	print_2d_array_string(game->map.data);
+	ft_printf("\n\nMAP\n\n");
+	print_2d_array_string(game->map.map);
+	ft_printf("\n\nDATAS\n\n");
 }
