@@ -12,13 +12,13 @@
 
 #include "../../include/cub3d.h"
 
-void	init_mlx(t_cub3d *game, t_scene *scene)
+void	init_mlx(t_cub3d *cub3d, t_scene *scene)
 {
 	scene->mlx_ptr = mlx_init();
 	if (scene->mlx_ptr == NULL)
 	{
 		error_msg(NULL, NULL);
-		free_program(game);
+		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
 	scene->window_width = WINDOW_WIDTH;
@@ -28,7 +28,15 @@ void	init_mlx(t_cub3d *game, t_scene *scene)
 	if (scene->win_ptr == NULL)
 	{
 		error_msg(NULL, NULL);
-		free_program(game);
+		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
+
+	// mlx_loop_hook(scene->mlx_ptr, game_loop, cub3d);
+	// mlx_hook(scene->win_ptr, ButtonPress,
+	// 	ButtonPressMask, mouse_hook, cub3d);
+	// mlx_hook(scene->win_ptr, KeyPress,
+	// 	KeyPressMask, key_hook, cub3d);
+	// mlx_hook(scene->win_ptr, DestroyNotify,
+	// 	StructureNotifyMask, &exit_cub3d, cub3d);
 }

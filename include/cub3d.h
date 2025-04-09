@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/04/09 12:38:27 by algadea          ###   ########.fr       */
-=======
-/*   Updated: 2025/04/09 12:39:18 by alacroix         ###   ########.fr       */
->>>>>>> refs/remotes/origin/main
+/*   Updated: 2025/04/09 13:15:12 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -25,6 +22,7 @@
 # include <X11/keysym.h>
 # include <X11/Xlib.h>
 # include <X11/X.h>
+# include <X11/keysymdef.h>
 # include <fcntl.h>
 # include <inttypes.h>
 # include <limits.h>
@@ -59,8 +57,8 @@
 // 	uint8_t number;
 // }	t_error;
 
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 1080
+# define WINDOW_HEIGHT 720
 
 typedef enum e_randy_state
 {
@@ -165,6 +163,9 @@ typedef struct s_cub3d
 
 
 /*		EVENT		*/
+int	game_loop(t_cub3d *cub3d);
+int	mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
+int	mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int	exit_cub3d(int keynum, t_cub3d *cub3d);
 int	key_hook(int keynum, t_cub3d *cub3d);
 

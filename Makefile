@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/09 12:43:02 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/09 13:08:54 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,7 @@ LIBFLAGS			= -Llibft -lft -lX11 -lXext -Lminilibx-linux -lmlx -lm
 ###########################		 	 INCLUDE		###########################
 
 INCLUDE_DIR			:= include
-INCLUDE				:= cub3d.h \
-					error.h
+INCLUDE				:= cub3d.h
 INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
 ###########################		 	 SOURCE			###########################
@@ -70,7 +69,7 @@ $(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
 	@echo "$(GREEN)> $(NAME) creation successful!$(DEFAULT)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
