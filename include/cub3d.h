@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 15:57:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 16:36:35 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,8 @@ int					get_line_count(t_cub3d *game, char *filename);
 void				free_program(t_cub3d *game);
 
 /*		PRINT		*/
-void				print_2d_array_string(char **str);
+void	print_2d_array_string(char **str);
+void	print_usage(void);
 
 /*		RENDER		*/
 int	playing_loop(t_cub3d *cub3d);

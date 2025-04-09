@@ -6,12 +6,11 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 15:57:03 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 16:36:18 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 void	launch_game(t_cub3d *cub3d)
 {
@@ -62,6 +61,6 @@ int	main(int argc, char **argv)
 		free_program(&cub3d);
 		return (EXIT_SUCCESS);
 	}
-	// print_usage();
+	print_usage();
 	return (EXIT_FAILURE);
 }
