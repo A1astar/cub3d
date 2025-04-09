@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 18:30:00 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:10:08 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr, char *asse
 		asset_path++;
 	if (!asset_path || !*(asset_path + 1))
 	{
-		error_msg(NULL, NULL);
+		error_msg("No asset_path found", NULL);
 		free_program(cub3d);
 	}
 	asset_path++;
-	asset_ptr = mlx_xpm_file_to_image(asset_ptr, asset_path, &map->texture_width,
+	asset_ptr = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, asset_path, &map->texture_width,
 			&map->texture_height);
 	if (!asset_ptr)
 	{
-		error_msg("aaaah", NULL);
+		error_msg("Wrong asset aaddress", NULL);
 		free_program(cub3d);
 	}
 }
@@ -45,7 +45,7 @@ static void	extract_rgb_code(t_cub3d *cub3d, char **rgb_tab, char *line)
 	}
 	if (ft_tabsize((void **)rgb_tab) != 3 || !is_rgb_code(rgb_tab))
 	{
-		error_msg(NULL, NULL);
+		error_msg("wrong rgb format", NULL);
 		free_program(cub3d);
 	}
 }

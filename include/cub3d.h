@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 19:01:03 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 19:28:48 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ typedef struct s_map
 	bool	bonus;
 	int		texture_width;
 	int		texture_height;
+	int		view_width;
+	int		view_height;
 	char	**raw_data;
 	char	**map;
 	char	**assets_paths;
@@ -199,6 +201,7 @@ bool	is_asset_line(char *line, size_t len);
 bool	is_rgb_line(char *line, size_t len);
 bool	is_rgb_code(char **tab);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
+void 	init_bonus_part(t_cub3d *cub3d);
 
 /*		ERROR		*/
 void	error_msg(const char *msg, const char *context);
