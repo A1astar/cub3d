@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/09 11:49:18 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/09 12:40:17 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 ###########################		 	 SOURCE			###########################
 
 SRC_DIR				:= src
-SRC					:= init/init_mlx.c \
+SRC					:= event/event.c \
+					init/init_mlx.c \
 					init/init.c \
 					parsing/is_valid.c \
 					parsing/parse_map.c \

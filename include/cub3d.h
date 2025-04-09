@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 12:14:20 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 12:38:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "keycodes.h"
 # include "../minilibx-linux/mlx.h"
 # include "textures.h"
+# include <X11/keysym.h>
+# include <X11/Xlib.h>
+# include <X11/X.h>
 # include <fcntl.h>
 # include <inttypes.h>
 # include <limits.h>
@@ -52,8 +55,8 @@
 // 	uint8_t number;
 // }	t_error;
 
-# define WINDOW_HEIGHT 1920
-# define WINDOW_WIDTH 1080
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 
 typedef enum e_randy_state
 {
@@ -156,6 +159,10 @@ typedef struct s_cub3d
 	t_menu			level_menu;
 }					t_cub3d;
 
+
+/*		EVENT		*/
+int	exit_cub3d(int keynum, t_cub3d *cub3d);
+int	key_hook(int keynum, t_cub3d *cub3d);
 
 /*		INIT		*/
 void	init_mlx(t_cub3d *game, t_scene *scene);
