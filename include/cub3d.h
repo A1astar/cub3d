@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 15:57:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:00:25 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ typedef struct s_minimap
 typedef struct s_map
 {
 	bool			bonus;
+	int				*texture_width;
+	int				*texture_height;
 	char			**raw_data;
 	char			**map;
 	char			**assets_paths;
@@ -186,7 +188,6 @@ void				error_msg(const char *msg, const char *context);
 
 /*		PARSING		*/
 void				init_program(t_cub3d *cub3d,char **argv);
-int					load_asset(char **map_tab, t_cub3d *game);
 void				extract_data(t_cub3d *game, char *filename);
 void				parsing(t_cub3d *game, char *argv);
 bool				is_valid_map(t_cub3d *game, t_map *map);
@@ -204,6 +205,6 @@ void				print_2d_array_string(char **str);
 /*		RENDER		*/
 int	playing_loop(t_cub3d *cub3d);
 int	level_menu_loop(t_cub3d *cub3d);
-int	main_menu_loop(t_cub3d *cub3d);	
+int	main_menu_loop(t_cub3d *cub3d);
 
 #endif
