@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/09 15:59:08 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/09 17:05:31 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,10 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 ###########################		 	 SOURCE			###########################
 
 SRC_DIR				:= src
-SRC					:= event/event.c \
+SRC					:= event/event_level_menu.c \
+					event/event_main_menu.c \
+					event/event_playing.c \
+					event/event.c \
 					init/init_asset.c \
 					init/init_mlx.c \
 					init/init.c \

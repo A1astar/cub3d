@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 15:56:11 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:15:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,31 @@ void	init_mlx_hook(t_cub3d *cub3d, t_scene *scene)
 {
 	(void)scene;
 	// Main menu hook
-	mlx_loop_hook(cub3d->scene.mlx_ptr, main_menu_loop, cub3d);
+	mlx_hook(cub3d->scene.win_ptr, ButtonPress,
+		ButtonPressMask, main_menu_mouse_press_hook, cub3d);
+	mlx_hook(cub3d->scene.win_ptr, MotionNotify,
+		ButtonMotionMask, main_menu_mouse_motion_hook, cub3d);
+	mlx_hook(cub3d->scene.win_ptr, KeyPress,
+		KeyPressMask, main_menu_key_hook, cub3d);
 
 	// Level menu hook
 	mlx_loop_hook(cub3d->scene.mlx_ptr, level_menu_loop, cub3d);
+	mlx_hook(cub3d->scene.win_ptr, ButtonPress,
+		ButtonPressMask, level_menu_mouse_press_hook, cub3d);
+	mlx_hook(cub3d->scene.win_ptr, MotionNotify,
+		ButtonMotionMask, level_menu_mouse_motion_hook, cub3d);
+	mlx_hook(cub3d->scene.win_ptr, KeyPress,
+		KeyPressMask, level_menu_key_hook, cub3d);
 
 	// Playing hook
-	// mlx_loop_hook(cub3d->scene.mlx_ptr, playing_loop, cub3d);
 	mlx_hook(cub3d->scene.win_ptr, ButtonPress,
-		ButtonPressMask, mouse_press_hook, cub3d);
+		ButtonPressMask, playing_mouse_press_hook, cub3d);
 	mlx_hook(cub3d->scene.win_ptr, MotionNotify,
-		ButtonMotionMask, mouse_motion_hook, cub3d);
+		ButtonMotionMask, playing_mouse_motion_hook, cub3d);
 	mlx_hook(cub3d->scene.win_ptr, KeyPress,
-		KeyPressMask, key_hook, cub3d);
+		KeyPressMask, playing_key_hook, cub3d);
+
+	// Global hook
 	mlx_hook(cub3d->scene.win_ptr, DestroyNotify,
 		StructureNotifyMask, &exit_cub3d, cub3d);
 }
