@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 19:49:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:23:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@
 // {
 // 	uint8_t number;
 // }	t_error;
+
+# define WINDOW_HEIGHT 1920
+# define WINDOW_WIDTH 1080
 
 typedef enum e_randy_state
 {
@@ -115,6 +118,8 @@ typedef struct s_scene
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
+	int				window_height;
+	int				window_width;
 	t_img			img;
 }					t_scene;
 
