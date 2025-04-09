@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 16:36:18 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 17:16:19 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	launch_game(t_cub3d *cub3d)
 {
-	mlx_loop_end(cub3d->scene.mlx_ptr);
 	while (RUNNING)
 	{
 		if (cub3d->program_state == main_menu)
