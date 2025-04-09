@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 17:16:19 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 18:53:19 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,6 @@ void	launch_game(t_cub3d *cub3d)
 	}
 }
 
-void	init_main_menu(t_cub3d *cub3d, t_scene *scene, t_menu *main_menu)
-{
-	main_menu->img[0].ptr = mlx_xpm_file_to_image(scene->mlx_ptr,
-		"asset/menu/main-menu1.xpm", &main_menu->width, &main_menu->height);
-	main_menu->img[1].ptr = mlx_xpm_file_to_image(scene->mlx_ptr,
-		"asset/menu/main-menu2.xpm", &main_menu->width, &main_menu->height);
-	main_menu->img[2].ptr = mlx_xpm_file_to_image(scene->mlx_ptr,
-		"asset/menu/main-menu3.xpm", &main_menu->width, &main_menu->height);
-	if (!main_menu->img[0].ptr || main_menu->img[1].ptr
-		|| main_menu->img[2].ptr)
-	{
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
-	}
-}
-
 bool	argument_count_correct(int argc)
 {
 	if (argc == 2)
@@ -56,6 +40,7 @@ int	main(int argc, char **argv)
 	if (argument_count_correct(argc))
 	{
 		init_program(&cub3d,argv);
+		printf("here\n");
 		launch_game(&cub3d);
 		free_program(&cub3d);
 		return (EXIT_SUCCESS);

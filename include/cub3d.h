@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 18:30:16 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 19:01:03 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@
 
 # define RUNNING 1
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
+// # define WINDOW_WIDTH 1280
+// # define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 
 enum e_program_state {playing, level_menu, main_menu};
 // enum e_error {err_none, err_malloc, err_file, };
