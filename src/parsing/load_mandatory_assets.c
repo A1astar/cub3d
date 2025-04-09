@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   load_mandatory_assets.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:08:07 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 18:27:13 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:18:28 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../include/cub3d.h"
 
 static bool	no_assets_missing(t_map *map)
 {

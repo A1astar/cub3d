@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 19:47:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:20:29 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	cub3d;
 
-	init_program(argc, argv, &cub3d);
+	init_program(&cub3d, argc, argv);
 	exit(0);
 	// launch_game(&cub3d);
 	// free_program(&cub3d);

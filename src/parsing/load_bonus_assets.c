@@ -6,11 +6,11 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:43:15 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 16:35:11 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 11:18:25 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../include/cub3d.h"
 
 static int	check_sprite(t_enemy *randy, char *name)
 {
