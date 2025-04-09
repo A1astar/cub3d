@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 13:15:12 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 15:57:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@
 # define MAIN_MENU (1 << 2)
 # define LEVEL_MENU (1 << 3)
 
+# define RUNNING 1
+
 // enum e_error {err_none, err_malloc, err_file, };
 
 // typedef struct s_error
@@ -57,8 +59,10 @@
 // 	uint8_t number;
 // }	t_error;
 
-# define WINDOW_WIDTH 1080
+# define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
+
+enum e_program_state {playing, level_menu, main_menu};
 
 typedef enum e_randy_state
 {
@@ -140,12 +144,15 @@ typedef struct s_setting
 
 typedef struct s_menu
 {
-	t_img			img;
-}					t_menu;
+	int		width;
+	int		height;
+	int		index;
+	t_img	img[3];
+}t_menu;
 
 typedef struct s_thread
 {
-}					t_thread;
+}t_thread;
 
 typedef struct s_cub3d
 {
@@ -163,23 +170,25 @@ typedef struct s_cub3d
 
 
 /*		EVENT		*/
-int	game_loop(t_cub3d *cub3d);
+int	playing_loop(t_cub3d *cub3d);
 int	mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 int	mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int	exit_cub3d(int keynum, t_cub3d *cub3d);
 int	key_hook(int keynum, t_cub3d *cub3d);
 
 /*		INIT		*/
-void				init_mlx(t_cub3d *game, t_scene *scene);
+void	init_struct_attributes(t_cub3d *cub3d);
+void	init_mlx(t_cub3d *cub3d, t_scene *scene);
+void	init_asset(t_cub3d *cub3d);
 
 /*		ERROR		*/
 void				error_msg(const char *msg, const char *context);
 
 /*		PARSING		*/
-void				init_program(t_cub3d *game, int argc, char **argv);
+void				init_program(t_cub3d *cub3d,char **argv);
 int					load_asset(char **map_tab, t_cub3d *game);
 void				extract_data(t_cub3d *game, char *filename);
-void				parse_map(t_cub3d *game);
+void				parsing(t_cub3d *game, char *argv);
 bool				is_valid_map(t_cub3d *game, t_map *map);
 void				extract_assets_path(t_cub3d *game, char **data);
 void				extract_map(t_cub3d *game, char **data);
@@ -191,5 +200,10 @@ void				free_program(t_cub3d *game);
 
 /*		PRINT		*/
 void				print_2d_array_string(char **str);
+
+/*		RENDER		*/
+int	playing_loop(t_cub3d *cub3d);
+int	level_menu_loop(t_cub3d *cub3d);
+int	main_menu_loop(t_cub3d *cub3d);	
 
 #endif

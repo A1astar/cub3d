@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:56 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 13:15:26 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 14:48:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,20 @@ int	mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 	return (0);
 }
 
+void	key_hook_main_menu(int keynum, t_cub3d *cub3d)
+{
+	if (keynum == XK_W && cub3d->main_menu.index != 0)
+		cub3d->main_menu.index--;
+	else if (keynum == XK_S && cub3d->main_menu.index != 2)
+		cub3d->main_menu.index++;
+}
+
 int	key_hook(int keynum, t_cub3d *cub3d)
 {
-	printf("%d\n", keynum);
 	if (keynum == XK_Escape)
 		exit_cub3d(keynum, cub3d);
+	else if (cub3d->program_state == main_menu)
+		key_hook_main_menu(keynum, cub3d);
 	return (0);
 }
 

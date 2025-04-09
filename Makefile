@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/09 13:08:54 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/09 15:59:08 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,15 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
 SRC_DIR				:= src
 SRC					:= event/event.c \
+					init/init_asset.c \
 					init/init_mlx.c \
 					init/init.c \
 					parsing/extract_assets_paths.c \
 					parsing/extract_map.c \
 					parsing/extract_utils.c \
 					parsing/is_valid.c \
-					parsing/parse_map.c \
 					parsing/parsing.c \
+					rendering/render.c \
 					error.c \
 					memory/free.c \
 					main.c \
