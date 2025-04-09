@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 18:05:02 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 19:49:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:55:06 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_program(t_cub3d *game, int argc, char **argv)
 		error_msg(MAP_EXT, NULL);
 		exit(EXIT_FAILURE);
 	}
-	extract_data(game, argv[1]);
-	parse_map(game);
+	// extract_data(game, argv[1]);
+	// parse_map(game);
+	init_mlx(game, &game->scene);
 }

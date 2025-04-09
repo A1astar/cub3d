@@ -6,25 +6,31 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 11:44:20 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:50:06 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-// void	launch_game(t_cub3d *game)
-// {
-// 	mlx_loop();
-// 	mlx_loop_end();
-// }
+int	game_loop(t_cub3d *cub3d)
+{
+	(void)cub3d;
+	return (0);
+}
+
+void	launch_game(t_cub3d *cub3d)
+{
+	mlx_loop(cub3d->scene.mlx_ptr);
+	mlx_loop_hook(cub3d->scene.mlx_ptr, game_loop, cub3d);
+}
 
 int	main(int argc, char **argv)
 {
-	t_cub3d	game;
+	t_cub3d	cub3d;
 
-	init_program(&game, argc, argv);
-	// launch_game(&game);
-	// free_program(&game);
+	init_program(&cub3d, argc, argv);
+	launch_game(&cub3d);
+	free_program(&cub3d);
 	exit(0);
 	// return (EXIT_SUCCESS);
 	// print_usage();
