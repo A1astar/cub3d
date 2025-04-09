@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 18:17:02 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:30:16 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,9 +220,6 @@ void	print_2d_array_string(char **str);
 void	print_usage(void);
 
 /*		RENDER		*/
-int	playing_loop(t_cub3d *cub3d);
-int	level_menu_loop(t_cub3d *cub3d);
-int	main_menu_loop(t_cub3d *cub3d);
 int		playing_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);

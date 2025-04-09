@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 17:14:26 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 18:29:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	playing_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 	(void)cub3d;
 	return (0);
 }
+
 int	playing_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
