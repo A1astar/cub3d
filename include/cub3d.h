@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 11:54:32 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 12:14:20 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ typedef struct s_minimap
 typedef struct s_map
 {
 	bool			bonus;
-	char			**data;
+	char			**raw_data;
 	char			**map;
+	char			**assets_paths;
 	char			**ceilling_rgb;
 	char			**floor_rgb;
 	void			*viewmodel;

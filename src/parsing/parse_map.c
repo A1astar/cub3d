@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 11:53:36 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:09:54 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,20 +131,21 @@ void	extract_data(t_cub3d *game, char *filename)
 	int	i;
 
 	line_count = get_line_count(game, filename);
-	game->map.data = ft_calloc(line_count + 1, sizeof(char *));
-	if (!game->map.data)
+	game->map.raw_data = ft_calloc(line_count + 1, sizeof(char *));
+	if (!game->map.raw_data)
 		free_program(game);
 	fd = open_file(game, filename);
 	i = 0;
 	while (i < line_count)
 	{
-		game->map.data[i] = get_next_line(fd);
-		if (!game->map.data[i] && i < line_count)
+		game->map.raw_data[i] = get_next_line(fd);
+		if (!game->map.raw_data[i] && i < line_count)
 			free_program(game);
 		i++;
 	}
 	close(fd);
-	extract_map(game, game->map.data);
+	extract_map(game, game->map.raw_data);
+	extract_assets_path(game, game->map.assets_paths)
 }
 
 void	check_bonus(char *line, t_map *map)
