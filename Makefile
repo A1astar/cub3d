@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/09 11:49:18 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/09 12:38:53 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 SRC_DIR				:= src
 SRC					:= init/init_mlx.c \
 					init/init.c \
+					parsing/extract_assets_paths.c \
+					parsing/extract_map.c \
+					parsing/extract_utils.c \
 					parsing/is_valid.c \
 					parsing/parse_map.c \
 					parsing/parsing.c \
@@ -123,4 +126,4 @@ YELLOW=\033[33m
 BLUE=\033[34m
 MAGENTA=\033[35m
 CYAN=\033[36m
-WHITE=\033[37m 
+WHITE=\033[37m

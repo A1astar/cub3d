@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 12:14:20 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 12:39:18 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define CUB3D_H
 
 # include "../libft/includes/libft.h"
+# include "../minilibx-linux/mlx.h"
 # include "errors.h"
 # include "keycodes.h"
-# include "../minilibx-linux/mlx.h"
 # include "textures.h"
 # include <fcntl.h>
 # include <inttypes.h>
@@ -126,7 +126,7 @@ typedef struct s_scene
 
 typedef struct s_setting
 {
-	uint8_t			difficulty; // Hardcore is the only option
+	uint8_t difficulty; // Hardcore is the only option
 	uint8_t			fov;
 	uint8_t			velocity;
 	bool			god_mod;
@@ -156,9 +156,8 @@ typedef struct s_cub3d
 	t_menu			level_menu;
 }					t_cub3d;
 
-
 /*		INIT		*/
-void	init_mlx(t_cub3d *game, t_scene *scene);
+void				init_mlx(t_cub3d *game, t_scene *scene);
 
 /*		ERROR		*/
 void				error_msg(const char *msg, const char *context);
@@ -169,10 +168,15 @@ int					load_asset(char **map_tab, t_cub3d *game);
 void				extract_data(t_cub3d *game, char *filename);
 void				parse_map(t_cub3d *game);
 bool				is_valid_map(t_cub3d *game, t_map *map);
+void				extract_assets_path(t_cub3d *game, char **data);
+void				extract_map(t_cub3d *game, char **data);
+char				*append_line(t_cub3d *game, char *buffer, char *line);
+int					open_file(t_cub3d *game, char *filename);
+int					get_line_count(t_cub3d *game, char *filename);
 
-void	free_program(t_cub3d *game);
+void				free_program(t_cub3d *game);
 
 /*		PRINT		*/
-void	print_2d_array_string(char **str);
+void				print_2d_array_string(char **str);
 
 #endif
