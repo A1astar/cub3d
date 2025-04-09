@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:36 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/08 18:16:07 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/09 19:24:43 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 /*ENV XPM*/
 # define CEIL_XPM "textures/xpm_files/ev_textures/ceiling.xpm"
-# define DOOR_XPM "textures/xpm_files/ev_textures/door.xpm"
+# define CLOSED_DOOR_XPM "textures/xpm_files/ev_textures/closed_door.xpm"
+# define OPEN_DOOR_XPM "textures/xpm_files/ev_textures/open_door.xpm"
 # define FLOOR_XPM "textures/xpm_files/ev_textures/floor.xpm"
 # define N_WALL_XPM "textures/xpm_files/ev_textures/north_wall.xpm"
 # define S_WALL_XPM "textures/xpm_files/ev_textures/south_wall.xpm"
