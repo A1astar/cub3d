@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 18:20:01 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:30:00 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr, char *asse
 			&map->texture_height);
 	if (!asset_ptr)
 	{
-		error_msg(NULL, NULL);
+		error_msg("aaaah", NULL);
 		free_program(cub3d);
 	}
 }
