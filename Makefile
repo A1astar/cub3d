@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/09 11:35:11 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/09 11:49:18 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC					:= init/init_mlx.c \
 					parsing/parse_map.c \
 					parsing/parsing.c \
 					error.c \
-					memory/free.c
+					memory/free.c \
 					main.c \
 					print.c
 SRC					:= $(addprefix $(SRC_DIR)/, $(SRC))
