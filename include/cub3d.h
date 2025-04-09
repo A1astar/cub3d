@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 17:30:39 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:17:02 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ typedef struct s_minimap
 typedef struct s_map
 {
 	bool	bonus;
+	int		texture_width;
+	int		texture_height;
 	char	**raw_data;
 	char	**map;
 	char	**assets_paths;
@@ -107,6 +109,8 @@ typedef struct s_player
 typedef struct s_enemy
 {
 	t_randy_state	state;
+	int				sprite_width;
+	int				sprite_height;
 	float			x_pos;
 	float			y_pos;
 	void			*sprite[16];
@@ -189,6 +193,10 @@ int		exit_cub3d(int keynum, t_cub3d *cub3d);
 void	init_struct_attributes(t_cub3d *cub3d);
 void	init_mlx(t_cub3d *cub3d, t_scene *scene);
 void	init_asset(t_cub3d *cub3d);
+bool	is_asset_line(char *line, size_t len);
+bool	is_rgb_line(char *line, size_t len);
+bool	is_rgb_code(char **tab);
+void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 
 /*		ERROR		*/
 void	error_msg(const char *msg, const char *context);

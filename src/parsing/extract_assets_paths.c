@@ -6,13 +6,13 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:33:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 12:34:33 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:19:16 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static bool	is_asset_line(char *line)
+static bool	is_not_map_line(char *line)
 {
 	size_t	line_len;
 
@@ -38,7 +38,7 @@ void	extract_assets_path(t_cub3d *game, char **data)
 	buffer = NULL;
 	while (data[i])
 	{
-		if (is_asset_line(data[i]))
+		if (is_not_map_line(data[i]))
 		{
 			buffer = append_line(game, buffer, data[i]);
 			buffer = append_line(game, buffer, "\\n");
