@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 12:16:51 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:24:55 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,16 +131,18 @@ void	extract_map(t_cub3d *game, char **data)
 
 bool	is_asset_line(char *line)
 {
-	int	i;
+	size_t line_len;
 
-	i = 0;
-	while (data[i])
-	{
-		if (!is_map_line(data[i]))
-			return (false);
-		i++;
-	}
-	return (true);
+	line_len = 0;
+	if(!line)
+		return (false);
+	line_len = ft_strlen(line);
+	if(ft_strnstr(line, "./", line_len))
+		return (true);
+	else if(ft_strnstr(line, ",", line_len) && ((ft_strnstr(line, "F", line_len) || ft_strnstr(line, "C", line_len))))
+		return (true);
+	else
+		return (false);
 }
 
 void	extract_assets_path(t_cub3d *game, char **data)
@@ -152,7 +154,7 @@ void	extract_assets_path(t_cub3d *game, char **data)
 	buffer = NULL;
 	while (data[i])
 	{
-		if(is_assets_line(data[i]))
+		if(is_asset_line(data[i]))
 		{
 			buffer = append_line(game, buffer, data[i]);
 			buffer = append_line(game, buffer, "\\n");
@@ -206,4 +208,5 @@ void	parse_map(t_cub3d *game)
 	ft_printf("\n\nMAP\n\n");
 	print_2d_array_string(game->map.map);
 	ft_printf("\n\nDATAS\n\n");
+	print_2d_array_string(game->map.assets_paths);
 }
