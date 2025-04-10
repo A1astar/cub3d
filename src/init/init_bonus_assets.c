@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 19:27:12 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:20:10 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@
 // 	uint32_t	i;
 
 // 	i = 0;
-// 	while (i < cub3d->enemy_nb)
+// 	while (i < cub3d->nb_enemy)
 // 	{
 // 		if (cub3d->randy[i].state == angry)
 // 			if (load_angry_sprites(cub3d, &cub3d->randy[i]) == -1)
@@ -136,21 +136,21 @@
 // 	}
 // }
 
-// static int	load_env_assets(t_cub3d *cub3d, t_map *map)
-// {
-// 	map->viewmodel = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, POV_XPM, map->view_width, map->view_height );
-// 	map->floor = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, FLOOR_XPM, map->texture_width, map->texture_height);
-// 	map->closed_door = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, CLOSED_DOOR_XPM, map->texture_width, map->texture_width);
-// 	map->open_door = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, OPEN_DOOR_XPM, map->texture_width, map->texture_height);
-// 	if(!cub3d->map.viewmodel || !cub3d->map.floor || !cub3d->map.closed_door || cub3d->map.open_door)
-// 	{
-// 		error_msg("Cannot load bonus env sprite:", NULL);
-// 		free_program(cub3d);
-// 	}
-// }
+static void	load_env_assets(t_cub3d *cub3d, t_map *map)
+{
+	map->viewmodel = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, POV_XPM, &map->view_width, &map->view_height );
+	map->floor = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, FLOOR_XPM, &map->texture_width, &map->texture_height);
+	map->closed_door = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, CLOSED_DOOR_XPM, &map->texture_width, &map->texture_width);
+	map->open_door = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, OPEN_DOOR_XPM, &map->texture_width, &map->texture_height);
+	if(!cub3d->map.viewmodel || !cub3d->map.floor || !cub3d->map.closed_door || !cub3d->map.open_door)
+	{
+		error_msg("Cannot load bonus env sprite", NULL);
+		free_program(cub3d);
+	}
+}
 
-// void init_bonus_assets(t_cub3d *cub3d)
-// {
-// 	load_env_assets(cub3d, &cub3d->map);
-// 	load_randy_assets(cub3d);
-// }
+void init_bonus_assets(t_cub3d *cub3d)
+{
+	load_env_assets(cub3d, &cub3d->map);
+	//load_randy_assets(cub3d);
+}

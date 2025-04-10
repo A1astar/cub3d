@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 15:22:31 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:08:45 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ bool	is_asset_line(char *line, size_t len);
 bool	is_rgb_line(char *line, size_t len);
 bool	is_rgb_code(char **tab);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
-void 	init_bonus_part(t_cub3d *cub3d);
+void 	init_bonus_assets(t_cub3d *cub3d);
 
 /*		ERROR		*/
 void	error_msg(const char *msg, const char *context);
