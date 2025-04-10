@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 15:57:10 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/10 14:06:57 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@ void	init_struct_attributes(t_cub3d *cub3d)
 {
 	cub3d->program_state = main_menu;
 	cub3d->main_menu.index = 0;
-	// ft_bzero(&cub3d->map, sizeof(cub3d->map));
-	// ft_bzero(&cub3d->scene, sizeof(cub3d->scene));
-	// ft_bzero(&cub3d->player, sizeof(cub3d->player));
-	// ft_bzero(&cub3d->thread, sizeof(cub3d->thread));
-	// ft_bzero(&cub3d->setting, sizeof(cub3d->setting));
-	// ft_bzero(&cub3d->randy[0], sizeof(cub3d->randy));
-	// ft_bzero(&cub3d->randy[1], sizeof(cub3d->randy));
-	// ft_bzero(&cub3d->randy[2], sizeof(cub3d->randy));
-	// ft_bzero(&cub3d->randy[3], sizeof(cub3d->randy));
-	// ft_bzero(&cub3d->main_menu, sizeof(cub3d->main_menu));
-	// ft_bzero(&cub3d->level_menu, sizeof(cub3d->level_menu));
+	cub3d->nb_enemy = 0;
+	cub3d->nb_player = 0;
+	ft_bzero(&cub3d->map, sizeof(t_map));
+	ft_bzero(&cub3d->scene, sizeof(t_scene));
+	ft_bzero(&cub3d->player, sizeof(t_player));
+	ft_bzero(&cub3d->thread, sizeof(t_thread));
+	ft_bzero(&cub3d->setting, sizeof(t_setting));
+	ft_bzero(&cub3d->randy[0], sizeof(t_enemy));
+	ft_bzero(&cub3d->randy[1], sizeof(t_enemy));
+	ft_bzero(&cub3d->randy[2], sizeof(t_enemy));
+	ft_bzero(&cub3d->randy[3], sizeof(t_enemy));
+	ft_bzero(&cub3d->main_menu, sizeof(t_menu));
+	ft_bzero(&cub3d->level_menu, sizeof(t_menu));
 }
 
 bool	is_cub_file(char *file)

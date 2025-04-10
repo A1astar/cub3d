@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 19:56:15 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:22:31 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,15 @@ typedef enum e_randy_state
 	stoned,
 	drunk,
 	godlike,
-}t_randy_state;
+}	t_randy_state;
+
+typedef enum e_orientation
+{
+	north,
+	south,
+	east,
+	west,
+}	t_orientation;
 
 typedef struct s_minimap
 {
@@ -82,25 +90,28 @@ typedef struct s_minimap
 
 typedef struct s_map
 {
-	bool	bonus;
-	int		texture_width;
-	int		texture_height;
-	int		view_width;
-	int		view_height;
-	char	**raw_data;
-	char	**map;
-	char	**assets_paths;
-	char	**ceilling_rgb;
-	char	**floor_rgb;
-	void	*viewmodel;
-	void	*n_texture_wall;
-	void	*s_texture_wall;
-	void	*e_texture_wall;
-	void	*w_texture_wall;
-	void	*floor;
-	void	*ceiling;
-	void	*closed_door;
-	void	*open_door;
+	bool			bonus;
+	bool			is_valid_map;
+	t_orientation	orientation;
+	int				texture_width;
+	int				texture_height;
+	int				view_width;
+	int				view_height;
+	int				map_height;
+	char			**raw_data;
+	char			**map;
+	char			**assets_paths;
+	char			**ceilling_rgb;
+	char			**floor_rgb;
+	void			*viewmodel;
+	void			*n_texture_wall;
+	void			*s_texture_wall;
+	void			*e_texture_wall;
+	void			*w_texture_wall;
+	void			*floor;
+	void			*ceiling;
+	void			*closed_door;
+	void			*open_door;
 }t_map;
 
 typedef struct s_player
@@ -162,8 +173,9 @@ typedef struct s_thread
 
 typedef struct s_cub3d
 {
+	int			nb_enemy;
+	int			nb_player;
 	uint8_t		program_state;
-	uint32_t	enemy_nb;
 	t_map		map;
 	t_scene		scene;
 	t_player	player;
@@ -173,7 +185,6 @@ typedef struct s_cub3d
 	t_menu		main_menu;
 	t_menu		level_menu;
 }t_cub3d;
-
 
 /*		EVENT		*/
 int		playing_loop(t_cub3d *cub3d);
@@ -211,15 +222,29 @@ void	error_msg(const char *msg, const char *context);
 void	init_program(t_cub3d *cub3d,char **argv);
 int		load_asset(char **map_tab, t_cub3d *game);
 void	extract_data(t_cub3d *game, char *filename);
-void	parsing(t_cub3d *game, char *argv);
+void	parsing(t_cub3d *cub3d, char *argv);
 bool	is_valid_map(t_cub3d *game, t_map *map);
 void	extract_assets_path(t_cub3d *game, char **data);
 void	extract_map(t_cub3d *game, char **data);
 char	*append_line(t_cub3d *game, char *buffer, char *line);
 int		open_file(t_cub3d *game, char *filename);
 int		get_line_count(t_cub3d *game, char *filename);
+char	**dup_tab(char **map, size_t map_row_len);
+void	check_valid_element(t_cub3d *cub3d, char c);
+void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb);
+void	check_player_nb(t_cub3d *cub3d, int enemy_nb);
+bool	is_player_spawn(t_map *map, char c);
+bool	is_enemy_spawn(char c);
+void 	apply_enemy_state(t_enemy *randy, int nb_enemy);
+void	check_map(t_cub3d *cub3d, t_map *map);
 
-void	free_program(t_cub3d *game);
+/*		MEMORY		*/
+void	free_program(t_cub3d *cub3d);
+void	free_image(void *mlx, void *image);
+void	free_t_img(t_img *img);
+void	free_t_menu(t_menu *menu);
+void	free_t_scene(t_scene *scene);
+void	free_t_player(t_player *player, t_scene *scene);
 
 /*		PRINT		*/
 void	print_2d_array_string(char **str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 15:58:26 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/10 15:32:08 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,14 @@ void	extract_data(t_cub3d *game, char *filename)
 	extract_assets_path(game, game->map.raw_data);
 }
 
-void	check_bonus(char *line, t_map *map)
+void	parsing(t_cub3d *cub3d, char *argv)
 {
-	if (ft_strncmp("BONUS\n", line, ft_strlen(line)))
-		map->bonus = true;
-}
-
-void	parsing(t_cub3d *game, char *argv)
-{
-	extract_data(game, argv);
-	ft_printf("\n\nFULL_FILE\n\n");
-	print_2d_array_string(game->map.raw_data);
-	ft_printf("\n\nMAP\n\n");
-	print_2d_array_string(game->map.map);
-	ft_printf("\n\nDATAS\n\n");
-	print_2d_array_string(game->map.assets_paths);
+	extract_data(cub3d, argv);
+	check_map(cub3d, &cub3d->map);
+	// ft_printf("\n\nFULL_FILE\n\n");
+	// print_2d_array_string(game->map.raw_data);
+	// ft_printf("\n\nMAP\n\n");
+	// print_2d_array_string(game->map.map);
+	// ft_printf("\n\nDATAS\n\n");
+	// print_2d_array_string(game->map.assets_paths);
 }

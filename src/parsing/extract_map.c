@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:32:43 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/09 12:34:52 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:56:52 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static bool	is_valid_map_element(char c)
 {
 	if (c == '1' || c == '0' || c == '\n' || c <= ' ')
 		return (true);
-	else if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	else if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'R')
 		return (true);
 	else
 		return (false);
@@ -60,13 +60,18 @@ void	extract_map(t_cub3d *game, char **data)
 
 	i = 0;
 	buffer = NULL;
+	while (data[i] && !is_only_map_lines(&data[i]))
+		i++;
 	while (data[i])
 	{
-		while (!is_only_map_lines(&data[i]))
-			i++;
 		buffer = append_line(game, buffer, data[i]);
 		buffer = append_line(game, buffer, "\\n");
 		i++;
+	}
+	if(!buffer)
+	{
+		error_msg("Empty map", NULL);
+		free_program(game);
 	}
 	game->map.map = ft_split(buffer, "\\n");
 	if (!game->map.map)
@@ -74,4 +79,5 @@ void	extract_map(t_cub3d *game, char **data)
 		error_msg(MEM, "extract_map");
 		free_program(game);
 	}
+	print_2d_array_string(game->map.map);
 }
