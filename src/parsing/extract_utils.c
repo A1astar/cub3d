@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:37:40 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 15:49:05 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 19:42:17 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*append_line(t_cub3d *game, char *buffer, char *line)
 	if (!temp)
 	{
 		error_msg(MEM, "append_line");
-		free(line);
 		free(buffer);
 		free_program(game);
 	}

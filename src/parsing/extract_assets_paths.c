@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:33:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 17:03:55 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:10:11 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,26 @@ static bool	is_not_map_line(char *line)
 
 void	extract_assets_path(t_cub3d *game, char **data)
 {
-	int i;
-	char *buffer;
+	char	*buffer;
 
-	i = 0;
 	buffer = NULL;
-	while (data[i])
+	while (*data)
 	{
-		if (is_not_map_line(data[i]))
+		if (is_not_map_line(*data))
 		{
-			buffer = append_line(game, buffer, data[i]);
-			buffer = append_line(game, buffer, " ");
+			buffer = append_line(game, buffer, *data);
+			buffer = append_line(game, buffer, "//");
 		}
-		i++;
+		data++;
 	}
-	if(!buffer)
+	ft_printf("buffer: %s\n", buffer);
+	if (!buffer)
 	{
 		error_msg(TEXT, NULL);
 		free_program(game);
 	}
-	game->map.assets_paths = ft_split(buffer, " ");
+	game->map.assets_paths = ft_split(buffer, "//");
+	free(buffer);
 	if (!game->map.map)
 	{
 		error_msg(MEM, "extract_data");

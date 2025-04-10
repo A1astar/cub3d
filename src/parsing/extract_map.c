@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:32:43 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 18:05:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:03:34 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,18 @@ static bool	is_only_map_lines(char **data)
 
 void	extract_map(t_cub3d *game, char **data)
 {
-	int		i;
 	char	*buffer;
 
-	i = 0;
 	buffer = NULL;
-	while (data[i] && !is_only_map_lines(&data[i]))
-		i++;
-	while (data[i])
-	{
-		buffer = append_line(game, buffer, data[i]);
-		buffer = append_line(game, buffer, "\\n");
-		i++;
-	}
-	if (!buffer)
+	while (*data && !is_only_map_lines(&(*data)))
+		data++;
+	if (!*data)
 	{
 		error_msg("Empty map", NULL);
 		free_program(game);
 	}
-	game->map.map = ft_split(buffer, "\\n");
+	game->map.map = dup_tab(&(*data), ft_tabsize((void **)&(*data)));
+	free(buffer);
 	if (!game->map.map)
 	{
 		error_msg(MEM, "extract_map");

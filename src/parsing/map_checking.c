@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 18:03:52 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 19:50:05 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	flood_fill(char **map, int x, int y, t_map *content,
 		return ;
 	if (map[y][x] <= ' ' || map[y][x] == '\0')
 	{
+		error_msg(MAP_UNCL, NULL);
 		content->is_valid_map = false;
 		return ;
 	}
