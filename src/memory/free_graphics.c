@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 15:06:15 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/10 19:29:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_t_menu(t_menu *menu)
 void	free_t_scene(t_scene *scene)
 {
 	if (scene->win_ptr)
-		mlx_destroy_window(scene->mlx_ptr, scene->mlx_ptr);
+		mlx_destroy_window(scene->mlx_ptr, scene->win_ptr);
 	if (scene->mlx_ptr)
 		mlx_destroy_display(scene->mlx_ptr);
 	free_t_img(&scene->img);
