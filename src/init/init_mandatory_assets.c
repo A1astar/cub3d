@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 12:31:10 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:34:28 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	mandatory_assets_are_missing(t_map *map)
 		return (false);
 }
 
-static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr,
+static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void **asset_ptr,
 		char *asset_path)
 {
 	while (*asset_path && *asset_path != '/')
@@ -34,7 +34,7 @@ static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr,
 		free_program(cub3d);
 	}
 	asset_path++;
-	asset_ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
+	*asset_ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
 			&map->texture_width, &map->texture_height);
 	if (!asset_ptr)
 	{
@@ -75,13 +75,13 @@ static void	load_assets(t_cub3d *cub3d, t_map *map, char *asset_line,
 		size_t line_lengh)
 {
 	if (ft_strnstr(asset_line, "NO", line_lengh))
-		mlx_load_img(cub3d, map, map->n_texture_wall, asset_line);
+		mlx_load_img(cub3d, map, &map->n_texture_wall, asset_line);
 	else if (ft_strnstr(asset_line, "SO", line_lengh))
-		mlx_load_img(cub3d, map, map->s_texture_wall, asset_line);
+		mlx_load_img(cub3d, map, &map->s_texture_wall, asset_line);
 	else if (ft_strnstr(asset_line, "WE", line_lengh))
-		mlx_load_img(cub3d, map, map->w_texture_wall, asset_line);
+		mlx_load_img(cub3d, map, &map->w_texture_wall, asset_line);
 	else if (ft_strnstr(asset_line, "EA", line_lengh))
-		mlx_load_img(cub3d, map, map->e_texture_wall, asset_line);
+		mlx_load_img(cub3d, map, &map->e_texture_wall, asset_line);
 }
 
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)
@@ -98,8 +98,6 @@ void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)
 			load_rgb(cub3d, &cub3d->map, *assets_paths, line_lengh);
 		assets_paths++;
 	}
-	print_2d_array_string(cub3d->map.ceilling_rgb);
-	print_2d_array_string(cub3d->map.floor_rgb);
 	if (mandatory_assets_are_missing(&cub3d->map))
 	{
 		error_msg("Missing assets", NULL);
