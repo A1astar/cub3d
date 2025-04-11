@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_playing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 15:52:18 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:39:04 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color)
 	}
 }
 
-void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map)
+void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap)
 {
 	int	i;
 	int	j;
@@ -148,71 +148,67 @@ void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map)
 	int	y;
 
 	i = 0;
-	y = 0;
-	(void)scene;
+	y = minimap->y_origin;
 	while (map->map[i])
 	{
 		j = 0;
-		x = 0;
+		x = minimap->x_origin;
 		while (map->map[i][j])
 		{
 
 			if (map->map[i][j] == '0')
-				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_WHITE);
-			// else if (map->map[i][j] == '0')
+				draw_square(cub3d, x, y, HEX_GREY);
 			else if (map->map[i][j] == '1')
-				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_BLACK);
+				draw_square(cub3d, x, y, HEX_BLACK);
 			else if (map->map[i][j] == 'R')
-				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_RED);
+				draw_square(cub3d, x, y, HEX_RED);
 			else if (map->map[i][j] == 'D')
-				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_BROWN);
+				draw_square(cub3d, x, y, HEX_BROWN);
 			else if (map->map[i][j] == 'N' || map->map[i][j] == 'S' || map->map[i][j] == 'E' || map->map[i][j] == 'W')
-				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_GREEN);
+				draw_square(cub3d, x, y, HEX_GREEN);
 			j++;
-			x += 10;
+			x += minimap->width;
 		}
-		y += 10;
+		y += minimap->height;
 		i++;
 	}
 }
 
-// void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map)
-// {
-// 	(void)cub3d;
-// 	int	y;
-// 	int	x;
+void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap, t_player *player)
+{
+	int	y;
+	int	x;
 
-// 	y = cub3d->minimap.y_origin;
-// 	while (cub3d->map.map[i])
-// 	while (y < WINDOW_HEIGHT / 2)
-// 	{
-// 		x = 0;
-// 		while (x < WINDOW_WIDTH)
-// 		{
-// 			scene->img.pixel = scene->img.addr
-// 				+ y * scene->img.size_line
-// 				+ x * (scene->img.bpp / 8);
-// 			*(unsigned int *)scene->img.pixel = map->ceilling_rgb[0] << 16
-// 				| map->ceilling_rgb[1] << 8 | map->ceilling_rgb[2];
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
+	y = 0;
+	while (y < 10)
+	{
+		x = 0;
+		while (x < 10)
+		{
+			cub3d->scene.img.pixel = cub3d->scene.img.addr
+				+ (y + minimap->y_origin + (int)player->y_pos) * cub3d->scene.img.size_line
+				+ (x + minimap->x_origin + (int)player->x_pos) * (cub3d->scene.img.bpp / 8);
+			*(unsigned int *)cub3d->scene.img.pixel = HEX_RED;
+			x++;
+		}
+		y++;
+	}
+}
+
 
 void	render_playing(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 	render_background(cub3d, scene);
-	render_ceiling(cub3d, scene, &cub3d->map);
 	render_floor(cub3d, scene, &cub3d->map);
-	render_minimap(cub3d, scene, &cub3d->map);
+	render_ceiling(cub3d, scene, &cub3d->map);
+	render_minimap(cub3d, &cub3d->map, &cub3d->minimap);
+	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
 		scene->img.ptr, 0, 0);
 }
 
 int	playing_loop(t_cub3d *cub3d)
 {
-	printf("here playing\n");
 	render_playing(cub3d, &cub3d->window, &cub3d->scene);
 	return (0);
 }

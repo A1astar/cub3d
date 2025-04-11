@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/11 11:47:18 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/11 19:01:27 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC					:= event/event_level_menu.c \
 					rendering/render_level_menu.c \
 					rendering/render_main_menu.c \
 					rendering/render_playing.c \
+					rendering/rendering.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \

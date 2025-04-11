@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 12:18:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 17:25:01 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,19 @@ void	free_t_img(t_img *img)
 		free(img->pixel);
 }
 
-void	free_t_menu(t_menu *menu)
+// void	free_t_level_menu(t_level_menu *menu)
+// {
+// 	size_t	nb_img;
+
+// 	nb_img = 0;
+// 	while (nb_img < 3)
+// 	{
+// 		free_t_img(&menu->img[nb_img]);
+// 		nb_img++;
+// 	}
+// }
+
+void	free_t_main_menu(t_main_menu *menu)
 {
 	size_t	nb_img;
 

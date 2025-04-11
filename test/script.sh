@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Global Variables
-PROJECT_DIR=(cd .. && pwd)
+PROJECT_DIR=$(cd .. && pwd)
 TEST_DIR=$(pwd)
 BINARY=cub3d
 

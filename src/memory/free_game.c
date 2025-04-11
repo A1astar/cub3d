@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 14:59:41 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:25:08 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	free_program(t_cub3d *cub3d)
 	free_t_player(&cub3d->player, &cub3d->window);
 	free_t_thread(&cub3d->thread);
 	free_t_enemy(cub3d->randy, &cub3d->window);
-	free_t_menu(&cub3d->main_menu);
-	free_t_menu(&cub3d->level_menu);
+	free_t_main_menu(&cub3d->main_menu);
+	// free_t_level_menu(&cub3d->level_menu);
 	free_t_window(&cub3d->window);
 	exit(EXIT_SUCCESS);
 }

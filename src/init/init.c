@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 15:36:06 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 18:45:24 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_struct_attributes(t_cub3d *cub3d)
 {
-	cub3d->program_state = playing;
+	cub3d->program_state = main_menu;
 	cub3d->main_menu.index = 0;
 	cub3d->nb_enemy = 0;
 	cub3d->nb_player = 0;
@@ -29,15 +29,8 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->randy[1], sizeof(t_enemy));
 	ft_bzero(&cub3d->randy[2], sizeof(t_enemy));
 	ft_bzero(&cub3d->randy[3], sizeof(t_enemy));
-	ft_bzero(&cub3d->main_menu, sizeof(t_menu));
-	ft_bzero(&cub3d->level_menu, sizeof(t_menu));
-}
-
-bool	is_cub_file(char *file)
-{
-	if (!ft_strnstr(file, ".cub", ft_strlen(file)))
-		return (false);
-	return (true);
+	ft_bzero(&cub3d->main_menu, sizeof(t_main_menu));
+	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)
@@ -46,9 +39,9 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	parsing(cub3d, argv[1]);
 	init_mlx(cub3d, &cub3d->window);
 	init_asset(cub3d);
-	cub3d->minimap.x_origin = WINDOW_WIDTH / 4;
-	cub3d->minimap.y_origin = WINDOW_HEIGHT / 4;
-	cub3d->minimap.height = 10;
-	cub3d->minimap.width = 10;
+	cub3d->minimap.x_origin = WINDOW_WIDTH * 0.72;
+	cub3d->minimap.y_origin = WINDOW_HEIGHT * 0.8;
+	cub3d->minimap.height = 5;
+	cub3d->minimap.width = 5;
 	cub3d->minimap.scale = 1;
 }

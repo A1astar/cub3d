@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 15:32:08 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:19:14 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,20 @@ void	extract_data(t_cub3d *game, char *filename)
 	extract_assets_path(game, game->map.raw_data);
 }
 
+bool	got_right_suffix(char *file)
+{
+	if (ft_strnstr(file, ".cub", ft_strlen(file)))
+		return (true);
+	return (false);
+}
+
 void	parsing(t_cub3d *cub3d, char *argv)
 {
-	extract_data(cub3d, argv);
-	check_map(cub3d, &cub3d->map);
+	// if (got_right_suffix(argv))
+	// {
+		extract_data(cub3d, argv);
+		check_map(cub3d, &cub3d->map);
+	// }
 	// ft_printf("\n\nFULL_FILE\n\n");
 	// print_2d_array_string(game->map.raw_data);
 	// ft_printf("\n\nMAP\n\n");
