@@ -6,11 +6,22 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 11:23:02 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:47:17 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+static bool	mandatory_assets_are_missing(t_map *map)
+{
+	if (!map->n_texture_wall || !map->s_texture_wall || !map->e_texture_wall
+		|| !map->w_texture_wall)
+		return (true);
+	else if (!map->floor_rgb || !map->ceilling_rgb)
+		return (true);
+	else
+		return (false);
+}
 
 static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr,
 		char *asset_path)
@@ -86,5 +97,10 @@ void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)
 		if (is_rgb_line(*assets_paths, line_lengh))
 			load_rgb(cub3d, &cub3d->map, *assets_paths, line_lengh);
 		assets_paths++;
+	}
+	if (mandatory_assets_are_missing(&cub3d->map))
+	{
+		error_msg("Missing assets", NULL);
+		free_program(cub3d);
 	}
 }
