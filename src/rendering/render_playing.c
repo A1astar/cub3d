@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_playing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 15:42:10 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 15:52:18 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,12 +158,16 @@ void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map)
 		{
 
 			if (map->map[i][j] == '0')
-				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, 0x00FFFFFF);
+				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_WHITE);
 			// else if (map->map[i][j] == '0')
 			else if (map->map[i][j] == '1')
-				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, 0x00CCCCCC);
-			// else
-			// 	continue;
+				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_BLACK);
+			else if (map->map[i][j] == 'R')
+				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_RED);
+			else if (map->map[i][j] == 'D')
+				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_BROWN);
+			else if (map->map[i][j] == 'N' || map->map[i][j] == 'S' || map->map[i][j] == 'E' || map->map[i][j] == 'W')
+				draw_square(cub3d, x + cub3d->minimap.x_origin, y + cub3d->minimap.y_origin, HEX_GREEN);
 			j++;
 			x += 10;
 		}
