@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 14:50:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:11:06 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,6 @@ typedef enum e_orientation
 	west,
 }	t_orientation;
 
-typedef struct s_minimap
-{
-	uint32_t	x_origin;
-	uint32_t	y_origin;
-	uint32_t	x_width;
-	uint32_t	y_height;
-}t_minimap;
-
 typedef struct s_map
 {
 	bool			bonus;
@@ -118,6 +110,15 @@ typedef struct s_map
 	void			*closed_door;
 	void			*open_door;
 }t_map;
+
+typedef struct s_minimap
+{
+	int	x_origin;
+	int	y_origin;
+	int	width;
+	int	height;
+	int	scale;
+}t_minimap;
 
 typedef struct s_player
 {
@@ -194,6 +195,7 @@ typedef struct s_cub3d
 	t_enemy		randy[4];
 	t_menu		main_menu;
 	t_menu		level_menu;
+	t_minimap	minimap;
 	t_window	window;
 }t_cub3d;
 

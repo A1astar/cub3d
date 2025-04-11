@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 14:13:34 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 15:36:06 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->window, sizeof(t_window));
 	ft_bzero(&cub3d->player, sizeof(t_player));
 	ft_bzero(&cub3d->thread, sizeof(t_thread));
+	ft_bzero(&cub3d->minimap, sizeof(t_minimap));
 	ft_bzero(&cub3d->setting, sizeof(t_setting));
 	ft_bzero(&cub3d->randy[0], sizeof(t_enemy));
 	ft_bzero(&cub3d->randy[1], sizeof(t_enemy));
@@ -45,4 +46,9 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	parsing(cub3d, argv[1]);
 	init_mlx(cub3d, &cub3d->window);
 	init_asset(cub3d);
+	cub3d->minimap.x_origin = WINDOW_WIDTH / 4;
+	cub3d->minimap.y_origin = WINDOW_HEIGHT / 4;
+	cub3d->minimap.height = 10;
+	cub3d->minimap.width = 10;
+	cub3d->minimap.scale = 1;
 }
