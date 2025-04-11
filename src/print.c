@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:57:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 16:41:34 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 11:07:42 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_2d_array_string(char **str)
 {
 	for (int i = 0; str[i]; i++)
-		printf("%s", str[i]);
+		printf("%s\n", str[i]);
 	printf("\n");
 }
 

@@ -6,13 +6,14 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 16:57:03 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:23:02 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr, char *asset_path)
+static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr,
+		char *asset_path)
 {
 	while (*asset_path && *asset_path != '/')
 		asset_path++;
@@ -22,8 +23,8 @@ static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr, char *asse
 		free_program(cub3d);
 	}
 	asset_path++;
-	asset_ptr = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, asset_path, &map->texture_width,
-			&map->texture_height);
+	asset_ptr = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, asset_path,
+			&map->texture_width, &map->texture_height);
 	if (!asset_ptr)
 	{
 		error_msg("Wrong asset address", NULL);
@@ -50,7 +51,8 @@ static void	extract_rgb_code(t_cub3d *cub3d, char **rgb_tab, char *line)
 	}
 }
 
-static void	load_rgb(t_cub3d *cub3d, t_map *map, char *asset_line, size_t line_lengh)
+static void	load_rgb(t_cub3d *cub3d, t_map *map, char *asset_line,
+		size_t line_lengh)
 {
 	if (ft_strnstr(asset_line, "F", line_lengh))
 		extract_rgb_code(cub3d, map->floor_rgb, asset_line);
