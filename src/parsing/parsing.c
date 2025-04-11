@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 18:19:14 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 22:41:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	parsing(t_cub3d *cub3d, char *argv)
 {
 	// if (got_right_suffix(argv))
 	// {
-		extract_data(cub3d, argv);
-		check_map(cub3d, &cub3d->map);
+	extract_data(cub3d, argv);
+	check_map(cub3d, &cub3d->map);
 	// }
 	// ft_printf("\n\nFULL_FILE\n\n");
 	// print_2d_array_string(game->map.raw_data);

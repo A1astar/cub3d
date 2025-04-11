@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 19:49:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 21:59:47 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,5 +268,6 @@ void	print_usage(void);
 int		playing_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
+void	draw_pixel(t_img *img, int x, int y, int color);
 
 #endif

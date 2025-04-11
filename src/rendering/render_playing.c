@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 20:39:04 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 22:39:30 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	render_background(t_cub3d *cub3d, t_scene *scene)
 // 		}
 // 		y++;
 // 	}
-// }
+// ear
 
 void	render_ceiling(t_cub3d *cub3d, t_scene *scene, t_map *map)
 {
@@ -99,16 +99,13 @@ void	render_floor(t_cub3d *cub3d, t_scene *scene, t_map *map)
 	int	x;
 
 	y = WINDOW_HEIGHT / 2;
-	while (y  < WINDOW_HEIGHT)
+	while (y < WINDOW_HEIGHT)
 	{
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			scene->img.pixel = scene->img.addr
-				+ y * scene->img.size_line
-				+ x * (scene->img.bpp / 8);
-			*(unsigned int *)scene->img.pixel = map->floor_rgb[0] << 16
-				| map->floor_rgb[1] << 8 | map->floor_rgb[2];
+			draw_pixel(&scene->img, x, y, map->floor_rgb[0] << 16 
+				| map->floor_rgb[1] << 8 | map->floor_rgb[2]);
 			x++;
 		}
 		y++;
@@ -130,23 +127,22 @@ void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color)
 		x = 0;
 		while (x < width)
 		{
-			cub3d->scene.img.pixel = cub3d->scene.img.addr
-				+ (y + y_index) * cub3d->scene.img.size_line
-				+ (x + x_index) * (cub3d->scene.img.bpp / 8);
-			*(unsigned int *)cub3d->scene.img.pixel = color;
+			draw_pixel(&cub3d->scene.img, x + x_index, y + y_index, color);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap)
+void	render_minimap(t_cub3d *cub3d,
+					t_scene *scene, t_map *map, t_minimap *minimap)
 {
 	int	i;
 	int	j;
 	int	x;
 	int	y;
 
+	(void)scene;
 	i = 0;
 	y = minimap->y_origin;
 	while (map->map[i])
@@ -155,7 +151,6 @@ void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap)
 		x = minimap->x_origin;
 		while (map->map[i][j])
 		{
-
 			if (map->map[i][j] == '0')
 				draw_square(cub3d, x, y, HEX_GREY);
 			else if (map->map[i][j] == '1')
@@ -164,7 +159,8 @@ void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap)
 				draw_square(cub3d, x, y, HEX_RED);
 			else if (map->map[i][j] == 'D')
 				draw_square(cub3d, x, y, HEX_BROWN);
-			else if (map->map[i][j] == 'N' || map->map[i][j] == 'S' || map->map[i][j] == 'E' || map->map[i][j] == 'W')
+			else if (map->map[i][j] == 'N' || map->map[i][j] == 'S' 
+				|| map->map[i][j] == 'E' || map->map[i][j] == 'W')
 				draw_square(cub3d, x, y, HEX_GREEN);
 			j++;
 			x += minimap->width;
@@ -174,35 +170,29 @@ void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap)
 	}
 }
 
-void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap, t_player *player)
+void	render_minimap_player(t_cub3d *cub3d,
+				t_scene *scene, t_minimap *minimap, t_player *player)
 {
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y < 10)
-	{
-		x = 0;
-		while (x < 10)
-		{
-			cub3d->scene.img.pixel = cub3d->scene.img.addr
-				+ (y + minimap->y_origin + (int)player->y_pos) * cub3d->scene.img.size_line
-				+ (x + minimap->x_origin + (int)player->x_pos) * (cub3d->scene.img.bpp / 8);
-			*(unsigned int *)cub3d->scene.img.pixel = HEX_RED;
-			x++;
-		}
-		y++;
-	}
+	(void)cub3d;
+	(void)minimap;
+	(void)scene;
+	// y = player->y_pos;
+	// x = player->x_pos;
+	y = player->y_pos + minimap->y_origin;
+	x = player->x_pos + minimap->x_origin;
+	draw_square(cub3d, x, y, HEX_RED);
 }
-
 
 void	render_playing(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 	render_background(cub3d, scene);
 	render_floor(cub3d, scene, &cub3d->map);
 	render_ceiling(cub3d, scene, &cub3d->map);
-	render_minimap(cub3d, &cub3d->map, &cub3d->minimap);
-	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player);
+	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
+	render_minimap_player(cub3d, &cub3d->scene, &cub3d->minimap, &cub3d->player);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
 		scene->img.ptr, 0, 0);
 }
