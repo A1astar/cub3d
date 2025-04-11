@@ -4,7 +4,7 @@ WE                ./asset/texture/xpm_files/env_textures/west_wall.xpm
 EA                ./asset/texture/xpm_files/env_textures/east_wall.xpm
 
 F 220,100,0
-C 225,30,0
+C 0,128,0
                      111111111111111111111111111111
                      100000000000000000000000000001
                      100000000000000000000000000001

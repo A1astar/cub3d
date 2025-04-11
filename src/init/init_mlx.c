@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 12:05:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:47:50 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 void	update_mlx_hook(t_cub3d *cub3d, t_window *window, int which)
 {
 	(void)window;
+	printf("program state = %d\n", cub3d->program_state);
 	if (which == main_menu)
 	{
 		mlx_loop_hook(cub3d->window.mlx_ptr, main_menu_loop, cub3d);
@@ -55,7 +56,6 @@ void	update_mlx_hook(t_cub3d *cub3d, t_window *window, int which)
 			ButtonMotionMask, level_menu_mouse_motion_hook, cub3d);
 		mlx_hook(cub3d->window.win_ptr, KeyPress,
 			KeyPressMask, level_menu_key_hook, cub3d);
-		mlx_loop_hook(cub3d->window.mlx_ptr, playing_loop, cub3d);
 	}
 	else if (which == playing)
 	{

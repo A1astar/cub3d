@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 12:14:25 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:54:35 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_menu *main_menu)
 
 int	main_menu_loop(t_cub3d *cub3d)
 {
-	render_main_menu(cub3d, &cub3d->window, &cub3d->main_menu);
+	if (cub3d->program_state == main_menu)
+		render_main_menu(cub3d, &cub3d->window, &cub3d->main_menu);
+	else
+		mlx_loop_end(cub3d->window.mlx_ptr);
 	return (0);
 }

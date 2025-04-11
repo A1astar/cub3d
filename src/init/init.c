@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 12:13:42 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:13:34 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	init_struct_attributes(t_cub3d *cub3d)
 {
-	cub3d->program_state = main_menu;
+	cub3d->program_state = playing;
 	cub3d->main_menu.index = 0;
 	cub3d->nb_enemy = 0;
 	cub3d->nb_player = 0;
 	ft_bzero(&cub3d->map, sizeof(t_map));
-	ft_bzero(&cub3d->scene, sizeof(t_window));
+	ft_bzero(&cub3d->scene, sizeof(t_scene));
 	ft_bzero(&cub3d->window, sizeof(t_window));
 	ft_bzero(&cub3d->player, sizeof(t_player));
 	ft_bzero(&cub3d->thread, sizeof(t_thread));

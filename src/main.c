@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 12:19:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:54:20 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,21 @@ void	launch_game(t_cub3d *cub3d)
 	while (RUNNING)
 	{
 		if (cub3d->program_state == main_menu)
+		{
 			update_mlx_hook(cub3d, &cub3d->window, main_menu);
+			mlx_loop(cub3d->window.mlx_ptr);
+		}
 		else if (cub3d->program_state == level_menu)
-			update_mlx_hook(cub3d, &cub3d->window, main_menu);
+		{
+			update_mlx_hook(cub3d, &cub3d->window, level_menu);
+			mlx_loop(cub3d->window.mlx_ptr);
+		}
 		else if (cub3d->program_state == playing)
-			update_mlx_hook(cub3d, &cub3d->window, main_menu);
-		mlx_loop(cub3d->window.mlx_ptr);
+		{
+			printf("here launch game\n");
+			update_mlx_hook(cub3d, &cub3d->window, playing);
+			mlx_loop(cub3d->window.mlx_ptr);
+		}
 	}
 }
 
