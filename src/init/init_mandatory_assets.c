@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mandatory_assets.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 11:47:17 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:03:41 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr,
 		free_program(cub3d);
 	}
 	asset_path++;
-	asset_ptr = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, asset_path,
+	asset_ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
 			&map->texture_width, &map->texture_height);
 	if (!asset_ptr)
 	{

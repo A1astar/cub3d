@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/10 17:26:15 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:13:42 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	cub3d->nb_enemy = 0;
 	cub3d->nb_player = 0;
 	ft_bzero(&cub3d->map, sizeof(t_map));
-	ft_bzero(&cub3d->scene, sizeof(t_scene));
+	ft_bzero(&cub3d->scene, sizeof(t_window));
+	ft_bzero(&cub3d->window, sizeof(t_window));
 	ft_bzero(&cub3d->player, sizeof(t_player));
 	ft_bzero(&cub3d->thread, sizeof(t_thread));
 	ft_bzero(&cub3d->setting, sizeof(t_setting));
@@ -42,6 +43,6 @@ void	init_program(t_cub3d *cub3d, char **argv)
 {
 	init_struct_attributes(cub3d);
 	parsing(cub3d, argv[1]);
-	init_mlx(cub3d, &cub3d->scene);
+	init_mlx(cub3d, &cub3d->window);
 	init_asset(cub3d);
 }

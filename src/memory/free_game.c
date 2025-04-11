@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/10 19:37:48 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:19:12 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	free_t_enemy(t_enemy *randy, t_scene *scene)
+static void	free_t_enemy(t_enemy *randy, t_window *window)
 {
 	size_t	nb_randy;
 	size_t	nb_sprite;
@@ -23,7 +23,7 @@ static void	free_t_enemy(t_enemy *randy, t_scene *scene)
 	{
 		while (nb_sprite < 16)
 		{
-			free_image(scene->mlx_ptr, randy[nb_randy].sprite[nb_sprite]);
+			free_image(window->mlx_ptr, randy[nb_randy].sprite[nb_sprite]);
 			nb_sprite++;
 		}
 		nb_sprite = 0;
@@ -31,7 +31,7 @@ static void	free_t_enemy(t_enemy *randy, t_scene *scene)
 	}
 }
 
-static void	free_t_map(t_map *map, t_scene *scene)
+static void	free_t_map(t_map *map, t_window *window)
 {
 	if (map->raw_data)
 		ft_free_tab((void **)map->raw_data);
@@ -43,15 +43,15 @@ static void	free_t_map(t_map *map, t_scene *scene)
 		ft_free_tab((void **)map->ceilling_rgb);
 	if (map->floor_rgb)
 		ft_free_tab((void **)map->floor_rgb);
-	free_image(scene->mlx_ptr, map->viewmodel);
-	free_image(scene->mlx_ptr, map->n_texture_wall);
-	free_image(scene->mlx_ptr, map->s_texture_wall);
-	free_image(scene->mlx_ptr, map->e_texture_wall);
-	free_image(scene->mlx_ptr, map->w_texture_wall);
-	free_image(scene->mlx_ptr, map->floor);
-	free_image(scene->mlx_ptr, map->ceiling);
-	free_image(scene->mlx_ptr, map->closed_door);
-	free_image(scene->mlx_ptr, map->open_door);
+	free_image(window->mlx_ptr, map->viewmodel);
+	free_image(window->mlx_ptr, map->n_texture_wall);
+	free_image(window->mlx_ptr, map->s_texture_wall);
+	free_image(window->mlx_ptr, map->e_texture_wall);
+	free_image(window->mlx_ptr, map->w_texture_wall);
+	free_image(window->mlx_ptr, map->floor);
+	free_image(window->mlx_ptr, map->ceiling);
+	free_image(window->mlx_ptr, map->closed_door);
+	free_image(window->mlx_ptr, map->open_door);
 }
 
 static void	free_t_thread(t_thread *threads)
@@ -61,12 +61,12 @@ static void	free_t_thread(t_thread *threads)
 
 void	free_program(t_cub3d *cub3d)
 {
-	free_t_map(&cub3d->map, &cub3d->scene);
-	free_t_player(&cub3d->player, &cub3d->scene);
+	free_t_map(&cub3d->map, &cub3d->window);
+	free_t_player(&cub3d->player, &cub3d->window);
 	free_t_thread(&cub3d->thread);
-	free_t_enemy(cub3d->randy, &cub3d->scene);
+	free_t_enemy(cub3d->randy, &cub3d->window);
 	free_t_menu(&cub3d->main_menu);
 	free_t_menu(&cub3d->level_menu);
-	free_t_scene(&cub3d->scene);
+	free_t_window(&cub3d->window);
 	exit(EXIT_SUCCESS);
 }

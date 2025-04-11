@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_playing.c                                    :+:      :+:    :+:   */
+/*   render_main_menu.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 11:35:18 by algadea          ###   ########.fr       */
+/*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
+/*   Updated: 2025/04/11 12:14:25 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	playing_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
+void	render_main_menu(t_cub3d *cub3d, t_window *window, t_menu *main_menu)
 {
-	printf("x = %d | y = %d\n", x, y);
 	(void)cub3d;
-	return (0);
+	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, 
+		main_menu->img[main_menu->index].ptr, 0, 0);
 }
 
-int	playing_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
+int	main_menu_loop(t_cub3d *cub3d)
 {
-	printf("keynum = %d | x = %d | y = %d\n", keynum, x, y);
-	(void)cub3d;
-	return (0);
-}
-
-int	playing_key_hook(int keynum, t_cub3d *cub3d)
-{
-	if (keynum == XK_Escape)
-		exit_cub3d(cub3d);
-	printf("%d\n", cub3d->main_menu.index);
+	render_main_menu(cub3d, &cub3d->window, &cub3d->main_menu);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 19:41:02 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:19:47 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	launch_game(t_cub3d *cub3d)
 	while (RUNNING)
 	{
 		if (cub3d->program_state == main_menu)
-			update_mlx_hook(cub3d, &cub3d->scene, main_menu);
+			update_mlx_hook(cub3d, &cub3d->window, main_menu);
 		else if (cub3d->program_state == level_menu)
-			update_mlx_hook(cub3d, &cub3d->scene, main_menu);
+			update_mlx_hook(cub3d, &cub3d->window, main_menu);
 		else if (cub3d->program_state == playing)
-			update_mlx_hook(cub3d, &cub3d->scene, main_menu);
-		mlx_loop(cub3d->scene.mlx_ptr);
+			update_mlx_hook(cub3d, &cub3d->window, main_menu);
+		mlx_loop(cub3d->window.mlx_ptr);
 	}
 }
 
@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 	if (argument_count_correct(argc))
 	{
 		init_program(&cub3d,argv);
-		printf("here\n");
 		launch_game(&cub3d);
 		free_program(&cub3d);
 		return (EXIT_SUCCESS);

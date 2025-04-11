@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 17:08:45 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:18:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,17 @@
 
 # define RUNNING 1
 
+# define RESOLUTION_1920x1080
+# define RESOLUTION_1280x720
+# define RESOLUTION_
+
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 // # define WINDOW_WIDTH 1920
 // # define WINDOW_HEIGHT 1080
 
 enum e_program_state {playing, level_menu, main_menu};
+enum e_main_menu_state {start_game, settings, exit_game};
 // enum e_error {err_none, err_malloc, err_file, };
 
 // typedef struct s_error
@@ -143,10 +148,6 @@ typedef struct s_img
 
 typedef struct s_scene
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		window_height;
-	int		window_width;
 	t_img	img;
 }t_scene;
 
@@ -171,6 +172,15 @@ typedef struct s_thread
 {
 }t_thread;
 
+typedef struct s_window
+{
+	int		height;
+	int		width;
+	uint8_t	resolution;
+	void	*win_ptr;
+	void	*mlx_ptr;
+}t_window;
+
 typedef struct s_cub3d
 {
 	int			nb_enemy;
@@ -184,6 +194,7 @@ typedef struct s_cub3d
 	t_enemy		randy[4];
 	t_menu		main_menu;
 	t_menu		level_menu;
+	t_window	window;
 }t_cub3d;
 
 /*		EVENT		*/
@@ -202,12 +213,12 @@ int		level_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
 
-int		exit_cub3d(int keynum, t_cub3d *cub3d);
+int		exit_cub3d(t_cub3d *cub3d);
 
 /*		INIT		*/
-void	update_mlx_hook(t_cub3d *cub3d, t_scene *scene, int which);
+void	update_mlx_hook(t_cub3d *cub3d, t_window *scene, int which);
 void	init_struct_attributes(t_cub3d *cub3d);
-void	init_mlx(t_cub3d *cub3d, t_scene *scene);
+void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_asset(t_cub3d *cub3d);
 bool	is_asset_line(char *line, size_t len);
 bool	is_rgb_line(char *line, size_t len);
@@ -243,8 +254,8 @@ void	free_program(t_cub3d *cub3d);
 void	free_image(void *mlx, void *image);
 void	free_t_img(t_img *img);
 void	free_t_menu(t_menu *menu);
-void	free_t_scene(t_scene *scene);
-void	free_t_player(t_player *player, t_scene *scene);
+void	free_t_window(t_window *scene);
+void	free_t_player(t_player *player, t_window *scene);
 
 /*		PRINT		*/
 void	print_2d_array_string(char **str);

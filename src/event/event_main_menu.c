@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/09 19:37:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 11:43:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,25 @@ int	main_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 	return (0);
 }
 
+void	main_menu_selection(t_cub3d *cub3d)
+{
+	if (cub3d->main_menu.index == start_game)
+		cub3d->program_state = playing;
+	else if (cub3d->main_menu.index == settings)
+		cub3d->program_state = main_menu;
+	else if (cub3d->main_menu.index == exit_game)
+		exit_cub3d(cub3d);
+}
+
 int	main_menu_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
-		exit_cub3d(keynum, cub3d);
+		exit_cub3d(cub3d);
 	else if (keynum == XK_w && cub3d->main_menu.index != 0)
 		cub3d->main_menu.index--;
 	else if (keynum == XK_s && cub3d->main_menu.index != 2)
 		cub3d->main_menu.index++;
-	// printf("%d\n", cub3d->main_menu.index);
+	else if (keynum == XK_Return)
+		main_menu_selection(cub3d);
 	return (0);
 }

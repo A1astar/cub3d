@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/10 17:55:13 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/11 11:47:18 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SRC					:= event/event_level_menu.c \
 					parsing/map_checking_utils2.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
-					rendering/render.c \
+					rendering/render_level_menu.c \
+					rendering/render_main_menu.c \
+					rendering/render_playing.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \
