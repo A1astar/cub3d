@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mandatory_assets.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 12:03:41 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 12:31:10 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void *asset_ptr,
 	}
 }
 
-static void	extract_rgb_code(t_cub3d *cub3d, char **rgb_tab, char *line)
+static void	extract_rgb_code(t_cub3d *cub3d, char ***rgb_tab, char *line)
 {
 	while (*line && !ft_isdigit(*line))
 		line++;
 	if (!line || !*(line + 1))
 		return ;
-	rgb_tab = ft_split(line, " ,");
+	*rgb_tab = ft_split(line, " ,");
 	if (!rgb_tab)
 	{
 		error_msg(MEM, "extract_rgb_code");
 		free_program(cub3d);
 	}
-	if (ft_tabsize((void **)rgb_tab) != 3 || !is_rgb_code(rgb_tab))
+	if (ft_tabsize((void **)*rgb_tab) != 3 || !is_rgb_code(*rgb_tab))
 	{
 		error_msg("wrong rgb format", NULL);
 		free_program(cub3d);
@@ -66,9 +66,9 @@ static void	load_rgb(t_cub3d *cub3d, t_map *map, char *asset_line,
 		size_t line_lengh)
 {
 	if (ft_strnstr(asset_line, "F", line_lengh))
-		extract_rgb_code(cub3d, map->floor_rgb, asset_line);
+		extract_rgb_code(cub3d, &map->floor_rgb, asset_line);
 	if (ft_strnstr(asset_line, "C", line_lengh))
-		extract_rgb_code(cub3d, map->ceilling_rgb, asset_line);
+		extract_rgb_code(cub3d, &map->ceilling_rgb, asset_line);
 }
 
 static void	load_assets(t_cub3d *cub3d, t_map *map, char *asset_line,
@@ -78,9 +78,9 @@ static void	load_assets(t_cub3d *cub3d, t_map *map, char *asset_line,
 		mlx_load_img(cub3d, map, map->n_texture_wall, asset_line);
 	else if (ft_strnstr(asset_line, "SO", line_lengh))
 		mlx_load_img(cub3d, map, map->s_texture_wall, asset_line);
-	else if (ft_strnstr(asset_line, "WO", line_lengh))
+	else if (ft_strnstr(asset_line, "WE", line_lengh))
 		mlx_load_img(cub3d, map, map->w_texture_wall, asset_line);
-	else if (ft_strnstr(asset_line, "EO", line_lengh))
+	else if (ft_strnstr(asset_line, "EA", line_lengh))
 		mlx_load_img(cub3d, map, map->e_texture_wall, asset_line);
 }
 
@@ -98,6 +98,8 @@ void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)
 			load_rgb(cub3d, &cub3d->map, *assets_paths, line_lengh);
 		assets_paths++;
 	}
+	print_2d_array_string(cub3d->map.ceilling_rgb);
+	print_2d_array_string(cub3d->map.floor_rgb);
 	if (mandatory_assets_are_missing(&cub3d->map))
 	{
 		error_msg("Missing assets", NULL);
