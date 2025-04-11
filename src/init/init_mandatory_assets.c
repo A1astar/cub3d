@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 12:34:28 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:59:56 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ static bool	mandatory_assets_are_missing(t_map *map)
 {
 	if (!map->n_texture_wall || !map->s_texture_wall || !map->e_texture_wall
 		|| !map->w_texture_wall)
-		return (true);
-	else if (!map->floor_rgb || !map->ceilling_rgb)
 		return (true);
 	else
 		return (false);
@@ -43,32 +41,39 @@ static void	mlx_load_img(t_cub3d *cub3d, t_map *map, void **asset_ptr,
 	}
 }
 
-static void	extract_rgb_code(t_cub3d *cub3d, char ***rgb_tab, char *line)
+static void	extract_rgb_code(t_cub3d *cub3d, int *rgb_tab, char *line)
 {
+	char	**temp_tab;
+
+	temp_tab = NULL;
 	while (*line && !ft_isdigit(*line))
 		line++;
 	if (!line || !*(line + 1))
 		return ;
-	*rgb_tab = ft_split(line, " ,");
-	if (!rgb_tab)
+	temp_tab = ft_split(line, " ,");
+	if (!temp_tab)
 	{
 		error_msg(MEM, "extract_rgb_code");
 		free_program(cub3d);
 	}
-	if (ft_tabsize((void **)*rgb_tab) != 3 || !is_rgb_code(*rgb_tab))
+	if (ft_tabsize((void **)temp_tab) != 3 || !is_rgb_code(temp_tab))
 	{
 		error_msg("wrong rgb format", NULL);
 		free_program(cub3d);
 	}
+	rgb_tab[0] = ft_atoi(temp_tab[0]);
+	rgb_tab[1] = ft_atoi(temp_tab[1]);
+	rgb_tab[2] = ft_atoi(temp_tab[2]);
+	ft_free_tab((void **)temp_tab);
 }
 
 static void	load_rgb(t_cub3d *cub3d, t_map *map, char *asset_line,
 		size_t line_lengh)
 {
 	if (ft_strnstr(asset_line, "F", line_lengh))
-		extract_rgb_code(cub3d, &map->floor_rgb, asset_line);
+		extract_rgb_code(cub3d, map->floor_rgb, asset_line);
 	if (ft_strnstr(asset_line, "C", line_lengh))
-		extract_rgb_code(cub3d, &map->ceilling_rgb, asset_line);
+		extract_rgb_code(cub3d, map->ceilling_rgb, asset_line);
 }
 
 static void	load_assets(t_cub3d *cub3d, t_map *map, char *asset_line,

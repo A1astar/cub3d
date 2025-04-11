@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 12:19:12 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:59:41 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ static void	free_t_map(t_map *map, t_window *window)
 		ft_free_tab((void **)map->map);
 	if (map->assets_paths)
 		ft_free_tab((void **)map->assets_paths);
-	if (map->ceilling_rgb)
-		ft_free_tab((void **)map->ceilling_rgb);
-	if (map->floor_rgb)
-		ft_free_tab((void **)map->floor_rgb);
 	free_image(window->mlx_ptr, map->viewmodel);
 	free_image(window->mlx_ptr, map->n_texture_wall);
 	free_image(window->mlx_ptr, map->s_texture_wall);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 12:18:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/11 14:50:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ typedef struct s_map
 	char			**raw_data;
 	char			**map;
 	char			**assets_paths;
-	char			**ceilling_rgb;
-	char			**floor_rgb;
+	int				ceilling_rgb[3];
+	int				floor_rgb[3];
 	void			*viewmodel;
 	void			*n_texture_wall;
 	void			*s_texture_wall;
