@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_playing.c                                   :+:      :+:    :+:   */
+/*   rendering_playing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/12 15:44:27 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:55:16 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,8 @@ void	render_ceiling(t_cub3d *cub3d, t_scene *scene, t_map *map)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			scene->img.pixel = scene->img.addr
-				+ y * scene->img.size_line
-				+ x * (scene->img.bpp / 8);
-			*(unsigned int *)scene->img.pixel = map->ceilling_rgb[0] << 16
-				| map->ceilling_rgb[1] << 8 | map->ceilling_rgb[2];
+			draw_pixel(&scene->img, x, y, map->ceilling_rgb[0] << 16
+				| map->ceilling_rgb[1] << 8 | map->ceilling_rgb[2]);
 			x++;
 		}
 		y++;
