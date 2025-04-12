@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 18:45:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/12 15:44:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	init_asset(cub3d);
 	cub3d->minimap.x_origin = WINDOW_WIDTH * 0.72;
 	cub3d->minimap.y_origin = WINDOW_HEIGHT * 0.8;
-	cub3d->minimap.height = 5;
-	cub3d->minimap.width = 5;
+	cub3d->minimap.tile_height = 5;
+	cub3d->minimap.tile_width = 5;
 	cub3d->minimap.scale = 1;
 }

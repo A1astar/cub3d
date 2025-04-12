@@ -6,18 +6,18 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 22:42:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/12 15:33:08 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 static void	flood_fill(char **map, int x, int y, t_map *content,
-		size_t map_heigt)
+		size_t map_height)
 {
 	if (!content->is_valid_map)
 		return ;
-	if (y < 0 || y >= (int)map_heigt || x < 0 || x >= (int)ft_strlen(map[y]))
+	if (y < 0 || y >= (int)map_height || x < 0 || x >= (int)ft_strlen(map[y]))
 	{
 		error_msg(MAP_UNCL, NULL);
 		content->is_valid_map = false;
@@ -32,10 +32,10 @@ static void	flood_fill(char **map, int x, int y, t_map *content,
 		return ;
 	}
 	map[y][x] = '*';
-	flood_fill(map, x + 1, y, content, map_heigt);
-	flood_fill(map, x - 1, y, content, map_heigt);
-	flood_fill(map, x, y + 1, content, map_heigt);
-	flood_fill(map, x, y - 1, content, map_heigt);
+	flood_fill(map, x + 1, y, content, map_height);
+	flood_fill(map, x - 1, y, content, map_height);
+	flood_fill(map, x, y + 1, content, map_height);
+	flood_fill(map, x, y - 1, content, map_height);
 }
 
 static void	scan_map_line(t_cub3d *cub3d, t_map *map, char *map_line,
@@ -74,6 +74,8 @@ void	check_map(t_cub3d *cub3d, t_map *map)
 
 	map_height = 0;
 	map_copy = NULL;
+	for (int i = 0; map->map[i]; i++)
+		printf("%s", map->map[i]);
 	while (map->map[map_height])
 	{
 		scan_map_line(cub3d, &cub3d->map, map->map[map_height], map_height);

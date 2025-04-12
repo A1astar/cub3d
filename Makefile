@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/11 19:01:27 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/12 15:45:58 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,9 +48,9 @@ SRC					:= event/event_level_menu.c \
 					parsing/map_checking_utils2.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
-					rendering/render_level_menu.c \
-					rendering/render_main_menu.c \
-					rendering/render_playing.c \
+					rendering/rendering_level_menu.c \
+					rendering/rendering_main_menu.c \
+					rendering/rendering_playing.c \
 					rendering/rendering.c \
 					error.c \
 					memory/free_game.c \

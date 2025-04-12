@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 22:39:30 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/12 15:44:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color)
 	int	width;
 
 	y = 0;
-	height = cub3d->minimap.height * cub3d->minimap.scale;
-	width = cub3d->minimap.width * cub3d->minimap.scale;
+	height = cub3d->minimap.tile_height * cub3d->minimap.scale;
+	width = cub3d->minimap.tile_width * cub3d->minimap.scale;
 	while (y < height)
 	{
 		x = 0;
@@ -151,7 +151,9 @@ void	render_minimap(t_cub3d *cub3d,
 		x = minimap->x_origin;
 		while (map->map[i][j])
 		{
-			if (map->map[i][j] == '0')
+			if (map->map[i][j] == '0'
+				|| map->map[i][j] == 'N' || map->map[i][j] == 'S' 
+				|| map->map[i][j] == 'E' || map->map[i][j] == 'W')
 				draw_square(cub3d, x, y, HEX_GREY);
 			else if (map->map[i][j] == '1')
 				draw_square(cub3d, x, y, HEX_BLACK);
@@ -159,13 +161,10 @@ void	render_minimap(t_cub3d *cub3d,
 				draw_square(cub3d, x, y, HEX_RED);
 			else if (map->map[i][j] == 'D')
 				draw_square(cub3d, x, y, HEX_BROWN);
-			else if (map->map[i][j] == 'N' || map->map[i][j] == 'S' 
-				|| map->map[i][j] == 'E' || map->map[i][j] == 'W')
-				draw_square(cub3d, x, y, HEX_GREEN);
 			j++;
-			x += minimap->width;
+			x += minimap->tile_width;
 		}
-		y += minimap->height;
+		y += minimap->tile_height;
 		i++;
 	}
 }
@@ -179,10 +178,8 @@ void	render_minimap_player(t_cub3d *cub3d,
 	(void)cub3d;
 	(void)minimap;
 	(void)scene;
-	// y = player->y_pos;
-	// x = player->x_pos;
-	y = player->y_pos + minimap->y_origin;
-	x = player->x_pos + minimap->x_origin;
+	y = player->y_pos * minimap->tile_height + minimap->y_origin;
+	x = player->x_pos * minimap->tile_width + minimap->x_origin;
 	draw_square(cub3d, x, y, HEX_RED);
 }
 

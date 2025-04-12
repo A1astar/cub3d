@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 21:59:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/12 15:44:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ typedef struct s_minimap
 {
 	int	x_origin;
 	int	y_origin;
-	int	width;
-	int	height;
+	int	tile_width;
+	int	tile_height;
 	int	scale;
 }t_minimap;
 
