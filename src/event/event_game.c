@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 12:59:41 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 13:30:44 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 int	game_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 {
 	printf("keynum = %d | x = %d | y = %d\n", keynum, x, y);
+	player_action_button(keynum, cub3d);
 	return (0);
 }
 

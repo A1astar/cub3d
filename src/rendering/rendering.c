@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:57:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 12:51:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 15:00:09 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
-int	game_loop(t_cub3d *cub3d)
+int	cub3d_loop(t_cub3d *cub3d)
 {
 	if (cub3d->program_state == game)
 		game_loop(cub3d);

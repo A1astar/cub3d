@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:48:38 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 12:49:08 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 13:32:40 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	is_player_button(int keynum)
 
 bool	is_player_key(int keynum)
 {
-	if (keynum == XK_q || keynum == XK_e || keynum || XK_r)
+	if (keynum == XK_q || keynum == XK_e || keynum == XK_r)
 		return (true);
 	return (false);
 }
