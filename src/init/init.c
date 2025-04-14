@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 15:30:03 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 15:36:44 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	init_struct_attributes(t_cub3d *cub3d)
 
 void	init_program(t_cub3d *cub3d, char **argv)
 {
+	init_struct_attributes(cub3d);
 	int	map_width = (cub3d->minimap.width + cub3d->minimap.x_origin) * cub3d->minimap.tile_width;
 	int	map_height = (cub3d->minimap.height + cub3d->minimap.y_origin) * cub3d->minimap.tile_height;
-	init_struct_attributes(cub3d);
 	parsing(cub3d, argv[1]);
 	init_mlx(cub3d, &cub3d->window);
 	init_asset(cub3d);

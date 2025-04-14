@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_mouse.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:42:21 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 13:31:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 15:34:08 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	player_parry(t_cub3d *cub3d)
 {
 	printf(BOLD WHITE"Player "DEFAULT);
-	printf(BOLD RED"attack!\n"DEFAULT);
+	printf(BOLD BLUE"parry!\n"DEFAULT);
 	(void)cub3d;
 }
 
