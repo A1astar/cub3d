@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering_playing.c                                :+:      :+:    :+:   */
+/*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/12 17:55:16 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 12:57:12 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ void	render_minimap_player(t_cub3d *cub3d,
 	draw_square(cub3d, x, y, HEX_RED);
 }
 
-void	render_playing(t_cub3d *cub3d, t_window *window, t_scene *scene)
+void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 	render_background(cub3d, scene);
 	render_floor(cub3d, scene, &cub3d->map);
@@ -191,8 +191,8 @@ void	render_playing(t_cub3d *cub3d, t_window *window, t_scene *scene)
 		scene->img.ptr, 0, 0);
 }
 
-int	playing_loop(t_cub3d *cub3d)
+int	game_loop(t_cub3d *cub3d)
 {
-	render_playing(cub3d, &cub3d->window, &cub3d->scene);
+	render_game(cub3d, &cub3d->window, &cub3d->scene);
 	return (0);
 }

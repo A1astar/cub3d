@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   event_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 18:57:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 12:51:57 by algadea          ###   ########.fr       */
+/*   Created: 2025/04/14 12:48:38 by algadea           #+#    #+#             */
+/*   Updated: 2025/04/14 12:49:08 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	draw_pixel(t_img *img, int x, int y, int color)
+bool	is_player_button(int keynum)
 {
-	char	*pixel;
-
-	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	*(int *)pixel = color;
+	if (keynum == Button1 || keynum == Button3)
+		return (true);
+	return (false);
 }
 
-int	game_loop(t_cub3d *cub3d)
+bool	is_player_key(int keynum)
 {
-	if (cub3d->program_state == game)
-		game_loop(cub3d);
-	else if (cub3d->program_state == level_menu)
-		level_menu_loop(cub3d);
-	else if (cub3d->program_state == main_menu)
-		main_menu_loop(cub3d);
-	return (0);
+	if (keynum == XK_q || keynum == XK_e || keynum || XK_r)
+		return (true);
+	return (false);
 }

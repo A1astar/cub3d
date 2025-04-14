@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/12 15:45:58 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/14 12:56:45 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,12 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 ###########################		 	 SOURCE			###########################
 
 SRC_DIR				:= src
-SRC					:= event/event_level_menu.c \
+SRC					:= event/event_game.c \
+					event/event_level_menu.c \
 					event/event_main_menu.c \
-					event/event_playing.c \
+					event/event_player_key.c \
+					event/event_player_mouse.c \
+					event/event_player.c \
 					event/event.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \
@@ -48,6 +51,7 @@ SRC					:= event/event_level_menu.c \
 					parsing/map_checking_utils2.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
+					physics/hitbox_player.c \
 					rendering/rendering_level_menu.c \
 					rendering/rendering_main_menu.c \
 					rendering/rendering_playing.c \

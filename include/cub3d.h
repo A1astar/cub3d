@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/12 15:44:27 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 13:00:09 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 
-enum e_program_state {playing, level_menu, main_menu};
+enum e_program_state {game, level_menu, main_menu};
 enum e_main_menu_state {start_game, settings, exit_game};
 enum e_playing_state {running, playing_menu};
 
@@ -193,16 +193,23 @@ typedef struct s_cub3d
 	t_level_menu	level_menu;
 }t_cub3d;
 
+/*		ERROR		*/
+void	error_msg(const char *msg, const char *context);
+
 /*		EVENT		*/
-int		game_loop(t_cub3d *cub3d);
+bool	is_player_button(int keynum);
+bool	is_player_key(int keynum);
+void	player_action_key(int keynum, t_cub3d *cub3d);
+void	player_action_button(int keynum, t_cub3d *cub3d);
+
 int		key_hook(int keynum, t_cub3d *cub3d);
 int		mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 int		mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 
-int		playing_loop(t_cub3d *cub3d);
-int		playing_key_hook(int keynum, t_cub3d *cub3d);
-int		playing_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
-int		playing_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
+int		game_loop(t_cub3d *cub3d);
+int		game_key_hook(int keynum, t_cub3d *cub3d);
+int		game_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
+int		game_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 
 int		main_menu_loop(t_cub3d *cub3d);
 int		main_menu_key_hook(int keynum, t_cub3d *cub3d);
@@ -229,8 +236,13 @@ void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	update_mlx_hook(t_cub3d *cub3d, t_window *scene, int which);
 
-/*		ERROR		*/
-void	error_msg(const char *msg, const char *context);
+/*		MEMORY		*/
+void	free_t_img(t_img *img);
+void	free_t_main_menu(t_main_menu *menu);
+void	free_program(t_cub3d *cub3d);
+void	free_t_window(t_window *scene);
+void	free_image(void *mlx, void *image);
+void	free_t_player(t_player *player, t_window *scene);
 
 /*		PARSING		*/
 bool	is_enemy_spawn(char c);
@@ -252,20 +264,18 @@ void	extract_assets_path(t_cub3d *game, char **data);
 void 	apply_enemy_state(t_enemy *randy, int nb_enemy);
 char	*append_line(t_cub3d *cub3d, char *buffer, char *line);
 
-/*		MEMORY		*/
-void	free_t_img(t_img *img);
-void	free_t_main_menu(t_main_menu *menu);
-void	free_program(t_cub3d *cub3d);
-void	free_t_window(t_window *scene);
-void	free_image(void *mlx, void *image);
-void	free_t_player(t_player *player, t_window *scene);
+/*		PHYSICS		*/
+bool	can_move_to_north(t_player *player, t_map *map, int x, int y);
+bool	can_move_to_south(t_player *player, t_map *map, int x, int y);
+bool	can_move_to_west(t_player *player, t_map *map, int x, int y);
+bool	can_move_to_east(t_player *player, t_map *map, int x, int y);
 
 /*		PRINT		*/
 void	print_2d_array_string(char **str);
 void	print_usage(void);
 
-/*		RENDER		*/
-int		playing_loop(t_cub3d *cub3d);
+/*		RENDERING		*/
+int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
 void	draw_pixel(t_img *img, int x, int y, int color);

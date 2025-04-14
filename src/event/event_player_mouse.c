@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   event_player_mouse.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 18:57:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 12:51:57 by algadea          ###   ########.fr       */
+/*   Created: 2025/04/14 12:42:21 by algadea           #+#    #+#             */
+/*   Updated: 2025/04/14 13:00:01 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	draw_pixel(t_img *img, int x, int y, int color)
+static void	player_attack(t_cub3d *cub3d)
 {
-	char	*pixel;
-
-	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	*(int *)pixel = color;
+	printf(BOLD WHITE"Player "DEFAULT);
+	printf(BOLD RED"attack!\n"DEFAULT);
+	(void)cub3d;
 }
 
-int	game_loop(t_cub3d *cub3d)
+void	player_action_button(int keynum, t_cub3d *cub3d)
 {
-	if (cub3d->program_state == game)
-		game_loop(cub3d);
-	else if (cub3d->program_state == level_menu)
-		level_menu_loop(cub3d);
-	else if (cub3d->program_state == main_menu)
-		main_menu_loop(cub3d);
-	return (0);
+	if (keynum == Button1) // Left click
+		player_attack(cub3d);
+	else if (keynum == Button3) // Right click
+		player_parry(cub3d);
 }
