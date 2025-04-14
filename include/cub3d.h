@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/14 16:37:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 18:12:48 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define CYAN "\033[36m"
 # define WHITE "\033[37m"
 
+# define PI 3.14159265358979323846
+
 /*		PROGRAM STATE		*/
 # define PLAYING (1 << 1)
 # define MAIN_MENU (1 << 2)
@@ -65,27 +67,27 @@ typedef enum e_orientation {north, south, east, west}t_orientation;
 
 typedef struct s_map
 {
-	bool			bonus;
-	bool			is_valid_map;
-	int				texture_width;
-	int				texture_height;
-	int				view_width;
-	int				view_height;
-	int				map_height;
-	char			**raw_data;
-	char			**map;
-	char			**assets_paths;
-	int				ceilling_rgb[3];
-	int				floor_rgb[3];
-	void			*viewmodel;
-	void			*n_texture_wall;
-	void			*s_texture_wall;
-	void			*e_texture_wall;
-	void			*w_texture_wall;
-	void			*floor;
-	void			*ceiling;
-	void			*closed_door;
-	void			*open_door;
+	bool	bonus;
+	bool	is_valid_map;
+	int		texture_width;
+	int		texture_height;
+	int		view_width;
+	int		view_height;
+	int		map_height;
+	char	**raw_data;
+	char	**map;
+	char	**assets_paths;
+	int		ceilling_rgb[3];
+	int		floor_rgb[3];
+	void	*viewmodel;
+	void	*n_texture_wall;
+	void	*s_texture_wall;
+	void	*e_texture_wall;
+	void	*w_texture_wall;
+	void	*floor;
+	void	*ceiling;
+	void	*closed_door;
+	void	*open_door;
 }t_map;
 
 typedef struct s_minimap
@@ -112,13 +114,14 @@ typedef struct s_player
 	t_orientation	orientation;
 	float			x_pos;
 	float			y_pos;
-	t_hitbox	hitbox;
-	float		dir;
-	int			angle;
+	t_hitbox		hitbox;
+	float			dir;
+	int				angle;
 	// float		angle;
-	float		cos_angle;
-	float		sin_angle;
-	void		*pov;
+	float			radian;
+	float			cos_angle;
+	float			sin_angle;
+	void			*pov;
 }t_player;
 
 typedef struct s_enemy

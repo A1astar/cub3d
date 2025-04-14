@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/14 16:02:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 17:40:40 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ void	check_map(t_cub3d *cub3d, t_map *map)
 
 	map_height = 0;
 	map_copy = NULL;
-	for (int i = 0; map->map[i]; i++)
-		printf("%s", map->map[i]);
 	cub3d->minimap.width = 0;
 	while (map->map[map_height])
 	{

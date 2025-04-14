@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 16:37:33 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 18:19:47 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,19 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 		&cub3d->map, (int)cub3d->player.x_pos, (int)cub3d->player.y_pos))
 		cub3d->player.x_pos += 0.1;
 	else if (keynum == XK_Left)
+	{
+		// if (cub3d->player.angle == 0)
+		// 	cub3d->player.angle = 360;
 		cub3d->player.angle--;
+		cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
+	}
 	else if (keynum == XK_Right)
+	{
+		// if (cub3d->player.angle == 360)
+		// 	cub3d->player.angle = 0;
 		cub3d->player.angle++; 
+		cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
+	}
 }
 
 int	game_key_hook(int keynum, t_cub3d *cub3d)

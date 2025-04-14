@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 16:45:11 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 18:16:30 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,33 +172,35 @@ void	render_minimap_player(t_cub3d *cub3d,
 {
 	int	y;
 	int	x;
-	// int	height;
-	// int	width;
+	int	y_draw;
+	int	x_draw;
 
 	(void)cub3d;
 	(void)minimap;
 	(void)scene;
-	y = player->y_pos * minimap->tile_height + minimap->y_origin;
-	while (y < y + 5)
+	y = 0;
+	while (y < minimap->tile_height * 5)
 	{
-		x = player->x_pos * minimap->tile_width + minimap->x_origin;
-		while (x < x + 5)
+		x = 0;
+		while (x < minimap->tile_width * 5)
 		{
-
+			// printf("x = %d | y = %d | angle = %d\n", x, y, player->angle);
 			// draw_square(cub3d, x, y, HEX_RED, transform);
-			draw_pixel(&cub3d->scene.img, x, y, HEX_RED);
+			y_draw = y;
+			x_draw = x;
+			// x_draw = x_draw * cos(player->angle) - y_draw * sin(player->angle);
+			// y_draw = x_draw * sin(player->angle) + y_draw * cos(player->angle);
+			x_draw = x_draw * cos(player->radian) - y_draw * sin(player->radian);
+			// y_draw = x_draw * sin(player->radian) + y_draw * cos(player->radian);
+			// y_draw = x_draw * sin(0) + y_draw * cos(0);
+			y_draw += player->y_pos * minimap->tile_height + minimap->y_origin;
+			x_draw += player->x_pos * minimap->tile_width + minimap->x_origin;
+			printf("x = %d | y = %d | angle = %d\n", x_draw, y_draw, player->angle);
+			draw_pixel(&cub3d->scene.img, x_draw, y_draw, HEX_RED);
 			x++;
 		}
 		y++;
 	}
-			// if (which_rendering == transform)
-			// {
-			// 	int angle = cub3d->player.angle;
-			// 	x = x * cos(angle) - y * sin(angle);
-			// 	y = x * sin(angle) + y * cos(angle);
-			// 	printf("player x = %d | y = %d\n,", x, y);
-			// }
-			// else
 }
 
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
