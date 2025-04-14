@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/14 18:12:48 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 18:57:16 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_player
 	int				angle;
 	// float		angle;
 	float			radian;
+	float			center;
 	float			cos_angle;
 	float			sin_angle;
 	void			*pov;

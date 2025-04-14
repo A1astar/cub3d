@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 18:16:30 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 19:28:05by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,41 +167,101 @@ void	render_minimap(t_cub3d *cub3d,
 	}
 }
 
-void	render_minimap_player(t_cub3d *cub3d,
-				t_scene *scene, t_minimap *minimap, t_player *player)
+void    render_minimap_player(t_cub3d *cub3d,
+            t_scene *scene, t_minimap *minimap, t_player *player)
 {
-	int	y;
-	int	x;
-	int	y_draw;
-	int	x_draw;
+    int        x;
+    int        y;
+    float    x_center;
+    float    y_center;
+    float    x_rot;
+    float    y_rot;
+    // float    cos_a;
+    // float    sin_a;
+    float    px;
+    float    py;
 
-	(void)cub3d;
-	(void)minimap;
-	(void)scene;
-	y = 0;
-	while (y < minimap->tile_height * 5)
-	{
-		x = 0;
-		while (x < minimap->tile_width * 5)
-		{
-			// printf("x = %d | y = %d | angle = %d\n", x, y, player->angle);
-			// draw_square(cub3d, x, y, HEX_RED, transform);
-			y_draw = y;
-			x_draw = x;
-			// x_draw = x_draw * cos(player->angle) - y_draw * sin(player->angle);
-			// y_draw = x_draw * sin(player->angle) + y_draw * cos(player->angle);
-			x_draw = x_draw * cos(player->radian) - y_draw * sin(player->radian);
-			// y_draw = x_draw * sin(player->radian) + y_draw * cos(player->radian);
-			// y_draw = x_draw * sin(0) + y_draw * cos(0);
-			y_draw += player->y_pos * minimap->tile_height + minimap->y_origin;
-			x_draw += player->x_pos * minimap->tile_width + minimap->x_origin;
-			printf("x = %d | y = %d | angle = %d\n", x_draw, y_draw, player->angle);
-			draw_pixel(&cub3d->scene.img, x_draw, y_draw, HEX_RED);
-			x++;
-		}
-		y++;
-	}
+    (void)scene;
+    // cos_a = cos(player->radian);
+    // sin_a = sin(player->radian);
+
+    // 🎯 Position centrale du joueur dans la minimap
+    // px = player->x_pos * minimap->tile_width + minimap->tile_width / 2 + minimap->x_origin;
+    // py = player->y_pos * minimap->tile_height + minimap->tile_height / 2 + minimap->y_origin;
+    px = player->x_pos * minimap->tile_width + minimap->x_origin;
+    py = player->y_pos * minimap->tile_height + minimap->y_origin;
+
+    y = 0;
+    // while (y < 5)
+    while (y < minimap->tile_height * 5)
+    {
+        x = 0;
+        // while (x < 5)
+        while (x < minimap->tile_width * 5)
+        {
+            // 👇 Centrer autour du milieu du carré (2,2)
+            // x_center = x - 2.0;
+            // y_center = y - 2.0;
+            x_center = x - minimap->tile_width / 2;
+            y_center = y - minimap->tile_height / 2;
+            // x_center = x;
+            // y_center = y;
+
+            // ✅ Appliquer la rotation autour du centre
+            // x_rot = x_center * cos_a - y_center * sin_a;
+            // y_rot = x_center * sin_a + y_center * cos_a;
+            x_rot = x_center * cos(player->radian) - y_center * sin(player->radian);
+            y_rot = x_center * sin(player->radian) + y_center * cos(player->radian);
+
+            // ✅ Puis replacer dans la minimap autour du centre du joueur
+            draw_pixel(&cub3d->scene.img,
+                (int)(px + x_rot),
+                (int)(py + y_rot),
+                HEX_RED);
+            x++;
+        }
+        y++;
+    }
 }
+
+// void	render_minimap_player(t_cub3d *cub3d,
+// 				t_scene *scene, t_minimap *minimap, t_player *player)
+// {
+// 	int	y;
+// 	int	x;
+// 	float y_draw;
+// 	float x_draw;
+
+// 	(void)cub3d;
+// 	(void)minimap;
+// 	(void)scene;
+// 	y = 0;
+// 	while (y < minimap->tile_height * 5)
+// 	{
+// 		x = 0;
+// 		while (x < minimap->tile_width * 5)
+// 		{
+// 			// printf("x = %d | y = %d | angle = %d\n", x, y, player->angle);
+// 			// draw_square(cub3d, x, y, HEX_RED, transform);
+// 			// x_draw = x - player->center;
+// 			// y_draw = y - player->center;
+// 			x_draw = (float)x;
+// 			y_draw = (float)y;
+// 			x_draw = x_draw * cos(player->radian) - y_draw * sin(player->radian);
+// 			y_draw = x_draw * sin(player->radian) + y_draw * cos(player->radian);
+// 			// x_draw = x_draw + player->center;
+// 			// y_draw = y_draw + player->center;
+// 			// px = player->x_pos * minimap->tile_width + minimap->x_origin;
+// 			// py = player->y_pos * minimap->tile_height + minimap->y_origin;
+// 			x_draw += player->x_pos * minimap->tile_width + minimap->x_origin;
+// 			y_draw += player->y_pos * minimap->tile_height + minimap->y_origin;
+// 			// printf("x = %d | y = %d | angle = %d\n", x_draw, y_draw, player->angle);
+// 			draw_pixel(&cub3d->scene.img, (int)x_draw, (int)y_draw, HEX_RED);
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
 
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {

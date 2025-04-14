@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 18:13:12 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 19:01:12 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ void	init_program(t_cub3d *cub3d, char **argv)
 		cub3d->player.sin_angle = -1;
 		cub3d->player.angle = 270;
 	}
+	cub3d->player.center = ((cub3d->player.x_pos + cub3d->player.y_pos)
+		+ (cub3d->player.x_pos + cub3d->minimap.height)
+		+ (cub3d->player.x_pos + cub3d->minimap.width)
+		+ (cub3d->minimap.height + cub3d->minimap.width)) / 4;
 	cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
 
 
