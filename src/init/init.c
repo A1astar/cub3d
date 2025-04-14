@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 19:01:12 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 19:38:11 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../include/cub3d.h"
 
@@ -31,6 +32,48 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->randy[3], sizeof(t_enemy));
 	ft_bzero(&cub3d->main_menu, sizeof(t_main_menu));
 	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
+}
+
+void	init_player(t_player *player)
+{
+	if (player->orientation == north)
+	{
+		player->sin_angle = 1;
+		player->angle = 90;
+	}
+	else if (player->orientation == east)
+	{
+		player->cos_angle = 1;
+	}
+	else if (player->orientation == west)
+	{
+		player->cos_angle = -1;
+		player->angle = 180;
+	}
+	else if (player->orientation == south)
+	{
+		player->sin_angle = -1;
+		player->angle = 270;
+	}
+	player->radian = player->angle * (PI / 180.0);
+}
+
+void	init_minimap(t_minimap *minimap)
+{
+	int	map_width;
+	int	map_height;
+
+	minimap->tile_height = 5;
+	minimap->tile_width = 5;
+	minimap->scale = 1;
+	minimap->x_origin = WINDOW_WIDTH * 0.66;
+	map_width = minimap->width * minimap->tile_width;
+	if (map_width + minimap->x_origin > WINDOW_WIDTH)
+		minimap->x_origin = WINDOW_WIDTH - map_width;
+	minimap->y_origin = WINDOW_HEIGHT * 0.8;
+	map_height = minimap->height * minimap->tile_height;
+	if (map_height + minimap->y_origin > WINDOW_HEIGHT)
+		minimap->y_origin = WINDOW_HEIGHT - map_height;
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)
@@ -88,4 +131,6 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	int	map_height = cub3d->minimap.height * cub3d->minimap.tile_height;
 	if (map_height + cub3d->minimap.y_origin > WINDOW_HEIGHT)
 		cub3d->minimap.y_origin = WINDOW_HEIGHT - map_height;
+	init_player(&cub3d->player);
+	init_minimap(&cub3d->minimap);
 }
