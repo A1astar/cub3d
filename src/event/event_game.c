@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 13:30:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:37:33 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@ void	update_player_stats(t_cub3d *cub3d)
 	(void)cub3d;
 }
 
-int	game_key_hook(int keynum, t_cub3d *cub3d)
+bool	is_player_movement_key(int keynum)
 {
-	if (keynum == XK_Escape)
-	{
-		// cub3d->program_state = level_menu;
-		exit_cub3d(cub3d);
-	}
-	else if (keynum == XK_w && can_move_to_north(&cub3d->player,
+	if (keynum == XK_w || keynum == XK_s 
+		|| keynum == XK_a || keynum == XK_d
+		|| keynum == XK_Left || keynum == XK_Right)
+		return (true);
+	return (false);
+}
+
+void	player_movement_key(int keynum, t_cub3d *cub3d)
+{
+	if (keynum == XK_w && can_move_to_north(&cub3d->player,
 		&cub3d->map, (int)cub3d->player.x_pos, (int)cub3d->player.y_pos))
 		cub3d->player.y_pos -= 0.1;
 	else if (keynum == XK_s && can_move_to_south(&cub3d->player,
@@ -50,7 +54,22 @@ int	game_key_hook(int keynum, t_cub3d *cub3d)
 	else if (keynum == XK_d && can_move_to_east(&cub3d->player,
 		&cub3d->map, (int)cub3d->player.x_pos, (int)cub3d->player.y_pos))
 		cub3d->player.x_pos += 0.1;
-	else if (is_player_key(keynum))
+	else if (keynum == XK_Left)
+		cub3d->player.angle--;
+	else if (keynum == XK_Right)
+		cub3d->player.angle++; 
+}
+
+int	game_key_hook(int keynum, t_cub3d *cub3d)
+{
+	if (keynum == XK_Escape)
+	{
+		// cub3d->program_state = level_menu;
+		exit_cub3d(cub3d);
+	}
+	else if (is_player_movement_key(keynum))
+		player_movement_key(keynum, cub3d);
+	else if (is_player_action_key(keynum))
 		player_action_key(keynum, cub3d);
 	update_player_stats(cub3d);
 	return (0);

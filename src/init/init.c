@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 15:50:40 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:08:48 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,37 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	init_asset(cub3d);
 
 
+	// PLAYER
+	if (cub3d->player.orientation == north)
+	{
+		cub3d->player.cos_angle = 0;
+		cub3d->player.sin_angle = 1;
+		cub3d->player.angle = 90;
+	}
+	else if (cub3d->player.orientation == east)
+	{
+		cub3d->player.cos_angle = 1;
+		cub3d->player.sin_angle = 0;
+		cub3d->player.angle = 360;
+	}
+	else if (cub3d->player.orientation == west)
+	{
+		cub3d->player.cos_angle = -1;
+		cub3d->player.sin_angle = 0;
+		cub3d->player.angle = 180;
+
+	}
+	else if (cub3d->player.orientation == south)
+	{
+		cub3d->player.cos_angle = 0;
+		cub3d->player.sin_angle = -1;
+		cub3d->player.angle = 270;
+	}
 
 
+
+
+	// MINIMAP
 	cub3d->minimap.tile_height = 5;
 	cub3d->minimap.tile_width = 5;
 	cub3d->minimap.scale = 1;

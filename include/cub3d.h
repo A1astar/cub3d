@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/14 15:21:02 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:37:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 enum e_program_state {game, level_menu, main_menu};
 enum e_main_menu_state {start_game, settings, exit_game};
 enum e_playing_state {running, playing_menu};
+enum e_rendering {normal, transform};
 
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
@@ -66,7 +67,6 @@ typedef struct s_map
 {
 	bool			bonus;
 	bool			is_valid_map;
-	t_orientation	orientation;
 	int				texture_width;
 	int				texture_height;
 	int				view_width;
@@ -109,9 +109,15 @@ typedef struct s_hitbox
 
 typedef struct s_player
 {
-	float		x_pos;
-	float		y_pos;
+	t_orientation	orientation;
+	float			x_pos;
+	float			y_pos;
 	t_hitbox	hitbox;
+	float		dir;
+	int			angle;
+	// float		angle;
+	float		cos_angle;
+	float		sin_angle;
 	void		*pov;
 }t_player;
 
@@ -200,7 +206,7 @@ void	error_msg(const char *msg, const char *context);
 
 /*		EVENT		*/
 bool	is_player_button(int keynum);
-bool	is_player_key(int keynum);
+bool	is_player_action_key(int keynum);
 void	player_action_key(int keynum, t_cub3d *cub3d);
 void	player_action_button(int keynum, t_cub3d *cub3d);
 
@@ -249,7 +255,7 @@ void	free_t_player(t_player *player, t_window *scene);
 
 /*		PARSING		*/
 bool	is_enemy_spawn(char c);
-bool	is_player_spawn(t_map *map, char c);
+bool	is_player_spawn(t_player *player, char c);
 bool	is_valid_map(t_cub3d *game, t_map *map);
 
 void	parsing(t_cub3d *cub3d, char *argv);

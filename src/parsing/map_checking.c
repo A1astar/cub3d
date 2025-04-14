@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/14 15:30:52 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:02:24 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	flood_fill(char **map, int x, int y, t_map *content,
 static void	scan_map_line(t_cub3d *cub3d, t_map *map, char *map_line,
 		size_t row)
 {
+	(void)map;
 	size_t	i;
 	size_t	map_size;
 
@@ -50,7 +51,7 @@ static void	scan_map_line(t_cub3d *cub3d, t_map *map, char *map_line,
 		cub3d->minimap.width = map_size;
 	while (map_line[i])
 	{
-		if (is_player_spawn(map, map_line[i]))
+		if (is_player_spawn(&cub3d->player, map_line[i]))
 		{
 			cub3d->player.x_pos = i;
 			cub3d->player.y_pos = row;

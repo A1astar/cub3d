@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 15:39:50 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 16:45:11 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,9 @@ void	render_floor(t_cub3d *cub3d, t_scene *scene, t_map *map)
 	}
 }
 
-void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color)
+void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color, int which_rendering)
 {
+	(void)which_rendering;
 	int	y;
 	int	x;
 	int	height;
@@ -151,13 +152,13 @@ void	render_minimap(t_cub3d *cub3d,
 			if (map->map[i][j] == '0'
 				|| map->map[i][j] == 'N' || map->map[i][j] == 'S' 
 				|| map->map[i][j] == 'E' || map->map[i][j] == 'W')
-				draw_square(cub3d, x, y, HEX_GREY);
+				draw_square(cub3d, x, y, HEX_GREY, normal);
 			else if (map->map[i][j] == '1')
-				draw_square(cub3d, x, y, HEX_BLACK);
+				draw_square(cub3d, x, y, HEX_BLACK, normal);
 			else if (map->map[i][j] == 'R')
-				draw_square(cub3d, x, y, HEX_RED);
+				draw_square(cub3d, x, y, HEX_RED, normal);
 			else if (map->map[i][j] == 'D')
-				draw_square(cub3d, x, y, HEX_BROWN);
+				draw_square(cub3d, x, y, HEX_BROWN, normal);
 			j++;
 			x += minimap->tile_width;
 		}
@@ -171,13 +172,33 @@ void	render_minimap_player(t_cub3d *cub3d,
 {
 	int	y;
 	int	x;
+	// int	height;
+	// int	width;
 
 	(void)cub3d;
 	(void)minimap;
 	(void)scene;
 	y = player->y_pos * minimap->tile_height + minimap->y_origin;
-	x = player->x_pos * minimap->tile_width + minimap->x_origin;
-	draw_square(cub3d, x, y, HEX_RED);
+	while (y < y + 5)
+	{
+		x = player->x_pos * minimap->tile_width + minimap->x_origin;
+		while (x < x + 5)
+		{
+
+			// draw_square(cub3d, x, y, HEX_RED, transform);
+			draw_pixel(&cub3d->scene.img, x, y, HEX_RED);
+			x++;
+		}
+		y++;
+	}
+			// if (which_rendering == transform)
+			// {
+			// 	int angle = cub3d->player.angle;
+			// 	x = x * cos(angle) - y * sin(angle);
+			// 	y = x * sin(angle) + y * cos(angle);
+			// 	printf("player x = %d | y = %d\n,", x, y);
+			// }
+			// else
 }
 
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
