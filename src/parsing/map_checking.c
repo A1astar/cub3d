@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/12 15:33:08 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/14 15:30:52 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ static void	scan_map_line(t_cub3d *cub3d, t_map *map, char *map_line,
 		size_t row)
 {
 	size_t	i;
+	size_t	map_size;
 
 	i = 0;
+	map_size = ft_strlen(map_line);
+	if (map_size > (size_t)cub3d->minimap.width)
+		cub3d->minimap.width = map_size;
 	while (map_line[i])
 	{
 		if (is_player_spawn(map, map_line[i]))
@@ -76,11 +80,13 @@ void	check_map(t_cub3d *cub3d, t_map *map)
 	map_copy = NULL;
 	for (int i = 0; map->map[i]; i++)
 		printf("%s", map->map[i]);
+	cub3d->minimap.width = 0;
 	while (map->map[map_height])
 	{
 		scan_map_line(cub3d, &cub3d->map, map->map[map_height], map_height);
 		map_height++;
 	}
+	cub3d->minimap.height = map_height;
 	if (cub3d->nb_player == 0)
 	{
 		error_msg("Incorret map, no player found", NULL);
