@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 18:19:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 11:43:33 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	update_player_stats(t_cub3d *cub3d)
 
 bool	is_player_movement_key(int keynum)
 {
-	if (keynum == XK_w || keynum == XK_s 
+	if (keynum == XK_w || keynum == XK_s
 		|| keynum == XK_a || keynum == XK_d
 		|| keynum == XK_Left || keynum == XK_Right)
 		return (true);
@@ -58,14 +58,14 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 	{
 		// if (cub3d->player.angle == 0)
 		// 	cub3d->player.angle = 360;
-		cub3d->player.angle--;
+		cub3d->player.angle-= 5;
 		cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
 	}
 	else if (keynum == XK_Right)
 	{
 		// if (cub3d->player.angle == 360)
 		// 	cub3d->player.angle = 0;
-		cub3d->player.angle++; 
+		cub3d->player.angle+= 5;
 		cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
 	}
 }
