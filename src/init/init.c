@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 19:38:51 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:19:44 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->scene, sizeof(t_scene));
 	ft_bzero(&cub3d->window, sizeof(t_window));
 	ft_bzero(&cub3d->player, sizeof(t_player));
+	ft_bzero(&cub3d->player.map_player, sizeof(t_render));
 	ft_bzero(&cub3d->thread, sizeof(t_thread));
 	ft_bzero(&cub3d->minimap, sizeof(t_minimap));
 	ft_bzero(&cub3d->setting, sizeof(t_setting));

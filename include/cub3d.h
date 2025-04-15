@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 12:09:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 12:21:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,25 @@ typedef struct s_hitbox
 	float	y_height;
 }t_hitbox;
 
+typedef struct	s_render
+{
+	float	px;
+	float	py;
+	float	x_cent;
+	float	y_cent;
+	float	x_rot;
+	float	y_rot;
+}	t_render;
+
 typedef struct s_player
 {
+	t_render		render;
 	t_orientation	orientation;
 	float			x_pos;
 	float			y_pos;
 	t_hitbox		hitbox;
 	float			dir;
 	int				angle;
-	// float		angle;
 	float			radian;
 	float			center;
 	float			cos_angle;

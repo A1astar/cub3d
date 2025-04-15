@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 11:19:12 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:02:29 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	check_map(t_cub3d *cub3d, t_map *map)
 
 	map_height = 0;
 	map_copy = NULL;
-	cub3d->minimap.width = 0;
 	while (map->map[map_height])
 	{
 		scan_map_line(cub3d, &cub3d->map, map->map[map_height], map_height);

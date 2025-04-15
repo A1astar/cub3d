@@ -167,39 +167,6 @@ void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
 	}
 }
 
-void	render_minimap_player(t_cub3d *cub3d, t_scene *scene, t_minimap *minimap, t_player *player)
-{
-	float		x;
-	float		y;
-	float	x_center;
-	float	y_center;
-	float	x_rot;
-	float	y_rot;
-	float	px;
-	float	py;
-
-	(void)scene;
-	minimap->scale = 1;
-	px = (player->x_pos + 0.5) * minimap->tile_width + minimap->x_origin;
-	py = (player->y_pos + 0.5) * minimap->tile_height + minimap->y_origin;
-	// px = (player->x_pos - 0.5) * minimap->tile_width + minimap->x_origin;
-	// py = (player->y_pos - 0.5) * minimap->tile_height + minimap->y_origin;
-	y = 0.0;
-	while (y < minimap->tile_height * minimap->scale)
-	{
-		x = 0.0;
-		while (x < minimap->tile_width * minimap->scale)
-		{
-			x_center = x - (minimap->tile_width * minimap->scale) / 2;
-			y_center = y - (minimap->tile_height * minimap->scale) / 2;
-			x_rot = x_center * cos(player->radian) - y_center * sin(player->radian);
-			y_rot = x_center * sin(player->radian) + y_center * cos(player->radian);
-			draw_pixel(&cub3d->scene.img, (int) (px + x_rot), (int)(py + y_rot), HEX_RED);
-			x+= 0.5;
-		}
-		y+= 0.5;
-	}
-}
 
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
@@ -207,8 +174,7 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	render_floor(cub3d, scene, &cub3d->map);
 	render_ceiling(cub3d, scene, &cub3d->map);
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
-	render_minimap_player(cub3d, &cub3d->scene, &cub3d->minimap,
-		&cub3d->player);
+	render_minimap_player(cub3d &cub3d->minimap, &cub3d->player, &cub3d->player.render);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
 		0);
 }
