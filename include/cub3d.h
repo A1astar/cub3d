@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/14 18:57:16 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 12:09:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define WHITE "\033[37m"
 
 # define PI 3.14159265358979323846
+# define VELOCITY 0.5
 
 /*		PROGRAM STATE		*/
 # define PLAYING (1 << 1)
