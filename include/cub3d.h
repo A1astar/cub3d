@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 13:54:35 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 15:38:43 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ typedef struct s_player
 	t_orientation	orientation;
 	float			x_pos;
 	float			y_pos;
+	int				x_size;
+	int				y_size;
 	int				width;
 	int				height;
 	t_hitbox		hitbox;
