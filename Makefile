@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/15 12:21:12 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/15 12:43:48 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRC					:= event/event_game.c \
 					rendering/rendering_game.c \
 					rendering/rendering_level_menu.c \
 					rendering/rendering_main_menu.c \
+					rendering/rendering_minimap_player.c \
 					rendering/rendering.c \
 					error.c \
 					memory/free_game.c \

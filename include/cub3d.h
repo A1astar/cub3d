@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 12:37:55 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:42:22 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,5 +304,6 @@ int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
 void	draw_pixel(t_img *img, int x, int y, int color);
+void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap, t_player *player, t_render *render);
 
 #endif
