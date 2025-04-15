@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 16:23:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 18:47:13 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,29 @@ void	init_struct_attributes(t_cub3d *cub3d)
 void	init_player(t_player *player, t_minimap *minimap)
 {
 	if (player->orientation == north)
+	{
+		player->x_dir = 0;
+		player->y_dir = 1;
 		player->angle = 90;
+	}
 	else if (player->orientation == east)
+	{
+		player->x_dir = 1;
+		player->y_dir = 0;
 		player->angle = 0;
+	}
 	else if (player->orientation == west)
+	{
+		player->x_dir = -1;
+		player->y_dir = 0;
 		player->angle = 180;
+	}
 	else if (player->orientation == south)
+	{
+		player->x_dir = 0;
+		player->y_dir = -1;
 		player->angle = 270;
+	}
 	player->radian = player->angle * (PI / 180.0);
 	player->height = minimap->tile_height;
 	player->width = minimap->tile_width;

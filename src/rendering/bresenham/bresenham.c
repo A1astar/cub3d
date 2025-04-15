@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agadea <agadea@student.42.fr>              +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 15:14:58 by agadea            #+#    #+#             */
-/*   Updated: 2023/08/23 19:12:02 by agadea           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:23:41 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/fdf.h"
+#include "../../../include/cub3d.h"
 
 void	low_slope(t_struct *fdf, int i)
 {
