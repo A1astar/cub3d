@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 12:42:22 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/15 13:54:35 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 
 # define PI 3.14159265358979323846
 # define VELOCITY 0.5
+# define MOVEMENT 0.1
 
 /*		PROGRAM STATE		*/
 # define PLAYING (1 << 1)
@@ -126,6 +127,8 @@ typedef struct s_player
 	t_orientation	orientation;
 	float			x_pos;
 	float			y_pos;
+	int				width;
+	int				height;
 	t_hitbox		hitbox;
 	float			dir;
 	int				angle;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 12:41:44 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/15 13:55:23 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
 }
 
-void	init_player(t_player *player)
+void	init_player(t_player *player, t_minimap *minimap)
 {
 	if (player->orientation == north)
 	{
@@ -57,6 +57,8 @@ void	init_player(t_player *player)
 		player->angle = 270;
 	}
 	player->radian = player->angle * (PI / 180.0);
+	player->height = minimap->tile_height;
+	player->width = minimap->tile_width;
 }
 
 void	init_minimap(t_minimap *minimap)
@@ -83,6 +85,6 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	parsing(cub3d, argv[1]);
 	init_mlx(cub3d, &cub3d->window);
 	init_asset(cub3d);
-	init_player(&cub3d->player);
 	init_minimap(&cub3d->minimap);
+	init_player(&cub3d->player, &cub3d->minimap);
 }
