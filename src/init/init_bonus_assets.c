@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus_assets.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 12:03:26 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 18:15:41 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,13 @@
 // 	}
 // }
 
-static void	load_env_assets(t_cub3d *cub3d, t_map *map)
+static void	load_env_assets(t_cub3d *cub3d, t_textures *textures)
 {
 	// map->viewmodel = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, POV_XPM, &map->view_width, &map->view_height );
-	map->floor = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, FLOOR_XPM, &map->texture_width, &map->texture_height);
-	map->closed_door = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, CLOSED_DOOR_XPM, &map->texture_width, &map->texture_width);
-	map->open_door = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, OPEN_DOOR_XPM, &map->texture_width, &map->texture_height);
-	if(/*!cub3d->map.viewmodel ||*/ !cub3d->map.floor || !cub3d->map.closed_door || !cub3d->map.open_door)
+	textures->floor = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, FLOOR_XPM, &textures->texture_width, &textures->texture_height);
+	textures->closed_door = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, CLOSED_DOOR_XPM, &textures->texture_width, &textures->texture_width);
+	textures->open_door = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, OPEN_DOOR_XPM, &textures->texture_width, &textures->texture_height);
+	if(/*!cub3d->map.viewmodel ||*/ !textures->floor || !textures->closed_door || !textures->open_door)
 	{
 		error_msg("Cannot load bonus env sprite", NULL);
 		free_program(cub3d);
@@ -151,6 +151,6 @@ static void	load_env_assets(t_cub3d *cub3d, t_map *map)
 
 void init_bonus_assets(t_cub3d *cub3d)
 {
-	load_env_assets(cub3d, &cub3d->map);
+	load_env_assets(cub3d, &cub3d->textures);
 	//load_randy_assets(cub3d);
 }
