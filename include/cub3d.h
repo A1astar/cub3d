@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 12:09:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 12:20:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ bool	is_player_button(int keynum);
 bool	is_player_action_key(int keynum);
 void	player_action_key(int keynum, t_cub3d *cub3d);
 void	player_action_button(int keynum, t_cub3d *cub3d);
+void	player_movement_key(int keynum, t_cub3d *cub3d);
 
 int		cub3d_loop(t_cub3d *cub3d);
 int		key_hook(int keynum, t_cub3d *cub3d);

@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/14 14:30:10 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/15 12:21:12 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC_DIR				:= src
 SRC					:= event/event_game.c \
 					event/event_level_menu.c \
 					event/event_main_menu.c \
+					event/event_player_action.c \
 					event/event_player_key.c \
 					event/event_player_mouse.c \
 					event/event_player.c \
