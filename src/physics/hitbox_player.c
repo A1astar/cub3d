@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hitbox_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:43:49 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 13:59:48 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 14:34:30 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ bool	can_move_to_south(t_player *player, t_map *map, int x, int y)
 {
 	if (map->map[y + 1][x] == '1' && player->y_pos + MOVEMENT >= y)
 		return (false);
+	if(map->map[y][x + 1] == '0' && map->map[y + 1][x + 1] == '1')
+	{
+		if(!can_move_to_east(player, map, (int)player->x_pos, (int)player->y_pos))
+			return (false);
+	}
 	return (true);
 }
 
