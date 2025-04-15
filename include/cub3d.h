@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 17:45:15 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 18:45:56 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,8 @@ enum e_rendering {normal, transform};
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
 
-typedef struct s_map
+typedef	struct	s_textures
 {
-	bool	bonus;
-	bool	is_valid_map;
-	int		texture_width;
-	int		texture_height;
-	int		view_width;
-	int		view_height;
-	int		map_height;
-	char	**raw_data;
-	char	**map;
-	char	**assets_paths;
-	int		ceilling_rgb[3];
-	int		floor_rgb[3];
-	void	*viewmodel;
 	void	*n_texture_wall;
 	void	*s_texture_wall;
 	void	*e_texture_wall;
@@ -90,6 +77,21 @@ typedef struct s_map
 	void	*ceiling;
 	void	*closed_door;
 	void	*open_door;
+	void	*viewmodel;
+	int		texture_width;
+	int		texture_height;
+	int		view_width;
+	int		view_height;
+} t_textures;
+
+typedef struct s_map
+{
+	bool	is_valid_map;
+	char	**raw_data;
+	char	**map;
+	char	**assets_paths;
+	int		ceilling_rgb[3];
+	int		floor_rgb[3];
 }t_map;
 
 typedef struct s_minimap
@@ -137,7 +139,6 @@ typedef struct s_player
 	int				angle;
 	double			radian;
 	double			center;
-	void			*pov;
 }t_player;
 
 typedef struct s_enemy
@@ -227,6 +228,7 @@ typedef struct s_cub3d
 	t_enemy			randy[4];
 	t_main_menu		main_menu;
 	t_level_menu	level_menu;
+	t_textures		textures;
 }t_cub3d;
 
 /*		ERROR		*/
@@ -274,12 +276,12 @@ void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 
 /*		MEMORY		*/
-void	free_t_img(t_img *img);
-void	free_t_main_menu(t_main_menu *menu);
+void	free_t_img(t_window *window, t_img *img);
+void	free_t_main_menu(t_main_menu *menu, t_window *window);
 void	free_program(t_cub3d *cub3d);
 void	free_t_window(t_window *scene);
 void	free_image(void *mlx, void *image);
-void	free_t_player(t_player *player, t_window *scene);
+void	free_t_scene(t_scene *scene, t_window *window);
 
 /*		PARSING		*/
 bool	is_enemy_spawn(char c);

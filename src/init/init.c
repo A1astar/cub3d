@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 16:23:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 18:09:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->randy[3], sizeof(t_enemy));
 	ft_bzero(&cub3d->main_menu, sizeof(t_main_menu));
 	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
+	ft_bzero(&cub3d->textures, sizeof(t_textures));
 }
 
 void	init_player(t_player *player, t_minimap *minimap)
