@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 15:38:43 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 17:45:15 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,39 +105,38 @@ typedef struct s_minimap
 
 typedef struct s_hitbox
 {
-	float	x_origin;
-	float	x_width;
-	float	y_origin;
-	float	y_height;
+	double	x_origin;
+	double	x_width;
+	double	y_origin;
+	double	y_height;
 }t_hitbox;
 
 typedef struct	s_render
 {
-	float	px;
-	float	py;
-	float	x_cent;
-	float	y_cent;
-	float	x_rot;
-	float	y_rot;
+	double	px;
+	double	py;
+	double	x_cent;
+	double	y_cent;
+	double	x_rot;
+	double	y_rot;
 }	t_render;
 
 typedef struct s_player
 {
 	t_render		render;
 	t_orientation	orientation;
-	float			x_pos;
-	float			y_pos;
+	double			x_pos;
+	double			y_pos;
+	double			x_dir;
+	double			y_dir;
 	int				x_size;
 	int				y_size;
 	int				width;
 	int				height;
 	t_hitbox		hitbox;
-	float			dir;
 	int				angle;
-	float			radian;
-	float			center;
-	float			cos_angle;
-	float			sin_angle;
+	double			radian;
+	double			center;
 	void			*pov;
 }t_player;
 
@@ -146,8 +145,8 @@ typedef struct s_enemy
 	t_randy_state	state;
 	int				sprite_width;
 	int				sprite_height;
-	float			x_pos;
-	float			y_pos;
+	double			x_pos;
+	double			y_pos;
 	void			*sprite[16];
 }t_enemy;
 
@@ -204,6 +203,14 @@ typedef struct s_level_menu
 	t_img	img;
 }t_level_menu;
 
+typedef struct s_raycast
+{
+	double	x_dir;
+	double	y_dir;
+	double	x_plane;
+	double	y_plane;
+}t_raycast;
+
 typedef struct s_cub3d
 {
 	int				nb_enemy;
@@ -216,6 +223,7 @@ typedef struct s_cub3d
 	t_window		window;
 	t_minimap		minimap;
 	t_setting		setting;
+	t_raycast		raycast;
 	t_enemy			randy[4];
 	t_main_menu		main_menu;
 	t_level_menu	level_menu;
@@ -264,7 +272,6 @@ void	init_struct_attributes(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d,char **argv);
 void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
-void	update_mlx_hook(t_cub3d *cub3d, t_window *scene, int which);
 
 /*		MEMORY		*/
 void	free_t_img(t_img *img);
@@ -277,7 +284,6 @@ void	free_t_player(t_player *player, t_window *scene);
 /*		PARSING		*/
 bool	is_enemy_spawn(char c);
 bool	is_player_spawn(t_player *player, char c);
-bool	is_valid_map(t_cub3d *game, t_map *map);
 
 void	parsing(t_cub3d *cub3d, char *argv);
 void	check_map(t_cub3d *cub3d, t_map *map);

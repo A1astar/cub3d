@@ -6,19 +6,19 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:13:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 13:48:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/15 17:46:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static float	get_x_rot_value(t_player *player, t_render *render)
+static double	get_x_rot_value(t_player *player, t_render *render)
 {
 	return (render->x_cent * cos(player->radian) - render->y_cent
 		* sin(player->radian));
 }
 
-static float	get_y_rot_value(t_player *player, t_render *render)
+static double	get_y_rot_value(t_player *player, t_render *render)
 {
 	return (render->x_cent * sin(player->radian) + render->y_cent
 		* cos(player->radian));
@@ -26,14 +26,14 @@ static float	get_y_rot_value(t_player *player, t_render *render)
 
 // void	render_minimap_player(t_cub3d *cub3d, t_scene *scene, t_minimap *minimap, t_player *player)
 // {
-// 	float		x;
-// 	float		y;
-// 	float	x_center;
-// 	float	y_center;
-// 	float	x_rot;
-// 	float	y_rot;
-// 	float	px;
-// 	float	py;
+// 	double		x;
+// 	double		y;
+// 	double	x_center;
+// 	double	y_center;
+// 	double	x_rot;
+// 	double	y_rot;
+// 	double	px;
+// 	double	py;
 
 // 	(void)scene;
 // 	minimap->scale = 1;
@@ -61,8 +61,8 @@ static float	get_y_rot_value(t_player *player, t_render *render)
 void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 		t_player *player, t_render *render)
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 
 	render->px = (player->x_pos + 0.5) * minimap->tile_width
 		+ minimap->x_origin;
