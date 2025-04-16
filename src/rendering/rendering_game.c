@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 19:28:05by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/16 16:09:37 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,67 +107,6 @@ void	render_floor(t_cub3d *cub3d, t_scene *scene, t_map *map)
 		y++;
 	}
 }
-
-void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
-		unsigned int color, int which_rendering)
-{
-	int	y;
-	int	x;
-	int	height;
-	int	width;
-
-	(void)which_rendering;
-	y = 0;
-	height = cub3d->minimap.tile_height * cub3d->minimap.scale;
-	width = cub3d->minimap.tile_width * cub3d->minimap.scale;
-	while (y < height)
-	{
-		x = 0;
-		while (x < width)
-		{
-			draw_pixel(&cub3d->scene.img, x + x_index, y + y_index, color);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
-		t_minimap *minimap)
-{
-	int	i;
-	int	j;
-	int	x;
-	int	y;
-
-	(void)scene;
-	i = 0;
-	y = minimap->y_origin;
-	while (map->map[i])
-	{
-		j = 0;
-		x = minimap->x_origin;
-		while (map->map[i][j])
-		{
-			if (map->map[i][j] == '0' || map->map[i][j] == 'N'
-				|| map->map[i][j] == 'S' || map->map[i][j] == 'E'
-				|| map->map[i][j] == 'W')
-				draw_square(cub3d, x, y, HEX_GREY, normal);
-			else if (map->map[i][j] == '1')
-				draw_square(cub3d, x, y, HEX_BLACK, normal);
-			else if (map->map[i][j] == 'R')
-				draw_square(cub3d, x, y, HEX_RED, normal);
-			else if (map->map[i][j] == 'D')
-				draw_square(cub3d, x, y, HEX_BROWN, normal);
-			j++;
-			x += minimap->tile_width;
-		}
-		y += minimap->tile_height;
-		i++;
-	}
-}
-
-
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 	render_background(cub3d, scene);
@@ -175,6 +114,8 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	render_ceiling(cub3d, scene, &cub3d->map);
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
 	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player, &cub3d->player.render);
+	// render_minimap_ray(cub3d);
+	raycast(cub3d, &cub3d->raycast, &cub3d->player);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
 		0);
 }

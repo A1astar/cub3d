@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/16 12:56:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:03:58 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,12 @@ void	init_minimap(t_minimap *minimap)
 
 void init_raycast(t_raycast *raycast, t_player *player)
 {
-	raycast->fov = 66.0;
-	raycast->fov_rad = raycast->fov * PI / 180.0;
-	raycast->x_dir = player->x_dir;
-	raycast->y_dir = player->y_dir;
+	// raycast->fov = 66.0;
+	// raycast->fov_rad = raycast->fov * PI / 180.0;
+	// raycast->x_dir = player->x_dir;
+	// raycast->y_dir = player->y_dir;
+
+	
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)

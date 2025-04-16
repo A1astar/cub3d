@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/15 12:43:48 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/16 17:15:55 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,10 +53,13 @@ SRC					:= event/event_game.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
 					physics/hitbox_player.c \
+					rendering/raycast/raycast.c \
 					rendering/rendering_game.c \
 					rendering/rendering_level_menu.c \
 					rendering/rendering_main_menu.c \
 					rendering/rendering_minimap_player.c \
+					rendering/rendering_minimap.c \
+					rendering/rendering_utils.c \
 					rendering/rendering.c \
 					error.c \
 					memory/free_game.c \

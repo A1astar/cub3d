@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/16 13:13:40 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/16 17:50:19 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,19 +127,80 @@ typedef struct s_player
 {
 	t_render		render;
 	t_orientation	orientation;
+
 	double			x_pos;
 	double			y_pos;
+
 	double			x_dir;
 	double			y_dir;
+
 	int				x_size;
 	int				y_size;
+
 	int				width;
 	int				height;
+
 	t_hitbox		hitbox;
+
 	int				angle;
 	double			radian;
 	double			center;
+
+	double			move_speed;
+	double			rotation_speed;
 }t_player;
+
+typedef struct s_raycast
+{
+	int		w;
+	int		h;
+
+	int		hit;
+	int		side;
+
+	int		line_height;
+	int		pitch;
+
+	int		draw_start;
+	int		draw_end;
+
+	int		x_step;
+	int		y_step;
+
+	double	x_dir;
+	double	y_dir;
+	double	x_old_dir;
+	double	y_old_dir;
+ 
+	double	x_camera; // 2 * x / double(w) - 1
+	double	y_camera;
+
+	double	x_raydir; // x_dir + x_plane * x_camera
+	double	y_raydir; // y_dir + y_plane * x_camera
+
+	double	x_plane;
+	double	y_plane;
+	double	x_old_plane;
+	double	y_old_plane;
+
+	double	x_map;
+	double	y_map;
+
+	double	x_delta; // sqrt(1 + (y_raydir * y_raydir) / (x_raydir * x_raydir))
+					 // abs(raydir / x_raydir)
+	double	y_delta; // sqrt(1 + (x_raydir * x_raydir) / (y_raydir * y_raydir))
+					 // abs(raydir / y_raydir)
+
+	double	x_side; // if x_raydir < 0 : (x_pos - x_map) * x_delta
+					// if x_raydir > 0 : (x_map + 1.0 - x_pos) * x_delta
+	double	y_side; // if y_raydir < 0 : (y_pos - y_map) * y_delta
+					// if y_raydir > 0 : (y_map + 1.0 - y_pos) * y_delta
+
+	double	perp_wall;
+
+	double	fov;
+	double	fov_rad;
+}t_raycast;
 
 typedef struct s_enemy
 {
@@ -163,6 +224,9 @@ typedef struct s_img
 
 typedef struct s_scene
 {
+	double	time;
+	double	frame_time;
+	double	old_time;
 	t_img	img;
 }t_scene;
 
@@ -198,19 +262,6 @@ typedef struct s_level_menu
 	int		index;
 	t_img	img;
 }t_level_menu;
-
-typedef struct s_raycast
-{
-	double	x_dir;
-	double	y_dir;
-	double	x_plane;
-	double	y_plane;
-	double	raydir_x;
-	double	raydir_y;
-	double	fov;
-	double	fov_rad;
-
-}t_raycast;
 
 typedef struct s_cub3d
 {
@@ -320,10 +371,16 @@ void	print_2d_array_string(char **str);
 void	print_usage(void);
 
 /*		RENDERING		*/
+void	raycast(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
 void	draw_pixel(t_img *img, int x, int y, int color);
+void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
+		unsigned int color, int which_rendering);
+void	render_minimap_ray(t_cub3d *cub3d);
 void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap, t_player *player, t_render *render);
+void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
+		t_minimap *minimap);
 
 #endif
