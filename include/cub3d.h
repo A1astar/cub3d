@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/16 11:52:17 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:56:05 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,10 +182,6 @@ typedef struct s_main_menu
 	t_img	img[3];
 }t_main_menu;
 
-typedef struct s_thread
-{
-}t_thread;
-
 typedef struct s_window
 {
 	int		height;
@@ -209,6 +205,8 @@ typedef struct s_raycast
 	double	y_dir;
 	double	x_plane;
 	double	y_plane;
+	double	raydir_x;
+	double	raydir_y;
 	double	fov;
 	double	fov_rad;
 
@@ -222,7 +220,6 @@ typedef struct s_cub3d
 	t_map			map;
 	t_scene			scene;
 	t_player		player;
-	t_thread		thread;
 	t_window		window;
 	t_minimap		minimap;
 	t_setting		setting;
@@ -232,6 +229,13 @@ typedef struct s_cub3d
 	t_level_menu	level_menu;
 	t_textures		textures;
 }t_cub3d;
+
+typedef struct s_thread
+{
+	t_cub3d *cub3d;
+	int	ray_seg_start;
+	int	ray_seg_end;
+}t_thread;
 
 /*		ERROR		*/
 void	error_msg(const char *msg, const char *context);

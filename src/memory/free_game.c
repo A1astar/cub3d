@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 18:42:01 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:57:25 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,10 @@ static void	free_t_map(t_map *map)
 		ft_free_tab((void **)map->assets_paths);
 }
 
-static void	free_t_thread(t_thread *threads)
-{
-	(void)threads;
-}
-
 void	free_program(t_cub3d *cub3d)
 {
 	free_t_textures(&cub3d->textures, &cub3d->window);
 	free_t_map(&cub3d->map);
-	free_t_thread(&cub3d->thread);
 	free_t_enemy(cub3d->randy, &cub3d->window);
 	free_t_main_menu(&cub3d->main_menu, &cub3d->window);
 	// free_t_level_menu(&cub3d->level_menu);
