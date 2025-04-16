@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/16 11:52:17 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:13:30 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,9 +228,9 @@ typedef struct s_cub3d
 	t_setting		setting;
 	t_raycast		raycast;
 	t_enemy			randy[4];
+	t_textures		textures;
 	t_main_menu		main_menu;
 	t_level_menu	level_menu;
-	t_textures		textures;
 }t_cub3d;
 
 /*		ERROR		*/
