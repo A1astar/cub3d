@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/16 22:42:58 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 01:05:09 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void init_raycast(t_raycast *raycast, t_player *player)
 	raycast->y_plane = 0.66;
 	raycast->x_dir = player->x_dir;
 	raycast->y_dir = player->y_dir;
-	raycast->w = WINDOW_WIDTH;
-	raycast->h = WINDOW_HEIGHT;
+	raycast->width = WINDOW_WIDTH;
+	raycast->height = WINDOW_HEIGHT;
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)

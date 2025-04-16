@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/16 17:50:19 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 01:05:09 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ typedef struct s_player
 
 typedef struct s_raycast
 {
-	int		w;
-	int		h;
+	int		width;
+	int		height;
 
 	int		hit;
 	int		side;
@@ -361,8 +361,8 @@ void 	apply_enemy_state(t_enemy *randy, int nb_enemy);
 char	*append_line(t_cub3d *cub3d, char *buffer, char *line);
 
 /*		PHYSICS		*/
-bool	can_move_to_north(t_player *player, t_map *map, int x, int y);
-bool	can_move_to_south(t_player *player, t_map *map, int x, int y);
+bool	can_move_to_north(t_raycast *raycast, t_player *player, t_map *map);
+bool	can_move_to_south(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_west(t_player *player, t_map *map, int x, int y);
 bool	can_move_to_east(t_player *player, t_map *map, int x, int y);
 

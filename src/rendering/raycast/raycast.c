@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:55:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/16 22:32:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 01:05:22 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	update_raycast(t_raycast *raycast, t_player *player, int x, int w)
 }
 void	draw_vertical_line(t_scene *scene, int x, int draw_start, int draw_end, int color)
 {
-	printf("draw start = %d, draw end = %d\n", draw_start, draw_end);
 	while (draw_start < draw_end)
 	{
 		draw_pixel(&scene->img, x, draw_start, color);
@@ -72,25 +71,22 @@ void	draw_vertical_line(t_scene *scene, int x, int draw_start, int draw_end, int
 
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x)
 {
-	raycast->line_height = (int)(raycast->h / raycast->perp_wall);
+	raycast->line_height = (int)(raycast->height / raycast->perp_wall);
 	raycast->pitch = 100;
 
-	printf("line height = %d\n", raycast->line_height);
-	printf("perp wall = %f\n", raycast->perp_wall);
-	raycast->draw_start = -raycast->line_height / 2 + raycast->h / 2;
+	raycast->draw_start = -raycast->line_height / 2 + raycast->height / 2;
 	if (raycast->draw_start < 0 )
 		raycast->draw_start = 0;
 
-	raycast->draw_end = raycast->line_height / 2 + raycast->h / 2;
-	if (raycast->draw_end >= raycast->h)
-		raycast->draw_end = raycast->h - 1;
+	raycast->draw_end = raycast->line_height / 2 + raycast->height / 2;
+	if (raycast->draw_end >= raycast->height)
+		raycast->draw_end = raycast->height - 1;
 
 	static int color = 0x00FFFFFF;
 
 	if (raycast->side == 1)
 		color = color / 2;
 	draw_vertical_line(&cub3d->scene, x, raycast->draw_start, raycast->draw_end, color);
-	
 }
 
 bool	wall_hit(t_map *map, t_raycast *raycast)
@@ -105,10 +101,9 @@ void	raycast(t_cub3d *cub3d, t_raycast *raycast, t_player *player)
 	int	x;
 
 	x = 0;
-	while (x < raycast->w)
+	while (x < raycast->width)
 	{
-		printf("x = %d\n", x);
-		update_raycast(raycast, player, x, raycast->w);
+		update_raycast(raycast, player, x, raycast->width);
 		while (!wall_hit(&cub3d->map, &cub3d->raycast))
 		{
 			if (raycast->x_side < raycast->y_side)
@@ -124,7 +119,6 @@ void	raycast(t_cub3d *cub3d, t_raycast *raycast, t_player *player)
 				raycast->side = 1;
 			}
 		}
-		printf("here\n");
 		if (raycast->side == 0)
 			raycast->perp_wall = raycast->x_side - raycast->x_delta;
 		else
