@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 18:58:49 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/16 11:56:00 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->main_menu, sizeof(t_main_menu));
 	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
 	ft_bzero(&cub3d->textures, sizeof(t_textures));
+	ft_bzero(&cub3d->raycast, sizeof(t_raycast));
 }
 
 void	init_player(t_player *player, t_minimap *minimap)
@@ -85,6 +86,14 @@ void	init_minimap(t_minimap *minimap)
 		minimap->y_origin = WINDOW_HEIGHT - map_height;
 }
 
+void init_raycast(t_raycast *raycast, t_player *player)
+{
+	raycast->fov = 66.0;
+	raycast->fov_rad = raycast->fov * PI / 180.0;
+	raycast->x_dir = player->x_dir;
+	raycast->y_dir = player->y_dir;
+}
+
 void	init_program(t_cub3d *cub3d, char **argv)
 {
 	init_struct_attributes(cub3d);
@@ -93,4 +102,5 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	init_asset(cub3d);
 	init_minimap(&cub3d->minimap);
 	init_player(&cub3d->player, &cub3d->minimap);
+	int_raycast(&cub3d->raycast, &cub3d->player);
 }

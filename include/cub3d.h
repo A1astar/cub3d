@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 18:45:56 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/16 11:52:17 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ typedef struct s_scene
 typedef struct s_setting
 {
 	uint8_t difficulty; // Hardcore is the only option
-	uint8_t	fov;
 	uint8_t	velocity;
 	bool	god_mod;
 	bool	drunk_mod; // promising
@@ -210,6 +209,9 @@ typedef struct s_raycast
 	double	y_dir;
 	double	x_plane;
 	double	y_plane;
+	double	fov;
+	double	fov_rad;
+
 }t_raycast;
 
 typedef struct s_cub3d
@@ -260,6 +262,7 @@ int		level_menu_loop(t_cub3d *cub3d);
 int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
 int		level_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
+
 
 int		exit_cub3d(t_cub3d *cub3d);
 
