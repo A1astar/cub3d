@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/16 11:56:00 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:56:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->window, sizeof(t_window));
 	ft_bzero(&cub3d->player, sizeof(t_player));
 	ft_bzero(&cub3d->player.render, sizeof(t_render));
-	ft_bzero(&cub3d->thread, sizeof(t_thread));
 	ft_bzero(&cub3d->minimap, sizeof(t_minimap));
 	ft_bzero(&cub3d->setting, sizeof(t_setting));
 	ft_bzero(&cub3d->randy[0], sizeof(t_enemy));
@@ -102,5 +101,5 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	init_asset(cub3d);
 	init_minimap(&cub3d->minimap);
 	init_player(&cub3d->player, &cub3d->minimap);
-	int_raycast(&cub3d->raycast, &cub3d->player);
+	init_raycast(&cub3d->raycast, &cub3d->player);
 }
