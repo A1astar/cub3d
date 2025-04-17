@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/17 01:05:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:04:44 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,8 @@
 # define WHITE "\033[37m"
 
 # define PI 3.14159265358979323846
-# define VELOCITY 0.5
-# define MOVEMENT 0.1
-
-/*		PROGRAM STATE		*/
-# define PLAYING (1 << 1)
-# define MAIN_MENU (1 << 2)
-# define LEVEL_MENU (1 << 3)
+# define VELOCITY 0.1
+# define MOVEMENT 0.5
 
 # define RUNNING 1
 
@@ -67,7 +62,7 @@ enum e_rendering {normal, transform};
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
 
-typedef	struct	s_textures
+typedef struct s_textures
 {
 	void	*n_texture_wall;
 	void	*s_texture_wall;
@@ -82,7 +77,7 @@ typedef	struct	s_textures
 	int		texture_height;
 	int		view_width;
 	int		view_height;
-} t_textures;
+}t_textures;
 
 typedef struct s_map
 {
@@ -113,7 +108,7 @@ typedef struct s_hitbox
 	double	y_height;
 }t_hitbox;
 
-typedef struct	s_render
+typedef struct s_render
 {
 	double	px;
 	double	py;
@@ -171,7 +166,7 @@ typedef struct s_raycast
 	double	y_dir;
 	double	x_old_dir;
 	double	y_old_dir;
- 
+
 	double	x_camera; // 2 * x / double(w) - 1
 	double	y_camera;
 
@@ -232,7 +227,7 @@ typedef struct s_scene
 
 typedef struct s_setting
 {
-	uint8_t difficulty; // Hardcore is the only option
+	uint8_t	difficulty; // Hardcore is the only option
 	uint8_t	velocity;
 	bool	god_mod;
 	bool	drunk_mod; // promising
@@ -283,9 +278,9 @@ typedef struct s_cub3d
 
 typedef struct s_thread
 {
-	t_cub3d *cub3d;
-	int	ray_seg_start;
-	int	ray_seg_end;
+	t_cub3d	*cub3d;
+	int		ray_seg_start;
+	int		ray_seg_end;
 }t_thread;
 
 /*		ERROR		*/
@@ -318,7 +313,6 @@ int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
 int		level_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 
-
 int		exit_cub3d(t_cub3d *cub3d);
 
 /*		INIT		*/
@@ -327,9 +321,9 @@ bool	is_rgb_line(char *line, size_t len);
 bool	is_asset_line(char *line, size_t len);
 
 void	init_asset(t_cub3d *cub3d);
-void 	init_bonus_assets(t_cub3d *cub3d);
+void	init_bonus_assets(t_cub3d *cub3d);
 void	init_struct_attributes(t_cub3d *cub3d);
-void	init_program(t_cub3d *cub3d,char **argv);
+void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 
@@ -357,7 +351,7 @@ void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb);
 void	check_player_nb(t_cub3d *cub3d, int enemy_nb);
 int		get_line_count(t_cub3d *cub3d, char *filename);
 void	extract_assets_path(t_cub3d *game, char **data);
-void 	apply_enemy_state(t_enemy *randy, int nb_enemy);
+void	apply_enemy_state(t_enemy *randy, int nb_enemy);
 char	*append_line(t_cub3d *cub3d, char *buffer, char *line);
 
 /*		PHYSICS		*/
@@ -376,11 +370,11 @@ int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
 void	draw_pixel(t_img *img, int x, int y, int color);
-void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
-		unsigned int color, int which_rendering);
+void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color);
 void	render_minimap_ray(t_cub3d *cub3d);
-void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap, t_player *player, t_render *render);
+void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
+			t_player *player, t_render *render);
 void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
-		t_minimap *minimap);
+			t_minimap *minimap);
 
 #endif

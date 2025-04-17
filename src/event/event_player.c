@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:48:38 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 00:47:47by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:01:11 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,18 @@ bool	is_player_action_key(int keynum)
 void	player_movement_key(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_w && can_move_to_north(&cub3d->raycast, &cub3d->player, &cub3d->map))
-	// if (keynum == XK_w && can_move_to_north(&cub3d->player,
-	// 	&cub3d->map, (int)cub3d->player.x_pos, (int)cub3d->player.y_pos))
 	{
 		// cub3d->player.y_pos -= VELOCITY;
 		cub3d->player.x_pos += cub3d->raycast.x_dir * VELOCITY;
 		cub3d->player.y_pos += cub3d->raycast.y_dir * VELOCITY;
 	}
 	else if (keynum == XK_s && can_move_to_south(&cub3d->raycast, &cub3d->player, &cub3d->map))
-	// else if (keynum == XK_s && can_move_to_south(&cub3d->player,
-	// 	&cub3d->map, (int)cub3d->player.x_pos, (int)(cub3d->player.y_pos)))
 	{
 		// cub3d->player.y_pos += VELOCITY;
 		cub3d->player.x_pos -= cub3d->raycast.x_dir * VELOCITY;
 		cub3d->player.y_pos -= cub3d->raycast.y_dir * VELOCITY;
 	}
 	else if (keynum == XK_a || keynum == XK_Right)
-	// else if (keynum == XK_a && can_move_to_west(&cub3d->player,
-	// 	&cub3d->map, (int)cub3d->player.x_pos, (int)cub3d->player.y_pos))
 	{
 		double x_old_dir = cub3d->raycast.x_dir;
 		cub3d->raycast.x_dir = cub3d->raycast.x_dir * cos(-VELOCITY) - cub3d->raycast.y_dir * sin(-VELOCITY);
@@ -61,8 +55,6 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 		// cub3d->player.x_dir -= 0.1;
 	}
 	else if (keynum == XK_d || keynum == XK_Left)
-	// else if (keynum == XK_d && can_move_to_east(&cub3d->player,
-	// 	&cub3d->map, (int)cub3d->player.x_pos, (int)cub3d->player.y_pos))
 	{
 		double x_old_dir = cub3d->raycast.x_dir;
 		cub3d->raycast.x_dir = cub3d->raycast.x_dir * cos(VELOCITY) - cub3d->raycast.y_dir * sin(VELOCITY);
