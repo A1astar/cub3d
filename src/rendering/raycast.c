@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:55:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 14:55:31 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:09:51 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	update_raycast(t_raycast *raycast, t_player *player, int x, int w)
 	update_raycast_delta(raycast);
 	update_raycast_side(raycast, player);
 }
+
 void	draw_vertical_line(t_scene *scene, int x, int draw_start, int draw_end, int color)
 {
 	while (draw_start < draw_end)

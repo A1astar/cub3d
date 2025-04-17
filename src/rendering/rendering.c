@@ -6,12 +6,11 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 18:57:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 15:04:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 15:11:22 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
 
 int	cub3d_loop(t_cub3d *cub3d)
 {
