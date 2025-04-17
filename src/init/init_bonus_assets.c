@@ -6,11 +6,13 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 18:15:41 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:49:38 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+
 
 // static void	check_sprite(t_cub3d *cub3d, t_enemy *randy, char *name)
 // {
@@ -136,21 +138,47 @@
 // 	}
 // }
 
+static void	load_texture(t_cub3d *cub3d, t_img *texture, char *asset_path)
+{
+	texture->ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
+			&texture->width, &texture->height);
+	if (!texture->ptr)
+	{
+		error_msg("Wrong asset address", NULL);
+		free_program(cub3d);
+	}
+	texture->addr = mlx_get_data_addr(texture->ptr, &texture->bpp,
+			&texture->size_line, &texture->endian);
+	if (!texture->addr)
+	{
+		error_msg("WCannot load asset", NULL);
+		free_program(cub3d);
+	}
+}
+
 static void	load_env_assets(t_cub3d *cub3d, t_textures *textures)
 {
-	// map->viewmodel = mlx_xpm_file_to_image(cub3d->scene.mlx_ptr, POV_XPM, &map->view_width, &map->view_height );
-	textures->floor = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, FLOOR_XPM, &textures->texture_width, &textures->texture_height);
-	textures->closed_door = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, CLOSED_DOOR_XPM, &textures->texture_width, &textures->texture_width);
-	textures->open_door = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, OPEN_DOOR_XPM, &textures->texture_width, &textures->texture_height);
-	if(/*!cub3d->map.viewmodel ||*/ !textures->floor || !textures->closed_door || !textures->open_door)
+	load_texture(cub3d, &textures->floor,
+		"asset/texture/xpm_files/env_textures/floor.xpm");
+	load_texture(cub3d, &textures->ceiling,
+		"asset/texture/xpm_files/env_textures/ceiling.xpm");
+	load_texture(cub3d, &textures->o_door,
+		"asset/texture/xpm_files/env_textures/open_door.xpm");
+	load_texture(cub3d, &textures->c_door,
+		"asset/texture/xpm_files/env_textures/closed_door.xpm");
+//	load_texture(cub3d, &textures->viewmodel,
+//		"asset/texture/xpm_files/env_textures/viewmodel.xpm");
+	if (/*!textures->viewmodel.ptr ||*/ !textures->floor.ptr
+		|| !textures->ceiling.ptr || !textures->c_door.ptr
+		|| !textures->o_door.ptr)
 	{
 		error_msg("Cannot load bonus env sprite", NULL);
 		free_program(cub3d);
 	}
 }
 
-void init_bonus_assets(t_cub3d *cub3d)
+void	init_bonus_assets(t_cub3d *cub3d)
 {
 	load_env_assets(cub3d, &cub3d->textures);
-	//load_randy_assets(cub3d);
+	// load_randy_assets(cub3d);
 }

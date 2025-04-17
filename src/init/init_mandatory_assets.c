@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 18:17:00 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:56:03 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 static bool	mandatory_assets_are_missing(t_textures *textures)
 {
-	if (!textures->n_texture_wall || !textures->s_texture_wall || !textures->e_texture_wall
-		|| !textures->w_texture_wall)
+	if (!textures->n_wall.ptr || !textures->s_wall.ptr
+		|| !textures->e_wall.ptr || !textures->w_wall.ptr)
 		return (true);
 	else
 		return (false);
 }
 
-static void	mlx_load_img(t_cub3d *cub3d, t_textures *textutes, void **asset_ptr,
-		char *asset_path)
+static void	mlx_load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
 {
 	while (*asset_path && *asset_path != '/')
 		asset_path++;
@@ -32,11 +31,18 @@ static void	mlx_load_img(t_cub3d *cub3d, t_textures *textutes, void **asset_ptr,
 		free_program(cub3d);
 	}
 	asset_path++;
-	*asset_ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
-			&textutes->texture_width, &textutes->texture_height);
-	if (!asset_ptr)
+	texture->ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
+			&texture->width, &texture->height);
+	if (!texture->ptr)
 	{
 		error_msg("Wrong asset address", NULL);
+		free_program(cub3d);
+	}
+	texture->addr = mlx_get_data_addr(texture->ptr, &texture->bpp,
+			&texture->size_line, &texture->endian);
+	if (!texture->addr)
+	{
+		error_msg("Cannot load asset", NULL);
 		free_program(cub3d);
 	}
 }
@@ -80,13 +86,13 @@ static void	load_assets(t_cub3d *cub3d, t_textures *textures, char *asset_line,
 		size_t line_lengh)
 {
 	if (ft_strnstr(asset_line, "NO", line_lengh))
-		mlx_load_img(cub3d, textures, &textures->n_texture_wall, asset_line);
+		mlx_load_img(cub3d, &textures->n_wall, asset_line);
 	else if (ft_strnstr(asset_line, "SO", line_lengh))
-		mlx_load_img(cub3d, textures, &textures->s_texture_wall, asset_line);
+		mlx_load_img(cub3d, &textures->s_wall, asset_line);
 	else if (ft_strnstr(asset_line, "WE", line_lengh))
-		mlx_load_img(cub3d, textures, &textures->w_texture_wall, asset_line);
+		mlx_load_img(cub3d, &textures->w_wall, asset_line);
 	else if (ft_strnstr(asset_line, "EA", line_lengh))
-		mlx_load_img(cub3d, textures, &textures->e_texture_wall, asset_line);
+		mlx_load_img(cub3d, &textures->e_wall, asset_line);
 }
 
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)

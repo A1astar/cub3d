@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/17 15:04:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 16:44:10 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,29 @@ enum e_rendering {normal, transform};
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
 
+typedef struct s_img
+{
+	void	*ptr;
+	char	*addr;
+	int		bpp;
+	int		height;
+	int		width;
+	int		endian;
+	int		size_line;
+}t_img;
+
 typedef struct s_textures
 {
-	void	*n_texture_wall;
-	void	*s_texture_wall;
-	void	*e_texture_wall;
-	void	*w_texture_wall;
-	void	*floor;
-	void	*ceiling;
-	void	*closed_door;
-	void	*open_door;
-	void	*viewmodel;
-	int		texture_width;
-	int		texture_height;
-	int		view_width;
-	int		view_height;
+
+	t_img	n_wall;
+	t_img	s_wall;
+	t_img	e_wall;
+	t_img	w_wall;
+	t_img	floor;
+	t_img	ceiling;
+	t_img	o_door;
+	t_img	c_door;
+	t_img	viewmodel;
 }t_textures;
 
 typedef struct s_map
@@ -204,18 +212,8 @@ typedef struct s_enemy
 	int				sprite_height;
 	double			x_pos;
 	double			y_pos;
-	void			*sprite[16];
+	t_img			sprite[16];
 }t_enemy;
-
-typedef struct s_img
-{
-	void	*ptr;
-	char	*addr;
-	char	*pixel;
-	int		bpp;
-	int		endian;
-	int		size_line;
-}t_img;
 
 typedef struct s_scene
 {

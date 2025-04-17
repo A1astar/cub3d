@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 18:48:26 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:55:13 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ void	free_t_img(t_window *window, t_img *img)
 {
 	if (img->ptr)
 		free_image(window->mlx_ptr ,img->ptr);
-	if (img->addr)
-		free(img->addr);
-	if (img->pixel)
-		free(img->pixel);
+	//if (img->addr)
+	//	free(img->addr);
 }
 
 // void	free_t_level_menu(t_level_menu *menu)

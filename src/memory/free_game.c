@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/16 12:57:25 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:43:50 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,15 @@
 
 static void	free_t_textures(t_textures *textures, t_window *window)
 {
-	if (textures->n_texture_wall)
-		free_image(window->mlx_ptr, textures->n_texture_wall);
-	if (textures->s_texture_wall)
-		free_image(window->mlx_ptr, textures->s_texture_wall);
-	if (textures->e_texture_wall)
-		free_image(window->mlx_ptr, textures->e_texture_wall);
-	if (textures->w_texture_wall)
-		free_image(window->mlx_ptr, textures->w_texture_wall);
-	if (textures->floor)
-		free_image(window->mlx_ptr, textures->floor);
-	if (textures->ceiling)
-		free_image(window->mlx_ptr, textures->ceiling);
-	if (textures->open_door)
-		free_image(window->mlx_ptr, textures->closed_door);
-	if (textures->open_door)
-		free_image(window->mlx_ptr, textures->open_door);
-	if (textures->viewmodel)
-		free_image(window->mlx_ptr, textures->viewmodel);
+	free_t_img(window, &textures->n_wall);
+	free_t_img(window, &textures->s_wall);
+	free_t_img(window, &textures->e_wall);
+	free_t_img(window, &textures->w_wall);
+	free_t_img(window, &textures->floor);
+	free_t_img(window, &textures->ceiling);
+	free_t_img(window, &textures->o_door);
+	free_t_img(window, &textures->c_door);
+	free_t_img(window, &textures->viewmodel);
 }
 
 static void	free_t_enemy(t_enemy *randy, t_window *window)
@@ -45,7 +36,7 @@ static void	free_t_enemy(t_enemy *randy, t_window *window)
 	{
 		while (nb_sprite < 16)
 		{
-			free_image(window->mlx_ptr, randy[nb_randy].sprite[nb_sprite]);
+			free_t_img(window, &randy[nb_randy].sprite[nb_sprite]);
 			nb_sprite++;
 		}
 		nb_sprite = 0;

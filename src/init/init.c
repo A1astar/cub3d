@@ -3,22 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 01:05:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 16:50:19 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/cub3d.h"
 
+void	init_randy(t_enemy *randy)
+{
+	ft_bzero(&randy->sprite[0], sizeof(t_img));
+	ft_bzero(&randy->sprite[1], sizeof(t_img));
+	ft_bzero(&randy->sprite[2], sizeof(t_img));
+	ft_bzero(&randy->sprite[3], sizeof(t_img));
+	ft_bzero(&randy->sprite[4], sizeof(t_img));
+	ft_bzero(&randy->sprite[5], sizeof(t_img));
+	ft_bzero(&randy->sprite[6], sizeof(t_img));
+	ft_bzero(&randy->sprite[7], sizeof(t_img));
+	ft_bzero(&randy->sprite[8], sizeof(t_img));
+	ft_bzero(&randy->sprite[9], sizeof(t_img));
+	ft_bzero(&randy->sprite[10], sizeof(t_img));
+	ft_bzero(&randy->sprite[11], sizeof(t_img));
+	ft_bzero(&randy->sprite[12], sizeof(t_img));
+	ft_bzero(&randy->sprite[13], sizeof(t_img));
+	ft_bzero(&randy->sprite[14], sizeof(t_img));
+	ft_bzero(&randy->sprite[15], sizeof(t_img));
+}
+
 void	init_struct_attributes(t_cub3d *cub3d)
 {
-	cub3d->program_state = main_menu;
-	cub3d->main_menu.index = 0;
-	cub3d->nb_enemy = 0;
-	cub3d->nb_player = 0;
+	ft_bzero(cub3d, sizeof(cub3d));
 	ft_bzero(&cub3d->map, sizeof(t_map));
 	ft_bzero(&cub3d->scene, sizeof(t_scene));
 	ft_bzero(&cub3d->window, sizeof(t_window));
@@ -32,8 +49,21 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->randy[3], sizeof(t_enemy));
 	ft_bzero(&cub3d->main_menu, sizeof(t_main_menu));
 	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
-	ft_bzero(&cub3d->textures, sizeof(t_textures));
+	ft_bzero(&cub3d->textures.n_wall, sizeof(t_img));
+	ft_bzero(&cub3d->textures.s_wall, sizeof(t_img));
+	ft_bzero(&cub3d->textures.e_wall, sizeof(t_img));
+	ft_bzero(&cub3d->textures.w_wall, sizeof(t_img));
+	ft_bzero(&cub3d->textures.floor, sizeof(t_img));
+	ft_bzero(&cub3d->textures.ceiling, sizeof(t_img));
+	ft_bzero(&cub3d->textures.o_door, sizeof(t_img));
+	ft_bzero(&cub3d->textures.c_door, sizeof(t_img));
+	ft_bzero(&cub3d->textures.viewmodel, sizeof(t_img));
 	ft_bzero(&cub3d->raycast, sizeof(t_raycast));
+	init_randy(&cub3d->randy[0]);
+	init_randy(&cub3d->randy[1]);
+	init_randy(&cub3d->randy[2]);
+	init_randy(&cub3d->randy[3]);
+	cub3d->program_state = main_menu;
 }
 
 void	init_player(t_player *player, t_minimap *minimap)

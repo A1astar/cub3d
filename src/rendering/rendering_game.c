@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/16 22:56:41 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/17 16:30:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	render_background(t_cub3d *cub3d, t_scene *scene)
-{
-	int	y;
-	int	x;
+// void	render_background(t_cub3d *cub3d, t_scene *scene)
+// {
+// 	int	y;
+// 	int	x;
 
-	(void)cub3d;
-	y = 0;
-	while (y < WINDOW_HEIGHT)
-	{
-		x = 0;
-		while (x < WINDOW_WIDTH)
-		{
-			scene->img.pixel = scene->img.addr + y * scene->img.size_line + x
-				* (scene->img.bpp / 8);
-			*(unsigned int *)scene->img.pixel = 0x00FFFFFF;
-			x++;
-		}
-		y++;
-	}
-}
+// 	(void)cub3d;
+// 	y = 0;
+// 	while (y < WINDOW_HEIGHT)
+// 	{
+// 		x = 0;
+// 		while (x < WINDOW_WIDTH)
+// 		{
+// 			scene->img.pixel = scene->img.addr + y * scene->img.size_line + x
+// 				* (scene->img.bpp / 8);
+// 			*(unsigned int *)scene->img.pixel = 0x00FFFFFF;
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// }
 
 // void	epileptic_simulator(t_cub3d *cub3d, t_scene *scene, t_map *map)
 // {
@@ -109,7 +109,7 @@ void	render_floor(t_cub3d *cub3d, t_scene *scene, t_map *map)
 }
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
-	render_background(cub3d, scene);
+//	render_background(cub3d, scene);
 	render_floor(cub3d, scene, &cub3d->map);
 	render_ceiling(cub3d, scene, &cub3d->map);
 	// render_minimap_ray(cub3d);
