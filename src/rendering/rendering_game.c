@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 19:46:42 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:59:58 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,40 +33,58 @@
 // 	}
 // }
 
-// void	epileptic_simulator(t_cub3d *cub3d, t_scene *scene, t_map *map)
-// {
-// 	(void)cub3d;
-// 	int	y;
-// 	int	x;
-// 	static int	red;
-// 	static int	green;
-// 	static int	blue;
+void	epileptic_simulator(t_cub3d *cub3d, t_scene *scene, 
+	t_map *map, int which)
+{
+	(void)cub3d;
+	int	y = 0;
+	int	x;
+	int	height = 0;
+	static int	red;
+	static int	green;
+	static int	blue;
 
-// 	y = 0;
-// 	if (!red)
-// 		red = map->ceilling_rgb[0];
-// 	if (!green)
-// 		green = map->ceilling_rgb[1];
-// 	if (!blue)
-// 		blue = map->ceilling_rgb[2];
-// 	while (y < WINDOW_HEIGHT / 2)
-// 	{
-// 		x = 0;
-// 		while (x < WINDOW_WIDTH)
-// 		{
-// 			scene->img.pixel = scene->img.addr
-// 				+ y * scene->img.size_line
-// 				+ x * (scene->img.bpp / 8);
-// 			*(unsigned int *)scene->img.pixel = red << 16
-// 				| green << 8 | blue;
-// 			blue++;
-// 			red--;
-// 			green += blue;
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// ear
+	if (!red)
+		red = map->ceilling_rgb[0];
+	if (!green)
+		green = map->ceilling_rgb[1];
+	if (!blue)
+		blue = map->ceilling_rgb[2];
+	if (which == ep_ceiling)
+	{
+		height = WINDOW_HEIGHT;
+		y = WINDOW_HEIGHT / 2;
+	}
+	else if (which == ep_floor)
+	{
+		y = 0;
+		height = WINDOW_HEIGHT / 2;
+	}
+	while (y < height)
+	{
+		x = 0;
+		while (x < WINDOW_WIDTH)
+		{
+			draw_pixel(&scene->img, x, y, red << 16 | green << 8 | blue);
+		
+			if(which == ep_ceiling)
+			{
+				blue *= 2;
+				// red++;
+				// green+= PI;
+			}
+			else
+			{		
+				blue++;
+				// red++;
+				// green+= PI;
+			}
+			x++;
+			
+		}
+		y++;
+	}
+}
 
 void	render_ceiling(t_cub3d *cub3d, t_scene *scene, t_map *map)
 {
@@ -111,7 +129,9 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 //	render_background(cub3d, scene);
 	render_floor(cub3d, scene, &cub3d->map);
-	render_ceiling(cub3d, scene, &cub3d->map);
+	// render_ceiling(cub3d, scene, &cub3d->map);
+	epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
+	epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
 	// render_minimap_ray(cub3d);
 	raycast(cub3d, &cub3d->raycast, &cub3d->player);
 	//raycasting(cub3d);

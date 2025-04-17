@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/17 19:46:24 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:56:11 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ enum e_program_state {game, level_menu, main_menu};
 enum e_main_menu_state {start_game, settings, exit_game};
 enum e_playing_state {running, playing_menu};
 enum e_rendering {normal, transform};
+enum e_epileptic {ep_floor, ep_ceiling};
 
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
