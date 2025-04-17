@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/17 16:44:10 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:46:24 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,6 +272,7 @@ typedef struct s_cub3d
 	t_textures		textures;
 	t_main_menu		main_menu;
 	t_level_menu	level_menu;
+	pthread_mutex_t	print;
 }t_cub3d;
 
 typedef struct s_thread
@@ -364,6 +365,7 @@ void	print_usage(void);
 
 /*		RENDERING		*/
 void	raycast(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	raycasting(t_cub3d *cub3d);
 int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
@@ -374,5 +376,9 @@ void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			t_player *player, t_render *render);
 void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
 			t_minimap *minimap);
+
+
+
+
 
 #endif

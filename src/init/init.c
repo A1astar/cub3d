@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 16:50:19 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:43:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	init_randy(&cub3d->randy[2]);
 	init_randy(&cub3d->randy[3]);
 	cub3d->program_state = main_menu;
+	pthread_mutex_init(&cub3d->print, NULL);
 }
 
 void	init_player(t_player *player, t_minimap *minimap)
