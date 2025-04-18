@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/18 17:57:10 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/18 19:27:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@
 
 # define RUNNING 1
 
-// # define WINDOW_WIDTH 1280
-// # define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
 
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+// # define WINDOW_WIDTH 1920
+// # define WINDOW_HEIGHT 1080
 
 enum e_program_state {game, level_menu, main_menu};
 enum e_main_menu_state {start_game, settings, exit_game};
