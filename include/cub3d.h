@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/17 19:56:11 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/18 17:57:10 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@
 
 # define RUNNING 1
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
+// # define WINDOW_WIDTH 1280
+// # define WINDOW_HEIGHT 720
+
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 
 enum e_program_state {game, level_menu, main_menu};
 enum e_main_menu_state {start_game, settings, exit_game};
@@ -62,6 +65,42 @@ enum e_epileptic {ep_floor, ep_ceiling};
 
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
+
+
+/*TEMPORAIRES*/
+typedef struct s_ray_attributes
+{
+	bool	hit_wall;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		map_pos_x;
+	int		map_pos_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+}			t_ray_attributes;
+
+typedef struct s_draw_attributes
+{
+	double	perp_wall_dist;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	double	step;
+	double	tex_pos;
+}			t_draw_attributes;
+
+/*TEMPORAIRES*/
+
+
 
 typedef struct s_img
 {
@@ -76,16 +115,25 @@ typedef struct s_img
 
 typedef struct s_textures
 {
-
 	t_img	n_wall;
 	t_img	s_wall;
 	t_img	e_wall;
 	t_img	w_wall;
+	t_img	wall_one;
+	t_img	wall_two;
 	t_img	floor;
-	t_img	ceiling;
 	t_img	o_door;
 	t_img	c_door;
-	t_img	viewmodel;
+	t_img	shroom;
+	t_img	trip_n_wall;
+	t_img	trip_s_wall;
+	t_img	trip_e_wall;
+	t_img	trip_w_wall;
+	t_img	trip_wall_one;
+	t_img	trip_wall_two;
+	t_img	trip_floor;
+	t_img	trip_o_door;
+	t_img	trip_c_door;
 }t_textures;
 
 typedef struct s_map
@@ -366,7 +414,8 @@ void	print_usage(void);
 
 /*		RENDERING		*/
 void	raycast(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
-void	raycasting(t_cub3d *cub3d);
+void	raycast_threads(t_cub3d *cub3d);
+void	drunk_raycast_threads(t_cub3d *cub3d);
 int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);

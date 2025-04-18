@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 16:43:50 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:26:32 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@ static void	free_t_textures(t_textures *textures, t_window *window)
 	free_t_img(window, &textures->s_wall);
 	free_t_img(window, &textures->e_wall);
 	free_t_img(window, &textures->w_wall);
+	free_t_img(window, &textures->wall_one);
+	free_t_img(window, &textures->wall_two);
 	free_t_img(window, &textures->floor);
-	free_t_img(window, &textures->ceiling);
 	free_t_img(window, &textures->o_door);
 	free_t_img(window, &textures->c_door);
-	free_t_img(window, &textures->viewmodel);
+	free_t_img(window, &textures->shroom);
+	free_t_img(window, &textures->trip_n_wall);
+	free_t_img(window, &textures->trip_s_wall);
+	free_t_img(window, &textures->trip_e_wall);
+	free_t_img(window, &textures->trip_w_wall);
+	free_t_img(window, &textures->trip_wall_one);
+	free_t_img(window, &textures->trip_wall_two);
+	free_t_img(window, &textures->trip_floor);
+	free_t_img(window, &textures->trip_o_door);
+	free_t_img(window, &textures->trip_c_door);
 }
 
 static void	free_t_enemy(t_enemy *randy, t_window *window)

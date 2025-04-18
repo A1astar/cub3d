@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 18:43:06 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:30:57 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,33 @@ void	init_randy(t_enemy *randy)
 	ft_bzero(&randy->sprite[15], sizeof(t_img));
 }
 
+void	init_textures(t_textures *textures)
+{
+	ft_bzero(&textures->n_wall , sizeof(t_img));
+	ft_bzero(&textures->s_wall , sizeof(t_img));
+	ft_bzero(&textures->e_wall , sizeof(t_img));
+	ft_bzero(&textures->w_wall , sizeof(t_img));
+	ft_bzero(&textures->wall_one , sizeof(t_img));
+	ft_bzero(&textures->wall_two , sizeof(t_img));
+	ft_bzero(&textures->floor , sizeof(t_img));
+	ft_bzero(&textures->o_door , sizeof(t_img));
+	ft_bzero(&textures->c_door , sizeof(t_img));
+	ft_bzero(&textures->shroom , sizeof(t_img));
+	ft_bzero(&textures->trip_n_wall , sizeof(t_img));
+	ft_bzero(&textures->trip_s_wall , sizeof(t_img));
+	ft_bzero(&textures->trip_e_wall , sizeof(t_img));
+	ft_bzero(&textures->trip_w_wall , sizeof(t_img));
+	ft_bzero(&textures->trip_wall_one , sizeof(t_img));
+	ft_bzero(&textures->trip_wall_two , sizeof(t_img));
+	ft_bzero(&textures->trip_floor , sizeof(t_img));
+	ft_bzero(&textures->trip_o_door , sizeof(t_img));
+	ft_bzero(&textures->trip_c_door , sizeof(t_img));
+
+}
+
 void	init_struct_attributes(t_cub3d *cub3d)
 {
+	pthread_mutex_init(&cub3d->print, NULL);
 	ft_bzero(cub3d, sizeof(cub3d));
 	ft_bzero(&cub3d->map, sizeof(t_map));
 	ft_bzero(&cub3d->scene, sizeof(t_scene));
@@ -49,22 +74,13 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->randy[3], sizeof(t_enemy));
 	ft_bzero(&cub3d->main_menu, sizeof(t_main_menu));
 	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
-	ft_bzero(&cub3d->textures.n_wall, sizeof(t_img));
-	ft_bzero(&cub3d->textures.s_wall, sizeof(t_img));
-	ft_bzero(&cub3d->textures.e_wall, sizeof(t_img));
-	ft_bzero(&cub3d->textures.w_wall, sizeof(t_img));
-	ft_bzero(&cub3d->textures.floor, sizeof(t_img));
-	ft_bzero(&cub3d->textures.ceiling, sizeof(t_img));
-	ft_bzero(&cub3d->textures.o_door, sizeof(t_img));
-	ft_bzero(&cub3d->textures.c_door, sizeof(t_img));
-	ft_bzero(&cub3d->textures.viewmodel, sizeof(t_img));
 	ft_bzero(&cub3d->raycast, sizeof(t_raycast));
 	init_randy(&cub3d->randy[0]);
 	init_randy(&cub3d->randy[1]);
 	init_randy(&cub3d->randy[2]);
 	init_randy(&cub3d->randy[3]);
+	init_textures(&cub3d->textures);
 	cub3d->program_state = main_menu;
-	pthread_mutex_init(&cub3d->print, NULL);
 }
 
 void	init_player(t_player *player, t_minimap *minimap)

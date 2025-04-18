@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 19:59:58 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/18 18:02:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 // 	}
 // }
 
-void	epileptic_simulator(t_cub3d *cub3d, t_scene *scene, 
+void	epileptic_simulator(t_cub3d *cub3d, t_scene *scene,
 	t_map *map, int which)
 {
 	(void)cub3d;
@@ -66,21 +66,21 @@ void	epileptic_simulator(t_cub3d *cub3d, t_scene *scene,
 		while (x < WINDOW_WIDTH)
 		{
 			draw_pixel(&scene->img, x, y, red << 16 | green << 8 | blue);
-		
+
 			if(which == ep_ceiling)
 			{
 				blue *= 2;
-				// red++;
-				// green+= PI;
+				red+= PI;
+				green--;
 			}
 			else
-			{		
-				blue++;
-				// red++;
-				// green+= PI;
+			{
+				blue--;
+				red++;
+				green+= PI;
 			}
 			x++;
-			
+
 		}
 		y++;
 	}
@@ -129,12 +129,12 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 //	render_background(cub3d, scene);
 	render_floor(cub3d, scene, &cub3d->map);
-	// render_ceiling(cub3d, scene, &cub3d->map);
-	epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
-	epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
-	// render_minimap_ray(cub3d);
+	render_ceiling(cub3d, scene, &cub3d->map);
+	//epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
+	//epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
+	//render_minimap_ray(cub3d);
 	raycast(cub3d, &cub3d->raycast, &cub3d->player);
-	//raycasting(cub3d);
+	//raycast_threads(cub3d);
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
 	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player, &cub3d->player.render);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,

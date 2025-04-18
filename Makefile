@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/17 14:55:39 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/18 11:40:29 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ SRC					:= event/event_game.c \
 					parsing/parsing.c \
 					physics/hitbox_player.c \
 					rendering/raycast.c \
+					rendering/raycast_threads.c \
+					rendering/drunk_raycast_threads.c \
 					rendering/rendering_game.c \
 					rendering/rendering_level_menu.c \
 					rendering/rendering_main_menu.c \

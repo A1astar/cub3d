@@ -1,7 +1,7 @@
-NO ./asset/texture/xpm_files/env_textures/north_wall.xpm
-SO ./asset/texture/xpm_files/env_textures/south_wall.xpm
-WE ./asset/texture/xpm_files/env_textures/west_wall.xpm
-EA ./asset/texture/xpm_files/env_textures/east_wall.xpm
+NO                ./asset/vanilla_tiles/xpm/north_wall.xpm
+SO                ./asset/vanilla_tiles/xpm/south_wall.xpm
+WE                ./asset/vanilla_tiles/xpm/east_wall.xpm
+EA                ./asset/vanilla_tiles/xpm/west_wall.xpm
 
 F 220,100,0
 C 225,30,0

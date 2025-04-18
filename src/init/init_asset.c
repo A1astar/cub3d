@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_asset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:42:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 17:24:21 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:15:38 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	init_main_menu(t_cub3d *cub3d, t_window *window, t_main_menu *main_menu)
 {
 	main_menu->img[0].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-		"asset/main-menu/main-menu1-720.xpm", &main_menu->width, &main_menu->height);
+		"asset/main_menu/main-menu1-720.xpm", &main_menu->width, &main_menu->height);
 	main_menu->img[1].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-		"asset/main-menu/main-menu2-720.xpm", &main_menu->width, &main_menu->height);
+		"asset/main_menu/main-menu2-720.xpm", &main_menu->width, &main_menu->height);
 	main_menu->img[2].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-		"asset/main-menu/main-menu3-720.xpm", &main_menu->width, &main_menu->height);
+		"asset/main_menu/main-menu3-720.xpm", &main_menu->width, &main_menu->height);
 	if (!main_menu->img[0].ptr || !main_menu->img[1].ptr
 		|| !main_menu->img[2].ptr)
 	{
@@ -39,7 +39,7 @@ void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene)
 		&scene->img.bpp, &scene->img.size_line, &scene->img.endian);
 	if (!scene->img.addr)
 		free_program(cub3d);
-	
+
 }
 
 void	init_asset(t_cub3d *cub3d)
