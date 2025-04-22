@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/18 16:30:57 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:49:24 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	init_player(t_player *player, t_minimap *minimap)
 	if (player->orientation == north)
 	{
 		player->x_dir = 0;
-		player->y_dir = 1;
+		player->y_dir = -1;
 		player->angle = 90;
 	}
 	else if (player->orientation == east)
@@ -106,7 +106,7 @@ void	init_player(t_player *player, t_minimap *minimap)
 	else if (player->orientation == south)
 	{
 		player->x_dir = 0;
-		player->y_dir = -1;
+		player->y_dir = 1;
 		player->angle = 270;
 	}
 	player->radian = player->angle * (PI / 180.0);
@@ -138,8 +138,10 @@ void init_raycast(t_raycast *raycast, t_player *player)
 	raycast->fov_rad = raycast->fov * PI / 180.0;
 	raycast->x_plane = 0;
 	raycast->y_plane = 0.66;
-	raycast->x_dir = player->x_dir;
-	raycast->y_dir = player->y_dir;
+	raycast->x_dir = cos(player->radian);
+	raycast->y_dir = -sin(player->radian);
+	raycast->x_plane = -raycast->y_dir * tan(raycast->fov_rad / 2);
+	raycast->y_plane = raycast->x_dir * tan(raycast->fov_rad / 2);
 	raycast->width = WINDOW_WIDTH;
 	raycast->height = WINDOW_HEIGHT;
 }

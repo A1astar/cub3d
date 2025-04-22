@@ -12,6 +12,15 @@
 
 #include "../../include/cub3d.h"
 
+static void	player_ange_normalize(t_player *player)
+{
+	if(player->angle > 360)
+		player->angle -= 360;
+	else if (player->angle < 0)
+		player->angle += 360;
+	player->radian = player->angle * (PI / 180.0);
+}
+
 bool	is_player_button(int keynum)
 {
 	if (keynum == Button1 || keynum == Button3)
@@ -50,6 +59,7 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 
 		cub3d->player.angle -= VELOCITY * 10;
 		cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
+		player_ange_normalize(&cub3d->player);
 	}
 	else if (keynum == XK_d || keynum == XK_Right)
 	{
@@ -63,5 +73,6 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 
 		cub3d->player.angle += VELOCITY * 10;
 		cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
+		player_ange_normalize(&cub3d->player);
 	}
 }
