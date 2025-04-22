@@ -57,7 +57,10 @@ bool	is_player_movement_key(int keynum)
 int	game_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
-		exit_cub3d(cub3d);
+	{
+		cub3d->program_state = main_menu;
+		return (0);
+	}
 	else if (is_player_movement_key(keynum))
 		player_movement_key(keynum, cub3d);
 	else if (is_player_action_key(keynum))

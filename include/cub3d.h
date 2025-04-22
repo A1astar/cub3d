@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 19:23:14 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 19:46:15 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define PI 3.14159265358979323846
 # define VELOCITY 0.1
 # define MOVEMENT 0.5
+# define SENSIBILITY 1
 
 # define RUNNING 1
 
@@ -57,7 +58,7 @@
 // # define WINDOW_WIDTH 1920
 // # define WINDOW_HEIGHT 1080
 
-enum e_program_state {game, level_menu, main_menu};
+enum e_program_state {game, level_menu, main_menu, main_menu_settings};
 enum e_main_menu_state {start_game, settings, exit_game};
 enum e_playing_state {running, playing_menu};
 enum e_rendering {normal, transform};
