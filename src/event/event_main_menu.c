@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_main_menu.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 12:39:03 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 12:04:02 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main_menu_key_hook(int keynum, t_cub3d *cub3d)
 		exit_cub3d(cub3d);
 	else if ((keynum == XK_w || keynum == XK_Up) && cub3d->main_menu.index != 0)
 		cub3d->main_menu.index--;
-	else if ((keynum == XK_s || keynum == XK_Down) && cub3d->main_menu.index != 2)
+	else if ((keynum == XK_s || keynum == XK_Down)
+		&& cub3d->main_menu.index != 2)
 		cub3d->main_menu.index++;
 	else if (keynum == XK_Return)
 		main_menu_selection(cub3d);

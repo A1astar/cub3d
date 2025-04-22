@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:37:40 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 19:42:17 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 12:26:20 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*append_line(t_cub3d *game, char *buffer, char *line)
 {
 	char	*temp;
 
-	if(!line)
+	if (!line)
 		return (buffer);
 	if (!buffer)
 		return (ft_strdup(line));
@@ -36,7 +36,6 @@ int	open_file(t_cub3d *game, char *filename)
 	int	fd;
 
 	fd = open(filename, O_RDONLY);
-
 	if (fd == -1)
 		free_program(game);
 	return (fd);

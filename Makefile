@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/18 11:40:29 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/22 12:01:27 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC					:= event/event_game.c \
 					init/init_bonus_assets.c \
 					init/init_mandatory_assets.c \
 					init/init_mlx.c \
+					init/init_struct_attributes.c \
 					init/init.c \
 					parsing/extract_assets_paths.c \
 					parsing/extract_map.c \

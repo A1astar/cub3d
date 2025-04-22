@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/18 19:27:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 12:35:27 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ typedef struct s_map
 	char	**assets_paths;
 	int		ceilling_rgb[3];
 	int		floor_rgb[3];
+	size_t	height;
+	size_t	width;
 }t_map;
 
 typedef struct s_minimap
@@ -340,6 +342,11 @@ bool	is_player_action_key(int keynum);
 void	player_action_key(int keynum, t_cub3d *cub3d);
 void	player_action_button(int keynum, t_cub3d *cub3d);
 void	player_movement_key(int keynum, t_cub3d *cub3d);
+
+void	move_player_north(t_cub3d *cub3d);
+void	move_player_south(t_cub3d *cub3d);
+void	rotate_player_left(t_cub3d *cub3d);
+void	rotate_player_right(t_cub3d *cub3d);
 
 int		cub3d_loop(t_cub3d *cub3d);
 int		key_hook(int keynum, t_cub3d *cub3d);

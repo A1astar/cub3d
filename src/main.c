@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/15 17:20:37 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 12:02:34 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 
 	if (argument_count_correct(argc))
 	{
-		init_program(&cub3d,argv);
+		init_program(&cub3d, argv);
 		mlx_loop(cub3d.window.mlx_ptr);
 		free_program(&cub3d);
 		return (EXIT_SUCCESS);

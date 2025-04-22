@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/14 15:01:26 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 12:58:26 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	window->mlx_ptr = mlx_init();
 	if (window->mlx_ptr == NULL)
 	{
-		printf(BOLD RED"ERROR MLX INIT\n"DEFAULT);
-		// error_msg(NULL, NULL);
+		error_msg(BOLD RED "MLX init" DEFAULT, NULL);
 		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
@@ -28,8 +27,7 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 			window->width, window->height, "CUB3D");
 	if (window->win_ptr == NULL)
 	{
-		printf(BOLD RED"ERROR MLX NEW WINDOW\n"DEFAULT);
-		// error_msg(NULL, NULL);
+		error_msg(BOLD RED "MLX new window" DEFAULT, NULL);
 		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
