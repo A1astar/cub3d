@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 16:10:58 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 18:26:34by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,22 @@
 
 int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 {
-	mlx_mouse_get_pos(cub3d->window.mlx_ptr, cub3d->window.win_ptr, &x, &y);
+	int	last_x;
+    int	delta_x;
+
+    (void) y;
+    last_x = WINDOW_WIDTH / 2;
+    delta_x = x - last_x;
+	if (delta_x < 0)
+		rotate_player_left(cub3d);
+	else if (delta_x > 0)
+		rotate_player_right(cub3d);
+    // mlx_mouse_move(env->mlx, env->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+    // last_x = WINDOW_WIDTH / 2;
 	printf("x = %d | y = %d\n", x, y);
-	(void)cub3d;
-	return (0);
+	mlx_mouse_move(cub3d->window.mlx_ptr, cub3d->window.win_ptr,
+		WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+    return (0);
 }
 
 int	game_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
@@ -34,7 +46,9 @@ void	update_player_stats(t_cub3d *cub3d)
 
 bool	is_player_movement_key(int keynum)
 {
-	if (keynum == XK_w || keynum == XK_s || keynum == XK_a || keynum == XK_d
+	if (keynum == XK_w || keynum == XK_s
+		|| keynum == XK_a || keynum == XK_d
+		|| keynum == XK_Up || keynum == XK_Down
 		|| keynum == XK_Left || keynum == XK_Right)
 		return (true);
 	return (false);
