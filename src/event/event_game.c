@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 12:06:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:10:58 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 {
+	mlx_mouse_get_pos(cub3d->window.mlx_ptr, cub3d->window.win_ptr, &x, &y);
 	printf("x = %d | y = %d\n", x, y);
 	(void)cub3d;
 	return (0);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/22 12:01:27 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/22 15:31:53 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,15 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 ###########################		 	 SOURCE			###########################
 
 SRC_DIR				:= src
-SRC					:= event/event_game.c \
+SRC					:= event/event_exit.c \
+					event/event_game.c \
 					event/event_level_menu.c \
 					event/event_main_menu.c \
 					event/event_player_action.c \
-					event/event_player_key.c \
+					event/event_player_key_press.c \
+					event/event_player_key_release.c \
 					event/event_player_mouse.c \
-					event/event_player.c \
+					event/event_player_rotate.c \
 					event/event.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \

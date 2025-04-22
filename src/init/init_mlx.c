@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 12:58:26 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:08:11 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void	init_mlx_hook(t_cub3d *cub3d, t_window *window)
 	mlx_hook(cub3d->window.win_ptr, MotionNotify,
 		ButtonMotionMask | PointerMotionMask, mouse_motion_hook, cub3d);
 	mlx_hook(cub3d->window.win_ptr, KeyPress,
-		KeyPressMask, key_hook, cub3d);
+		KeyPressMask, key_press_hook, cub3d);
+	mlx_hook(cub3d->window.win_ptr, KeyRelease,
+		KeyReleaseMask, key_release_hook, cub3d);
 	mlx_hook(window->win_ptr, DestroyNotify,
 		StructureNotifyMask, &exit_cub3d, cub3d);
 }
@@ -86,4 +88,5 @@ void	init_mlx(t_cub3d *cub3d, t_window *window)
 {
 	init_mlx_window(cub3d, window);
 	init_mlx_hook(cub3d, window);
+	mlx_mouse_hide(cub3d->window.mlx_ptr, cub3d->window.win_ptr);
 }
