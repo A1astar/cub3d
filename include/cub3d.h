@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 17:27:48 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 17:35:32 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ enum e_main_menu_state {start_game, settings, exit_game};
 enum e_playing_state {running, playing_menu};
 enum e_rendering {normal, transform};
 enum e_epileptic {ep_floor, ep_ceiling};
+enum e_key_press {release, pressed};
 
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
@@ -364,7 +365,8 @@ void	rotate_player_left(t_cub3d *cub3d);
 void	rotate_player_right(t_cub3d *cub3d);
 
 int		cub3d_loop(t_cub3d *cub3d);
-int		key_hook(int keynum, t_cub3d *cub3d);
+int		key_press_hook(int keynum, t_cub3d *cub3d);
+int		key_release_hook(int keynum, t_cub3d *cub3d);
 int		mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 int		mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 
