@@ -6,23 +6,15 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/17 16:56:03 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:20:17 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static bool	mandatory_assets_are_missing(t_textures *textures)
+static void	load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
 {
-	if (!textures->n_wall.ptr || !textures->s_wall.ptr
-		|| !textures->e_wall.ptr || !textures->w_wall.ptr)
-		return (true);
-	else
-		return (false);
-}
-
-static void	mlx_load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
-{
+	check_asset_duplicates(cub3d, texture);
 	while (*asset_path && *asset_path != '/')
 		asset_path++;
 	if (!asset_path || !*(asset_path + 1))
@@ -86,13 +78,13 @@ static void	load_assets(t_cub3d *cub3d, t_textures *textures, char *asset_line,
 		size_t line_lengh)
 {
 	if (ft_strnstr(asset_line, "NO", line_lengh))
-		mlx_load_img(cub3d, &textures->n_wall, asset_line);
+		load_img(cub3d, &textures->n_wall, asset_line);
 	else if (ft_strnstr(asset_line, "SO", line_lengh))
-		mlx_load_img(cub3d, &textures->s_wall, asset_line);
+		load_img(cub3d, &textures->s_wall, asset_line);
 	else if (ft_strnstr(asset_line, "WE", line_lengh))
-		mlx_load_img(cub3d, &textures->w_wall, asset_line);
+		load_img(cub3d, &textures->w_wall, asset_line);
 	else if (ft_strnstr(asset_line, "EA", line_lengh))
-		mlx_load_img(cub3d, &textures->e_wall, asset_line);
+		load_img(cub3d, &textures->e_wall, asset_line);
 }
 
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)

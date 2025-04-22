@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:58:36 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/17 15:05:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 14:26:43 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+static bool	is_floor(char **map, int y, int x)
+{
+	if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+		|| map[y][x] == 'E' || map[y][x] == 'W')
+		return (true);
+	return (false);
+}
 
 void	render_minimap_ray(t_cub3d *cub3d)
 {
@@ -34,9 +42,7 @@ void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
 		x = minimap->x_origin;
 		while (map->map[i][j])
 		{
-			if (map->map[i][j] == '0' || map->map[i][j] == 'N'
-				|| map->map[i][j] == 'S' || map->map[i][j] == 'E'
-				|| map->map[i][j] == 'W')
+			if (is_floor(map->map, i, j))
 				draw_square(cub3d, x, y, HEX_GREY);
 			else if (map->map[i][j] == '1')
 				draw_square(cub3d, x, y, HEX_BLACK);

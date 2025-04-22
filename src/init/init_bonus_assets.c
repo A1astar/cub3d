@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/18 16:36:04 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:11:50 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,20 +170,28 @@ static void	load_env_assets(t_cub3d *cub3d, t_textures *textures)
 static void	load_trip_assets(t_cub3d *cub3d, t_textures *textures)
 {
 	load_texture(cub3d, &textures->shroom, "asset/item/xpm/shroom.xpm");
-	load_texture(cub3d, &textures->trip_n_wall, "asset/trip_tiles/xpm/trip_north_wall.xpm");
-	load_texture(cub3d, &textures->trip_s_wall, "asset/trip_tiles/xpm/trip_south_wall.xpm");
-	load_texture(cub3d, &textures->trip_e_wall, "asset/trip_tiles/xpm/trip_east_wall.xpm");
-	load_texture(cub3d, &textures->trip_w_wall, "asset/trip_tiles/xpm/trip_west_wall.xpm");
-	load_texture(cub3d, &textures->trip_wall_one, "asset/trip_tiles/xpm/trip_wall_1.xpm");
-	load_texture(cub3d, &textures->trip_wall_two, "asset/trip_tiles/xpm/trip_wall_2.xpm");
-	load_texture(cub3d, &textures->trip_floor, "asset/trip_tiles/xpm/trip_floor.xpm");
-	load_texture(cub3d, &textures->trip_c_door, "asset/trip_tiles/xpm/trip_closed_door.xpm");
-	load_texture(cub3d, &textures->trip_o_door, "asset/trip_tiles/xpm/trip_open_door.xpm");
+	load_texture(cub3d, &textures->trip_n_wall,
+		"asset/trip_tiles/xpm/trip_north_wall.xpm");
+	load_texture(cub3d, &textures->trip_s_wall,
+		"asset/trip_tiles/xpm/trip_south_wall.xpm");
+	load_texture(cub3d, &textures->trip_e_wall,
+		"asset/trip_tiles/xpm/trip_east_wall.xpm");
+	load_texture(cub3d, &textures->trip_w_wall,
+		"asset/trip_tiles/xpm/trip_west_wall.xpm");
+	load_texture(cub3d, &textures->trip_wall_one,
+		"asset/trip_tiles/xpm/trip_wall_1.xpm");
+	load_texture(cub3d, &textures->trip_wall_two,
+		"asset/trip_tiles/xpm/trip_wall_2.xpm");
+	load_texture(cub3d, &textures->trip_floor,
+		"asset/trip_tiles/xpm/trip_floor.xpm");
+	load_texture(cub3d, &textures->trip_c_door,
+		"asset/trip_tiles/xpm/trip_closed_door.xpm");
+	load_texture(cub3d, &textures->trip_o_door,
+		"asset/trip_tiles/xpm/trip_open_door.xpm");
 }
 
 void	init_bonus_assets(t_cub3d *cub3d)
 {
 	load_env_assets(cub3d, &cub3d->textures);
 	load_trip_assets(cub3d, &cub3d->textures);
-	// load_randy_assets(cub3d);
 }

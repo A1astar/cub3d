@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_main_menu.c                                 :+:      :+:    :+:   */
+/*   rendering_main_menu.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/11 17:13:26 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 14:22:18 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	render_main_menu(t_cub3d *cub3d, t_window *window, t_main_menu *main_menu)
+void	render_main_menu(t_cub3d *cub3d, t_window *window,
+		t_main_menu *main_menu)
 {
 	(void)cub3d;
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, 
+	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
 		main_menu->img[main_menu->index].ptr, 0, 0);
 }
 

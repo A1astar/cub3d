@@ -6,15 +6,20 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 11:55:11 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:11:24 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/cub3d.h"
 
+static void	init_player_attributes(t_player *player, t_minimap *minimap)
+{
+	player->radian = player->angle * (PI / 180.0);
+	player->height = minimap->tile_height;
+	player->width = minimap->tile_width;
+}
 
-void	init_player(t_player *player, t_minimap *minimap)
+static void	init_player(t_player *player, t_minimap *minimap)
 {
 	if (player->orientation == north)
 	{
@@ -40,12 +45,10 @@ void	init_player(t_player *player, t_minimap *minimap)
 		player->y_dir = 1;
 		player->angle = 270;
 	}
-	player->radian = player->angle * (PI / 180.0);
-	player->height = minimap->tile_height;
-	player->width = minimap->tile_width;
+	init_player_attributes(player, minimap);
 }
 
-void	init_minimap(t_minimap *minimap)
+static void	init_minimap(t_minimap *minimap)
 {
 	int	map_width;
 	int	map_height;
@@ -63,7 +66,7 @@ void	init_minimap(t_minimap *minimap)
 		minimap->y_origin = WINDOW_HEIGHT - map_height;
 }
 
-void init_raycast(t_raycast *raycast, t_player *player)
+static void	init_raycast(t_raycast *raycast, t_player *player)
 {
 	raycast->fov = 66.0;
 	raycast->fov_rad = raycast->fov * PI / 180.0;
