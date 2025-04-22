@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:55:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 14:39:46 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:31:55 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,8 +178,8 @@ void	update_raycast(t_raycast *raycast, t_player *player, int x, int w)
 
 t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures)
 {
-	if (cub3d->map.map[(int)ray->y_map][(int)ray->y_map] == 'D')
-		return (&textures->c_door);
+	if (cub3d->map.map[(int)ray->y_map][(int)ray->x_map] == 'D')
+		return (&textures->o_door);
 	if (ray->side == 0)
 	{
 		if (((int)ray->x_map + (int)ray->y_map) % 2 != 0)
@@ -199,6 +199,14 @@ t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures)
 			return (&textures->s_wall);
 	}
 }
+
+// static int get_alpha(unsigned int color)
+// {
+// 	unsigned char *a;
+
+// 	a = (unsigned char *)&color;
+// 	return(a[0]);
+// }
 
 void	draw_texture(t_cub3d *cub3d, t_raycast *ray, t_draw_attributes *draw,
 		int ray_num)
@@ -229,8 +237,9 @@ void	draw_texture(t_cub3d *cub3d, t_raycast *ray, t_draw_attributes *draw,
 		draw->tex_pos += draw->step;
 		offset = draw->tex_y * img->size_line + draw->tex_x * (img->bpp / 8);
 		color = *(unsigned int *)(img->addr + offset);
-		if (ray->side == 1)
+		if (ray->side == 1 && (color >> 24) != 0)
 			color = (color >> 1) & 0x7F7F7F;
+		//if(get_alpha(color) != 0)
 		draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		draw->draw_start++;
 	}
