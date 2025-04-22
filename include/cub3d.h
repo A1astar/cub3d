@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 14:20:49 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:43:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,7 +381,7 @@ void	init_struct_attributes(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
-void	check_asset_duplicate(t_cub3d *cub3d, t_img *texture);
+void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
 
 /*		MEMORY		*/

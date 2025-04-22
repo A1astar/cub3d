@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:06:53 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 14:20:39 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:43:48 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	is_rgb_code(char **tab)
 	return (true);
 }
 
-void	check_asset_duplicate(t_cub3d *cub3d, t_img *texture)
+void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture)
 {
 	if (texture->ptr)
 	{
