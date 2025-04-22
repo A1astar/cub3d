@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:00:23 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/18 18:02:50 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:35:47 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
-void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color)
+void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
+		unsigned int color)
 {
 	int	y;
 	int	x;

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:55:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/18 16:51:35 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:37:42 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,21 +195,7 @@ static void	raycast_simple_ray(t_cub3d *cub3d, int ray_num, t_player *player,
 
 	init_ray_attributes(player, raycast, &ray, ray_num);
 	perform_dda(&ray, cub3d->map.map);
-//	pthread_mutex_lock(&cub3d->print);
 	init_draw_attributes(&ray, &draw, player);
-	// printf("ray.camera: %lf\n" ,ray.camera_x);
-	// printf("ray.delta: %lf\n", ray.delta_dist_x);
-	// printf("ray.delta_dist_y: %lf\n", ray.delta_dist_y);
-	// printf("ray.side: %d\n", ray.side);
-	// printf("ray.map.posX: %d\n", ray.map_pos_x);
-	// printf("ray.map.posY: %d\n", ray.map_pos_y);
-	// printf("ray.stepX: %d\n", ray.step_x);
-	// printf("ray.stepY: %d\n", ray.step_y);
-	// printf("ray.raydirX: %lf\n", ray.raydir_x);
-	// printf("ray.raydirY: %lf\n", ray.raydir_y);
-	// printf("map entry: %c\n", cub3d->map.map[ray.map_pos_y][ray.map_pos_x]);
-	// printf("--------------------------------\n");
-//	pthread_mutex_unlock(&cub3d->print);
 	draw_texture(cub3d, &ray, &draw, ray_num);
 }
 
