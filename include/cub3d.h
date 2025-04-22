@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 17:35:32 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:11:45 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -439,7 +439,10 @@ void	print_2d_array_string(char **str);
 void	print_usage(void);
 
 /*		RENDERING		*/
-void	raycast(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	update_raycast(t_raycast *raycast, t_player *player, int x, int w);
+void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
 int		game_loop(t_cub3d *cub3d);

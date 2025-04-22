@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 17:32:45 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:12:03 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,8 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	//epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
 	//epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
 	//render_minimap_ray(cub3d);
-	raycast(cub3d, &cub3d->raycast, &cub3d->player);
+	raycast_map(cub3d, &cub3d->raycast, &cub3d->player);
+	raycast_doors(cub3d, &cub3d->raycast, &cub3d->player);
 	//raycast_threads(cub3d);
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
 	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player,
