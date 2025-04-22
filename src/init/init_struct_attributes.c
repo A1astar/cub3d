@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct_attributes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:20:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 12:19:50 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:49:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->scene, sizeof(t_scene));
 	ft_bzero(&cub3d->window, sizeof(t_window));
 	ft_bzero(&cub3d->player, sizeof(t_player));
+	ft_bzero(&cub3d->key_state, sizeof(t_key_state));
 	ft_bzero(&cub3d->player.render, sizeof(t_render));
 	ft_bzero(&cub3d->minimap, sizeof(t_minimap));
 	ft_bzero(&cub3d->setting, sizeof(t_setting));

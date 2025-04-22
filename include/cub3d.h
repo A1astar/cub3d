@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 14:43:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:50:25 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_textures
 	t_img	trip_floor;
 	t_img	trip_o_door;
 	t_img	trip_c_door;
+	t_img	viewmodel;
 }t_textures;
 
 typedef struct s_map
@@ -307,6 +308,18 @@ typedef struct s_level_menu
 	t_img	img;
 }t_level_menu;
 
+typedef struct s_key_state
+{
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+	bool	up;
+	bool	left;
+	bool	down;
+	bool	right;
+}t_key_state;
+
 typedef struct s_cub3d
 {
 	int				nb_enemy;
@@ -322,6 +335,7 @@ typedef struct s_cub3d
 	t_enemy			randy[4];
 	t_textures		textures;
 	t_main_menu		main_menu;
+	t_key_state		key_state;
 	t_level_menu	level_menu;
 	pthread_mutex_t	print;
 }t_cub3d;
