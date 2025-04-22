@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 19:21:45 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 19:23:14 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct s_textures
 	t_img	trip_o_door;
 	t_img	trip_c_door;
 	t_img	viewmodel;
+	t_img	trip_viewmodel;
 }t_textures;
 
 typedef struct s_map
@@ -437,7 +438,10 @@ void	print_2d_array_string(char **str);
 void	print_usage(void);
 
 /*		RENDERING		*/
-void	raycast(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	update_raycast(t_raycast *raycast, t_player *player, int x, int w);
+void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
 int		game_loop(t_cub3d *cub3d);

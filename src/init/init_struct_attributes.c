@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct_attributes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:20:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 14:54:01 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/22 17:35:46 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static void	init_textures(t_textures *textures)
 	ft_bzero(&textures->trip_floor, sizeof(t_img));
 	ft_bzero(&textures->trip_o_door, sizeof(t_img));
 	ft_bzero(&textures->trip_c_door, sizeof(t_img));
+	ft_bzero(&textures->viewmodel, sizeof(t_img));
+	ft_bzero(&textures->trip_viewmodel, sizeof(t_img));
 }
 
 void	init_struct_attributes(t_cub3d *cub3d)

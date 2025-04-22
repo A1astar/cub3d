@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:10:09 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/10 17:50:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:15:46 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	check_player_nb(t_cub3d *cub3d, int enemy_nb)
 
 void	check_valid_element(t_cub3d *cub3d, char c)
 {
-	if (c == '1' || c == '0' || c <= ' ' || c == 'D')
+	if (c == '1' || c == '0' || c <= ' ' || c == 'O' || c == 'C')
 		return ;
 	else
 	{

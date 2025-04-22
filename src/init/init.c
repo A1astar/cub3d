@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 14:11:24 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 15:46:29 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ static void	init_minimap(t_minimap *minimap)
 	minimap->tile_height = 5;
 	minimap->tile_width = 5;
 	minimap->scale = 1;
-	minimap->x_origin = WINDOW_WIDTH * 0.66;
 	map_width = minimap->width * minimap->tile_width;
 	if (map_width + minimap->x_origin > WINDOW_WIDTH)
 		minimap->x_origin = WINDOW_WIDTH - map_width;
-	minimap->y_origin = WINDOW_HEIGHT * 0.8;
 	map_height = minimap->height * minimap->tile_height;
 	if (map_height + minimap->y_origin > WINDOW_HEIGHT)
 		minimap->y_origin = WINDOW_HEIGHT - map_height;
+	minimap->x_origin = WINDOW_WIDTH - minimap->width - (5 * minimap->width);
+	minimap->y_origin = WINDOW_HEIGHT - minimap->height - (5 * minimap->height);
 }
 
 static void	init_raycast(t_raycast *raycast, t_player *player)
