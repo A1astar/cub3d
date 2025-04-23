@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 15:50:40 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 16:24:22 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ typedef struct s_textures
 	t_img	trip_floor;
 	t_img	trip_o_door;
 	t_img	trip_c_door;
-	t_img	trip_viewmodel;
 }t_textures;
 
 typedef struct s_map
@@ -184,7 +183,13 @@ typedef struct s_viewmodel
 {
 	bool	orientation;
 	int		draw_pos;
-	t_img	img;
+	t_img	normal_stand;
+	t_img	trip_stand;
+	t_img	normal_sword_sprite[4];
+	t_img	normal_wand_sprite[4];
+	t_img	trip_sword_sprite[4];
+	t_img	trip_cig_sprite[4];
+
 }t_viewmodel;
 
 typedef struct s_player
