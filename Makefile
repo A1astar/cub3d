@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/22 19:12:50 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/23 12:46:59 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRC					:= event/event_exit.c \
 					rendering/rendering_minimap_player.c \
 					rendering/rendering_minimap.c \
 					rendering/rendering_utils.c \
+					rendering/rendering_trip_mode.c \
 					rendering/rendering.c \
 					error.c \
 					memory/free_game.c \

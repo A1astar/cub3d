@@ -26,6 +26,18 @@ bool	is_player_action_key(int keynum)
 	return (false);
 }
 
+void	update_viewmodel(t_viewmodel *viewmodel)
+{
+	if (viewmodel->draw_pos == 20)
+		viewmodel->orientation = down;
+	else if (viewmodel->draw_pos == 0)
+		viewmodel->orientation = up;
+	if (viewmodel->orientation == down)
+		viewmodel->draw_pos--;
+	else if (viewmodel->orientation == up)
+		viewmodel->draw_pos++;
+}
+
 void	player_movement_key(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_w || keynum == XK_Up)
@@ -52,4 +64,5 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 		cub3d->key_state.right = pressed;
 		rotate_player_right(cub3d);
 	}
+	update_viewmodel(&cub3d->player.viewmodel);
 }

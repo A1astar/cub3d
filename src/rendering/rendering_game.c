@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 19:12:03 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:56:50 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,31 +138,31 @@ static int	get_pixel(t_img *img, int x, int y)
 	return (color);
 }
 
-void	render_viewmodel(t_img *viewmodel, t_scene *scene)
+void	render_viewmodel(t_viewmodel *viewmodel, t_scene *scene)
 {
 	int				x_start;
 	int				y_start;
-	int				x_draw;
-	int				y_draw;
+	int				x;
+	int				y;
 	unsigned int	color;
 
-	x_draw = 0;
-	y_draw = 0;
+	x = 0;
+	y = 0;
 	color = 0;
-	x_start = (WINDOW_WIDTH/ 2) - (viewmodel->width / 2);
-	y_start = WINDOW_HEIGHT - viewmodel->height;
-	while (y_draw < viewmodel->height)
+	x_start = WINDOW_WIDTH / 2 - viewmodel->img.width / 2;
+	y_start = WINDOW_HEIGHT - viewmodel->img.height + viewmodel->draw_pos;
+	while (y < viewmodel->img.height)
 	{
-		x_draw = 0;
-		while (x_draw < viewmodel->width)
+		x = 0;
+		while (x < viewmodel->img.width)
 		{
-			color = get_pixel(viewmodel, x_draw, y_draw);
+			color = get_pixel(&viewmodel->img, x, y);
 			if ((color >> 24) == 0)
-				draw_pixel(&scene->img, x_start + x_draw, y_start + y_draw,
+				draw_pixel(&scene->img, x_start + x, y_start + y,
 					color);
-			x_draw++;
+			x++;
 		}
-		y_draw++;
+		y++;
 	}
 }
 
@@ -180,7 +180,7 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
 	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player,
 		&cub3d->player.render);
-	render_viewmodel(&cub3d->textures.viewmodel, &cub3d->scene);
+	render_viewmodel(&cub3d->player.viewmodel, &cub3d->scene);
 	//render_viewmodel(&cub3d->textures.trip_viewmodel, &cub3d->scene);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
 		0);

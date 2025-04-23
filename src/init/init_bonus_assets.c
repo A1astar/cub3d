@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus_assets.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 17:29:12 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:55:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ static void	load_env_assets(t_cub3d *cub3d, t_textures *textures)
 		"asset/vanilla_tiles/xpm/wall_1.xpm");
 	load_texture(cub3d, &textures->wall_two,
 		"asset/vanilla_tiles/xpm/wall_2.xpm");
-	load_texture(cub3d, &textures->viewmodel,
+	load_texture(cub3d, &cub3d->player.viewmodel.img,
 		"asset/viewmodel/xpm/viewmodel.xpm");
 	load_texture(cub3d, &textures->trip_viewmodel,
 		"asset/viewmodel/xpm/trip_viewmodel.xpm");

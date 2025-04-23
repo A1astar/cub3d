@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 11:05:55 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 12:52:43 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define PI 3.14159265358979323846
 # define VELOCITY 0.1
 # define MOVEMENT 0.5
-# define SENSIBILITY 1
+# define SENSIBILITY 0.05
 
 # define RUNNING 1
 
@@ -64,6 +64,7 @@ enum e_playing_state {running, playing_menu};
 enum e_rendering {normal, transform};
 enum e_epileptic {ep_floor, ep_ceiling};
 enum e_key_press {release, pressed};
+enum e_viewmodel {down, up};
 
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
@@ -135,7 +136,6 @@ typedef struct s_textures
 	t_img	trip_floor;
 	t_img	trip_o_door;
 	t_img	trip_c_door;
-	t_img	viewmodel;
 	t_img	trip_viewmodel;
 }t_textures;
 
@@ -180,8 +180,16 @@ typedef struct s_render
 	double	y_rot;
 }	t_render;
 
+typedef struct s_viewmodel
+{
+	bool	orientation;
+	int		draw_pos;
+	t_img	img;
+}t_viewmodel;
+
 typedef struct s_player
 {
+	t_viewmodel		viewmodel;
 	t_render		render;
 	t_orientation	orientation;
 
