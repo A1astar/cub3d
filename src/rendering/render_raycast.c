@@ -6,21 +6,22 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:09:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 19:19:36 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:11:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int get_alpha(unsigned int color)
+static int	get_alpha(unsigned int color)
 {
-	unsigned char *a;
+	unsigned char	*a;
 
 	a = (unsigned char *)&color;
-	return(a[1]);
+	return (a[1]);
 }
 
-static t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures)
+static t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray,
+		t_textures *textures)
 {
 	if (cub3d->map.map[(int)ray->y_map][(int)ray->x_map] == 'C')
 		return (&textures->c_door);
@@ -46,8 +47,8 @@ static t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *texture
 	}
 }
 
-static void	draw_texture(t_cub3d *cub3d, t_raycast *ray, t_draw_attributes *draw,
-		int ray_num)
+static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
+		t_draw_attributes *draw, int ray_num)
 {
 	int				offset;
 	unsigned int	color;
@@ -77,7 +78,7 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray, t_draw_attributes *draw
 		color = *(unsigned int *)(img->addr + offset);
 		if (ray->side == 1 && (color >> 24) != 0)
 			color = (color >> 1) & 0x7F7F7F;
-		if(get_alpha(color) != 0)
+		if (get_alpha(color) != 0)
 			draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		draw->draw_start++;
 	}

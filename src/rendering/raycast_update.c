@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:03:43 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 19:11:17 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:08:48 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,18 @@ void	update_raycast(t_raycast *raycast, t_player *player, int x, int w)
 	raycast->y_map = (int)player->y_pos;
 	update_raycast_delta(raycast);
 	update_raycast_side(raycast, player);
+}
+
+void	update_ray_step_x(t_raycast *raycast)
+{
+	raycast->x_side += raycast->x_delta;
+	raycast->x_map += raycast->x_step;
+	raycast->side = 0;
+}
+
+void	update_ray_step_y(t_raycast *raycast)
+{
+	raycast->y_side += raycast->y_delta;
+	raycast->y_map += raycast->y_step;
+	raycast->side = 1;
 }

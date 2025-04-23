@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:58:36 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 14:35:25 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/22 19:27:13 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
 				draw_square(cub3d, x, y, HEX_BLACK);
 			else if (map->map[i][j] == 'R')
 				draw_square(cub3d, x, y, HEX_RED);
-			else if (map->map[i][j] == 'D')
+			else if (map->map[i][j] == 'C' ||map->map[i][j] == 'O')
 				draw_square(cub3d, x, y, HEX_BROWN);
 			j++;
 			x += minimap->tile_width;

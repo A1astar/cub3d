@@ -3,34 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_action.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:18:38 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/15 12:20:04 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 11:49:16 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+static void	doors_open_close(t_player *player, t_map *map)
+{
+	if (map->map[(int)(player->y_pos + 1)][(int)(player->x_pos)] == 'C')
+		map->map[(int)(player->y_pos + 1)][(int)(player->x_pos)] = 'O';
+	else if (map->map[(int)(player->y_pos - 1)][(int)(player->x_pos)] == 'C')
+		map->map[(int)(player->y_pos - 1)][(int)(player->x_pos)] = 'O';
+	else if (map->map[(int)(player->y_pos)][(int)(player->x_pos + 1)] == 'C')
+		map->map[(int)(player->y_pos)][(int)(player->x_pos + 1)] = 'O';
+	else if (map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] == 'C')
+		map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] = 'O';
+	else if (map->map[(int)(player->y_pos + 1)][(int)(player->x_pos)] == 'O')
+		map->map[(int)(player->y_pos + 1)][(int)(player->x_pos)] = 'C';
+	else if (map->map[(int)(player->y_pos - 1)][(int)(player->x_pos)] == 'O')
+		map->map[(int)(player->y_pos - 1)][(int)(player->x_pos)] = 'C';
+	else if (map->map[(int)(player->y_pos)][(int)(player->x_pos + 1)] == 'O')
+		map->map[(int)(player->y_pos)][(int)(player->x_pos + 1)] = 'C';
+	else if (map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] == 'O')
+		map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] = 'C';
+}
+
 static void	player_reload(t_cub3d *cub3d)
 {
-	printf(BOLD WHITE"Player "DEFAULT);
-	printf(BOLD CYAN"cast!\n"DEFAULT);
+	printf(BOLD WHITE "Player " DEFAULT);
+	printf(BOLD CYAN "cast!\n" DEFAULT);
 	(void)cub3d;
 }
 
 static void	player_cast(t_cub3d *cub3d)
 {
-	printf(BOLD WHITE"Player "DEFAULT);
-	printf(BOLD CYAN"cast!\n"DEFAULT);
+	printf(BOLD WHITE "Player " DEFAULT);
+	printf(BOLD CYAN "cast!\n" DEFAULT);
 	(void)cub3d;
 }
 
 static void	player_interaction(t_cub3d *cub3d)
 {
-	printf(BOLD WHITE"Player "DEFAULT);
-	printf(BOLD CYAN"interaction!\n"DEFAULT);
-	(void)cub3d;
+	doors_open_close(&cub3d->player, &cub3d->map);
 }
 
 void	player_action_key(int keynum, t_cub3d *cub3d)

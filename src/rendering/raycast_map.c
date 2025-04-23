@@ -6,13 +6,11 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:55:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 19:09:24 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:08:01 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-
 
 bool	wall_hit(t_map *map, t_raycast *raycast)
 {
@@ -32,17 +30,9 @@ void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player)
 		while (!wall_hit(&cub3d->map, &cub3d->raycast))
 		{
 			if (raycast->x_side < raycast->y_side)
-			{
-				raycast->x_side += raycast->x_delta;
-				raycast->x_map += raycast->x_step;
-				raycast->side = 0;
-			}
+				update_ray_step_x(raycast);
 			else
-			{
-				raycast->y_side += raycast->y_delta;
-				raycast->y_map += raycast->y_step;
-				raycast->side = 1;
-			}
+				update_ray_step_y(raycast);
 		}
 		if (raycast->side == 0)
 			raycast->perp_wall = raycast->x_side - raycast->x_delta;
