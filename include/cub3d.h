@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 14:48:55 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 15:50:40 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -367,6 +367,8 @@ void	player_action_key(int keynum, t_cub3d *cub3d);
 void	player_action_button(int keynum, t_cub3d *cub3d);
 void	player_movement_key(int keynum, t_cub3d *cub3d);
 
+void	move_player_west(t_cub3d *cub3d);
+void	move_player_east(t_cub3d *cub3d);
 void	move_player_north(t_cub3d *cub3d);
 void	move_player_south(t_cub3d *cub3d);
 void	rotate_player_left(t_cub3d *cub3d);
@@ -439,8 +441,8 @@ char	*append_line(t_cub3d *cub3d, char *buffer, char *line);
 /*		PHYSICS		*/
 bool	can_move_to_north(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_south(t_raycast *raycast, t_player *player, t_map *map);
-bool	can_move_to_west(t_player *player, t_map *map, int x, int y);
-bool	can_move_to_east(t_player *player, t_map *map, int x, int y);
+bool	can_move_to_east(t_raycast *raycast, t_player *player, t_map *map);
+bool	can_move_to_west(t_raycast *raycast, t_player *player, t_map *map);
 
 /*		PRINT		*/
 void	print_2d_array_string(char **str);

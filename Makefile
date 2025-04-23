@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/23 14:24:11 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/23 15:25:20 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC					:= event/event_exit.c \
 					event/event_player_key_press.c \
 					event/event_player_key_release.c \
 					event/event_player_mouse.c \
+					event/event_player_movement.c \
 					event/event_player_rotate.c \
 					event/event.c \
 					init/init_asset.c \
