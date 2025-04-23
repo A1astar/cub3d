@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus_assets.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 12:55:55 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 16:07:41 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,10 +165,6 @@ static void	load_env_assets(t_cub3d *cub3d, t_textures *textures)
 		"asset/vanilla_tiles/xpm/wall_1.xpm");
 	load_texture(cub3d, &textures->wall_two,
 		"asset/vanilla_tiles/xpm/wall_2.xpm");
-	load_texture(cub3d, &cub3d->player.viewmodel.img,
-		"asset/viewmodel/xpm/viewmodel.xpm");
-	load_texture(cub3d, &textures->trip_viewmodel,
-		"asset/viewmodel/xpm/trip_viewmodel.xpm");
 }
 
 static void	load_trip_assets(t_cub3d *cub3d, t_textures *textures)
@@ -194,8 +190,54 @@ static void	load_trip_assets(t_cub3d *cub3d, t_textures *textures)
 		"asset/trip_tiles/xpm/trip_open_door.xpm");
 }
 
+static void	load_normal_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels)
+{
+	load_texture(cub3d, &viewmodels->normal_stand,
+		"asset/viewmodel/xpm/normal_stand.xpm");
+	load_texture(cub3d, &viewmodels->normal_sword_sprite[0],
+		"asset/viewmodel/xpm/normal_sword_1.xpm");
+	load_texture(cub3d, &viewmodels->normal_sword_sprite[1],
+		"asset/viewmodel/xpm/normal_sword_2.xpm");
+	load_texture(cub3d, &viewmodels->normal_sword_sprite[2],
+		"asset/viewmodel/xpm/normal_sword_3.xpm");
+	load_texture(cub3d, &viewmodels->normal_sword_sprite[3],
+		"asset/viewmodel/xpm/normal_sword_4.xpm");
+	load_texture(cub3d, &viewmodels->normal_wand_sprite[0],
+		"asset/viewmodel/xpm/normal_wand_1.xpm");
+	load_texture(cub3d, &viewmodels->normal_wand_sprite[1],
+		"asset/viewmodel/xpm/normal_wand_2.xpm");
+	load_texture(cub3d, &viewmodels->normal_wand_sprite[2],
+		"asset/viewmodel/xpm/normal_wand_3.xpm");
+	load_texture(cub3d, &viewmodels->normal_wand_sprite[3],
+		"asset/viewmodel/xpm/normal_wand_4.xpm");
+}
+
+static void	load_trip_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels)
+{
+	load_texture(cub3d, &viewmodels->trip_stand,
+		"asset/viewmodel/xpm/trip_stand.xpm");
+	load_texture(cub3d, &viewmodels->trip_sword_sprite[0],
+		"asset/viewmodel/xpm/trip_sword_1.xpm");
+	load_texture(cub3d, &viewmodels->trip_sword_sprite[1],
+		"asset/viewmodel/xpm/trip_sword_2.xpm");
+	load_texture(cub3d, &viewmodels->trip_sword_sprite[2],
+		"asset/viewmodel/xpm/trip_sword_3.xpm");
+	load_texture(cub3d, &viewmodels->trip_sword_sprite[3],
+		"asset/viewmodel/xpm/trip_sword_4.xpm");
+	load_texture(cub3d, &viewmodels->trip_cig_sprite[0],
+		"asset/viewmodel/xpm/trip_cig_1.xpm");
+	load_texture(cub3d, &viewmodels->trip_cig_sprite[1],
+		"asset/viewmodel/xpm/trip_cig_2.xpm");
+	load_texture(cub3d, &viewmodels->trip_cig_sprite[2],
+		"asset/viewmodel/xpm/trip_cig_3.xpm");
+	load_texture(cub3d, &viewmodels->trip_cig_sprite[3],
+		"asset/viewmodel/xpm/trip_cig_4.xpm");
+}
+
 void	init_bonus_assets(t_cub3d *cub3d)
 {
 	load_env_assets(cub3d, &cub3d->textures);
 	load_trip_assets(cub3d, &cub3d->textures);
+	load_normal_viewmodel(cub3d, &cub3d->player.viewmodel);
+	load_trip_viewmodel(cub3d, &cub3d->player.viewmodel);
 }

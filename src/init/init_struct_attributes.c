@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct_attributes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:20:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 12:56:10 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 16:03:54 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,28 @@ static void	init_textures(t_textures *textures)
 	ft_bzero(&textures->trip_floor, sizeof(t_img));
 	ft_bzero(&textures->trip_o_door, sizeof(t_img));
 	ft_bzero(&textures->trip_c_door, sizeof(t_img));
-	ft_bzero(&textures->trip_viewmodel, sizeof(t_img));
+}
+
+static void	init_viewmodel(t_viewmodel *viewmodel)
+{
+	ft_bzero(&viewmodel->normal_stand, sizeof(t_img));
+	ft_bzero(&viewmodel->trip_stand, sizeof(t_img));
+	ft_bzero(&viewmodel->normal_sword_sprite[0], sizeof(t_img));
+	ft_bzero(&viewmodel->normal_sword_sprite[1], sizeof(t_img));
+	ft_bzero(&viewmodel->normal_sword_sprite[2], sizeof(t_img));
+	ft_bzero(&viewmodel->normal_sword_sprite[3], sizeof(t_img));
+	ft_bzero(&viewmodel->normal_wand_sprite[0], sizeof(t_img));
+	ft_bzero(&viewmodel->normal_wand_sprite[1], sizeof(t_img));
+	ft_bzero(&viewmodel->normal_wand_sprite[2], sizeof(t_img));
+	ft_bzero(&viewmodel->normal_wand_sprite[3], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_sword_sprite[0], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_sword_sprite[1], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_sword_sprite[2], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_sword_sprite[3], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_cig_sprite[0], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_cig_sprite[1], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_cig_sprite[2], sizeof(t_img));
+	ft_bzero(&viewmodel->trip_cig_sprite[3], sizeof(t_img));
 }
 
 void	init_struct_attributes(t_cub3d *cub3d)
@@ -80,5 +101,6 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	init_randy(&cub3d->randy[2]);
 	init_randy(&cub3d->randy[3]);
 	init_textures(&cub3d->textures);
+	init_viewmodel(&cub3d->player.viewmodel);
 	cub3d->program_state = main_menu;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 12:56:50 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 16:22:27 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,14 +149,14 @@ void	render_viewmodel(t_viewmodel *viewmodel, t_scene *scene)
 	x = 0;
 	y = 0;
 	color = 0;
-	x_start = WINDOW_WIDTH / 2 - viewmodel->img.width / 2;
-	y_start = WINDOW_HEIGHT - viewmodel->img.height + viewmodel->draw_pos;
-	while (y < viewmodel->img.height)
+	x_start = WINDOW_WIDTH / 2 - viewmodel->normal_stand.width / 2;
+	y_start = WINDOW_HEIGHT - viewmodel->normal_stand.height + viewmodel->draw_pos;
+	while (y < viewmodel->normal_stand.height)
 	{
 		x = 0;
-		while (x < viewmodel->img.width)
+		while (x < viewmodel->normal_stand.width)
 		{
-			color = get_pixel(&viewmodel->img, x, y);
+			color = get_pixel(&viewmodel->normal_stand, x, y);
 			if ((color >> 24) == 0)
 				draw_pixel(&scene->img, x_start + x, y_start + y,
 					color);
