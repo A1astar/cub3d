@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:09:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 18:37:01 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:55:23 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,9 @@ static t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray,
 	}
 }
 
-static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
-		t_draw_attributes *draw, int ray_num)
+static void	init_draw_start_point(t_raycast *ray, t_draw_attributes *draw,
+		t_img *img)
 {
-	int				offset;
-	unsigned int	color;
-	bool			is_open_door;
-	t_img			*img;
-
-	color = 0;
-	img = select_texture(cub3d, ray, &cub3d->textures);
-	is_open_door = (img->ptr == cub3d->textures.o_door.ptr);
 	draw->tex_x = (int)(draw->wall_x * (double)(img->width));
 	if (draw->tex_x < 0)
 		draw->tex_x = 0;
@@ -70,6 +62,17 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 	draw->step = 1.0 * img->height / draw->line_height;
 	draw->tex_pos = (draw->draw_start - WINDOW_HEIGHT / 2 + draw->line_height
 			/ 2) * draw->step;
+}
+
+static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
+		t_draw_attributes *draw, int ray_num)
+{
+	int				offset;
+	unsigned int	color;
+	t_img			*img;
+
+	img = select_texture(cub3d, ray, &cub3d->textures);
+	init_draw_start_point(ray, draw, img);
 	while (draw->draw_start < draw->draw_end)
 	{
 		draw->tex_y = (int)(draw->tex_pos);
@@ -80,7 +83,7 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 		color = *(unsigned int *)(img->addr + offset);
 		if (ray->side == 1 && (color >> 24) != 0)
 			color = (color >> 1) & 0x7F7F7F;
-		if (is_open_door)
+		if (img->ptr == cub3d->textures.o_door.ptr)
 		{
 			if (get_alpha(color) != 0)
 				draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
