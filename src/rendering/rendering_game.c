@@ -3,35 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 16:22:27 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:36:56 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-// void	render_background(t_cub3d *cub3d, t_scene *scene)
-// {
-// 	int	y;
-// 	int	x;
-
-// 	(void)cub3d;
-// 	y = 0;
-// 	while (y < WINDOW_HEIGHT)
-// 	{
-// 		x = 0;
-// 		while (x < WINDOW_WIDTH)
-// 		{
-// 			scene->img.pixel = scene->img.addr + y * scene->img.size_line + x
-// 				* (scene->img.bpp / 8);
-// 			*(unsigned int *)scene->img.pixel = 0x00FFFFFF;
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
 
 void	epileptic_simulator(t_cub3d *cub3d, t_scene *scene, t_map *map,
 		int which)
@@ -168,7 +147,6 @@ void	render_viewmodel(t_viewmodel *viewmodel, t_scene *scene)
 
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
-	//	render_background(cub3d, scene);
 	render_floor(cub3d, scene, &cub3d->map);
 	render_ceiling(cub3d, scene, &cub3d->map);
 	//epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
@@ -188,6 +166,7 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 
 int	game_loop(t_cub3d *cub3d)
 {
+	update_game_stat(cub3d);
 	render_game(cub3d, &cub3d->window, &cub3d->scene);
 	return (0);
 }

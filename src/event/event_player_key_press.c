@@ -72,5 +72,4 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 		cub3d->key_state.right = pressed;
 		rotate_player_right(cub3d);
 	}
-	update_viewmodel(&cub3d->player.viewmodel);
 }

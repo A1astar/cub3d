@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/23 15:25:20 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/23 18:26:12 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,8 @@ SRC					:= event/event_exit.c \
 					rendering/rendering_utils.c \
 					rendering/rendering_trip_mode.c \
 					rendering/rendering.c \
+					stat/stat_game.c \
+					stat/stat_player.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \

@@ -34,5 +34,15 @@ int	key_release_hook(int keynum, t_cub3d *cub3d)
 		cub3d->key_state.right = release;
 		cub3d->key_state.d = release;
 	}
+	else if (keynum == XK_Left)
+	{
+		cub3d->key_state.left = pressed;
+		rotate_player_left(cub3d);
+	}
+	else if (keynum == XK_Right)
+	{
+		cub3d->key_state.right = pressed;
+		rotate_player_right(cub3d);
+	}
 	return (0);
 }

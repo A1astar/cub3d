@@ -24,9 +24,7 @@ int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 		rotate_player_left(cub3d);
 	else if (delta_x > 0)
 		rotate_player_right(cub3d);
-    // mlx_mouse_move(env->mlx, env->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-    // last_x = WINDOW_WIDTH / 2;
-	// printf("x = %d | y = %d\n", x, y);
+	printf("x = %d | y = %d\n", x, y);
 	mlx_mouse_move(cub3d->window.mlx_ptr, cub3d->window.win_ptr,
 		WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
     return (0);
@@ -37,11 +35,6 @@ int	game_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 	printf("keynum = %d | x = %d | y = %d\n", keynum, x, y);
 	player_action_button(keynum, cub3d);
 	return (0);
-}
-
-void	update_player_stats(t_cub3d *cub3d)
-{
-	(void)cub3d;
 }
 
 bool	is_player_movement_key(int keynum)
@@ -65,6 +58,5 @@ int	game_key_hook(int keynum, t_cub3d *cub3d)
 		player_movement_key(keynum, cub3d);
 	else if (is_player_action_key(keynum))
 		player_action_key(keynum, cub3d);
-	update_player_stats(cub3d);
 	return (0);
 }
