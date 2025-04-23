@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 18:58:34 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 20:24:44 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@
 
 # define PI 3.14159265358979323846
 # define VELOCITY 0.02
-# define MOVEMENT 0.5
-# define SENSIBILITY 0.030
+# define SENSIBILITY 0.03
 
 # define RUNNING 1
 
