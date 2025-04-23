@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 18:39:41 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 18:58:34 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@
 # define WHITE "\033[37m"
 
 # define PI 3.14159265358979323846
-# define VELOCITY 0.1
+# define VELOCITY 0.02
 # define MOVEMENT 0.5
-# define SENSIBILITY 0.05
+# define SENSIBILITY 0.030
 
 # define RUNNING 1
 
@@ -194,6 +194,7 @@ typedef struct s_viewmodel
 
 typedef struct s_player
 {
+	bool			in_movement;
 	t_viewmodel		viewmodel;
 	t_render		render;
 	t_orientation	orientation;
@@ -475,6 +476,6 @@ void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
 
 /*		STAT		*/
 void	update_game_stat(t_cub3d *cub3d);
-void	update_player_stat(t_player *player);
+void	update_player_stat(t_cub3d *cub3d);
 
 #endif

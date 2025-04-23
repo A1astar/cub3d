@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:24:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 18:25:19 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 18:52:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	update_game_stat(t_cub3d *cub3d)
 {
-
+	update_player_stat(cub3d);
 }
