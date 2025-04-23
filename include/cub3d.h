@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 12:52:43 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 14:48:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -465,9 +465,5 @@ void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			t_player *player, t_render *render);
 void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
 			t_minimap *minimap);
-
-
-
-
 
 #endif

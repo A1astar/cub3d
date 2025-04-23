@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 19:21:08 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 14:32:54 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 void	init_mlx_hook(t_cub3d *cub3d, t_window *window)
 {
 	mlx_loop_hook(cub3d->window.mlx_ptr, cub3d_loop, cub3d);
-	mlx_hook(cub3d->window.win_ptr, ButtonPress,
+	mlx_hook(window->win_ptr, ButtonPress,
 		ButtonPressMask, mouse_press_hook, cub3d);
 	mlx_hook(cub3d->window.win_ptr, MotionNotify,
 		ButtonMotionMask | PointerMotionMask, mouse_motion_hook, cub3d);

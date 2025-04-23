@@ -6,13 +6,13 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/23 12:46:59 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/23 14:24:11 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ###########################		     TARGET			###########################
 
-NAME				= cub3d
+NAME				= cub3D
 MLX					= minilibx-linux/libmlx.a
 LIBFT				= libft/libft.a
 
