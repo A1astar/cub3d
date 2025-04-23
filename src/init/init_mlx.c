@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 14:32:54 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/23 19:23:51 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,49 +33,13 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	}
 }
 
-// void	update_mlx_hook(t_cub3d *cub3d, t_window *window, int which)
-// {
-// 	(void)window;
-// 	printf("program state = %d\n", cub3d->program_state);
-// 	if (which == main_menu)
-// 	{
-// 		mlx_loop_hook(cub3d->window.mlx_ptr, main_menu_loop, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, ButtonPress,
-// 			ButtonPressMask, main_menu_mouse_press_hook, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, MotionNotify,
-// 			ButtonMotionMask, main_menu_mouse_motion_hook, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, KeyPress,
-// 			KeyPressMask, main_menu_key_hook, cub3d);
-// 	}
-// 	else if (which == level_menu)
-// 	{
-// 		mlx_loop_hook(cub3d->window.mlx_ptr, level_menu_loop, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, ButtonPress,
-// 			ButtonPressMask, level_menu_mouse_press_hook, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, MotionNotify,
-// 			ButtonMotionMask, level_menu_mouse_motion_hook, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, KeyPress,
-// 			KeyPressMask, level_menu_key_hook, cub3d);
-// 	}
-// 	else if (which == playing)
-// 	{
-// 		mlx_loop_hook(cub3d->window.mlx_ptr, playing_loop, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, ButtonPress,
-// 			ButtonPressMask, playing_mouse_press_hook, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, MotionNotify,
-// 			ButtonMotionMask, playing_mouse_motion_hook, cub3d);
-// 		mlx_hook(cub3d->window.win_ptr, KeyPress,
-// 			KeyPressMask, playing_key_hook, cub3d);
-// 	}
-// }
-
 void	init_mlx_hook(t_cub3d *cub3d, t_window *window)
 {
 	mlx_loop_hook(cub3d->window.mlx_ptr, cub3d_loop, cub3d);
 	mlx_hook(window->win_ptr, ButtonPress,
 		ButtonPressMask, mouse_press_hook, cub3d);
-	mlx_hook(cub3d->window.win_ptr, MotionNotify,
-		ButtonMotionMask | PointerMotionMask, mouse_motion_hook, cub3d);
+	// mlx_hook(cub3d->window.win_ptr, MotionNotify,
+	// 	ButtonMotionMask | PointerMotionMask, mouse_motion_hook, cub3d);
 	mlx_hook(cub3d->window.win_ptr, KeyPress,
 		KeyPressMask, key_press_hook, cub3d);
 	mlx_hook(cub3d->window.win_ptr, KeyRelease,
