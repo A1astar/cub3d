@@ -26,7 +26,7 @@ int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 		rotate_player_right(cub3d);
     // mlx_mouse_move(env->mlx, env->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
     // last_x = WINDOW_WIDTH / 2;
-	printf("x = %d | y = %d\n", x, y);
+	// printf("x = %d | y = %d\n", x, y);
 	mlx_mouse_move(cub3d->window.mlx_ptr, cub3d->window.win_ptr,
 		WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
     return (0);
