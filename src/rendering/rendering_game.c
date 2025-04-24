@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/24 12:41:02 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:56:36 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,8 @@ void	render_viewmodel(t_viewmodel *viewmodel, t_scene *scene)
 	y = 0;
 	color = 0;
 	x_start = WINDOW_WIDTH / 2 - viewmodel->normal_stand.width / 2;
-	y_start = WINDOW_HEIGHT - viewmodel->normal_stand.height + viewmodel->draw_pos;
+	y_start = WINDOW_HEIGHT - viewmodel->normal_stand.height
+		+ viewmodel->draw_pos;
 	while (y < viewmodel->normal_stand.height)
 	{
 		x = 0;
@@ -137,8 +138,7 @@ void	render_viewmodel(t_viewmodel *viewmodel, t_scene *scene)
 		{
 			color = get_pixel(&viewmodel->normal_stand, x, y);
 			if ((color >> 24) == 0)
-				draw_pixel(&scene->img, x_start + x, y_start + y,
-					color);
+				draw_pixel(&scene->img, x_start + x, y_start + y, color);
 			x++;
 		}
 		y++;
@@ -149,18 +149,17 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 	//render_floor(cub3d, scene, &cub3d->map);
 	//render_ceiling(cub3d, scene, &cub3d->map);
-	//epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
-	//epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
-	//render_minimap_ray(cub3d);
+	// epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
+	// epileptic_simulator(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
+	// render_minimap_ray(cub3d);
 	raycast_floor(cub3d, &cub3d->raycast, &cub3d->player);
 	raycast_map(cub3d, &cub3d->raycast, &cub3d->player);
 	raycast_doors(cub3d, &cub3d->raycast, &cub3d->player);
-	//raycast_threads(cub3d);
+	// raycast_threads(cub3d);
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
 	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player,
 		&cub3d->player.render);
 	render_viewmodel(&cub3d->player.viewmodel, &cub3d->scene);
-	//render_viewmodel(&cub3d->textures.trip_viewmodel, &cub3d->scene);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
 		0);
 }

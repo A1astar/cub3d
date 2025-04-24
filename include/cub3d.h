@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/24 12:49:13 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:37:29 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ enum e_viewmodel {down, up};
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
 
-/*TEMPORAIRES*/
+// *TEMPORAIRES
 typedef struct s_ray_attributes
 {
 	bool	hit_wall;
@@ -99,7 +99,7 @@ typedef struct s_draw_attributes
 	double	tex_pos;
 }			t_draw_attributes;
 
-/*TEMPORAIRES*/
+// *TEMPORAIRES
 
 
 

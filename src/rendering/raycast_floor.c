@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 11:16:10 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/24 12:52:42 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/24 15:04:14 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct s_floor_draw
 	int		tex_y;
 }			t_floor_draw;
 
-static void	init_floor_draw(t_floor_draw *draw, t_cub3d *cub3d, t_floor_ray *ray)
+static void	init_floor_draw(t_floor_draw *draw, t_cub3d *cub3d,
+		t_floor_ray *ray)
 {
 	draw->cell_x = (int)(ray->floor_x);
 	draw->cell_y = (int)(ray->floor_y);
@@ -57,9 +58,9 @@ static void	draw_ray(t_cub3d *cub3d, t_floor_ray *ray, int x, int y)
 	init_floor_draw(&draw, cub3d, ray);
 	offset = draw.tex_y * img->size_line + draw.tex_x * (img->bpp / 8);
 	color = *(unsigned int *)(img->addr + offset);
-	draw_pixel(&cub3d->scene.img, x, y, color); //floor
-	color = (color >> 1) &  8355711;
-	draw_pixel(&cub3d->scene.img, x, WINDOW_HEIGHT - y -1, color); //ceiling
+	draw_pixel(&cub3d->scene.img, x, y, color); // *floor
+	color = (color >> 1) & 8355711;
+	draw_pixel(&cub3d->scene.img, x, WINDOW_HEIGHT - y - 1, color); // *ceiling
 }
 
 static void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y)
@@ -76,13 +77,8 @@ static void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y)
 	}
 }
 
-static void	update_floor_ray(t_player *player, t_raycast *raycast, t_floor_ray *ray,
-		int ray_num)
+static void	update_floor_ray(t_player *player, t_floor_ray *ray, int ray_num)
 {
-	ray->raydir_x0 = player->x_dir - raycast->x_plane;
-	ray->raydir_y0 = player->y_dir - raycast->y_plane;
-	ray->raydir_x1 = player->x_dir + raycast->x_plane;
-	ray->raydir_y1 = player->y_dir + raycast->y_plane;
 	ray->p = ray_num - (WINDOW_HEIGHT / 2);
 	ray->pos_z = 0.5 * WINDOW_HEIGHT;
 	ray->row_distance = ray->pos_z / ray->p;
@@ -94,15 +90,25 @@ static void	update_floor_ray(t_player *player, t_raycast *raycast, t_floor_ray *
 	ray->floor_y = player->y_pos + ray->row_distance * ray->raydir_y0;
 }
 
+static void	init_floor_ray(t_player *player, t_raycast *raycast,
+		t_floor_ray *ray)
+{
+	ray->raydir_x0 = player->x_dir - raycast->x_plane;
+	ray->raydir_y0 = player->y_dir - raycast->y_plane;
+	ray->raydir_x1 = player->x_dir + raycast->x_plane;
+	ray->raydir_y1 = player->y_dir + raycast->y_plane;
+}
+
 void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player)
 {
 	int			ray_num;
 	t_floor_ray	ray;
 
-	ray_num = WINDOW_HEIGHT / 2;
+	ray_num = WINDOW_HEIGHT / 2 + 1;
+	init_floor_ray(player, raycast, &ray);
 	while (ray_num < WINDOW_HEIGHT)
 	{
-		update_floor_ray(player, raycast, &ray, ray_num);
+		update_floor_ray(player, &ray, ray_num);
 		render_floor_ray(cub3d, &ray, ray_num);
 		ray_num++;
 	}

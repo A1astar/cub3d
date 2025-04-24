@@ -105,7 +105,7 @@ int main(int /*argc*/, char */*argv*/[])
   while(!done())
   {
 #if FLOOR_HORIZONTAL
-    //FLOOR CASTING
+    // *FLOOR CASTING
     for(int y = screenHeight / 2 + 1; y < screenHeight; ++y)
     {
       // rayDir for leftmost ray (x = 0) and rightmost ray (x = w)
@@ -124,20 +124,22 @@ int main(int /*argc*/, char */*argv*/[])
       // they're no longer symmetrical.
       float posZ = 0.5 * screenHeight;
 
-      // Horizontal distance from the camera to the floor for the current row.
-      // 0.5 is the z position exactly in the middle between floor and ceiling.
-      // NOTE: this is affine texture mapping, which is not perspective correct
-      // except for perfectly horizontal and vertical surfaces like the floor.
-      // NOTE: this formula is explained as follows: The camera ray goes through
-      // the following two points: the camera itself, which is at a certain
-      // height (posZ), and a point in front of the camera (through an imagined
-      // vertical plane containing the screen pixels) with horizontal distance
-      // 1 from the camera, and vertical position p lower than posZ (posZ - p). When going
-      // through that point, the line has vertically traveled by p units and
-      // horizontally by 1 unit. To hit the floor, it instead needs to travel by
-      // posZ units. It will travel the same ratio horizontally. The ratio was
-      // 1 / p for going through the camera plane, so to go posZ times farther
-      // to reach the floor, we get that the total horizontal distance is posZ / p.
+      // * Horizontal distance from the camera to the floor for the current row.
+      // * 0.5 is the z position exactly in the middle between floor and ceiling.
+
+      // * NOTE: this is affine texture mapping, which is not perspective correct
+      // * except for perfectly horizontal and vertical surfaces like the floor.
+
+      // * NOTE: this formula is explained as follows: The camera ray goes through
+      // * the following two points: the camera itself, which is at a certain
+      // * height (posZ), and a point in front of the camera (through an imagined
+      // * vertical plane containing the screen pixels) with horizontal distance
+      // * 1 from the camera, and vertical position p lower than posZ (posZ - p). When going
+      // * through that point, the line has vertically traveled by p units and
+      // * horizontally by 1 unit. To hit the floor, it instead needs to travel by
+      // * posZ units. It will travel the same ratio horizontally. The ratio was
+      // * 1 / p for going through the camera plane, so to go posZ times farther
+      // * to reach the floor, we get that the total horizontal distance is posZ / p.
       float rowDistance = posZ / p;
 
       // calculate the real world step vector we have to add for each x (parallel to camera plane)
@@ -181,7 +183,7 @@ int main(int /*argc*/, char */*argv*/[])
         buffer[screenHeight - y - 1][x] = color;
       }
     }
-#endif // FLOOR_HORIZONTAL
+#endif //* FLOOR_HORIZONTAL
 
     // WALL CASTING
     for(int x = 0; x < w; x++)
