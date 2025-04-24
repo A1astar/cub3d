@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 20:24:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/24 12:49:13 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -456,6 +456,7 @@ void	print_usage(void);
 /*		RENDERING		*/
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
+void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	update_raycast(t_raycast *raycast, t_player *player, int x, int w);
 void 	update_ray_step_x(t_raycast *raycast);
 void 	update_ray_step_y(t_raycast *raycast);

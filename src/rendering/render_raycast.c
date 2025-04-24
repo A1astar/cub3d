@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:09:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 18:55:23 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/24 12:31:39 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 		draw->tex_pos += draw->step;
 		offset = draw->tex_y * img->size_line + draw->tex_x * (img->bpp / 8);
 		color = *(unsigned int *)(img->addr + offset);
-		if (ray->side == 1 && (color >> 24) != 0)
-			color = (color >> 1) & 0x7F7F7F;
 		if (img->ptr == cub3d->textures.o_door.ptr)
 		{
 			if (get_alpha(color) != 0)
