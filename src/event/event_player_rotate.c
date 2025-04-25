@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_rotate.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:33:40 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 17:03:22 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/25 12:13:17 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	rotate_player_left(t_cub3d *cub3d)
 		+ cub3d->raycast.y_plane * cos(-SENSIBILITY);
 	cub3d->player.angle -= SENSIBILITY * 10;
 	cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
+	cub3d->player.x_dir = cub3d->raycast.x_dir;
+	cub3d->player.y_dir = cub3d->raycast.y_dir;
 	normalize_player_angle(&cub3d->player);
 }
 
@@ -58,5 +60,7 @@ void	rotate_player_right(t_cub3d *cub3d)
 		+ cub3d->raycast.y_plane * cos(SENSIBILITY);
 	cub3d->player.angle += SENSIBILITY * 10;
 	cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
+	cub3d->player.x_dir = cub3d->raycast.x_dir;
+	cub3d->player.y_dir = cub3d->raycast.y_dir;
 	normalize_player_angle(&cub3d->player);
 }

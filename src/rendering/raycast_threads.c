@@ -6,12 +6,11 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:55:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 14:37:42 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:11:07 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
 
 // typedef struct s_ray_attributes
 // {
@@ -29,9 +28,6 @@
 // 	int		step_y;
 // 	int		side;
 // }			t_ray_attributes;
-
-
-
 
 // void	calculate_plane(t_raycast *raycast)
 // {
@@ -63,7 +59,8 @@ static void	perform_dda(t_ray_attributes *ray, char **map)
 	}
 }
 
-static void	init_draw_attributes(t_ray_attributes *ray, t_draw_attributes *draw, t_player *player)
+static void	init_draw_attributes(t_ray_attributes *ray, t_draw_attributes *draw,
+		t_player *player)
 {
 	if (ray->side == 0)
 		draw->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
@@ -76,14 +73,14 @@ static void	init_draw_attributes(t_ray_attributes *ray, t_draw_attributes *draw,
 	draw->draw_end = draw->line_height / 2 + WINDOW_HEIGHT / 2;
 	if (draw->draw_end >= WINDOW_HEIGHT)
 		draw->draw_end = WINDOW_HEIGHT - 1;
-	if(ray->side == 0)
+	if (ray->side == 0)
 		draw->wall_x = player->y_pos + draw->perp_wall_dist * ray->raydir_y;
 	else
 		draw->wall_x = player->x_pos + draw->perp_wall_dist * ray->raydir_x;
 	draw->wall_x -= floor(draw->wall_x);
 }
 
-static void init_ray_step_and_side_dist(t_ray_attributes *ray, t_player *player)
+static void	init_ray_step_and_side_dist(t_ray_attributes *ray, t_player *player)
 {
 	if (ray->raydir_x < 0)
 	{
@@ -129,7 +126,8 @@ static void	init_ray_attributes(t_player *player, t_raycast *raycast,
 	init_ray_step_and_side_dist(ray, player);
 }
 
-static t_img	*select_trip_texture(t_cub3d *cub3d, t_ray_attributes *ray, t_textures *textures)
+static t_img	*select_trip_texture(t_cub3d *cub3d, t_ray_attributes *ray,
+		t_textures *textures)
 {
 	if (cub3d->map.map[(int)ray->map_pos_y][(int)ray->map_pos_x] == 'D')
 		return (&textures->c_door);
@@ -153,7 +151,8 @@ static t_img	*select_trip_texture(t_cub3d *cub3d, t_ray_attributes *ray, t_textu
 	}
 }
 
-static void	draw_texture(t_cub3d *cub3d, t_ray_attributes *ray, t_draw_attributes *draw, int ray_num)
+static void	draw_texture(t_cub3d *cub3d, t_ray_attributes *ray,
+		t_draw_attributes *draw, int ray_num)
 {
 	int				offset;
 	unsigned int	color;
@@ -162,25 +161,26 @@ static void	draw_texture(t_cub3d *cub3d, t_ray_attributes *ray, t_draw_attribute
 	color = 0;
 	img = select_trip_texture(cub3d, ray, &cub3d->textures);
 	draw->tex_x = (int)(draw->wall_x * (double)(img->width));
-	if(draw->tex_x < 0)
+	if (draw->tex_x < 0)
 		draw->tex_x = 0;
 	else if (draw->tex_x >= img->width)
-		draw->tex_x = img->width -1;
-	if(ray->side == 0 && ray->raydir_x > 0)
-		draw->tex_x = img->width - draw->tex_x -1;
-	if(ray->side == 1 && ray->raydir_y < 0)
-		draw->tex_x = img->width - draw->tex_x -1;
+		draw->tex_x = img->width - 1;
+	if (ray->side == 0 && ray->raydir_x > 0)
+		draw->tex_x = img->width - draw->tex_x - 1;
+	if (ray->side == 1 && ray->raydir_y < 0)
+		draw->tex_x = img->width - draw->tex_x - 1;
 	draw->step = 1.0 * img->height / draw->line_height;
-	draw->tex_pos = (draw->draw_start - WINDOW_HEIGHT / 2 + draw->line_height / 2) * draw->step;
-	while(draw->draw_start < draw->draw_end)
+	draw->tex_pos = (draw->draw_start - WINDOW_HEIGHT / 2 + draw->line_height
+			/ 2) * draw->step;
+	while (draw->draw_start < draw->draw_end)
 	{
 		draw->tex_y = (int)(draw->tex_pos);
-		if(draw->tex_y >= img->height)
+		if (draw->tex_y >= img->height)
 			draw->tex_y = img->height - 1;
 		draw->tex_pos += draw->step;
 		offset = draw->tex_y * img->size_line + draw->tex_x * (img->bpp / 8);
 		color = *(unsigned int *)(img->addr + offset);
-		if(ray->side == 1)
+		if (ray->side == 1)
 			color = (color >> 1) & 0x7F7F7F;
 		draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		draw->draw_start++;
