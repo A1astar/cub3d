@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 14:49:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:11:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	flood_fill(char **map, int x, int y, t_map *content)
 	if (!content->is_valid_map)
 		return ;
 	if (y < 0 || y >= (int)content->height || x < 0
-		|| x >= (int)ft_strlen(map[y]))
+		|| x > (int)ft_strlen(map[y]))
 	{
 		error_msg(MAP_UNCL, NULL);
 		content->is_valid_map = false;

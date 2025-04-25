@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/25 16:54:52 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:15:57 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,10 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	// render_minimap_ray(cub3d);
 	raycast_floor(cub3d, &cub3d->raycast, &cub3d->player);
 	raycast_map(cub3d, &cub3d->raycast, &cub3d->player);
-	raycast_doors(cub3d, &cub3d->raycast, &cub3d->player);
 	if(cub3d->nb_item)
 		render_item(&cub3d->item, &cub3d->player, &cub3d->raycast, &cub3d->scene);
-	// raycast_threads(cub3d);
+	raycast_doors(cub3d, &cub3d->raycast, &cub3d->player);
+		// raycast_threads(cub3d);
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
 	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player,
 		&cub3d->player.render);

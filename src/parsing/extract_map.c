@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:32:43 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 19:15:12 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:14:07 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	is_valid_map_element(char c)
 	if (c == '1' || c == '0' || c == '\n' || c <= ' ')
 		return (true);
 	else if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == 'R'
-		|| c == 'O' || c == 'C')
+		|| c == 'O' || c == 'C' || c == 'O' || c == 'M')
 		return (true);
 	else
 		return (false);
