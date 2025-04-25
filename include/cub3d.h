@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 16:04:52 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:16:42 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,14 @@ typedef struct s_img
 	int		width;
 	int		endian;
 	int		size_line;
-}t_img;
+}			t_img;
+
+typedef struct s_item
+{
+	long	x_pos;
+	long	y_pos;
+	t_img	sprite;
+}			t_item;
 
 typedef struct s_textures
 {
@@ -147,7 +154,6 @@ typedef struct s_textures
 	t_img	floor;
 	t_img	o_door;
 	t_img	c_door;
-	t_img	shroom;
 	t_img	trip_n_wall;
 	t_img	trip_s_wall;
 	t_img	trip_e_wall;
@@ -157,7 +163,7 @@ typedef struct s_textures
 	t_img	trip_floor;
 	t_img	trip_o_door;
 	t_img	trip_c_door;
-}t_textures;
+}			t_textures;
 
 typedef struct s_map
 {
@@ -169,7 +175,7 @@ typedef struct s_map
 	int		floor_rgb[3];
 	size_t	height;
 	size_t	width;
-}t_map;
+}			t_map;
 
 typedef struct s_minimap
 {
@@ -294,6 +300,7 @@ typedef struct s_raycast
 
 	double	fov;
 	double	fov_rad;
+	double	z_buffer[WINDOW_WIDTH];
 }t_raycast;
 
 typedef struct s_enemy
@@ -364,6 +371,7 @@ typedef struct s_cub3d
 {
 	int				nb_enemy;
 	int				nb_player;
+	int				nb_item;
 	uint8_t			program_state;
 	t_map			map;
 	t_scene			scene;
@@ -373,6 +381,7 @@ typedef struct s_cub3d
 	t_setting		setting;
 	t_raycast		raycast;
 	t_enemy			randy[4];
+	t_item			item;
 	t_textures		textures;
 	t_main_menu		main_menu;
 	t_key_state		key_state;
@@ -452,6 +461,7 @@ void	free_t_scene(t_scene *scene, t_window *window);
 /*		PARSING		*/
 bool	is_enemy_spawn(char c);
 bool	is_player_spawn(t_player *player, char c);
+bool	is_item(char c);
 
 void	parsing(t_cub3d *cub3d, char *argv);
 void	check_map(t_cub3d *cub3d, t_map *map);
@@ -462,7 +472,8 @@ int		load_asset(char **map_tab, t_cub3d *cub3d);
 void	check_valid_element(t_cub3d *cub3d, char c);
 void	extract_data(t_cub3d *game, char *filename);
 void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb);
-void	check_player_nb(t_cub3d *cub3d, int enemy_nb);
+void	check_player_nb(t_cub3d *cub3d, int player_nb);
+void	check_item_nb(t_cub3d *cub3d, int item_nb);
 int		get_line_count(t_cub3d *cub3d, char *filename);
 void	extract_assets_path(t_cub3d *game, char **data);
 void	apply_enemy_state(t_enemy *randy, int nb_enemy);
