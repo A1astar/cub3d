@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/25 12:31:38 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/25 16:55:10 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRC					:= event/event_exit.c \
 					rendering/raycast_threads.c \
 					rendering/raycast_update.c \
 					rendering/render_floor.c \
+					rendering/render_item.c \
 					rendering/render_raycast.c \
 					rendering/drunk_raycast_threads.c \
 					rendering/rendering_game.c \

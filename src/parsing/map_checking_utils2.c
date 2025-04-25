@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checking_utils2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:50:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/14 16:01:27 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/25 14:45:34 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,12 @@ bool	is_enemy_spawn(char c)
 {
 	if (c == 'R')
 		return (true);
+	return (false);
+}
+
+bool	is_item(char c)
+{
+	if(c == 'M')
+		return(true);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:10:09 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 19:15:46 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:57:38 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,20 @@ void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb)
 	}
 }
 
-void	check_player_nb(t_cub3d *cub3d, int enemy_nb)
+void	check_player_nb(t_cub3d *cub3d, int player_nb)
 {
-	if (enemy_nb > 1)
+	if (player_nb > 1)
 	{
 		error_msg("Too many player", NULL);
+		free_program(cub3d);
+	}
+}
+
+void	check_item_nb(t_cub3d *cub3d, int item_nb)
+{
+	if (item_nb > 1)
+	{
+		error_msg("Too many item", NULL);
 		free_program(cub3d);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 12:21:11 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:52:59 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	free_t_textures(t_textures *textures, t_window *window)
 	free_t_img(window, &textures->floor);
 	free_t_img(window, &textures->o_door);
 	free_t_img(window, &textures->c_door);
-	free_t_img(window, &textures->shroom);
 	free_t_img(window, &textures->trip_n_wall);
 	free_t_img(window, &textures->trip_s_wall);
 	free_t_img(window, &textures->trip_e_wall);

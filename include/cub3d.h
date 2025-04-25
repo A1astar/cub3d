@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 16:16:42 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:00:39 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,35 @@ typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
 
 // *TEMPORAIRES
+
+typedef struct s_item_attr
+{
+	double		relative_x;
+	double		relative_y;
+	double		inversion_val;
+	double		trans_x;
+	double		trans_y;
+	int			sprite_screen_x;
+}				t_item_attr;
+
+typedef struct s_item_draw
+{
+	int			sprite_screen_x;
+	int			sprite_height;
+	int			sprite_width;
+	int			draw_start_x;
+	int			draw_start_y;
+	int			draw_end_x;
+	int			draw_end_y;
+	int			tex_x;
+	int			tex_y;
+}				t_item_draw;
+
+typedef struct s_item_render
+{
+	t_item_attr	attr;
+	t_item_draw	draw;
+}				t_item_render;
 typedef struct s_ray_attributes
 {
 	bool	hit_wall;
@@ -498,6 +527,7 @@ void 	update_ray_step_x(t_raycast *raycast);
 void 	update_ray_step_y(t_raycast *raycast);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
+void	render_item(t_item *item, t_player *player, t_raycast *raycast, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
 int		game_loop(t_cub3d *cub3d);

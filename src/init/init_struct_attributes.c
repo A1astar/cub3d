@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:20:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 16:03:54 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:52:39 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static void	init_textures(t_textures *textures)
 	ft_bzero(&textures->floor, sizeof(t_img));
 	ft_bzero(&textures->o_door, sizeof(t_img));
 	ft_bzero(&textures->c_door, sizeof(t_img));
-	ft_bzero(&textures->shroom, sizeof(t_img));
 	ft_bzero(&textures->trip_n_wall, sizeof(t_img));
 	ft_bzero(&textures->trip_s_wall, sizeof(t_img));
 	ft_bzero(&textures->trip_e_wall, sizeof(t_img));
@@ -100,6 +99,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	init_randy(&cub3d->randy[1]);
 	init_randy(&cub3d->randy[2]);
 	init_randy(&cub3d->randy[3]);
+	ft_bzero(&cub3d->item, sizeof(t_item));
 	init_textures(&cub3d->textures);
 	init_viewmodel(&cub3d->player.viewmodel);
 	cub3d->program_state = main_menu;

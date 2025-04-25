@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 12:45:43 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:49:16 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ static void	scan_map_line(t_cub3d *cub3d, char *map_line, size_t row)
 			cub3d->randy[cub3d->nb_enemy].x_pos = i;
 			cub3d->randy[cub3d->nb_enemy].y_pos = row;
 			cub3d->nb_enemy++;
+		}
+		else if (is_item(map_line[i]))
+		{
+			cub3d->item.x_pos = i;
+			cub3d->item.y_pos = row;
+			cub3d->nb_item++;
+			check_item_nb(cub3d, cub3d->nb_item);
 		}
 		else
 			check_valid_element(cub3d, map_line[i]);
