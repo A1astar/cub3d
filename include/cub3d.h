@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/24 14:37:29 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:31:03 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,31 @@ typedef struct s_draw_attributes
 	double	tex_pos;
 }			t_draw_attributes;
 
+
+typedef struct s_floor_ray
+{
+	double	raydir_x0;
+	double	raydir_y0;
+	double	raydir_x1;
+	double	raydir_y1;
+	int		p;
+	double	pos_z;
+	double	row_distance;
+	double	floor_step_x;
+	double	floor_step_y;
+	double	floor_x;
+	double	floor_y;
+}			t_floor_ray;
+
+typedef struct s_floor_draw
+{
+	int		cell_x;
+	int		cell_y;
+	int		tex_x;
+	int		tex_y;
+}			t_floor_draw;
+
 // *TEMPORAIRES
-
-
 
 typedef struct s_img
 {
@@ -461,6 +483,7 @@ void	update_raycast(t_raycast *raycast, t_player *player, int x, int w);
 void 	update_ray_step_x(t_raycast *raycast);
 void 	update_ray_step_y(t_raycast *raycast);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
+void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
 int		game_loop(t_cub3d *cub3d);
