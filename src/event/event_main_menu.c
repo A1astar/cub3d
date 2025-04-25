@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 19:46:07 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/25 14:39:15 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	main_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 void	main_menu_selection(t_cub3d *cub3d)
 {
 	if (cub3d->main_menu.index == start_game)
-	{
-		mlx_mouse_hide(cub3d->window.mlx_ptr, cub3d->window.win_ptr);
 		cub3d->program_state = game;
-	}
 	else if (cub3d->main_menu.index == settings)
 		cub3d->program_state = main_menu_settings;
 	else if (cub3d->main_menu.index == exit_game)

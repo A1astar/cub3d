@@ -18,31 +18,40 @@ int	key_release_hook(int keynum, t_cub3d *cub3d)
 	{
 		cub3d->key_state.up = release;
 		cub3d->key_state.w = release;
+		cub3d->player.movement_w_s--;
 	}
 	else if (keynum == XK_s || keynum == XK_Down)
 	{
 		cub3d->key_state.down = release;
 		cub3d->key_state.s = release;
+		cub3d->player.movement_w_s++;
 	}
 	else if (keynum == XK_a || keynum == XK_Left)
 	{
 		cub3d->key_state.left = release;
 		cub3d->key_state.a = release;
+		cub3d->player.movement_a_d++;
 	}
 	else if (keynum == XK_d || keynum == XK_Right)
 	{
 		cub3d->key_state.right = release;
 		cub3d->key_state.d = release;
+		cub3d->player.movement_a_d--;
 	}
 	else if (keynum == XK_Left)
 	{
-		cub3d->key_state.left = pressed;
+		cub3d->key_state.left = release;
 		rotate_player_left(cub3d);
 	}
 	else if (keynum == XK_Right)
 	{
-		cub3d->key_state.right = pressed;
+		cub3d->key_state.right = release;
 		rotate_player_right(cub3d);
+	}
+	else if (keynum == XK_Shift_L)
+	{
+		cub3d->key_state.shift_l = release;
+		cub3d->player.velocity = VELOCITY;
 	}
 	return (0);
 }

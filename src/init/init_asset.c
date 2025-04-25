@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_asset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:42:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 14:05:00 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:48:19 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene)
 			&scene->img.size_line, &scene->img.endian);
 	if (!scene->img.addr)
 		free_program(cub3d);
+	mlx_mouse_hide(cub3d->window.mlx_ptr, cub3d->window.win_ptr);
 }
 
 void	init_asset(t_cub3d *cub3d)

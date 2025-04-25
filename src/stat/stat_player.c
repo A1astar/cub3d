@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:21:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 19:01:39 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:12:02 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,40 @@ void	update_viewmodel(t_viewmodel *viewmodel)
 	delay++;
 }
 
+// void	update_player_pos(t_cub3d *cub3d, t_player *player)
+// {
+// 	(void)player;
+// 	if (cub3d->key_state.w == pressed || cub3d->key_state.up == pressed)
+// 		move_player_north(cub3d);
+// 	else if (cub3d->key_state.s == pressed || cub3d->key_state.down == pressed)
+// 		move_player_south(cub3d);
+// 	else if (cub3d->key_state.a == pressed)
+// 		move_player_west(cub3d);
+// 	else if (cub3d->key_state.d == pressed)
+// 		move_player_east(cub3d);
+// 	else if (cub3d->key_state.left == pressed)
+// 		rotate_player_left(cub3d);
+// 	else if (cub3d->key_state.right == pressed)
+// 		rotate_player_right(cub3d);
+// }
+
 void	update_player_pos(t_cub3d *cub3d, t_player *player)
 {
 	(void)player;
-	if (cub3d->key_state.w == pressed || cub3d->key_state.up == pressed)
+	if (player->movement_w_s == 1)
 		move_player_north(cub3d);
-	else if (cub3d->key_state.s == pressed || cub3d->key_state.down == pressed)
+	if (player->movement_w_s == -1)
 		move_player_south(cub3d);
-	else if (cub3d->key_state.a == pressed)
+	if (player->movement_a_d == -1)
 		move_player_west(cub3d);
-	else if (cub3d->key_state.d == pressed)
+	if (player->movement_a_d == 1)
 		move_player_east(cub3d);
-	else if (cub3d->key_state.left == pressed)
+	if (cub3d->key_state.left == pressed)
 		rotate_player_left(cub3d);
-	else if (cub3d->key_state.right == pressed)
+	if (cub3d->key_state.right == pressed)
 		rotate_player_right(cub3d);
+	if (cub3d->key_state.shift_l == pressed)
+		player->velocity = 0.04;
 }
 
 void	update_player_stat(t_cub3d *cub3d)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 12:31:03 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:04:52 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 
 # define PI 3.14159265358979323846
 # define VELOCITY 0.02
-# define SENSIBILITY 0.03
+# define SENSIBILITY 0.05
 
 # define RUNNING 1
 
@@ -215,7 +215,9 @@ typedef struct s_viewmodel
 
 typedef struct s_player
 {
-	bool			in_movement;
+	double			velocity;
+	int				movement_w_s;
+	int				movement_a_d;
 	t_viewmodel		viewmodel;
 	t_render		render;
 	t_orientation	orientation;
@@ -355,6 +357,7 @@ typedef struct s_key_state
 	bool	left;
 	bool	down;
 	bool	right;
+	bool	shift_l;
 }t_key_state;
 
 typedef struct s_cub3d
