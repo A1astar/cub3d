@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/25 12:46:48 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/25 16:14:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	is_player_movement_key(int keynum)
 	if (keynum == XK_w || keynum == XK_s
 		|| keynum == XK_a || keynum == XK_d
 		|| keynum == XK_Up || keynum == XK_Down
-		|| keynum == XK_Left || keynum == XK_Right)
+		|| keynum == XK_Left || keynum == XK_Right || keynum == XK_Shift_L)
 		return (true);
 	return (false);
 }
@@ -58,9 +58,9 @@ int	game_key_hook(int keynum, t_cub3d *cub3d)
 		player_movement_key(keynum, cub3d);
 	else if (is_player_action_key(keynum))
 		player_action_key(keynum, cub3d);
-	else if (keynum == XK_m)
-	{
-		
-	}
+	// else if (keynum == XK_m)
+	// {
+	// 	if (keynum == )
+	// }
 	return (0);
 }

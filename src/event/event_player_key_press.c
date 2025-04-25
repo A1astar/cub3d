@@ -32,18 +32,28 @@ void	player_movement_key(int keynum, t_cub3d *cub3d)
 	{
 		cub3d->key_state.w = pressed;
 		cub3d->key_state.up = pressed;
+		cub3d->player.movement_w_s++;
 	}
 	else if (keynum == XK_s || keynum == XK_Down)
 	{
 		cub3d->key_state.s = pressed;
 		cub3d->key_state.down = pressed;
+		cub3d->player.movement_w_s--;
 	}
 	else if (keynum == XK_a)
+	{
 		cub3d->key_state.a = pressed;
+		cub3d->player.movement_a_d--;
+	}
 	else if (keynum == XK_d)
+	{
 		cub3d->key_state.d = pressed;
+		cub3d->player.movement_a_d++;
+	}
 	else if (keynum == XK_Left)
 		cub3d->key_state.left = pressed;
 	else if (keynum == XK_Right)
 		cub3d->key_state.right = pressed;
+	else if (keynum == XK_Shift_L)
+		cub3d->key_state.shift_l = pressed;
 }
