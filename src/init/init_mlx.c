@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/25 15:57:16 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/27 17:56:31 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
+	window->x_center = WINDOW_WIDTH / 2;
+	window->y_center = WINDOW_HEIGHT / 2;
 }
 
 void	init_mlx_hook(t_cub3d *cub3d, t_window *window)

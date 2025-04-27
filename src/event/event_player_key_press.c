@@ -21,7 +21,8 @@ bool	is_player_button(int keynum)
 
 bool	is_player_action_key(int keynum)
 {
-	if (keynum == XK_q || keynum == XK_e || keynum == XK_r)
+	if (keynum == XK_q || keynum == XK_e || keynum == XK_r
+		|| keynum == XK_l)
 		return (true);
 	return (false);
 }

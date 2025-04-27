@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_action.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:18:38 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 11:49:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:27:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,11 @@ void	player_action_key(int keynum, t_cub3d *cub3d)
 		player_interaction(cub3d);
 	else if (keynum == XK_r)
 		player_reload(cub3d);
+	else if (keynum == XK_l)
+	{
+		if (cub3d->rendering_state == normal)
+			cub3d->rendering_state = psychedelic;
+		else
+			cub3d->rendering_state = normal;
+	}
 }

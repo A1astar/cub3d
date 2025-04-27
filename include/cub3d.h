@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/27 17:00:27 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/27 17:55:06 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,11 +369,13 @@ typedef struct s_main_menu
 
 typedef struct s_window
 {
-	int		height;
 	int		width;
-	uint8_t	resolution;
+	int		height;
+	int		x_center;
+	int		y_center;
 	void	*win_ptr;
 	void	*mlx_ptr;
+	uint8_t	resolution;
 }t_window;
 
 typedef struct s_level_menu
@@ -538,6 +540,8 @@ int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color);
+void	rendering_psychedelic(t_cub3d *cub3d, t_scene *scene, t_map *map,
+		int which);
 void	render_minimap_ray(t_cub3d *cub3d);
 void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			t_player *player, t_render *render);

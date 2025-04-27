@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:21:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 17:04:56 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/27 18:12:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	update_viewmodel(t_viewmodel *viewmodel)
 {
-	static int delay;
+	static int	delay;
 
 	if (delay == 5)
 	{
