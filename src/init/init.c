@@ -6,48 +6,11 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/25 16:04:33 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/27 16:40:22 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static void	init_player_attributes(t_player *player, t_minimap *minimap)
-{
-	player->radian = player->angle * (PI / 180.0);
-	player->height = minimap->tile_height;
-	player->width = minimap->tile_width;
-	player->velocity = VELOCITY;
-}
-
-static void	init_player(t_player *player, t_minimap *minimap)
-{
-	if (player->orientation == north)
-	{
-		player->x_dir = 0;
-		player->y_dir = -1;
-		player->angle = 90;
-	}
-	else if (player->orientation == east)
-	{
-		player->x_dir = 1;
-		player->y_dir = 0;
-		player->angle = 0;
-	}
-	else if (player->orientation == west)
-	{
-		player->x_dir = -1;
-		player->y_dir = 0;
-		player->angle = 180;
-	}
-	else if (player->orientation == south)
-	{
-		player->x_dir = 0;
-		player->y_dir = 1;
-		player->angle = 270;
-	}
-	init_player_attributes(player, minimap);
-}
 
 static void	init_minimap(t_minimap *minimap)
 {

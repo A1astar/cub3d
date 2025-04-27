@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/25 16:55:10 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/27 17:15:06 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,10 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 ###########################		 	 SOURCE			###########################
 
 SRC_DIR				:= src
-SRC					:= event/event_exit.c \
+SRC					:= data/data_game.c \
+					data/data_player_rotation.c \
+					data/data_player.c \
+					event/event_exit.c \
 					event/event_game.c \
 					event/event_level_menu.c \
 					event/event_main_menu.c \
@@ -40,13 +43,13 @@ SRC					:= event/event_exit.c \
 					event/event_player_key_release.c \
 					event/event_player_mouse.c \
 					event/event_player_movement.c \
-					event/event_player_rotate.c \
 					event/event.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \
 					init/init_bonus_assets.c \
 					init/init_mandatory_assets.c \
 					init/init_mlx.c \
+					init/init_player.c \
 					init/init_struct_attributes.c \
 					init/init.c \
 					parsing/extract_assets_paths.c \
@@ -71,11 +74,9 @@ SRC					:= event/event_exit.c \
 					rendering/rendering_main_menu.c \
 					rendering/rendering_minimap_player.c \
 					rendering/rendering_minimap.c \
+					rendering/rendering_psychedelic.c \
 					rendering/rendering_utils.c \
-					rendering/rendering_trip_mode.c \
 					rendering/rendering.c \
-					stat/stat_game.c \
-					stat/stat_player.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \

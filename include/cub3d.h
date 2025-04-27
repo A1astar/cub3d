@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 17:00:39 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:00:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@
 
 enum e_program_state {game, level_menu, main_menu, main_menu_settings};
 enum e_main_menu_state {start_game, settings, exit_game};
+enum e_resolution {res_1280x720, res_1920x1080};
 enum e_playing_state {running, playing_menu};
-enum e_rendering {normal, transform};
 enum e_epileptic {ep_floor, ep_ceiling};
+enum e_rendering {normal, psychedelic};
 enum e_key_press {release, pressed};
 enum e_viewmodel {down, up};
 
@@ -402,6 +403,7 @@ typedef struct s_cub3d
 	int				nb_player;
 	int				nb_item;
 	uint8_t			program_state;
+	uint8_t			rendering_state;
 	t_map			map;
 	t_scene			scene;
 	t_player		player;
@@ -475,6 +477,7 @@ void	init_bonus_assets(t_cub3d *cub3d);
 void	init_struct_attributes(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d, t_window *scene);
+void	init_player(t_player *player, t_minimap *minimap);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
@@ -542,7 +545,7 @@ void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
 			t_minimap *minimap);
 
 /*		STAT		*/
-void	update_game_stat(t_cub3d *cub3d);
-void	update_player_stat(t_cub3d *cub3d);
+void	update_game_data(t_cub3d *cub3d);
+void	update_player_data(t_cub3d *cub3d);
 
 #endif
