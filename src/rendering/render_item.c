@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:17:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 19:10:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:57:14 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 {
 	draw->sprite_screen_x = (int)((WINDOW_WIDTH / 2) * (1 + (attr->trans_x
 					/ attr->trans_y)));
-	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y));
+	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y)) / 2;
 	draw->sprite_width = draw->sprite_height;
 	draw->draw_start_x = -draw->sprite_width / 2 + draw->sprite_screen_x;
 	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
