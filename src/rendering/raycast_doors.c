@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 18:37:01 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 12:02:37 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/28 14:34:25 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player)
 		else
 			raycast->perp_wall = raycast->y_side - raycast->y_delta;
 		if (is_a_door(&cub3d->map, raycast))
+		{
 			render_raycast(cub3d, raycast, x);
+			if(raycast->perp_wall < raycast->z_buffer[x])
+				raycast->z_buffer[x] = raycast->perp_wall;
+		}
 		x++;
 	}
 }
