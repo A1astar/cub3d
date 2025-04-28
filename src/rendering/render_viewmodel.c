@@ -6,23 +6,11 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 19:14:38 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:32:15 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static int	get_pixel(t_img *img, int x, int y)
-{
-	char	*pixel;
-	int		color;
-
-	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
-		return (0x000000);
-	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	color = *(unsigned int *)pixel;
-	return (color);
-}
 
 void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 		int y_start)
