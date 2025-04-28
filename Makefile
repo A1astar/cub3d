@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/28 15:48:01 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/28 19:05:19 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRC					:= data/data_game.c \
 					rendering/render_floor.c \
 					rendering/render_item.c \
 					rendering/render_raycast.c \
+					rendering/render_viewmodel.c \
 					rendering/drunk_raycast_threads.c \
 					rendering/rendering_game.c \
 					rendering/rendering_level_menu.c \

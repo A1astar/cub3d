@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 18:44:35 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/28 19:28:30 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -542,6 +542,7 @@ void 	update_ray_step_y(t_raycast *raycast);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
 void	render_item(t_item *item, t_player *player, t_raycast *raycast, t_scene *scene);
+void	render_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
 int		get_pixel(t_img *img, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 18:37:01 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 14:34:25 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/28 19:22:52 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ static bool	is_a_door(t_map *map, t_raycast *raycast)
 {
 	if (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'O'
 		|| map->map[(int)raycast->y_map][(int)raycast->x_map] == 'C')
+		return (true);
+	return (false);
+}
+
+static bool	is_closed(t_map *map, t_raycast *raycast)
+{
+	if (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'C')
+		return (true);
+	return (false);
+}
+
+static bool	is_smaller_perp(t_raycast *raycast, int x)
+{
+	if (raycast->perp_wall < raycast->z_buffer[x])
 		return (true);
 	return (false);
 }
@@ -51,9 +65,12 @@ void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player)
 		if (is_a_door(&cub3d->map, raycast))
 		{
 			render_raycast(cub3d, raycast, x);
-			if(raycast->perp_wall < raycast->z_buffer[x])
+			if (is_smaller_perp(raycast, x) && is_closed(&cub3d->map, raycast))
 				raycast->z_buffer[x] = raycast->perp_wall;
 		}
 		x++;
 	}
 }
+
+
+
