@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_graphics.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 12:21:58 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/28 15:36:09 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_t_main_menu(t_main_menu *menu, t_window *window)
 	nb_img = 0;
 	while (nb_img < 3)
 	{
-		free_t_img(window, &menu->img[nb_img]);
+		free_t_img(window, &menu->option[nb_img]);
 		nb_img++;
 	}
 }
