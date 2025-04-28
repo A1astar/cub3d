@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:17:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 17:00:31 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:25:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,18 @@ void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 	int				y;
 	int				d;
 
-	y = 0;
-	d = 0;
-	color = 0;
-	offset = 0;
 	stripe = item->draw.draw_start_x;
 	while (stripe < item->draw.draw_end_x)
 	{
-		if (item->attr.trans_y > 0 && stripe >= 0 && stripe < WINDOW_WIDTH
-			&& item->attr.trans_y < ray->z_buffer[stripe])
+		if (item->attr.trans_y > 0 && stripe >= 0 && stripe < WINDOW_WIDTH && item->attr.distance < pow(ray->z_buffer[stripe], 2))
 		{
-			item->draw.tex_x = (int)(256 * (stripe - (-item->draw.sprite_width
-							/ 2 + item->draw.sprite_screen_x)) * img->width
-					/ item->draw.sprite_width) / 256;
+			item->draw.tex_x = (int)(256 * (stripe - (-item->draw.sprite_width / 2 + item->draw.sprite_screen_x)) * img->width / item->draw.sprite_width) / 256;
 			y = item->draw.draw_start_y;
 			while (y < item->draw.draw_end_y)
 			{
-				d = y * 256 - WINDOW_HEIGHT * 128 + item->draw.sprite_height
-					* 128;
-				item->draw.tex_y = ((d * img->height)
-						/ item->draw.sprite_height) / 256;
-				offset = item->draw.tex_y * img->size_line + item->draw.tex_x
-					* (img->bpp / 8);
+				d = y * 256 - WINDOW_HEIGHT * 128 + item->draw.sprite_height * 128;
+				item->draw.tex_y = ((d * img->height) / item->draw.sprite_height) / 256;
+				offset = item->draw.tex_y * img->size_line + item->draw.tex_x * (img->bpp / 8);
 				color = *(unsigned int *)(img->addr + offset);
 				if (get_alpha(color) != 0)
 					draw_pixel(&scene->img, stripe, y, color);
@@ -75,17 +65,36 @@ void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 	draw->tex_y = 0;
 }
 
+void	det_guard(double *det)
+{
+	if(fabs(*det) < 1e-6)
+	{
+		if(*det >= 0)
+			*det = 1e-6;
+		else
+			*det = -1e-6;
+	}
+}
+
 void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,
 		t_item_attr *attr)
 {
-	attr->relative_x = item->x_pos - player->x_pos;
-	attr->relative_y = item->y_pos - player->y_pos;
-	attr->inversion_val = 1.0 / (raycast->x_plane * player->y_dir
-			- player->x_dir * raycast->y_plane);
-	attr->trans_x = attr->inversion_val * (player->y_dir * attr->relative_x
-			- player->x_dir * attr->relative_y);
-	attr->trans_y = attr->inversion_val * (-raycast->y_plane * player->x_dir
-			+ raycast->x_plane * attr->relative_y);
+	double det;
+
+	det = player->x_dir * raycast->y_plane - raycast->x_plane * player->y_dir;
+	det_guard(&det);
+	attr->relative_x = (item->x_pos + 0.5) - player->x_pos;
+	attr->relative_y = (item->y_pos + 0.5) - player->y_pos;
+	attr->inversion_val = 1.0 / det;
+	attr->trans_x = attr->inversion_val * (player->x_dir * attr->relative_y - player->y_dir * attr->relative_x);
+	attr->trans_y = attr->inversion_val * (player->x_dir * attr->relative_x + player->y_dir * attr->relative_y);
+	attr->distance = pow(attr->relative_x, 2) + pow(attr->relative_y, 2);
+	printf("raycast->x_plane:	%f\n", raycast->x_plane);
+	printf("attr->relative_x:	%f\n", attr->relative_x);
+	printf("attr->relative_y:	%f\n", attr->relative_y);
+	printf("attr->inv_val:		%f\n", attr->inversion_val);
+	printf("attr->trans_x:		%f\n", attr->trans_x);
+	printf("attr->trans_y:		%f\n", attr->trans_y);
 }
 
 void	render_item(t_item *item, t_player *player, t_raycast *raycast,
