@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:42:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/25 14:48:19 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/28 14:20:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	init_asset(t_cub3d *cub3d)
 {
 	init_scene(cub3d, &cub3d->window, &cub3d->scene);
 	init_main_menu(cub3d, &cub3d->window, &cub3d->main_menu);
+	init_main_menu_launch(cub3d, &cub3d->window, &cub3d->main_menu);
 	init_mandatory_assets(cub3d, cub3d->map.assets_paths);
 	init_bonus_assets(cub3d);
 }
