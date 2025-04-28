@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/27 21:26:17 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/28 16:21:59 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,18 @@
 
 # define RUNNING 1
 
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-
 // # define WINDOW_WIDTH 1920
 // # define WINDOW_HEIGHT 1080
 
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
+
+// # define WINDOW_WIDTH 845
+// # define WINDOW_HEIGHT 480
+
 enum e_program_state {game, level_menu, main_menu, main_menu_settings};
 enum e_main_menu_state {start_game, settings, exit_game};
+enum e_main_menu_settings_state {resolution, sensibility};
 enum e_resolution {res_1280x720, res_1920x1080};
 enum e_playing_state {running, playing_menu};
 enum e_epileptic {ep_floor, ep_ceiling};
@@ -361,10 +365,11 @@ typedef struct s_setting
 
 typedef struct s_main_menu
 {
-	int		width;
-	int		height;
 	int		index;
-	t_img	img[3];
+	t_img	background[3];
+	t_img	launcher_title;
+	t_img	launcher_blink;
+	t_img	option[3];
 }t_main_menu;
 
 typedef struct s_window
@@ -475,6 +480,7 @@ bool	is_rgb_line(char *line, size_t len);
 bool	is_asset_line(char *line, size_t len);
 
 void	init_asset(t_cub3d *cub3d);
+void	init_main_menu(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_struct_attributes(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);

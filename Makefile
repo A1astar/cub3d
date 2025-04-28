@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/27 17:15:06 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/28 15:48:01 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC					:= data/data_game.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \
 					init/init_bonus_assets.c \
+					init/init_main_menu.c \
 					init/init_mandatory_assets.c \
 					init/init_mlx.c \
 					init/init_player.c \
