@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 16:21:59 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/28 18:29:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 
-// # define WINDOW_WIDTH 845
+// # define WINDOW_WIDTH 854
 // # define WINDOW_HEIGHT 480
 
 enum e_program_state {game, level_menu, main_menu, main_menu_settings};
@@ -161,6 +161,7 @@ typedef struct s_floor_draw
 
 typedef struct s_img
 {
+	char	*pixel;
 	void	*ptr;
 	char	*addr;
 	int		bpp;
@@ -365,7 +366,8 @@ typedef struct s_setting
 
 typedef struct s_main_menu
 {
-	int		index;
+	int		index_option;
+	int		index_background;
 	t_img	background[3];
 	t_img	launcher_title;
 	t_img	launcher_blink;
@@ -541,6 +543,7 @@ void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
 void	render_item(t_item *item, t_player *player, t_raycast *raycast, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
+int		get_pixel(t_img *img, int x, int y);
 int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);

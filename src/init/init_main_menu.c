@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/28 16:20:23 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/28 17:26:04 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,16 @@ void	init_main_menu_background(t_cub3d *cub3d,
 	}
 }
 
+void	init_main_menu_attributes(t_main_menu *main_menu)
+{
+	main_menu->index_background = 1;
+	main_menu->index_option = 0;
+}
+
 void	init_main_menu(t_cub3d *cub3d)
 {
-	// init_main_menu_background(cub3d, &cub3d->window, &cub3d->main_menu);
+	init_main_menu_attributes(&cub3d->main_menu);
+	init_main_menu_background(cub3d, &cub3d->window, &cub3d->main_menu);
 	// init_main_menu_launcher(cub3d, &cub3d->window, &cub3d->main_menu);
 	init_main_menu_option(cub3d, &cub3d->window, &cub3d->main_menu);
 	init_main_menu_settings(cub3d, &cub3d->window, &cub3d->main_menu);

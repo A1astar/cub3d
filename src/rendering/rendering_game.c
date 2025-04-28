@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 17:47:08 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/28 18:28:30 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,7 @@ void	render_floor(t_cub3d *cub3d, t_scene *scene, t_map *map)
 	}
 }
 
-static int	get_pixel(t_img *img, int x, int y)
-{
-	char	*pixel;
-	int		color;
 
-	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
-		return (0x000000);
-	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	color = *(unsigned int *)pixel;
-	return (color);
-}
 
 void	render_viewmodel(t_viewmodel *viewmodel, t_scene *scene)
 {
