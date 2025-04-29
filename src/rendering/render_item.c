@@ -6,19 +6,11 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:17:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 12:37:06 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:10:31 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static int	get_alpha(unsigned int color)
-{
-	unsigned char	*a;
-
-	a = (unsigned char *)&color;
-	return (a[1]);
-}
 
 void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 		t_img *img)
@@ -27,24 +19,17 @@ void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 	int				offset;
 	int				stripe;
 	int				y;
-	int				d;
 
 	stripe = item->draw.draw_start_x;
 	while (stripe < item->draw.draw_end_x)
 	{
-		if (item->attr.trans_y > 0 && stripe >= 0 && stripe < WINDOW_WIDTH
-			&& item->attr.distance < pow(ray->z_buffer[stripe], 2))
+		if (item_on_screen(item, ray, stripe))
 		{
-			item->draw.tex_x = (int)(256 * (stripe - (-item->draw.sprite_width
-							/ 2 + item->draw.sprite_screen_x)) * img->width
-					/ item->draw.sprite_width) / 256;
+			item->draw.tex_x = get_tex_x(item, img, stripe);
 			y = item->draw.draw_start_y;
 			while (y < item->draw.draw_end_y)
 			{
-				d = y * 256 - WINDOW_HEIGHT * 128 + item->draw.sprite_height
-					* 128;
-				item->draw.tex_y = ((d * img->height)
-						/ item->draw.sprite_height) / 256;
+				update_draw_attributes(&item->draw, img, y);
 				offset = item->draw.tex_y * img->size_line + item->draw.tex_x
 					* (img->bpp / 8);
 				color = *(unsigned int *)(img->addr + offset);
@@ -77,13 +62,7 @@ void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 		draw->draw_end_y = WINDOW_HEIGHT - 1;
 	draw->tex_x = 0;
 	draw->tex_y = 0;
-	//printf("draw->sprite_screen_x:		%d\n", draw->sprite_screen_x);
-	//printf("draw->sprite_height:		%d\n", draw->sprite_height);
-	//printf("draw->sprite_width:		%d\n", draw->sprite_width);
-	//printf("draw->draw_start_x:		%d\n", draw->draw_start_x);
-	//printf("draw->draw_start_y:		%d\n", draw->draw_start_y);
-	//printf("draw->draw_end_x:		%d\n", draw->draw_end_x);
-	//printf("draw->draw_end_y:		%d\n", draw->draw_end_y);
+	draw->screen_to_tex_y = 0;
 }
 
 void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,

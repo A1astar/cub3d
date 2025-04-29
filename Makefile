@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/28 19:05:19 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/29 14:08:58 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRC					:= data/data_game.c \
 					rendering/raycast_threads.c \
 					rendering/raycast_update.c \
 					rendering/render_floor.c \
+					rendering/render_item_utils.c \
 					rendering/render_item.c \
 					rendering/render_raycast.c \
 					rendering/render_viewmodel.c \

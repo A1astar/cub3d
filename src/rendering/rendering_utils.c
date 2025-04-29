@@ -6,11 +6,19 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:00:23 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 11:27:58 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:09:26 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+int	get_alpha(unsigned int color)
+{
+	unsigned char	*a;
+
+	a = (unsigned char *)&color;
+	return (a[1]);
+}
 
 int	get_pixel(t_img *img, int x, int y)
 {
