@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 19:28:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:57:15 algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -484,6 +484,7 @@ bool	is_asset_line(char *line, size_t len);
 
 void	init_asset(t_cub3d *cub3d);
 void	init_main_menu(t_cub3d *cub3d);
+void	init_main_menu_addr(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_struct_attributes(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
@@ -545,11 +546,12 @@ void	render_item(t_item *item, t_player *player, t_raycast *raycast, t_scene *sc
 void	render_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
-int		get_pixel(t_img *img, int x, int y);
+char	*get_pixel(t_img *img, int x, int y);
 int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
-void	draw_pixel(t_img *img, int x, int y, int color);
+void	draw_pixel_asset(t_img *img, int x, int y, char *pixel);
+void	draw_pixel_color(t_img *scene, int x, int y, int color);
 void	draw_square(t_cub3d *cub3d, int x_index, int y_index, unsigned int color);
 void	rendering_psychedelic(t_cub3d *cub3d, t_scene *scene, t_map *map,
 		int which);

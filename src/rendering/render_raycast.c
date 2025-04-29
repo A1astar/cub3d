@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:09:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 12:45:45 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 12:09:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,10 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 		if (img->ptr == cub3d->textures.o_door.ptr)
 		{
 			if (get_alpha(color) != 0)
-				draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
+				draw_pixel_color(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		}
 		else
-			draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
+			draw_pixel_color(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		draw->draw_start++;
 	}
 }

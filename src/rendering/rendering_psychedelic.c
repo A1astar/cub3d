@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:46:21 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 17:47:13 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 12:14:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	rendering_psychedelic(t_cub3d *cub3d, t_scene *scene, t_map *map,
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			draw_pixel(&scene->img, x, y, red << 16 | green << 8 | blue);
+			draw_pixel_color(&scene->img, x, y, red << 16 | green << 8 | blue);
 			if (which == ep_ceiling)
 			{
 				blue *= 2;
