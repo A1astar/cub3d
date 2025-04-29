@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/28 17:22:55 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 15:52:02 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	main_menu_selection(t_cub3d *cub3d)
 		exit_cub3d(cub3d);
 }
 
-int	main_menu_key_hook(int keynum, t_cub3d *cub3d)
+void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
 		exit_cub3d(cub3d);
@@ -47,5 +47,13 @@ int	main_menu_key_hook(int keynum, t_cub3d *cub3d)
 		cub3d->main_menu.index_option++;
 	else if (keynum == XK_Return)
 		main_menu_selection(cub3d);
+}
+
+int	main_menu_key_hook(int keynum, t_cub3d *cub3d)
+{
+	if (cub3d->main_menu.state == launcher)
+		main_menu_launcher_key_hook(keynum, cub3d);
+	else if (cub3d->main_menu.state == option)
+		main_menu_option_key_hook(keynum, cub3d);
 	return (0);
 }

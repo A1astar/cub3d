@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/29 14:20:59 by algadea          ###   ########.fr        #
+#    Updated: 2025/04/29 16:52:19 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC					:= data/data_game.c \
 					data/data_player.c \
 					event/event_exit.c \
 					event/event_game.c \
+					event/event_launcher.c \
 					event/event_level_menu.c \
 					event/event_main_menu.c \
 					event/event_player_action.c \
@@ -46,6 +47,7 @@ SRC					:= data/data_game.c \
 					event/event.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \
+					init/init_background.c \
 					init/init_bonus_assets.c \
 					init/init_main_menu_addr.c \
 					init/init_main_menu.c \

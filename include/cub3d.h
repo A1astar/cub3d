@@ -61,7 +61,8 @@
 // # define WINDOW_HEIGHT 480
 
 enum e_program_state {game, level_menu, main_menu, main_menu_settings};
-enum e_main_menu_state {start_game, settings, exit_game};
+enum e_main_menu_state {launcher, option};
+enum e_main_menu_option_state {start_game, settings, exit_game};
 enum e_main_menu_settings_state {resolution, sensibility};
 enum e_resolution {res_1280x720, res_1920x1080};
 enum e_playing_state {running, playing_menu};
@@ -369,12 +370,14 @@ typedef struct s_setting
 
 typedef struct s_main_menu
 {
+	int		state;
 	int		index_option;
 	int		index_background;
 	t_img	background[3];
 	t_img	launcher_title;
 	t_img	launcher_blink;
 	t_img	option[3];
+	char	*filename[51];
 }t_main_menu;
 
 typedef struct s_window
@@ -469,8 +472,10 @@ int		game_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 
 int		main_menu_loop(t_cub3d *cub3d);
 int		main_menu_key_hook(int keynum, t_cub3d *cub3d);
+void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d);
 int		main_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int		main_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
+void	main_menu_launcher_key_hook(int keynum, t_cub3d *cub3d);
 
 int		level_menu_loop(t_cub3d *cub3d);
 int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
@@ -486,12 +491,14 @@ bool	is_asset_line(char *line, size_t len);
 
 void	init_asset(t_cub3d *cub3d);
 void	init_main_menu(t_cub3d *cub3d);
+void	init_main_menu_background(t_cub3d *cub3d);
 void	init_main_menu_addr(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_struct_attributes(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_player(t_player *player, t_minimap *minimap);
+void	init_main_menu_background_filename(t_main_menu *main_menu);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
