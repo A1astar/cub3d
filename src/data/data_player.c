@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:21:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 18:12:45 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 15:14:19 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,19 @@ static void	update_player_pos(t_cub3d *cub3d, t_player *player)
 		player->velocity = 0.04;
 }
 
+static void	check_item(t_cub3d *cub3d, t_player *player, t_map *map)
+{
+	if (map->map[(int)player->y_pos][(int)player->x_pos] == 'M')
+	{
+		map->map[(int)player->y_pos][(int)player->x_pos] = '0';
+		cub3d->nb_item = 0;
+		cub3d->rendering_state = psychedelic;
+	}
+}
+
 void	update_player_data(t_cub3d *cub3d)
 {
 	update_player_pos(cub3d, &cub3d->player);
+	check_item(cub3d, &cub3d->player, &cub3d->map);
 	update_viewmodel(&cub3d->player.viewmodel);
 }

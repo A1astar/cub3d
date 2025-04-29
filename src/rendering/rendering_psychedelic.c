@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_psychedelic.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:46:21 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 12:14:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 15:02:53 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	rendering_psychedelic(t_cub3d *cub3d, t_scene *scene, t_map *map,
 			draw_pixel_color(&scene->img, x, y, red << 16 | green << 8 | blue);
 			if (which == ep_ceiling)
 			{
-				blue *= 2;
-				red += PI;
-				green--;
+				blue += PI;
+				red -= PI;
+				green -=green;
 			}
 			else
 			{
-				blue--;
+				blue += 666;
 				red++;
 				green += PI;
 			}
