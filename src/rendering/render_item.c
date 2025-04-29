@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_item.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:17:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 14:10:31 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:20:29 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 					* (img->bpp / 8);
 				color = *(unsigned int *)(img->addr + offset);
 				if (get_alpha(color) != 0)
-					draw_pixel(&scene->img, stripe, y, color);
+					draw_pixel_color(&scene->img, stripe, y, color);
 				y++;
 			}
 		}

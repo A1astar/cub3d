@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/29 14:08:58 by alacroix         ###   ########.fr        #
+#    Updated: 2025/04/29 14:20:59 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC					:= data/data_game.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \
 					init/init_bonus_assets.c \
+					init/init_main_menu_addr.c \
 					init/init_main_menu.c \
 					init/init_mandatory_assets.c \
 					init/init_mlx.c \

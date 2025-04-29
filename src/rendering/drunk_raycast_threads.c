@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drunk_raycast_threads.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:26:58 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/18 11:41:31 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:13:17 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ static void	draw_texture(t_cub3d *cub3d, t_ray_attributes *ray, t_draw_attribute
 		color = *(unsigned int *)(img->addr + offset);
 		if(ray->side == 1)
 			color = (color >> 1) & 0x7F7F7F;
-		draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
+		draw_pixel_color(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		draw->draw_start++;
 	}
 }

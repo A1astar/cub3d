@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:13:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/17 15:49:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 12:14:29 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			render->y_cent = y - (minimap->tile_height * minimap->scale) / 2;
 			render->x_rot = get_x_rot_value(player, render);
 			render->y_rot = get_y_rot_value(player, render);
-			draw_pixel(&cub3d->scene.img, (int)(render->px + render->x_rot),
+			draw_pixel_color(&cub3d->scene.img, (int)(render->px + render->x_rot),
 				(int)(render->py + render->y_rot), HEX_RED);
 			x++;
 		}

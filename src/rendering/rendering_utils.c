@@ -3,41 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:00:23 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 14:09:26 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:20:49 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	get_alpha(unsigned int color)
+char	*get_pixel(t_img *img, int x, int y)
 {
-	unsigned char	*a;
-
-	a = (unsigned char *)&color;
-	return (a[1]);
+	img->pixel = img->addr + y * img->size_line + x * (img->bpp / 8);
+	return (img->pixel);
 }
 
-int	get_pixel(t_img *img, int x, int y)
+void	draw_pixel_asset(t_img *scene, int x, int y, char *pixel)
 {
-	char	*pixel;
-	int		color;
-
-	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
-		return (0x000000);
-	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	color = *(unsigned int *)pixel;
-	return (color);
+	if (*(unsigned int *)pixel != 0xFF000000)
+	{
+		scene->pixel = scene->addr + (y * scene->size_line + x * (scene->bpp / 8));
+		*(unsigned int *)scene->pixel = *(unsigned int *)pixel;
+	}
 }
 
-void	draw_pixel(t_img *img, int x, int y, int color)
+void	draw_pixel_color(t_img *scene, int x, int y, int color)
 {
-	char	*pixel;
-
-	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	*(unsigned int *)pixel = color;
+	scene->pixel = scene->addr + (y * scene->size_line + x * (scene->bpp / 8));
+	*(unsigned int *)scene->pixel = color;
 }
 
 void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
@@ -56,7 +49,7 @@ void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
 		x = 0;
 		while (x < width)
 		{
-			draw_pixel(&cub3d->scene.img, x + x_index, y + y_index, color);
+			draw_pixel_color(&cub3d->scene.img, x + x_index, y + y_index, color);
 			x++;
 		}
 		y++;

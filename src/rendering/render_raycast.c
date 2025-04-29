@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_raycast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:09:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 14:10:45 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:20:43 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,10 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 			|| img->ptr == cub3d->textures.trip_o_door.ptr)
 		{
 			if (get_alpha(color) != 0)
-				draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
+				draw_pixel_color(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		}
 		else
-			draw_pixel(&cub3d->scene.img, ray_num, draw->draw_start, color);
+			draw_pixel_color(&cub3d->scene.img, ray_num, draw->draw_start, color);
 		draw->draw_start++;
 	}
 }

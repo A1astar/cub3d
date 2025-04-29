@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 14:22:57 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 14:24:42 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	render_ceiling(t_scene *scene, t_map *map)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			draw_pixel(&scene->img, x, y,
+			draw_pixel_color(&scene->img, x, y,
 				map->ceilling_rgb[0] << 16 | map->ceilling_rgb[1] << 8 | map->ceilling_rgb[2]);
 			x++;
 		}
@@ -44,7 +44,7 @@ void	render_floor(t_scene *scene, t_map *map)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			draw_pixel(&scene->img, x, y,
+			draw_pixel_color(&scene->img, x, y,
 				map->floor_rgb[0] << 16 | map->floor_rgb[1] << 8 | map->floor_rgb[2]);
 			x++;
 		}

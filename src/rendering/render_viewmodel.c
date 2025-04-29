@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_viewmodel.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 19:32:15 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:12:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 		int y_start)
 {
-	unsigned int	color;
 	int				x;
 	int				y;
 
@@ -26,9 +25,10 @@ void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 		x = 0;
 		while (x < viewmodel->width)
 		{
-			color = get_pixel(viewmodel, x, y);
-			if ((color >> 24) == 0)
-				draw_pixel(&scene->img, x_start + x, y_start + y, color);
+			draw_pixel_asset(&scene->img,
+				x_start + x,
+				y_start + y,
+				get_pixel(viewmodel, x, y));
 			x++;
 		}
 		y++;
