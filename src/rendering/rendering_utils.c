@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:00:23 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 14:20:49 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 14:32:54 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+int	get_alpha(unsigned int color)
+{
+	unsigned char *bytes;
+
+	bytes = (unsigned char *)&color;
+	return (bytes[1]);
+}
 
 char	*get_pixel(t_img *img, int x, int y)
 {

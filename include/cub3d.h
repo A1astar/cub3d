@@ -552,6 +552,7 @@ void	render_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
 char	*get_pixel(t_img *img, int x, int y);
+int		get_alpha(unsigned int color);
 int		game_loop(t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		level_menu_loop(t_cub3d *cub3d);
