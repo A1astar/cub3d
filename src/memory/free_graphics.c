@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 15:36:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 22:45:30 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	free_image(void *mlx, void *image)
 
 void	free_t_img(t_window *window, t_img *img)
 {
+	if (img->addr)
+		free(img->addr);
 	if (img->ptr)
 		free_image(window->mlx_ptr, img->ptr);
 }
@@ -41,9 +43,11 @@ void	free_t_main_menu(t_main_menu *menu, t_window *window)
 	size_t	nb_img;
 
 	nb_img = 0;
-	while (nb_img < 3)
+	while (nb_img < 50)
 	{
-		free_t_img(window, &menu->option[nb_img]);
+		if (nb_img < 3)
+			free_t_img(window, &menu->option[nb_img]);
+		free_t_img(window, &menu->background[nb_img]);
 		nb_img++;
 	}
 }

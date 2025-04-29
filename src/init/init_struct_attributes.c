@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct_attributes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:20:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 11:05:27 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:51:35 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	init_viewmodel(t_viewmodel *viewmodel)
 
 void	init_struct_attributes(t_cub3d *cub3d)
 {
-	pthread_mutex_init(&cub3d->print, NULL);
+	// pthread_mutex_init(&cub3d->print, NULL);
 	ft_bzero(cub3d, sizeof(cub3d));
 	ft_bzero(&cub3d->map, sizeof(t_map));
 	ft_bzero(&cub3d->scene, sizeof(t_scene));
@@ -93,7 +93,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	ft_bzero(&cub3d->randy[2], sizeof(t_enemy));
 	ft_bzero(&cub3d->randy[3], sizeof(t_enemy));
 	ft_bzero(&cub3d->main_menu, sizeof(t_main_menu));
-	ft_bzero(&cub3d->level_menu, sizeof(t_main_menu));
+	ft_bzero(&cub3d->level_menu, sizeof(t_level_menu));
 	ft_bzero(&cub3d->raycast, sizeof(t_raycast));
 	init_randy(&cub3d->randy[0]);
 	init_randy(&cub3d->randy[1]);

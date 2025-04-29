@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:50:43 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 17:50:15 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 21:17:44 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_main_menu_background_frame_addr(t_cub3d *cub3d, t_main_menu *main_menu
 	int	i;
 
 	i = 0;
-	while (i < 52)
+	while (i < 50)
 	{
 		main_menu->background[i].addr = mlx_get_data_addr(
 			main_menu->background[i].ptr,
@@ -30,28 +30,62 @@ void	init_main_menu_background_frame_addr(t_cub3d *cub3d, t_main_menu *main_menu
 			free_program(cub3d);
 			exit(EXIT_FAILURE);
 		}
+		i++;
 	}
 }
 
-void	init_background_frame_img(t_cub3d *cub3d,
-			t_window *window, t_main_menu *main_menu)
+char	*get_filename(t_cub3d *cub3d, int i)
 {
-	main_menu->background[0].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-			"asset/main_menu/main_menu-launch480.xpm",
-			&main_menu->background[0].width,
-			&main_menu->background[0].height);
-	if (!main_menu->background[0].ptr || !main_menu->background[1].ptr
-		|| !main_menu->background[2].ptr)
+	char	*tmp;
+	char	*filename;
+
+	tmp = ft_strjoin("asset/main_menu/background/background-0", ft_itoa(i));
+	if (!tmp)
 	{
-		printf(BOLD RED "MAIN MENU BACKGROUND XPM ERROR\n" DEFAULT);
+		printf(BOLD RED "MALLOC ERROR\n" DEFAULT);
 		free_program(cub3d);
 		exit(EXIT_FAILURE);
+	}
+	filename = ft_strjoin(tmp, ".xpm");
+	free(tmp);
+	if (!filename)
+	{
+		printf(BOLD RED "MALLOC ERROR\n" DEFAULT);
+		free_program(cub3d);
+		exit(EXIT_FAILURE);
+	}
+	return (filename);
+}
+
+void	init_main_menu_background_frame_img(t_cub3d *cub3d,
+			t_window *window, t_main_menu *main_menu)
+{
+	int		i;
+	char	*filename;
+
+	i = 0;
+	while (i < 50)
+	{
+		filename = get_filename(cub3d, i + 1);
+		main_menu->background[i].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
+				filename,
+				&main_menu->background[i].width,
+				&main_menu->background[i].height);
+		free(filename);
+		if (!main_menu->background[i].ptr)
+		{
+			printf(BOLD RED "MAIN MENU BACKGROUND XPM ERROR\n" DEFAULT);
+			free_program(cub3d);
+			exit(EXIT_FAILURE);
+		}
+		i++;
 	}
 }
 
 void	init_main_menu_background(t_cub3d *cub3d)
 {
 	init_main_menu_background_frame_img(cub3d,
-			&cub3d->window, &cub3d->scene);
+			&cub3d->window, &cub3d->main_menu);
 	init_main_menu_background_frame_addr(cub3d, &cub3d->main_menu);
+	printf("Here\n");
 }

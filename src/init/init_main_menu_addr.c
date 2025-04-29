@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 12:28:21 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 17:47:19 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 20:41:59 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	init_main_menu_option_addr(t_cub3d *cub3d, t_main_menu *main_menu)
 
 void	init_main_menu_addr(t_cub3d *cub3d)
 {
-	init_main_menu_background_addr(cub3d, &cub3d->main_menu);
 	// init_main_menu_launcher(cub3d, &cub3d->main_menu);
 	init_main_menu_option_addr(cub3d, &cub3d->main_menu);
 	// init_main_menu_settings_addr(cub3d, &cub3d->main_menu);

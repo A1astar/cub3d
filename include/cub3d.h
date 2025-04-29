@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 11:57:15 algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 21:17:37 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,11 +373,10 @@ typedef struct s_main_menu
 	int		state;
 	int		index_option;
 	int		index_background;
-	t_img	background[3];
+	t_img	background[50];
 	t_img	launcher_title;
 	t_img	launcher_blink;
 	t_img	option[3];
-	char	*filename[51];
 }t_main_menu;
 
 typedef struct s_window
