@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 19:28:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:40:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_item_attr
 	double		trans_x;
 	double		trans_y;
 	int			sprite_screen_x;
+	int			v_move_screen;
 }				t_item_attr;
 
 typedef struct s_item_draw

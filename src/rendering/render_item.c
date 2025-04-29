@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:17:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/28 19:57:14 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:49:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,17 @@ void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y)) / 2;
 	draw->sprite_width = draw->sprite_height;
 	draw->draw_start_x = -draw->sprite_width / 2 + draw->sprite_screen_x;
-	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+	if (draw->draw_start_x < 0)
+		draw->draw_start_x = 0;
+	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2
+		+ attr->v_move_screen;
+	if (draw->draw_start_y < 0)
+		draw->draw_start_y = 0;
 	draw->draw_end_x = draw->sprite_width / 2 + draw->sprite_screen_x;
-	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2
+		+ attr->v_move_screen;
+	if (draw->draw_end_y >= WINDOW_HEIGHT)
+		draw->draw_end_y = WINDOW_HEIGHT - 1;
 	draw->tex_x = 0;
 	draw->tex_y = 0;
 }
@@ -86,6 +94,7 @@ void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,
 	attr->trans_y = inv_det * (-raycast->y_plane * rel_x + raycast->x_plane
 			* rel_y);
 	attr->distance = rel_x * rel_x + rel_y * rel_y;
+	attr->v_move_screen = 64.0 / attr->trans_y;
 }
 
 void	render_item(t_item *item, t_player *player, t_raycast *raycast,
