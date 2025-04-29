@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:17:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 11:49:06 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:37:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,24 @@ void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 	draw->draw_start_x = -draw->sprite_width / 2 + draw->sprite_screen_x;
 	if (draw->draw_start_x < 0)
 		draw->draw_start_x = 0;
-	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2
-		+ attr->v_move_screen;
+	draw->draw_end_x = draw->sprite_width / 2 + draw->sprite_screen_x;
+	if (draw->draw_end_x >= WINDOW_WIDTH)
+		draw->draw_end_x = WINDOW_WIDTH - 1;
+	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
 	if (draw->draw_start_y < 0)
 		draw->draw_start_y = 0;
-	draw->draw_end_x = draw->sprite_width / 2 + draw->sprite_screen_x;
-	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2
-		+ attr->v_move_screen;
+	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
 	if (draw->draw_end_y >= WINDOW_HEIGHT)
 		draw->draw_end_y = WINDOW_HEIGHT - 1;
 	draw->tex_x = 0;
 	draw->tex_y = 0;
+	//printf("draw->sprite_screen_x:		%d\n", draw->sprite_screen_x);
+	//printf("draw->sprite_height:		%d\n", draw->sprite_height);
+	//printf("draw->sprite_width:		%d\n", draw->sprite_width);
+	//printf("draw->draw_start_x:		%d\n", draw->draw_start_x);
+	//printf("draw->draw_start_y:		%d\n", draw->draw_start_y);
+	//printf("draw->draw_end_x:		%d\n", draw->draw_end_x);
+	//printf("draw->draw_end_y:		%d\n", draw->draw_end_y);
 }
 
 void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,
@@ -94,7 +101,7 @@ void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,
 	attr->trans_y = inv_det * (-raycast->y_plane * rel_x + raycast->x_plane
 			* rel_y);
 	attr->distance = rel_x * rel_x + rel_y * rel_y;
-	attr->v_move_screen = 64.0 / attr->trans_y;
+	attr->v_move_screen = 240.0 / attr->trans_x;
 }
 
 void	render_item(t_item *item, t_player *player, t_raycast *raycast,
