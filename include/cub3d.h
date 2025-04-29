@@ -84,6 +84,7 @@ typedef struct s_item_attr
 	double		trans_x;
 	double		trans_y;
 	int			sprite_screen_x;
+	int			v_move_screen;
 }				t_item_attr;
 
 typedef struct s_item_draw
@@ -97,6 +98,7 @@ typedef struct s_item_draw
 	int			draw_end_y;
 	int			tex_x;
 	int			tex_y;
+	int			screen_to_tex_y;
 }				t_item_draw;
 
 typedef struct s_item_render
@@ -543,6 +545,9 @@ void 	update_ray_step_y(t_raycast *raycast);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
 void	render_item(t_item *item, t_player *player, t_raycast *raycast, t_scene *scene);
+bool	item_on_screen(t_item_render *item, t_raycast *ray, int stripe);
+int		get_tex_x(t_item_render *item, t_img *img, int stripe);
+void	update_draw_attributes(t_item_draw *draw, t_img *img, int y);
 void	render_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);

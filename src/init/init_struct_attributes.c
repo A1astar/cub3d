@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct_attributes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:20:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 16:45:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 11:05:27 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,7 @@ void	init_struct_attributes(t_cub3d *cub3d)
 	init_viewmodel(&cub3d->player.viewmodel);
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;
+	cub3d->nb_enemy = 0;
+	cub3d->nb_player = 0;
+	cub3d->nb_item = 0;
 }

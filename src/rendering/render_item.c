@@ -6,19 +6,11 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:17:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 12:09:07 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 14:20:29 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static int	get_alpha(unsigned int color)
-{
-	unsigned char	*a;
-
-	a = (unsigned char *)&color;
-	return (a[1]);
-}
 
 void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 		t_img *img)
@@ -27,24 +19,17 @@ void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 	int				offset;
 	int				stripe;
 	int				y;
-	int				d;
 
 	stripe = item->draw.draw_start_x;
 	while (stripe < item->draw.draw_end_x)
 	{
-		if (item->attr.trans_y > 0 && stripe >= 0 && stripe < WINDOW_WIDTH
-			&& item->attr.distance < pow(ray->z_buffer[stripe], 2))
+		if (item_on_screen(item, ray, stripe))
 		{
-			item->draw.tex_x = (int)(256 * (stripe - (-item->draw.sprite_width
-							/ 2 + item->draw.sprite_screen_x)) * img->width
-					/ item->draw.sprite_width) / 256;
+			item->draw.tex_x = get_tex_x(item, img, stripe);
 			y = item->draw.draw_start_y;
 			while (y < item->draw.draw_end_y)
 			{
-				d = y * 256 - WINDOW_HEIGHT * 128 + item->draw.sprite_height
-					* 128;
-				item->draw.tex_y = ((d * img->height)
-						/ item->draw.sprite_height) / 256;
+				update_draw_attributes(&item->draw, img, y);
 				offset = item->draw.tex_y * img->size_line + item->draw.tex_x
 					* (img->bpp / 8);
 				color = *(unsigned int *)(img->addr + offset);
@@ -64,11 +49,20 @@ void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y)) / 2;
 	draw->sprite_width = draw->sprite_height;
 	draw->draw_start_x = -draw->sprite_width / 2 + draw->sprite_screen_x;
-	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+	if (draw->draw_start_x < 0)
+		draw->draw_start_x = 0;
 	draw->draw_end_x = draw->sprite_width / 2 + draw->sprite_screen_x;
+	if (draw->draw_end_x >= WINDOW_WIDTH)
+		draw->draw_end_x = WINDOW_WIDTH - 1;
+	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+	if (draw->draw_start_y < 0)
+		draw->draw_start_y = 0;
 	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+	if (draw->draw_end_y >= WINDOW_HEIGHT)
+		draw->draw_end_y = WINDOW_HEIGHT - 1;
 	draw->tex_x = 0;
 	draw->tex_y = 0;
+	draw->screen_to_tex_y = 0;
 }
 
 void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,
@@ -86,6 +80,7 @@ void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,
 	attr->trans_y = inv_det * (-raycast->y_plane * rel_x + raycast->x_plane
 			* rel_y);
 	attr->distance = rel_x * rel_x + rel_y * rel_y;
+	attr->v_move_screen = 240.0 / attr->trans_x;
 }
 
 void	render_item(t_item *item, t_player *player, t_raycast *raycast,

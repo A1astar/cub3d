@@ -6,19 +6,11 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:09:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 12:09:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/29 14:20:43 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static int	get_alpha(unsigned int color)
-{
-	unsigned char	*a;
-
-	a = (unsigned char *)&color;
-	return (a[1]);
-}
 
 static t_img	*select_texture_psychedelic(t_cub3d *cub3d, t_raycast *ray,
 		t_textures *textures)
@@ -117,7 +109,8 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 		draw->tex_pos += draw->step;
 		offset = draw->tex_y * img->size_line + draw->tex_x * (img->bpp / 8);
 		color = *(unsigned int *)(img->addr + offset);
-		if (img->ptr == cub3d->textures.o_door.ptr)
+		if (img->ptr == cub3d->textures.o_door.ptr
+			|| img->ptr == cub3d->textures.trip_o_door.ptr)
 		{
 			if (get_alpha(color) != 0)
 				draw_pixel_color(&cub3d->scene.img, ray_num, draw->draw_start, color);
