@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:28:20 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 12:08:54 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 15:54:21 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ static void	draw_ray(t_cub3d *cub3d, t_floor_ray *ray, int x, int y)
 	unsigned int	color;
 	t_img			*img;
 
-	img = &cub3d->textures.floor;
+	if (cub3d->rendering_state == psychedelic)
+		img = &cub3d->textures.trip_floor;
+	else
+		img = &cub3d->textures.floor;
 	ft_bzero(&draw, sizeof(t_floor_draw));
 	init_floor_draw(&draw, cub3d, ray);
 	offset = draw.tex_y * img->size_line + draw.tex_x * (img->bpp / 8);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 12:52:41 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 15:56:08 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,15 @@ void	render_floor(t_scene *scene, t_map *map)
 
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
-	if (cub3d->rendering_state == normal)
-	{
-		raycast_floor(cub3d, &cub3d->raycast, &cub3d->player);
-	}
-	else
-	{
-		rendering_psychedelic(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
-		rendering_psychedelic(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
-		// render_floor(scene, &cub3d->map);
-		// render_ceiling(scene, &cub3d->map);
-	}
+	raycast_floor(cub3d, &cub3d->raycast, &cub3d->player);
+	// if (cub3d->rendering_state == normal)
+	// else
+	// {
+	// 	rendering_psychedelic(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
+	// 	// rendering_psychedelic(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
+	// 	// render_floor(scene, &cub3d->map);
+	// 	// render_ceiling(scene, &cub3d->map);
+	// }
 	raycast_map(cub3d, &cub3d->raycast, &cub3d->player);
 	raycast_doors(cub3d, &cub3d->raycast, &cub3d->player);
 			// raycast_threads(cub3d);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/01 12:41:08 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/01 16:35:45 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT				= libft/libft.a
 ###########################		 	  FLAG			###########################
 
 CC					= clang
-CFLAGS				= -g3 -Wall -Wextra -Werror -pthread
+CFLAGS				= -g3 -Wall -Wextra -Werror -pthread -fsanitize=address
 LIBFLAGS			= -Llibft -lft -lX11 -lXext -Lminilibx-linux -lmlx -lm
 
 ###########################		 	 INCLUDE		###########################

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:50:43 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 12:18:39 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 16:54:24 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,18 @@ void	init_main_menu_background_frame_addr(t_cub3d *cub3d, t_main_menu *main_menu
 char	*get_filename(t_cub3d *cub3d, int i)
 {
 	char	*tmp;
+	char	*number;
 	char	*filename;
 
-	tmp = ft_strjoin("asset/main_menu/background/720/background-0", ft_itoa(i));
+	number = ft_itoa(i);
+	if (!number)
+	{
+		printf(BOLD RED "MALLOC ERROR\n" DEFAULT);
+		free_program(cub3d);
+		exit(EXIT_FAILURE);
+	}
+	tmp = ft_strjoin("asset/main_menu/background/720/background-0", number);
+	free(number);
 	if (!tmp)
 	{
 		printf(BOLD RED "MALLOC ERROR\n" DEFAULT);

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 22:49:37 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 15:38:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
 		exit_cub3d(cub3d);
-	else if ((keynum == XK_w || keynum == XK_Up) && cub3d->main_menu.index_option != 0)
+	else if ((keynum == XK_w || keynum == XK_Up)
+		&& cub3d->main_menu.index_option != 0)
 		cub3d->main_menu.index_option--;
 	else if ((keynum == XK_s || keynum == XK_Down)
 		&& cub3d->main_menu.index_option != 2)
