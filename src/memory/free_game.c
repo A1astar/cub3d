@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/25 14:52:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:09:26 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,35 @@ static void	free_t_textures(t_textures *textures, t_window *window)
 	free_t_img(window, &textures->trip_c_door);
 }
 
+static void	free_t_viewmodel(t_viewmodel *viewmodel, t_window *window)
+{
+	free_t_img(window, &viewmodel->normal_stand);
+	free_t_img(window, &viewmodel->trip_stand);
+	free_t_img(window, &viewmodel->normal_sword_sprite[0]);
+	free_t_img(window, &viewmodel->normal_sword_sprite[1]);
+	free_t_img(window, &viewmodel->normal_sword_sprite[2]);
+	free_t_img(window, &viewmodel->normal_sword_sprite[3]);
+	free_t_img(window, &viewmodel->normal_wand_sprite[0]);
+	free_t_img(window, &viewmodel->normal_wand_sprite[1]);
+	free_t_img(window, &viewmodel->normal_wand_sprite[2]);
+	free_t_img(window, &viewmodel->normal_wand_sprite[3]);
+	free_t_img(window, &viewmodel->trip_sword_sprite[0]);
+	free_t_img(window, &viewmodel->trip_sword_sprite[1]);
+	free_t_img(window, &viewmodel->trip_sword_sprite[2]);
+	free_t_img(window, &viewmodel->trip_sword_sprite[3]);
+	free_t_img(window, &viewmodel->trip_cig_sprite[0]);
+	free_t_img(window, &viewmodel->trip_cig_sprite[1]);
+	free_t_img(window, &viewmodel->trip_cig_sprite[2]);
+	free_t_img(window, &viewmodel->trip_cig_sprite[3]);
+}
+
 static void	free_t_enemy(t_enemy *randy, t_window *window)
 {
 	size_t	nb_randy;
-	size_t	nb_sprite;
 
 	nb_randy = 0;
-	nb_sprite = 0;
 	while (nb_randy < 4)
-	{
-		while (nb_sprite < 16)
-		{
-			free_t_img(window, &randy[nb_randy].sprite[nb_sprite]);
-			nb_sprite++;
-		}
-		nb_sprite = 0;
-		nb_randy++;
-	}
+		free_t_img(window, &randy[nb_randy++].sprite);
 }
 
 static void	free_t_map(t_map *map)
@@ -66,6 +78,7 @@ static void	free_t_map(t_map *map)
 void	free_program(t_cub3d *cub3d)
 {
 	free_t_textures(&cub3d->textures, &cub3d->window);
+	free_t_viewmodel(&cub3d->player.viewmodel, &cub3d->window);
 	free_t_map(&cub3d->map);
 	free_t_enemy(cub3d->randy, &cub3d->window);
 	free_t_main_menu(&cub3d->main_menu, &cub3d->window);
