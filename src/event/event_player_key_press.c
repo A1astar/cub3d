@@ -29,16 +29,22 @@ bool	is_player_action_key(int keynum)
 
 void	player_movement_key(int keynum, t_cub3d *cub3d)
 {
-	if (keynum == XK_w || keynum == XK_Up)
+	// if (keynum == XK_w || keynum == XK_Up)
+	if (keynum == XK_w)
 	{
 		cub3d->key_state.w = pressed;
-		cub3d->key_state.up = pressed;
+		// cub3d->key_state.up = pressed;
+		// if (cub3d->player.movement_w_s != 1)
+		// 	cub3d->player.movement_w_s++;
 		cub3d->player.movement_w_s++;
 	}
-	else if (keynum == XK_s || keynum == XK_Down)
+	// else if (keynum == XK_s || keynum == XK_Down)
+	else if (keynum == XK_s)
 	{
 		cub3d->key_state.s = pressed;
-		cub3d->key_state.down = pressed;
+		// cub3d->key_state.down = pressed;
+		// if (cub3d->player.movement_w_s != -1)
+		// 	cub3d->player.movement_w_s--;
 		cub3d->player.movement_w_s--;
 	}
 	else if (keynum == XK_a)

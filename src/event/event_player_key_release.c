@@ -14,27 +14,31 @@
 
 int	key_release_hook(int keynum, t_cub3d *cub3d)
 {
-	if (keynum == XK_w || keynum == XK_Up)
+	// if (keynum == XK_w || keynum == XK_Up)
+	if (keynum == XK_w)
 	{
-		cub3d->key_state.up = release;
 		cub3d->key_state.w = release;
+		// cub3d->key_state.up = release;
+		// if (cub3d->player.movement_w_s != -1)
+		// 	cub3d->player.movement_w_s--;
 		cub3d->player.movement_w_s--;
 	}
-	else if (keynum == XK_s || keynum == XK_Down)
+	// else if (keynum == XK_s || keynum == XK_Down)
+	else if (keynum == XK_s)
 	{
-		cub3d->key_state.down = release;
-		cub3d->key_state.s = release;
+		// cub3d->key_state.down = release;
+		// cub3d->key_state.s = release;
+		// if (cub3d->player.movement_w_s != 1)
+		// 	cub3d->player.movement_w_s++;
 		cub3d->player.movement_w_s++;
 	}
-	else if (keynum == XK_a || keynum == XK_Left)
+	else if (keynum == XK_a)
 	{
-		cub3d->key_state.left = release;
 		cub3d->key_state.a = release;
 		cub3d->player.movement_a_d++;
 	}
-	else if (keynum == XK_d || keynum == XK_Right)
+	else if (keynum == XK_d)
 	{
-		cub3d->key_state.right = release;
 		cub3d->key_state.d = release;
 		cub3d->player.movement_a_d--;
 	}
