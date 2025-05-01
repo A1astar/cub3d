@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/01 16:35:45 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/01 17:03:46 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ LIBFT				= libft/libft.a
 ###########################		 	  FLAG			###########################
 
 CC					= clang
-CFLAGS				= -g3 -Wall -Wextra -Werror -pthread -fsanitize=address
+CFLAGS				= -g3 -Wall -Wextra -Werror -pthread
+ifdef SANITIZE
+	CFLAGS			+= -fsanitize=address
+endif
 LIBFLAGS			= -Llibft -lft -lX11 -lXext -Lminilibx-linux -lmlx -lm
 
 ###########################		 	 INCLUDE		###########################
