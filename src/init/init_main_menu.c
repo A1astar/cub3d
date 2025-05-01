@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 14:45:34 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 18:36:20 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,15 @@ void	init_main_menu_option(t_cub3d *cub3d,
 static void	init_main_menu_launcher(t_cub3d *cub3d,
 			t_window *window, t_main_menu *main_menu)
 {
-	// main_menu->launcher_blink.ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-	// 		"asset/main_menu/main-menu1-720.xpm",
-	// 		&main_menu->launcher_blink.width,
-	// 		&main_menu->launcher_blink.height);
+	main_menu->launcher_blink.ptr = mlx_xpm_file_to_image(window->mlx_ptr,
+			"asset/main_menu/main_menu-blink720.xpm",
+			&main_menu->launcher_blink.width,
+			&main_menu->launcher_blink.height);
 	main_menu->launcher_title.ptr = mlx_xpm_file_to_image(window->mlx_ptr,
 			"asset/main_menu/main_menu-title720.xpm",
 			&main_menu->launcher_title.width,
 			&main_menu->launcher_title.height);
-	// if (!main_menu->launcher_blink.ptr || !main_menu->launcher_title.ptr)
-	if (!main_menu->launcher_title.ptr)
+	if (!main_menu->launcher_blink.ptr || !main_menu->launcher_title.ptr)
 	{
 		printf(BOLD RED "MAIN MENU LAUNCHER XPM ERROR\n" DEFAULT);
 		free_program(cub3d);

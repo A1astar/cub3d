@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 14:57:37 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 18:48:16y algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	render_main_menu_title(t_scene *scene, t_window *window,
 	int	x;
 
 	y = 0;
-	printf("main_menu state = %d\n", main_menu->state);
 	while (y < window->height)
 	{
 		x = 0;
@@ -51,6 +50,44 @@ void	render_main_menu_title(t_scene *scene, t_window *window,
 		}
 		y++;
 	}
+}
+
+void	render_main_menu_blink(t_scene *scene, t_window *window,
+		t_main_menu *main_menu)
+{
+	int			y;
+	int			x;
+	char		*pixel;
+	static unsigned int	blink;
+	static int	direction;
+
+	y = 0;
+	while (y < window->height)
+	{
+		x = 0;
+		while (x < window->width)
+		{
+			pixel = get_pixel(&main_menu->launcher_blink, x, y);
+			if (*(unsigned *)pixel != 0xFF000000)
+			{
+				if (direction == down)
+					*(unsigned int *)pixel -= 0x00010101;
+				else if (direction == up)
+					*(unsigned int *)pixel += 0x00010101;
+			}
+			draw_pixel_asset(&scene->img, x, y, pixel);
+			x++;
+		}
+		y++;
+	}
+	if (blink == UINT32_MAX)
+		direction = down;
+	else if (blink == 0x01010101)
+		direction = up;
+	if (direction == up)
+		blink += 0x01010101;
+	else
+		blink -= 0x01010101;
 }
 
 void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
@@ -87,7 +124,10 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 	render_main_menu_background(cub3d, &cub3d->main_menu);
 	if (cub3d->main_menu.state == launcher)
+	{
 		render_main_menu_title(scene, window, &cub3d->main_menu);
+		render_main_menu_blink(scene, window, &cub3d->main_menu);
+	}
 	else if (cub3d->main_menu.state == option)
 		render_main_menu_option(scene, window, &cub3d->main_menu);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
