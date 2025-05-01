@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:26:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 12:56:56 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 15:36:30 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static void	init_enemy_attributes(t_enemy *enemy, t_player *player,
 	attr->trans_y = inv_det * (-raycast->y_plane * rel_x + raycast->x_plane
 			* rel_y);
 	attr->distance = rel_x * rel_x + rel_y * rel_y;
-	attr->v_move_screen = 240.0 / attr->trans_x;
 }
 
 static void	init_enemy(t_player *player, t_enemy *enemey, t_raycast *raycast,

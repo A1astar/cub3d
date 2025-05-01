@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:05:30 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 14:33:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:51:08 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,8 @@ void	update_draw_attributes(t_item_draw *draw, t_img *img, int y)
 		* 128;
 	draw->tex_y = ((draw->screen_to_tex_y * img->height) / draw->sprite_height)
 		/ 256;
+	// if (draw->tex_y < 0)
+	// 	draw->tex_y = 0;
+	// if (draw->tex_y >= img->height)
+	// 	draw->tex_y = img->height - 1;
 }
