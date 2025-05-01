@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/30 16:51:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 12:30:10 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,84 +40,35 @@ void	render_main_menu_title(t_scene *scene, t_window *window,
 	(void)window;
 }
 
-// void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
-// {
-// 	int			y;
-// 	int			x;
-// 	static int	delay;
-
-// 	y = 0;
-// 	(void)window;
-// 	if ((main_menu->state == option && delay == 10)
-// 		|| (main_menu->state == launcher && delay == 100))
-// 	{
-// 		while (y < main_menu->background[main_menu->index_background].height)
-// 		{
-// 			x = 0;
-// 			while (x < main_menu->background[main_menu->index_background].width)
-// 			{
-// 				draw_pixel_asset(&cub3d->scene.img, x, y,
-// 					get_pixel(&main_menu->background[main_menu->index_background], x , y));
-// 				x++;
-// 			}
-// 			y++;
-// 		}
-// 		delay = 0;
-// 		main_menu->index_background++;
-// 		if (main_menu->index_background == 51)
-// 			main_menu->index_background = 0;
-// 	}
-// 	delay++;
-// }
-
-// void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
-// {
-// 	int			y;
-// 	int			x;
-// 	static int	delay;
-
-// 	y = 0;
-// 	if ((main_menu->state == option && delay == 10)
-// 		|| (main_menu->state == launcher && delay == 100))
-// 	{
-// 		while (y < main_menu->background[main_menu->index_background].height)
-// 		{
-// 			x = 0;
-// 			while (x < main_menu->background[main_menu->index_background].width)
-// 			{
-// 				draw_pixel_asset(&cub3d->scene.img, x, y,
-// 					get_pixel(
-// 						&main_menu->background[main_menu->index_background],
-// 						x , y));
-// 				x++;
-// 			}
-// 			y++;
-// 		}
-// 		delay = 0;
-// 		main_menu->index_background++;
-// 		if (main_menu->index_background == 51)
-// 			main_menu->index_background = 0;
-// 	}
-// 	delay++;
-// }
-
 void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
 {
 	int			y;
 	int			x;
 
-	y = 0;
-	while (y < main_menu->test.height)
+	if ((main_menu->state == option && main_menu->delay == 10)
+		|| (main_menu->state == launcher && main_menu->delay == 50))
 	{
-		x = 0;
-		while (x < main_menu->test.width)
+		y = 0;
+		printf("main_menu state = %d\n", main_menu->state);
+		while (y < main_menu->background[main_menu->index_background].height)
 		{
-			draw_pixel_asset(&cub3d->scene.img, x, y,
-				get_pixel(&cub3d->main_menu.test, x, y));
-			x++;
+			x = 0;
+			while (x < main_menu->background[main_menu->index_background].width)
+			{
+				draw_pixel_asset(&cub3d->scene.img, x, y,
+					get_pixel(
+						&main_menu->background[main_menu->index_background],
+						x , y));
+				x++;
+			}
+			y++;
 		}
-		y++;
+		main_menu->index_background++;
+		if (main_menu->index_background == 51)
+			main_menu->index_background = 0;
+		main_menu->delay = 0;
 	}
+	main_menu->delay++;
 }
 
 void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
