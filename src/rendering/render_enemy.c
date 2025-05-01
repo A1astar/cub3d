@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:26:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 12:42:27 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:56:22 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ static void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 	draw->draw_end_x = draw->sprite_width / 2 + draw->sprite_screen_x;
 	if (draw->draw_end_x >= WINDOW_WIDTH)
 		draw->draw_end_x = WINDOW_WIDTH - 1;
-	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2 - 128;
 	if (draw->draw_start_y < 0)
 		draw->draw_start_y = 0;
-	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2 - 128;
 	if (draw->draw_end_y >= WINDOW_HEIGHT)
 		draw->draw_end_y = WINDOW_HEIGHT - 1;
 	draw->tex_x = 0;
