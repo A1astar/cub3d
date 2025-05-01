@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 12:40:39 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 17:36:49 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,8 +385,8 @@ typedef struct s_window
 {
 	int		width;
 	int		height;
-	int		x_center;
-	int		y_center;
+	int		half_width;
+	int		half_height;
 	void	*win_ptr;
 	void	*mlx_ptr;
 	uint8_t	resolution;
@@ -557,7 +557,7 @@ void	render_enemy(t_cub3d *cub3d, t_raycast *raycast, t_scene *scene);
 bool	item_on_screen(t_item_render *item, t_raycast *ray, int stripe);
 int		get_tex_x(t_item_render *item, t_img *img, int stripe);
 void	update_draw_attributes(t_item_draw *draw, t_img *img, int y);
-void	render_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel, t_scene *scene);
+void	render_viewmodel(t_cub3d *cub3d, t_window *window, t_viewmodel *viewmodel, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);
 char	*get_pixel(t_img *img, int x, int y);

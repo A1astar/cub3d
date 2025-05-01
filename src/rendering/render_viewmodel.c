@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 12:12:32 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 17:35:47 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ t_img	*select_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel)
 		return (&viewmodel->trip_stand);
 }
 
-void	render_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel, t_scene *scene)
+void	render_viewmodel(t_cub3d *cub3d, t_window *window, t_viewmodel *viewmodel, t_scene *scene)
 {
 	int		x_start;
 	int		y_start;
 	t_img	*img;
 
 	img = select_viewmodel(cub3d, viewmodel);
-	x_start = WINDOW_WIDTH / 2 - viewmodel->normal_stand.width / 2;
-	y_start = WINDOW_HEIGHT - viewmodel->normal_stand.height
+	x_start = window->half_width - viewmodel->normal_stand.width / 2;
+	y_start = window->height - viewmodel->normal_stand.height
 		+ viewmodel->draw_pos;
 	draw_viewmodel(img, scene, x_start, y_start);
 }

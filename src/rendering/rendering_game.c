@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 15:56:08 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 17:37:11 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	render_minimap(cub3d, &cub3d->scene, &cub3d->map, &cub3d->minimap);
 	render_minimap_player(cub3d, &cub3d->minimap, &cub3d->player,
 		&cub3d->player.render);
-	render_viewmodel(cub3d, &cub3d->player.viewmodel, &cub3d->scene);
+	render_viewmodel(cub3d, &cub3d->window, &cub3d->player.viewmodel, &cub3d->scene);
 	// render_minimap_ray(cub3d);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
 		0);

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 19:09:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/29 14:20:43 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 17:34:56 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ static t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray,
 		return (select_texture_psychedelic(cub3d, ray, textures));
 }
 
-static void	init_draw_start_point(t_raycast *ray, t_draw_attributes *draw,
-		t_img *img)
+static void	init_draw_start_point(t_window *window, t_raycast *ray,
+		t_draw_attributes *draw, t_img *img)
 {
 	draw->tex_x = (int)(draw->wall_x * (double)(img->width));
 	if (draw->tex_x < 0)
@@ -88,7 +88,7 @@ static void	init_draw_start_point(t_raycast *ray, t_draw_attributes *draw,
 	if (ray->side == 1 && ray->y_raydir < 0)
 		draw->tex_x = img->width - draw->tex_x - 1;
 	draw->step = 1.0 * img->height / draw->line_height;
-	draw->tex_pos = (draw->draw_start - WINDOW_HEIGHT / 2 + draw->line_height
+	draw->tex_pos = (draw->draw_start - window->half_height + draw->line_height
 			/ 2) * draw->step;
 }
 
@@ -100,7 +100,7 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 	t_img			*img;
 
 	img = select_texture(cub3d, ray, &cub3d->textures);
-	init_draw_start_point(ray, draw, img);
+	init_draw_start_point(&cub3d->window, ray, draw, img);
 	while (draw->draw_start < draw->draw_end)
 	{
 		draw->tex_y = (int)(draw->tex_pos);
@@ -121,20 +121,20 @@ static void	draw_texture(t_cub3d *cub3d, t_raycast *ray,
 	}
 }
 
-static void	init_draw_attributes(t_raycast *ray, t_draw_attributes *draw,
-		t_player *player)
+static void	init_draw_attributes(t_window *window, t_raycast *ray,
+		t_draw_attributes *draw, t_player *player)
 {
 	if (ray->side == 0)
 		draw->perp_wall_dist = (ray->x_side - ray->x_delta);
 	else
 		draw->perp_wall_dist = (ray->y_side - ray->y_delta);
-	draw->line_height = (int)(WINDOW_HEIGHT / draw->perp_wall_dist);
-	draw->draw_start = -draw->line_height / 2 + WINDOW_HEIGHT / 2;
+	draw->line_height = (int)(window->height / draw->perp_wall_dist);
+	draw->draw_start = -draw->line_height / 2 + window->half_height;
 	if (draw->draw_start < 0)
 		draw->draw_start = 0;
-	draw->draw_end = draw->line_height / 2 + WINDOW_HEIGHT / 2;
-	if (draw->draw_end >= WINDOW_HEIGHT)
-		draw->draw_end = WINDOW_HEIGHT - 1;
+	draw->draw_end = draw->line_height / 2 + window->half_height;
+	if (draw->draw_end >= window->height)
+		draw->draw_end = window->height - 1;
 	if (ray->side == 0)
 		draw->wall_x = player->y_pos + draw->perp_wall_dist * ray->y_raydir;
 	else
@@ -146,6 +146,6 @@ void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x)
 {
 	t_draw_attributes	draw;
 
-	init_draw_attributes(raycast, &draw, &cub3d->player);
+	init_draw_attributes(&cub3d->window, raycast, &draw, &cub3d->player);
 	draw_texture(cub3d, raycast, &draw, x);
 }

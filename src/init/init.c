@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 20:47:04 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 17:18:33 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	init_raycast(t_raycast *raycast, t_player *player)
 
 void	init_program(t_cub3d *cub3d, char **argv)
 {
+	ft_bzero(cub3d, sizeof(t_cub3d));
 	init_struct_attributes(cub3d);
 	parsing(cub3d, argv[1]);
 	init_mlx(cub3d, &cub3d->window);

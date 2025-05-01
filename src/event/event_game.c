@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 15:14:12 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 17:21:56 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 	else if (delta_x > 0)
 		rotate_player_right(cub3d);
 	mlx_mouse_move(cub3d->window.mlx_ptr, cub3d->window.win_ptr,
-		cub3d->window.x_center, cub3d->window.y_center);
+		cub3d->window.half_width, cub3d->window.half_height);
     return (0);
 }
 
