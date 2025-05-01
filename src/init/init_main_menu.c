@@ -6,13 +6,13 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 18:36:20 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 20:22:04 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	init_main_menu_settings(t_cub3d *cub3d,
+static void	init_main_menu_settings(t_cub3d *cub3d,
 			t_window *window, t_main_menu *main_menu)
 {
 	main_menu->option[0].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
@@ -36,7 +36,7 @@ void	init_main_menu_settings(t_cub3d *cub3d,
 	}
 }
 
-void	init_main_menu_option(t_cub3d *cub3d,
+static void	init_main_menu_option(t_cub3d *cub3d,
 			t_window *window, t_main_menu *main_menu)
 {
 	main_menu->option[0].ptr = mlx_xpm_file_to_image(window->mlx_ptr,

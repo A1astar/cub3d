@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 18:45:19 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 20:39:00 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 // # define WINDOW_WIDTH 854
 // # define WINDOW_HEIGHT 480
 
-enum e_program_state {game, level_menu, main_menu, main_menu_settings};
+enum e_program_state {game, level_menu, main_menu};
 enum e_main_menu_state {launcher, option};
 enum e_main_menu_option_state {start_game, settings, exit_game};
 enum e_main_menu_settings_state {resolution, sensibility};
