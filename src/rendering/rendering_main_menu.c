@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 21:30:11 by algadea          ###   ########.fr       */
+/*   Updated: 2025/04/30 16:51:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,40 +40,89 @@ void	render_main_menu_title(t_scene *scene, t_window *window,
 	(void)window;
 }
 
-void	render_main_menu_background(t_cub3d *cub3d, t_window *window,
-		t_main_menu *main_menu)
+// void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
+// {
+// 	int			y;
+// 	int			x;
+// 	static int	delay;
+
+// 	y = 0;
+// 	(void)window;
+// 	if ((main_menu->state == option && delay == 10)
+// 		|| (main_menu->state == launcher && delay == 100))
+// 	{
+// 		while (y < main_menu->background[main_menu->index_background].height)
+// 		{
+// 			x = 0;
+// 			while (x < main_menu->background[main_menu->index_background].width)
+// 			{
+// 				draw_pixel_asset(&cub3d->scene.img, x, y,
+// 					get_pixel(&main_menu->background[main_menu->index_background], x , y));
+// 				x++;
+// 			}
+// 			y++;
+// 		}
+// 		delay = 0;
+// 		main_menu->index_background++;
+// 		if (main_menu->index_background == 51)
+// 			main_menu->index_background = 0;
+// 	}
+// 	delay++;
+// }
+
+// void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
+// {
+// 	int			y;
+// 	int			x;
+// 	static int	delay;
+
+// 	y = 0;
+// 	if ((main_menu->state == option && delay == 10)
+// 		|| (main_menu->state == launcher && delay == 100))
+// 	{
+// 		while (y < main_menu->background[main_menu->index_background].height)
+// 		{
+// 			x = 0;
+// 			while (x < main_menu->background[main_menu->index_background].width)
+// 			{
+// 				draw_pixel_asset(&cub3d->scene.img, x, y,
+// 					get_pixel(
+// 						&main_menu->background[main_menu->index_background],
+// 						x , y));
+// 				x++;
+// 			}
+// 			y++;
+// 		}
+// 		delay = 0;
+// 		main_menu->index_background++;
+// 		if (main_menu->index_background == 51)
+// 			main_menu->index_background = 0;
+// 	}
+// 	delay++;
+// }
+
+void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
 {
 	int			y;
 	int			x;
-	static int	delay;
 
 	y = 0;
-	(void)window;
-	if ((main_menu->state == option && delay == 10)
-		|| (main_menu->state == launcher && delay == 100))
+	while (y < main_menu->test.height)
 	{
-		while (y < main_menu->background[main_menu->index_background].height)
+		x = 0;
+		while (x < main_menu->test.width)
 		{
-			x = 0;
-			while (x < main_menu->background[main_menu->index_background].width)
-			{
-				draw_pixel_asset(&cub3d->scene.img, x, y,
-					get_pixel(&main_menu->background[main_menu->index_background], x , y));
-				x++;
-			}
-			y++;
+			draw_pixel_asset(&cub3d->scene.img, x, y,
+				get_pixel(&cub3d->main_menu.test, x, y));
+			x++;
 		}
-		delay = 0;
-		main_menu->index_background++;
-		if (main_menu->index_background == 51)
-			main_menu->index_background = 0;
+		y++;
 	}
-	delay++;
 }
 
 void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
-	render_main_menu_background(cub3d, &cub3d->window, &cub3d->main_menu);
+	render_main_menu_background(cub3d, &cub3d->main_menu);
 	if (cub3d->main_menu.state == launcher)
 		render_main_menu_title(scene, window, &cub3d->main_menu);
 	else if (cub3d->main_menu.state == option)

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 20:42:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 00:31:31 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void	init_main_menu_option(t_cub3d *cub3d,
 			t_window *window, t_main_menu *main_menu)
 {
 	main_menu->option[0].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-			"asset/main_menu/main-menu1-720.xpm",
+			"asset/main_menu/main_menu-option1-720.xpm",
 			&main_menu->option[0].width,
 			&main_menu->option[0].height);
 	main_menu->option[1].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-			"asset/main_menu/main-menu2-720.xpm",
+			"asset/main_menu/main_menu-option2-720.xpm",
 			&main_menu->option[1].width,
 			&main_menu->option[1].height);
 	main_menu->option[2].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-			"asset/main_menu/main-menu3-720.xpm",
+			"asset/main_menu/main_menu-option3-720.xpm",
 			&main_menu->option[2].width,
 			&main_menu->option[2].height);
 	if (!main_menu->option[0].ptr || !main_menu->option[1].ptr
