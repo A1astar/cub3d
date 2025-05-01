@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 12:29:45 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 12:40:39 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -553,6 +553,7 @@ void 	update_ray_step_y(t_raycast *raycast);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
 void	render_item(t_item *item, t_player *player, t_raycast *raycast, t_scene *scene);
+void	render_enemy(t_cub3d *cub3d, t_raycast *raycast, t_scene *scene);
 bool	item_on_screen(t_item_render *item, t_raycast *ray, int stripe);
 int		get_tex_x(t_item_render *item, t_img *img, int stripe);
 void	update_draw_attributes(t_item_draw *draw, t_img *img, int y);

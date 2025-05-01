@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/04/29 20:42:33 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/01 12:41:08 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRC					:= data/data_game.c \
 					rendering/raycast_map.c \
 					rendering/raycast_threads.c \
 					rendering/raycast_update.c \
+					rendering/render_enemy.c \
 					rendering/render_floor.c \
 					rendering/render_item_utils.c \
 					rendering/render_item.c \
