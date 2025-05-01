@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:26:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 18:21:31 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 18:56:28 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 {
 	draw->sprite_screen_x = (int)((WINDOW_WIDTH / 2) * (1 + (attr->trans_x
 					/ attr->trans_y)));
-	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y));
+	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y)) * 0.78;
 	draw->sprite_width = draw->sprite_height;
 
 	// *START_X
@@ -89,7 +89,7 @@ static void	init_enemy_attributes(t_enemy *enemy, t_player *player,
 	attr->trans_y = inv_det * (-raycast->y_plane * rel_x + raycast->x_plane
 			* rel_y);
 	attr->distance = rel_x * rel_x + rel_y * rel_y;
-	attr->v_move_screen = 256 / attr->trans_y;
+	attr->v_move_screen = 128 / attr->trans_y;
 }
 
 static void	init_enemy(t_player *player, t_enemy *enemey, t_raycast *raycast,
