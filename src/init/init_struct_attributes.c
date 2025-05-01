@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct_attributes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:20:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/29 20:51:35 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 12:21:21 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,7 @@
 
 static void	init_randy(t_enemy *randy)
 {
-	ft_bzero(&randy->sprite[0], sizeof(t_img));
-	ft_bzero(&randy->sprite[1], sizeof(t_img));
-	ft_bzero(&randy->sprite[2], sizeof(t_img));
-	ft_bzero(&randy->sprite[3], sizeof(t_img));
-	ft_bzero(&randy->sprite[4], sizeof(t_img));
-	ft_bzero(&randy->sprite[5], sizeof(t_img));
-	ft_bzero(&randy->sprite[6], sizeof(t_img));
-	ft_bzero(&randy->sprite[7], sizeof(t_img));
-	ft_bzero(&randy->sprite[8], sizeof(t_img));
-	ft_bzero(&randy->sprite[9], sizeof(t_img));
-	ft_bzero(&randy->sprite[10], sizeof(t_img));
-	ft_bzero(&randy->sprite[11], sizeof(t_img));
-	ft_bzero(&randy->sprite[12], sizeof(t_img));
-	ft_bzero(&randy->sprite[13], sizeof(t_img));
-	ft_bzero(&randy->sprite[14], sizeof(t_img));
-	ft_bzero(&randy->sprite[15], sizeof(t_img));
+	ft_bzero(&randy->sprite, sizeof(t_img));
 }
 
 static void	init_textures(t_textures *textures)
