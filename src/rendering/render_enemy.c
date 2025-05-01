@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:26:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 15:36:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 18:21:31 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 			y = item->draw.draw_start_y;
 			while (y < item->draw.draw_end_y)
 			{
-				update_draw_attributes(&item->draw, img, y);
+				update_draw_attributes(&item->draw, &item->attr, img, y);
 				offset = item->draw.tex_y * img->size_line + item->draw.tex_x
 					* (img->bpp / 8);
 				color = *(unsigned int *)(img->addr + offset);
@@ -46,20 +46,29 @@ static void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 {
 	draw->sprite_screen_x = (int)((WINDOW_WIDTH / 2) * (1 + (attr->trans_x
 					/ attr->trans_y)));
-	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y)) / 2;
+	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y));
 	draw->sprite_width = draw->sprite_height;
+
+	// *START_X
 	draw->draw_start_x = -draw->sprite_width / 2 + draw->sprite_screen_x;
 	if (draw->draw_start_x < 0)
 		draw->draw_start_x = 0;
+
+	// *END_X
 	draw->draw_end_x = draw->sprite_width / 2 + draw->sprite_screen_x;
 	if (draw->draw_end_x >= WINDOW_WIDTH)
 		draw->draw_end_x = WINDOW_WIDTH - 1;
-	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+
+	// *START_Y
+	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2 + attr->v_move_screen;
 	if (draw->draw_start_y < 0)
 		draw->draw_start_y = 0;
-	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2;
+
+	// *END_Y
+	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2 + attr->v_move_screen;
 	if (draw->draw_end_y >= WINDOW_HEIGHT)
 		draw->draw_end_y = WINDOW_HEIGHT - 1;
+
 	draw->tex_x = 0;
 	draw->tex_y = 0;
 	draw->screen_to_tex_y = 0;
@@ -80,6 +89,7 @@ static void	init_enemy_attributes(t_enemy *enemy, t_player *player,
 	attr->trans_y = inv_det * (-raycast->y_plane * rel_x + raycast->x_plane
 			* rel_y);
 	attr->distance = rel_x * rel_x + rel_y * rel_y;
+	attr->v_move_screen = 256 / attr->trans_y;
 }
 
 static void	init_enemy(t_player *player, t_enemy *enemey, t_raycast *raycast,

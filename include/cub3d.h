@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 17:36:49 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/01 18:13:33 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -556,7 +556,7 @@ void	render_item(t_item *item, t_player *player, t_raycast *raycast, t_scene *sc
 void	render_enemy(t_cub3d *cub3d, t_raycast *raycast, t_scene *scene);
 bool	item_on_screen(t_item_render *item, t_raycast *ray, int stripe);
 int		get_tex_x(t_item_render *item, t_img *img, int stripe);
-void	update_draw_attributes(t_item_draw *draw, t_img *img, int y);
+void	update_draw_attributes(t_item_draw *draw, t_item_attr *attr, t_img *img, int y);
 void	render_viewmodel(t_cub3d *cub3d, t_window *window, t_viewmodel *viewmodel, t_scene *scene);
 void	raycast_threads(t_cub3d *cub3d);
 void	drunk_raycast_threads(t_cub3d *cub3d);

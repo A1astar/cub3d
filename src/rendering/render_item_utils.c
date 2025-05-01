@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:05:30 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 14:51:08 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/01 18:13:46 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	get_tex_x(t_item_render *item, t_img *img, int stripe)
 			/ item->draw.sprite_width) / 256);
 }
 
-void	update_draw_attributes(t_item_draw *draw, t_img *img, int y)
+void	update_draw_attributes(t_item_draw *draw, t_item_attr *attr, t_img *img, int y)
 {
-	draw->screen_to_tex_y = y * 256 - WINDOW_HEIGHT * 128 + draw->sprite_height
+	draw->screen_to_tex_y = (y - attr->v_move_screen) * 256 - WINDOW_HEIGHT * 128 + draw->sprite_height
 		* 128;
 	draw->tex_y = ((draw->screen_to_tex_y * img->height) / draw->sprite_height)
 		/ 256;
