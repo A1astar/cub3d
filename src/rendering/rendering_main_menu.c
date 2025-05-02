@@ -59,6 +59,11 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 	int			x;
 	char		*pixel;
 
+	// static int	step;
+	// if (step == 10)
+	// 	exit(0);
+	// step++;
+
 	y = 0;
 	while (y < window->height)
 	{
@@ -69,25 +74,26 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
 				printf("before = %X\n", *(unsigned int *)pixel);
-				if (main_menu->direction == down && *(unsigned *)pixel != 0x00FFFFFF)
-					*(unsigned int *)pixel += 0x00010101;
-				else if (main_menu->direction == up && *(unsigned *)pixel != 0x00000000)
+				if (main_menu->blink_direction == down
+						&& *(unsigned *)pixel != 0x00000000)
 					*(unsigned int *)pixel -= 0x00010101;
+				else if (main_menu->blink_direction == up
+						&& *(unsigned *)pixel != 0x00FFFFFF)
+					*(unsigned int *)pixel += 0x00010101;
 				draw_pixel_asset(&scene->img, x, y, pixel);
 				printf("after = %X\n", *(unsigned int *)pixel);
-				exit(0);
 			}
 			x++;
 		}
 		y++;
 	}
 	if (main_menu->blink == 255)
-		main_menu->direction = down;
+		main_menu->blink_direction = down;
 	else if (main_menu->blink == 0)
-		main_menu->direction = up;
-	if (main_menu->direction == up)
+		main_menu->blink_direction = up;
+	if (main_menu->blink_direction == up)
 		main_menu->blink++;
-	else if (main_menu->direction == down)
+	else if (main_menu->blink_direction == down)
 		main_menu->blink--;
 }
 
