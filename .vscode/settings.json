@@ -4,6 +4,8 @@
 		"keysym.h": "c",
 		"xlib.h": "c",
 		"x.h": "c",
-		"keysymdef.h": "c"
+		"keysymdef.h": "c",
+		"render.h": "c",
+		"types.h": "c"
 	}
 }
