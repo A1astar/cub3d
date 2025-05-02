@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 15:38:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 11:07:51 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	main_menu_selection(t_cub3d *cub3d)
 	if (cub3d->main_menu.index_option == start_game)
 		cub3d->program_state = game;
 	else if (cub3d->main_menu.index_option == settings)
-		cub3d->program_state = main_menu_settings;
+		cub3d->program_state = settings;
 	else if (cub3d->main_menu.index_option == exit_game)
 		exit_cub3d(cub3d);
 }
