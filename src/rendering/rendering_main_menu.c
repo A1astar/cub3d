@@ -59,11 +59,6 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 	int			x;
 	char		*pixel;
 
-	// static int	step;
-	// if (step == 10)
-	// 	exit(0);
-	// step++;
-
 	y = 0;
 	while (y < window->height)
 	{
@@ -73,7 +68,6 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 			pixel = get_pixel(&main_menu->launcher_blink, x, y);
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
-				printf("before = %X\n", *(unsigned int *)pixel);
 				if (main_menu->blink_direction == down
 						&& *(unsigned *)pixel != 0x00000000)
 					*(unsigned int *)pixel -= 0x00010101;
@@ -81,7 +75,6 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 						&& *(unsigned *)pixel != 0x00FFFFFF)
 					*(unsigned int *)pixel += 0x00010101;
 				draw_pixel_asset(&scene->img, x, y, pixel);
-				printf("after = %X\n", *(unsigned int *)pixel);
 			}
 			x++;
 		}
