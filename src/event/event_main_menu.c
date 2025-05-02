@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 12:00:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 15:57:35 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ void	main_menu_selection(t_cub3d *cub3d)
 		cub3d->program_state = game;
 		// release_all_keys(&cub3d->key_state);
 	}
-	else if (cub3d->main_menu.index_option == settings)
-	{
-		cub3d->program_state = settings;
-		// release_all_keys(&cub3d->key_state);
-	}
 	else if (cub3d->main_menu.index_option == exit_game)
 		exit_cub3d(cub3d);
 }
@@ -67,15 +62,21 @@ void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d)
 		else
 			cub3d->key_state.up = pressed;
 		cub3d->main_menu.index_option--;
+		cub3d->main_menu.index_option_static++;
+		cub3d->main_menu.blink = 0xCC;
+		cub3d->main_menu.blink_direction = down;
 	}
 	else if ((keynum == XK_s || keynum == XK_Down)
-		&& cub3d->main_menu.index_option != 2)
+		&& cub3d->main_menu.index_option != 1)
 	{
 		if (keynum == XK_s)
 			cub3d->key_state.s = pressed;
 		else
 			cub3d->key_state.down = pressed;
 		cub3d->main_menu.index_option++;
+		cub3d->main_menu.index_option_static--;
+		cub3d->main_menu.blink = 0xCC;
+		cub3d->main_menu.blink_direction = down;
 	}
 	else if (keynum == XK_Return)
 		main_menu_selection(cub3d);

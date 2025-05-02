@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 13:35:33 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:28:31 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 enum e_program_state {game, level_menu, main_menu};
 enum e_main_menu_state {launcher, option};
-enum e_main_menu_option_state {start_game, settings, exit_game};
+enum e_main_menu_option_state {start_game, exit_game};
 enum e_main_menu_settings_state {resolution, sensibility};
 enum e_resolution {res_1280x720, res_1920x1080};
 enum e_playing_state {running, playing_menu};

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/02 14:00:18 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/02 15:22:49 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,15 @@ LIBFLAGS			= -Llibft -lft -lX11 -lXext -Lminilibx-linux -lmlx -lm
 ###########################		 	 INCLUDE		###########################
 
 INCLUDE_DIR			:= include
-INCLUDE				:= cub3d.h
+INCLUDE				:= cub3d.h \
+					elements.h \
+					errors.h \
+					map.h \
+					menu.h \
+					player.h \
+					render.h \
+					textures.h \
+					types.h
 INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
 ###########################		 	 SOURCE			###########################
