@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 15:28:31 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 15:59:10 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ enum e_viewmodel {down, up};
 
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
+typedef enum e_anim_state{stand, cast, sword}t_anim_state;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_viewmodel.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 17:35:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 15:48:30 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 		int y_start)
 {
-	int				x;
-	int				y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -25,9 +25,7 @@ void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 		x = 0;
 		while (x < viewmodel->width)
 		{
-			draw_pixel_asset(&scene->img,
-				x_start + x,
-				y_start + y,
+			draw_pixel_asset(&scene->img, x_start + x, y_start + y,
 				get_pixel(viewmodel, x, y));
 			x++;
 		}
@@ -35,7 +33,7 @@ void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 	}
 }
 
-t_img	*select_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel)
+t_img	*select_stand(t_cub3d *cub3d, t_viewmodel *viewmodel)
 {
 	if (cub3d->rendering_state == normal)
 		return (&viewmodel->normal_stand);
@@ -43,13 +41,55 @@ t_img	*select_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodel)
 		return (&viewmodel->trip_stand);
 }
 
-void	render_viewmodel(t_cub3d *cub3d, t_window *window, t_viewmodel *viewmodel, t_scene *scene)
+t_img	*select_cast_frames(t_cub3d *cub3d, t_animation *animation,
+		t_viewmodel *viewmodel)
+{
+	if (cub3d->rendering_state == normal)
+		return (&viewmodel->normal_wand_sprite[animation->current_frame]);
+	else
+		return (&viewmodel->trip_cig_sprite[animation->current_frame]);
+}
+
+t_img	*select_sword_frames(t_cub3d *cub3d, t_animation *animation,
+		t_viewmodel *viewmodel)
+{
+	if (cub3d->rendering_state == normal)
+		return (&viewmodel->normal_sword_sprite[animation->current_frame]);
+	else
+		return (&viewmodel->trip_sword_sprite[animation->current_frame]);
+}
+
+t_img	*select_viewmodel(t_cub3d *cub3d, t_animation *animation,
+		t_viewmodel *viewmodel)
+{
+	if (!animation->active)
+		return (select_stand(cub3d, viewmodel));
+	animation->delay_count++;
+	if (animation->delay_count >= animation->frame_delay)
+	{
+		animation->delay_count = 0;
+		animation->current_frame++;
+		if (animation->current_frame >= animation->frame_count)
+		{
+			animation->active = false;
+			animation->state = stand;
+			return (select_stand(cub3d, viewmodel));
+		}
+	}
+	if (animation->state == cast)
+		return (select_cast_frames(cub3d, animation, viewmodel));
+	else
+		return (select_sword_frames(cub3d, animation, viewmodel));
+}
+
+void	render_viewmodel(t_cub3d *cub3d, t_window *window,
+		t_viewmodel *viewmodel, t_scene *scene)
 {
 	int		x_start;
 	int		y_start;
 	t_img	*img;
 
-	img = select_viewmodel(cub3d, viewmodel);
+	img = select_viewmodel(cub3d, &cub3d->player.animation, viewmodel);
 	x_start = window->half_width - viewmodel->normal_stand.width / 2;
 	y_start = window->height - viewmodel->normal_stand.height
 		+ viewmodel->draw_pos;

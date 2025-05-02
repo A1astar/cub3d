@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:18:38 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 13:20:05 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:43:10 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,20 @@ static void	doors_open_close(t_player *player, t_map *map)
 		map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] = 'C';
 }
 
-static void	player_sword(t_cub3d *cub3d)
+static void	player_sword(t_animation *animation)
 {
-	printf(BOLD WHITE "Player " DEFAULT);
-	printf(BOLD CYAN "cast!\n" DEFAULT);
-	(void)cub3d;
+	animation->state = sword;
+	animation->active = true;
+	animation->current_frame = 0;
+	animation->delay_count = 0;
 }
 
-static void	player_cast(t_cub3d *cub3d)
+static void	player_cast(t_animation *animation)
 {
-	printf(BOLD WHITE "Player " DEFAULT);
-	printf(BOLD CYAN "cast!\n" DEFAULT);
-	(void)cub3d;
+	animation->state = cast;
+	animation->active = true;
+	animation->current_frame = 0;
+	animation->delay_count = 0;
 }
 
 static void	player_interaction(t_cub3d *cub3d)
@@ -54,11 +56,11 @@ static void	player_interaction(t_cub3d *cub3d)
 void	player_action_key(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_q)
-		player_cast(cub3d);
+		player_cast(&cub3d->player.animation);
 	else if (keynum == XK_e)
 		player_interaction(cub3d);
 	else if (keynum == XK_r)
-		player_sword(cub3d);
+		player_sword(&cub3d->player.animation);
 	else if (keynum == XK_l)
 	{
 		if (cub3d->rendering_state == normal)
