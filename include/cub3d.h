@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 15:10:34 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:11:25 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 # include "elements.h"
 # include "menu.h"
 # include "types.h"
-
 
 /*##############################	ERROR	##################################*/
 void	error_msg(const char *msg, const char *context);

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 13:35:33 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:15:30 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ enum e_viewmodel {down, up};
 
 typedef enum e_randy_state {angry, stoned, drunk, godlike}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
+typedef enum e_anim_state{stand, cast, sword}t_anim_state;
 
 #endif

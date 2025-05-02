@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:40:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 13:42:10 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:18:37 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ typedef struct s_viewmodel
 
 }					t_viewmodel;
 
+typedef struct s_animation
+{
+	int				frame_count;
+	int				current_frame;
+	int				frame_delay;
+	int				delay_count;
+	t_anim_state	state;
+	bool			active;
+}					t_animation;
+
 typedef struct s_player
 {
 	double			velocity;
@@ -52,6 +62,7 @@ typedef struct s_player
 	t_viewmodel		viewmodel;
 	t_render		render;
 	t_orientation	orientation;
+	t_animation		animation;
 
 	double			x_pos;
 	double			y_pos;
