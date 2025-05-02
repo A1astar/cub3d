@@ -83,6 +83,7 @@ git clone https://github.com/your-username/cub3d.git
 cd cub3d
 make
 ./cub3d maps/catacombs.cub
+```
 
 [🇫🇷 Français](#-version-française)
 
