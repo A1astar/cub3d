@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hex_colors.h                                       :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 15:44:09 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 11:14:09 by alacroix         ###   ########.fr       */
+/*   Created: 2025/05/02 13:46:15 by alacroix          #+#    #+#             */
+/*   Updated: 2025/05/02 13:47:07 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEX_COLORS_H
-# define HEX_COLORS_H
+#ifndef MAP_H
+# define MAP_H
 
-# define HEX_BROWN 0x8B4513
-# define HEX_BLUE 0x0000FF
-# define HEX_RED 0xFF0000
-# define HEX_GREEN 0x98FF98
-# define HEX_BLACK 0x000000
-# define HEX_WHITE 0xFFFFFF
-# define HEX_GREY 0xCCCCCC
+typedef struct s_map
+{
+	bool	is_valid_map;
+	char	**raw_data;
+	char	**map;
+	char	**assets_paths;
+	int		ceilling_rgb[3];
+	int		floor_rgb[3];
+	size_t	height;
+	size_t	width;
+}			t_map;
+
+typedef struct s_minimap
+{
+	int		x_origin;
+	int		y_origin;
+	int		width;
+	int		height;
+	int		tile_width;
+	int		tile_height;
+	int		scale;
+}			t_minimap;
+
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_action.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:18:38 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 17:27:45 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 13:20:05 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	doors_open_close(t_player *player, t_map *map)
 		map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] = 'C';
 }
 
-static void	player_reload(t_cub3d *cub3d)
+static void	player_sword(t_cub3d *cub3d)
 {
 	printf(BOLD WHITE "Player " DEFAULT);
 	printf(BOLD CYAN "cast!\n" DEFAULT);
@@ -58,7 +58,7 @@ void	player_action_key(int keynum, t_cub3d *cub3d)
 	else if (keynum == XK_e)
 		player_interaction(cub3d);
 	else if (keynum == XK_r)
-		player_reload(cub3d);
+		player_sword(cub3d);
 	else if (keynum == XK_l)
 	{
 		if (cub3d->rendering_state == normal)

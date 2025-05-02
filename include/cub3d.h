@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/05/02 13:26:27 by algadea          ###   ########.fr       */
+=======
+/*   Updated: 2025/05/02 14:04:15 by alacroix         ###   ########.fr       */
+>>>>>>> 1e72104 (better .h files logic)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +19,6 @@
 
 # include "../libft/includes/libft.h"
 # include "../minilibx-linux/mlx.h"
-# include "hex_colors.h"
-# include "errors.h"
-# include "keycodes.h"
-# include "textures.h"
 # include <X11/keysym.h>
 # include <X11/Xlib.h>
 # include <X11/X.h>
@@ -33,19 +33,19 @@
 # include <sys/stat.h>
 # include <limits.h>
 
-/*		TEXT FORMATING		*/
-# define DEFAULT "\033[0m"
-# define BOLD "\033[1m"
-# define ITALIC "\033[3m"
-# define BLACK "\033[30m"
-# define RED "\033[31m"
-# define GREEN "\033[32m"
-# define YELLOW "\033[33m"
-# define BLUE "\033[34m"
-# define MAGENTA "\033[35m"
-# define CYAN "\033[36m"
-# define WHITE "\033[37m"
+# include "config.h"
+# include "errors.h"
+# include "textures.h"
+# include "player.h"
+# include "map.h"
+# include "elements.h"
+# include "render.h"
+# include "memory.h"
+# include "errors.h"
+# include "menu.h"
+# include "types.h"
 
+<<<<<<< HEAD
 # define PI 3.14159265358979323846
 # define VELOCITY 0.02
 # define SENSIBILITY 0.05
@@ -447,9 +447,12 @@ typedef struct s_thread
 }t_thread;
 
 /*		ERROR		*/
+=======
+/*###################	ERROR	###################*/
+>>>>>>> 1e72104 (better .h files logic)
 void	error_msg(const char *msg, const char *context);
 
-/*		EVENT		*/
+/*###################	EVENT	###################*/
 bool	is_player_button(int keynum);
 bool	is_player_action_key(int keynum);
 void	player_action_key(int keynum, t_cub3d *cub3d);
@@ -488,7 +491,7 @@ int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 
 int		exit_cub3d(t_cub3d *cub3d);
 
-/*		INIT		*/
+/*###################	INIT	###################*/
 bool	is_rgb_code(char **tab);
 bool	is_rgb_line(char *line, size_t len);
 bool	is_asset_line(char *line, size_t len);
@@ -507,7 +510,7 @@ void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
 
-/*		MEMORY		*/
+/*###################	MEMORY	###################*/
 void	free_t_img(t_window *window, t_img *img);
 void	free_t_main_menu(t_main_menu *menu, t_window *window);
 void	free_program(t_cub3d *cub3d);
@@ -515,7 +518,7 @@ void	free_t_window(t_window *scene);
 void	free_image(void *mlx, void *image);
 void	free_t_scene(t_scene *scene, t_window *window);
 
-/*		PARSING		*/
+/*	###################	PARSING	###################*/
 bool	is_enemy_spawn(char c);
 bool	is_player_spawn(t_player *player, char c);
 bool	is_item(char c);
@@ -536,17 +539,18 @@ void	extract_assets_path(t_cub3d *game, char **data);
 void	apply_enemy_state(t_enemy *randy, int nb_enemy);
 char	*append_line(t_cub3d *cub3d, char *buffer, char *line);
 
-/*		PHYSICS		*/
+/*###################	PHYSICS	###################*/
 bool	can_move_to_north(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_south(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_east(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_west(t_raycast *raycast, t_player *player, t_map *map);
 
-/*		PRINT		*/
+/*###################	PRINT	###################*/
 void	print_2d_array_string(char **str);
 void	print_usage(void);
 
-/*		RENDERING		*/
+
+/*###################	RENDERING	###################*/
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
@@ -561,8 +565,6 @@ bool	item_on_screen(t_item_render *item, t_raycast *ray, int stripe);
 int		get_tex_x(t_item_render *item, t_img *img, int stripe);
 void	update_draw_attributes(t_item_draw *draw, t_item_attr *attr, t_img *img, int y);
 void	render_viewmodel(t_cub3d *cub3d, t_window *window, t_viewmodel *viewmodel, t_scene *scene);
-void	raycast_threads(t_cub3d *cub3d);
-void	drunk_raycast_threads(t_cub3d *cub3d);
 char	*get_pixel(t_img *img, int x, int y);
 int		get_alpha(unsigned int color);
 int		game_loop(t_cub3d *cub3d);
@@ -578,7 +580,7 @@ void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			t_player *player, t_render *render);
 void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap, t_player *player);
 
-/*		STAT		*/
+/*###################	STAT	###################*/
 void	update_game_data(t_cub3d *cub3d);
 void	update_player_data(t_cub3d *cub3d);
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/01 17:41:58 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/02 14:00:18 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,6 @@ SRC					:= data/data_game.c \
 					rendering/raycast_doors.c \
 					rendering/raycast_floor.c \
 					rendering/raycast_map.c \
-					rendering/raycast_threads.c \
 					rendering/raycast_update.c \
 					rendering/render_enemy.c \
 					rendering/render_floor.c \
@@ -77,7 +76,6 @@ SRC					:= data/data_game.c \
 					rendering/render_item.c \
 					rendering/render_raycast.c \
 					rendering/render_viewmodel.c \
-					rendering/drunk_raycast_threads.c \
 					rendering/rendering_game.c \
 					rendering/rendering_level_menu.c \
 					rendering/rendering_main_menu.c \
