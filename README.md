@@ -4,6 +4,11 @@
 
 ---
 
+
+## 👥 Équipe
+    Alexandre Lacroix
+    Alexandre Gadea — https://github.com/algadea
+
 ## 📖 À propos
 
 Cub3D est un mini moteur de raycasting inspiré de *Wolfenstein 3D*, développé dans le cadre du cursus 42.
@@ -60,8 +65,3 @@ cd cub3d
 make
 ./cub3d maps/catacombs.cub
 
-👥 Équipe
-
-    Alexandre Lacroix
-
-    algadea — https://github.com/algadea
