@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 15:08:18 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:10:34 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 
 # include "../libft/includes/libft.h"
 # include "../minilibx-linux/mlx.h"
-# include "config.h"
-# include "elements.h"
-# include "errors.h"
-# include "map.h"
-# include "memory.h"
-# include "menu.h"
-# include "player.h"
-# include "render.h"
-# include "textures.h"
-# include "types.h"
 # include <X11/X.h>
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
@@ -37,6 +27,18 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <sys/stat.h>
+
+# include "config.h"
+# include "errors.h"
+# include "map.h"
+# include "memory.h"
+# include "render.h"
+# include "textures.h"
+# include "player.h"
+# include "elements.h"
+# include "menu.h"
+# include "types.h"
+
 
 /*##############################	ERROR	##################################*/
 void	error_msg(const char *msg, const char *context);
