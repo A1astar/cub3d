@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 20:39:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 13:23:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,6 +373,8 @@ typedef struct s_main_menu
 {
 	int		delay;
 	int		state;
+	uint8_t	blink;
+	bool	direction;
 	int		index_option;
 	int		index_background;
 	t_img	background[50];

@@ -12,24 +12,16 @@
 
 #include "../../include/cub3d.h"
 
-int	key_release_hook(int keynum, t_cub3d *cub3d)
+void	player_key_release_hook(int keynum, t_cub3d *cub3d)
 {
-	// if (keynum == XK_w || keynum == XK_Up)
 	if (keynum == XK_w)
 	{
 		cub3d->key_state.w = release;
-		// cub3d->key_state.up = release;
-		// if (cub3d->player.movement_w_s != -1)
-		// 	cub3d->player.movement_w_s--;
 		cub3d->player.movement_w_s--;
 	}
-	// else if (keynum == XK_s || keynum == XK_Down)
 	else if (keynum == XK_s)
 	{
-		// cub3d->key_state.down = release;
-		// cub3d->key_state.s = release;
-		// if (cub3d->player.movement_w_s != 1)
-		// 	cub3d->player.movement_w_s++;
+		cub3d->key_state.s = release;
 		cub3d->player.movement_w_s++;
 	}
 	else if (keynum == XK_a)
@@ -57,5 +49,26 @@ int	key_release_hook(int keynum, t_cub3d *cub3d)
 		cub3d->key_state.shift_l = release;
 		cub3d->player.velocity = VELOCITY;
 	}
+}
+
+void	menu_key_release_hook(int keynum, t_cub3d *cub3d)
+{
+	if (keynum == XK_w)
+		cub3d->key_state.w = release;
+	else if (keynum == XK_Up)
+		cub3d->key_state.up = release;
+	else if (keynum == XK_s)
+		cub3d->key_state.s = release;
+	else if (keynum == XK_Down)
+		cub3d->key_state.down = release;
+}
+
+int	key_release_hook(int keynum, t_cub3d *cub3d)
+{
+	if (cub3d->program_state == game)
+		player_key_release_hook(keynum, cub3d);
+	else if (cub3d->program_state == level_menu
+		|| cub3d->program_state == main_menu)
+		menu_key_release_hook(keynum, cub3d);
 	return (0);
 }

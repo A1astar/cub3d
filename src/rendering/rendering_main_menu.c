@@ -58,8 +58,6 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 	int			y;
 	int			x;
 	char		*pixel;
-	static unsigned int	blink;
-	static int	direction;
 
 	y = 0;
 	while (y < window->height)
@@ -70,24 +68,27 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 			pixel = get_pixel(&main_menu->launcher_blink, x, y);
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
-				if (direction == down)
-					*(unsigned int *)pixel -= 0x00010101;
-				else if (direction == up)
+				printf("before = %X\n", *(unsigned int *)pixel);
+				if (main_menu->direction == down && *(unsigned *)pixel != 0x00FFFFFF)
 					*(unsigned int *)pixel += 0x00010101;
+				else if (main_menu->direction == up && *(unsigned *)pixel != 0x00000000)
+					*(unsigned int *)pixel -= 0x00010101;
+				draw_pixel_asset(&scene->img, x, y, pixel);
+				printf("after = %X\n", *(unsigned int *)pixel);
+				exit(0);
 			}
-			draw_pixel_asset(&scene->img, x, y, pixel);
 			x++;
 		}
 		y++;
 	}
-	if (blink == UINT32_MAX)
-		direction = down;
-	else if (blink == 0x01010101)
-		direction = up;
-	if (direction == up)
-		blink += 0x01010101;
-	else
-		blink -= 0x01010101;
+	if (main_menu->blink == 255)
+		main_menu->direction = down;
+	else if (main_menu->blink == 0)
+		main_menu->direction = up;
+	if (main_menu->direction == up)
+		main_menu->blink++;
+	else if (main_menu->direction == down)
+		main_menu->blink--;
 }
 
 void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)

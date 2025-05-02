@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_mouse.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:42:21 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/23 18:16:14 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 11:42:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	player_wand(t_cub3d *cub3d)
 	printf(BOLD RED "fireball !\n" DEFAULT);
 	(void)cub3d;
 }
-
-// button 1 = left clock   button 2 = right click
 
 void	player_action_button(int keynum, t_cub3d *cub3d)
 {
