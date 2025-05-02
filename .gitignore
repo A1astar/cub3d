@@ -3,3 +3,5 @@ obj
 asm
 cub3D
 libft.a
+gmon.out
+log.txt
