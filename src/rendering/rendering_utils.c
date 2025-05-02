@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:00:23 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 14:29:37 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:13:04 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_alpha(unsigned int color)
 {
-	unsigned char *bytes;
+	unsigned char	*bytes;
 
 	bytes = (unsigned char *)&color;
 	return (bytes[1]);
@@ -30,7 +30,8 @@ void	draw_pixel_asset(t_img *scene, int x, int y, char *pixel)
 {
 	if (*(unsigned int *)pixel != 0xFF000000)
 	{
-		scene->pixel = scene->addr + (y * scene->size_line + x * (scene->bpp / 8));
+		scene->pixel = scene->addr + (y * scene->size_line + x * (scene->bpp
+					/ 8));
 		*(unsigned int *)scene->pixel = *(unsigned int *)pixel;
 	}
 }
@@ -57,7 +58,8 @@ void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
 		x = 0;
 		while (x < width)
 		{
-			draw_pixel_color(&cub3d->scene.img, x + x_index, y + y_index, color);
+			draw_pixel_color(&cub3d->scene.img, x + x_index, y + y_index,
+				color);
 			x++;
 		}
 		y++;

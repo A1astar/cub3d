@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 20:39:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 11:48:51 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -574,8 +574,7 @@ void	rendering_psychedelic(t_cub3d *cub3d, t_scene *scene, t_map *map,
 void	render_minimap_ray(t_cub3d *cub3d);
 void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			t_player *player, t_render *render);
-void	render_minimap(t_cub3d *cub3d, t_scene *scene, t_map *map,
-			t_minimap *minimap);
+void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap, t_player *player);
 
 /*		STAT		*/
 void	update_game_data(t_cub3d *cub3d);
