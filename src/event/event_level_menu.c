@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   event_level_menu.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:03:17 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 12:03:35 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:21:37 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-int	level_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
-{
-	printf("x = %d | y = %d\n", x, y);
-	(void)cub3d;
-	return (0);
-}
-
-int	level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
-{
-	printf("keynum = %d | x = %d | y = %d\n", keynum, x, y);
-	(void)cub3d;
-	return (0);
-}
 
 int	level_menu_key_hook(int keynum, t_cub3d *cub3d)
 {
