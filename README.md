@@ -1,4 +1,4 @@
-# 🧙‍♂️ Cub3D - The Quest for Randy Marsh
+# 🧙‍♂️ Cub3D - 𝔗𝔦𝔱𝔦 𝔗𝔞𝔱𝔞 𝔗𝔲𝔱𝔲 𝔗𝔬𝔱𝔬: The Quest for Randy Marsh
 
 > Un projet 42 recréé en jeu d’aventure immersif, où vous incarnez un mage explorant des catacombes hantées par des ennemis loufoques et des secrets psychédéliques...
 
