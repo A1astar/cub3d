@@ -39,6 +39,18 @@ Nous avons transformé Cub3D en un **jeu d’aventure fantasy**, où vous incarn
 - **⚔️ Animations de combat** : sprites animés pour le bâton et l’épée
 - **🌈 Sprites animés** : objets, ennemis et effets visuels dynamiques
 
+## 👾 Ennemis : Les multiples visages de Randy Marsh
+
+Rencontrez les différentes incarnations du mage noir Randy Marsh au fil de votre aventure :
+
+| Stoned Randy                    | Angry Randy                    |
+|--------------------------------|--------------------------------|
+| ![](assets/enemy/png/stoned_randy.png) | ![](assets/enemy/png/angry_randy.png) |
+
+| Drunk Randy                    | Godlike Randy                  |
+|--------------------------------|-------------------------------|
+| ![](assets/enemy/png/drunk_randy.png) | ![](assets/images/png/godlike_randy.png) |
+
 ---
 
 ## 🧠 Contrôles
