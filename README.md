@@ -49,7 +49,7 @@ Rencontrez les différentes incarnations du mage noir Randy Marsh au fil de votr
 
 | Drunk Randy                    | Godlike Randy                  |
 |--------------------------------|-------------------------------|
-| ![](asset/enemy/png/drunk_randy.png) | ![](asset/nemey/png/godlike_randy.png) |
+| ![](asset/enemy/png/drunk_randy.png) | ![](asset/enemey/png/godlike_randy.png) |
 
 ---
 
