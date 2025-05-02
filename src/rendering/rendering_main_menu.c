@@ -12,31 +12,12 @@
 
 #include "../../include/cub3d.h"
 
-// void	render_main_menu_option(t_scene *scene, t_window *window,
-// 		t_main_menu *main_menu)
-// {
-// 	int	y;
-// 	int	x;
-
-// 	y = 0;
-// 	while (y < window->height)
-// 	{
-// 		x = 0;
-// 		while (x < window->width)
-// 		{
-// 			draw_pixel_asset(&scene->img, x, y,
-// 				get_pixel(&main_menu->option[main_menu->index_option], x, y));
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
-
 void	render_main_menu_option(t_scene *scene, t_window *window,
 		t_main_menu *main_menu)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	char	*pixel;
 
 	y = 0;
 	while (y < window->height)
@@ -44,20 +25,17 @@ void	render_main_menu_option(t_scene *scene, t_window *window,
 		x = 0;
 		while (x < window->width)
 		{
-			draw_pixel_asset(&scene->img, x, y,
-				get_pixel(&main_menu->option[main_menu->index_option_static], x, y));
+			pixel = get_pixel(
+				&main_menu->option[main_menu->index_option_static], x, y);
+			if (*(unsigned *)pixel != 0xFF000000)
+			{
+				*(unsigned int *)pixel = 0x00CCCCCC;
+				draw_pixel_asset(&scene->img, x, y, pixel);
+			}
 			x++;
 		}
 		y++;
 	}
-	if (main_menu->blink == 255)
-		main_menu->blink_direction = down;
-	else if (main_menu->blink == 0)
-		main_menu->blink_direction = up;
-	if (main_menu->blink_direction == up)
-		main_menu->blink++;
-	else if (main_menu->blink_direction == down)
-		main_menu->blink--;
 }
 
 void	render_main_menu_title(t_scene *scene, t_window *window,

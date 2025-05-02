@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 15:57:35 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 16:17:03 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void	main_menu_selection(t_cub3d *cub3d)
 		exit_cub3d(cub3d);
 }
 
+void	reset_blink_value(t_main_menu *main_menu)
+{
+	main_menu->blink = 0xCC;
+	main_menu->blink_direction = down;
+}
+
 void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
@@ -63,8 +69,7 @@ void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d)
 			cub3d->key_state.up = pressed;
 		cub3d->main_menu.index_option--;
 		cub3d->main_menu.index_option_static++;
-		cub3d->main_menu.blink = 0xCC;
-		cub3d->main_menu.blink_direction = down;
+		reset_blink_value(&cub3d->main_menu);
 	}
 	else if ((keynum == XK_s || keynum == XK_Down)
 		&& cub3d->main_menu.index_option != 1)
@@ -75,8 +80,7 @@ void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d)
 			cub3d->key_state.down = pressed;
 		cub3d->main_menu.index_option++;
 		cub3d->main_menu.index_option_static--;
-		cub3d->main_menu.blink = 0xCC;
-		cub3d->main_menu.blink_direction = down;
+		reset_blink_value(&cub3d->main_menu);
 	}
 	else if (keynum == XK_Return)
 		main_menu_selection(cub3d);
