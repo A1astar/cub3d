@@ -1,5 +1,3 @@
-[🇬🇧 English](#-english-version) | [🇫🇷 Français](#-version-française)
-
 [🇬🇧 English](#-english-version)
 # 🧙‍♂️ Cub3D - 𝔗𝔦𝔱𝔦 𝔗𝔞𝔱𝔞 𝔗𝔲𝔱𝔲 𝔗𝔬𝔱𝔬: The Quest for Randy Marsh
 
