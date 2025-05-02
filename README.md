@@ -6,8 +6,8 @@
 
 
 ## 👥 Équipe
-Alexandre Lacroix
-Alexandre Gadea — https://github.com/algadea
+- Alexandre Lacroix
+- Alexandre Gadea — https://github.com/algadea
 
 ## 📖 À propos
 
