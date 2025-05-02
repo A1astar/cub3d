@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:50:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 13:51:50 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/02 14:57:19 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct s_main_menu
 	int		delay;
 	int		state;
 	uint8_t	blink;
-	bool	direction;
+	bool	blink_direction;
 	int		index_option;
 	int		index_background;
 	t_img	background[50];
