@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 16:35:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 16:58:42 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/02 15:54:49 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+static void	init_animation_attributes(t_animation *animation)
+{
+	animation->frame_count = 4;
+	animation->frame_delay = 5;
+	animation->active = false;
+	animation->state = stand;
+}
 
 static void	init_player_attributes(t_player *player, t_minimap *minimap)
 {
@@ -52,5 +60,5 @@ void	init_player(t_player *player, t_minimap *minimap)
 {
 	init_player_orientation(player);
 	init_player_attributes(player, minimap);
+	init_animation_attributes(&player->animation);
 }
-
