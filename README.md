@@ -45,11 +45,11 @@ Rencontrez les différentes incarnations du mage noir Randy Marsh au fil de votr
 
 | Stoned Randy                    | Angry Randy                    |
 |--------------------------------|--------------------------------|
-| ![](assets/enemy/png/stoned_randy.png) | ![](assets/enemy/png/angry_randy.png) |
+| ![](asset/enemy/png/stoned_randy.png) | ![](asset/enemy/png/angry_randy.png) |
 
 | Drunk Randy                    | Godlike Randy                  |
 |--------------------------------|-------------------------------|
-| ![](assets/enemy/png/drunk_randy.png) | ![](assets/images/png/godlike_randy.png) |
+| ![](asset/enemy/png/drunk_randy.png) | ![](asset/nemey/png/godlike_randy.png) |
 
 ---
 
