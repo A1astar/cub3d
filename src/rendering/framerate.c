@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 14:54:42 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/03 19:02:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/03 19:17:06 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	frame_delay(long frame_delay_ms)
 	}
 }
 
-
 void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 {
 	get_tick(&cub3d->scene.frame_end);
@@ -49,4 +48,3 @@ void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 		- ((scene->frame_end.tv_sec - scene->frame_start.tv_sec) / 1000);
 	frame_delay(scene->frame_delay_ms);
 }
-
