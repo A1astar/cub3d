@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:58:36 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 13:01:41 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/04 00:21:47 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	is_floor(char element)
 	return (false);
 }
 
-void	render_minimp_enemy(t_cub3d *cub3d, t_minimap *minimap, t_enemy *enemy)
+void	render_minimap_enemy(t_cub3d *cub3d, t_minimap *minimap, t_enemy *enemy)
 {
 	double	px;
 	double	py;
@@ -89,5 +89,5 @@ void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap,
 	draw_map(cub3d, map, minimap);
 	render_minimap_player(cub3d, minimap, player, &cub3d->player.render);
 	while (i < cub3d->nb_enemy)
-		render_minimp_enemy(cub3d, minimap, &cub3d->randy[i++]);
+		render_minimap_enemy(cub3d, minimap, &cub3d->randy[i++]);
 }
