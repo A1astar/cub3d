@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/03 16:55:29 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/03 19:02:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 
 int	game_loop(t_cub3d *cub3d)
 {
-	// get_tick(&cub3d->scene.frame_start);
+	get_tick(&cub3d->scene.frame_start);
 	update_game_data(cub3d);
 	render_game(cub3d, &cub3d->window, &cub3d->scene);
-	// update_frame_rate(cub3d, &cub3d->scene);
+	update_frame_rate(cub3d, &cub3d->scene);
 	return (0);
 }

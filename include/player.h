@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:40:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 15:18:37 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/03 13:21:24 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_viewmodel
 	t_img			normal_wand_sprite[4];
 	t_img			trip_sword_sprite[4];
 	t_img			trip_cig_sprite[4];
-
 }					t_viewmodel;
 
 typedef struct s_animation

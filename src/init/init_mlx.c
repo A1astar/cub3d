@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 17:22:35 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/03 13:48:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ void	init_mlx_hook(t_cub3d *cub3d, t_window *window)
 		StructureNotifyMask, &exit_cub3d, cub3d);
 }
 
-void	init_mlx_mouse(t_cub3d *cub3d)
+void	init_mlx_mouse(t_window *window)
 {
-	mlx_mouse_move(cub3d->window.mlx_ptr, cub3d->window.win_ptr,
-		WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	mlx_mouse_move(window->mlx_ptr, window->win_ptr,
+		window->half_width, window->half_height);
 }
 
 void	init_mlx(t_cub3d *cub3d, t_window *window)
 {
 	init_mlx_window(cub3d, window);
 	init_mlx_hook(cub3d, window);
-	init_mlx_mouse(cub3d);
+	init_mlx_mouse(&cub3d->window);
 }

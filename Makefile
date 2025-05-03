@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/03 11:58:04 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/03 19:10:51 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ INCLUDE				:= cub3d.h \
 					player.h \
 					render.h \
 					textures.h \
+					thread.h \
 					types.h
 INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
@@ -80,6 +81,7 @@ SRC					:= data/data_game.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
 					physics/hitbox_player.c \
+					rendering/framerate.c \
 					rendering/raycast_doors.c \
 					rendering/raycast_floor.c \
 					rendering/raycast_map.c \
@@ -98,6 +100,7 @@ SRC					:= data/data_game.c \
 					rendering/rendering_psychedelic.c \
 					rendering/rendering_utils.c \
 					rendering/rendering.c \
+					thread/init_thread.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \

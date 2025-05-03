@@ -16,4 +16,8 @@ print_header() {
 
 main() {
 	print_header
+	for test in "${TEST_CASE[@]}"; do
+		$BINARY "$test"
+		valgrind $BINARY "$test"
+	done
 }

@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_thread.c                                      :+:      :+:    :+:   */
+/*   thread.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 03:07:07 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/03 19:12:24 by algadea          ###   ########.fr       */
+/*   Created: 2025/05/03 13:07:05 by algadea           #+#    #+#             */
+/*   Updated: 2025/05/03 13:18:03 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#ifndef THREAD_H
+# define THREAD_H
 
-void	init_thread(t_cub3d *cub3d, t_thread *thread)
+#include <pthread.h>
+
+typedef struct s_thread
 {
-	int	i;
-	
-	thread->cpu_core_nbr = sysconf(_SC_NPROCESSORS_ONLN);
-	if (thread->cpu_core_nbr == -1)
-	{
-		printf(BOLD RED"SYSCONF ERROR\n"DEFAULT);
-		free_program(cub3d);
-	}
-	printf("%ld\n", thread->cpu_core_nbr);
-	i = 0;
-	while (i < thread->cpu_core_nbr - 1)
-	{
-		pthread_create();
-		i++;
-	}
-	exit(0);
-}
+	long	cpu_core_nbr;
+}t_thread;
+
+#endif

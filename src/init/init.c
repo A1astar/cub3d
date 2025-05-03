@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 17:42:49 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/03 19:10:00 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	init_program(t_cub3d *cub3d, char **argv)
 {
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	parsing(cub3d, argv[1]);
+	init_thread(cub3d, &cub3d->thread);
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;
 	init_mlx(cub3d, &cub3d->window);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 15:11:25 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/03 19:10:25 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <sys/stat.h>
+# include <sys/time.h>
 
+# include "thread.h"
 # include "config.h"
 # include "errors.h"
 # include "map.h"
@@ -93,6 +95,7 @@ void	init_main_menu_addr(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d, t_window *scene);
+void	init_thread(t_cub3d *cub3d, t_thread *thread);
 void	init_player(t_player *player, t_minimap *minimap);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
@@ -137,6 +140,8 @@ void	print_2d_array_string(char **str);
 void	print_usage(void);
 
 /*##############################	RENDERING	##############################*/
+void	get_tick(struct timeval *time);
+void	update_frame_rate(t_cub3d *cub3d, t_scene *scene);
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
@@ -145,8 +150,7 @@ void	update_ray_step_x(t_raycast *raycast);
 void	update_ray_step_y(t_raycast *raycast);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
-void	render_item(t_item *item, t_player *player, t_raycast *raycast,
-			t_scene *scene);
+void	render_item(t_cub3d *cub3d, t_item *item, t_raycast *raycast);
 void	render_enemy(t_cub3d *cub3d, t_raycast *raycast, t_scene *scene);
 bool	item_on_screen(t_item_render *item, t_raycast *ray, int stripe);
 int		get_tex_x(t_item_render *item, t_img *img, int stripe);
