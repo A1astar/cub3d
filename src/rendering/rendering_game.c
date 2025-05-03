@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 11:49:03 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/03 16:55:29 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 // !MANDATORY
-void	render_ceiling(t_scene *scene, t_map *map)
+void	render_ceiling(t_window *window, t_scene *scene, t_map *map)
 {
 	int	y;
 	int	x;
 
 	y = 0;
-	while (y < WINDOW_HEIGHT / 2)
+	while (y < window->half_height)
 	{
 		x = 0;
-		while (x < WINDOW_WIDTH)
+		while (x < window->width)
 		{
 			draw_pixel_color(&scene->img, x, y,
 				map->ceilling_rgb[0] << 16 | map->ceilling_rgb[1] << 8 | map->ceilling_rgb[2]);
@@ -33,16 +33,16 @@ void	render_ceiling(t_scene *scene, t_map *map)
 }
 
 // !MANDATORY
-void	render_floor(t_scene *scene, t_map *map)
+void	render_floor(t_window *window, t_scene *scene, t_map *map)
 {
 	int	y;
 	int	x;
 
-	y = WINDOW_HEIGHT / 2;
-	while (y < WINDOW_HEIGHT)
+	y = window->half_height;
+	while (y < window->height)
 	{
 		x = 0;
-		while (x < WINDOW_WIDTH)
+		while (x < window->width)
 		{
 			draw_pixel_color(&scene->img, x, y,
 				map->floor_rgb[0] << 16 | map->floor_rgb[1] << 8 | map->floor_rgb[2]);
@@ -67,19 +67,20 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	raycast_doors(cub3d, &cub3d->raycast, &cub3d->player);
 			// raycast_threads(cub3d);
 	if (cub3d->nb_item)
-		render_item(&cub3d->item, &cub3d->player, &cub3d->raycast,
-				&cub3d->scene);
+		render_item(cub3d, &cub3d->item, &cub3d->raycast);
 	render_enemy(cub3d, &cub3d->raycast, &cub3d->scene);
 	render_minimap(cub3d, &cub3d->map, &cub3d->minimap, &cub3d->player);
 	render_viewmodel(cub3d, &cub3d->window, &cub3d->player.viewmodel, &cub3d->scene);
 	// render_minimap_ray(cub3d);
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
-		0);
+	mlx_put_image_to_window(window->mlx_ptr,
+		window->win_ptr, scene->img.ptr, 0, 0);
 }
 
 int	game_loop(t_cub3d *cub3d)
 {
+	// get_tick(&cub3d->scene.frame_start);
 	update_game_data(cub3d);
 	render_game(cub3d, &cub3d->window, &cub3d->scene);
+	// update_frame_rate(cub3d, &cub3d->scene);
 	return (0);
 }

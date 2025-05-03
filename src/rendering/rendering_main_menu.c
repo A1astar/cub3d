@@ -101,9 +101,9 @@ void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
 	int			y;
 	int			x;
 
-	if ((main_menu->state == option && main_menu->delay == 10)
-		|| (main_menu->state == launcher && main_menu->delay == 10))
-	{
+	// if ((main_menu->state == option && main_menu->delay == 10)
+	// 	|| (main_menu->state == launcher && main_menu->delay == 10))
+	// {
 		y = 0;
 		while (y < main_menu->background[main_menu->index_background].height)
 		{
@@ -121,9 +121,9 @@ void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
 		main_menu->index_background++;
 		if (main_menu->index_background == 50)
 			main_menu->index_background = 0;
-		main_menu->delay = 0;
-	}
-	main_menu->delay++;
+		// main_menu->delay = 0;
+	// }
+	// main_menu->delay++;
 }
 
 void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
@@ -147,6 +147,8 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 
 int	main_menu_loop(t_cub3d *cub3d)
 {
+	get_tick(&cub3d->scene.frame_start);
 	render_main_menu(cub3d, &cub3d->window, &cub3d->scene);
+	update_frame_rate(cub3d, &cub3d->scene);
 	return (0);
 }
