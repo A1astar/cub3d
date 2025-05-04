@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/04 01:16:13 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/04 19:14:00 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_scene
 	struct timeval	frame_end;
 	int				framerate;
 	long			frame_delay_ms;
+	long			fps_time;
+	int				fps_counter;
 	long			frame_ms;
 	t_img			img;
 }					t_scene;
