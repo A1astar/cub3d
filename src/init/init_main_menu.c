@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 15:53:56 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/04 04:43:40 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	init_main_menu_attributes(t_main_menu *main_menu)
 	main_menu->index_option_static = 1;
 	main_menu->state = launcher;
 	main_menu->blink = 0xCC;
+	// main_menu->blink = FRAMERATE;
 	main_menu->blink_direction = down;
 }
 

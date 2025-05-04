@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/04 00:14:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/04 04:38:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 		}
 		y++;
 	}
-	if (main_menu->blink == 255)
+	if (main_menu->blink == FRAMERATE)
 		main_menu->blink_direction = down;
 	else if (main_menu->blink == 0)
 		main_menu->blink_direction = up;

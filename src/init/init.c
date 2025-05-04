@@ -6,13 +6,13 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/03 20:10:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/04 04:33:30 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	init_minimap(t_minimap *minimap)
+static void	init_minimap(t_window *window, t_minimap *minimap)
 {
 	int	map_width;
 	int	map_height;
@@ -21,16 +21,16 @@ static void	init_minimap(t_minimap *minimap)
 	minimap->tile_width = 5;
 	minimap->scale = 1;
 	map_width = minimap->width * minimap->tile_width;
-	if (map_width + minimap->x_origin > WINDOW_WIDTH)
-		minimap->x_origin = WINDOW_WIDTH - map_width;
+	if (map_width + minimap->x_origin > window->width)
+		minimap->x_origin = window->width - map_width;
 	map_height = minimap->height * minimap->tile_height;
-	if (map_height + minimap->y_origin > WINDOW_HEIGHT)
-		minimap->y_origin = WINDOW_HEIGHT - map_height;
-	minimap->x_origin = WINDOW_WIDTH - minimap->width - (5 * minimap->width);
-	minimap->y_origin = WINDOW_HEIGHT - minimap->height - (5 * minimap->height);
+	if (map_height + minimap->y_origin > window->height)
+		minimap->y_origin = window->height - map_height;
+	minimap->x_origin = window->width - minimap->width - (5 * minimap->width);
+	minimap->y_origin = window->height - minimap->height - (5 * minimap->height);
 }
 
-static void	init_raycast(t_raycast *raycast, t_player *player)
+static void	init_raycast(t_window *window, t_raycast *raycast, t_player *player)
 {
 	raycast->fov = 66.0;
 	raycast->fov_rad = raycast->fov * PI / 180.0;
@@ -40,8 +40,8 @@ static void	init_raycast(t_raycast *raycast, t_player *player)
 	raycast->y_dir = -sin(player->radian);
 	raycast->x_plane = -raycast->y_dir * tan(raycast->fov_rad / 2);
 	raycast->y_plane = raycast->x_dir * tan(raycast->fov_rad / 2);
-	raycast->width = WINDOW_WIDTH;
-	raycast->height = WINDOW_HEIGHT;
+	raycast->width = window->width;
+	raycast->height = window->height;
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)
@@ -53,7 +53,7 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	cub3d->rendering_state = normal;
 	init_mlx(cub3d, &cub3d->window);
 	init_asset(cub3d);
-	init_minimap(&cub3d->minimap);
+	init_minimap(&cub3d->window, &cub3d->minimap);
 	init_player(&cub3d->player, &cub3d->minimap);
-	init_raycast(&cub3d->raycast, &cub3d->player);
+	init_raycast(&cub3d->window, &cub3d->raycast, &cub3d->player);
 }

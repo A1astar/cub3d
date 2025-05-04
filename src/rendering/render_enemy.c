@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:26:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 18:56:28 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/04 04:16:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ static void	draw_item(t_item_render *item, t_raycast *ray, t_scene *scene,
 	}
 }
 
-static void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
+static void	init_item_draw_attributes(t_window *window,
+				t_item_draw *draw, t_item_attr *attr)
 {
-	draw->sprite_screen_x = (int)((WINDOW_WIDTH / 2) * (1 + (attr->trans_x
+	draw->sprite_screen_x = (int)((window->half_width) * (1 + (attr->trans_x
 					/ attr->trans_y)));
-	draw->sprite_height = abs((int)(WINDOW_HEIGHT / attr->trans_y)) * 0.78;
+	draw->sprite_height = abs((int)(window->height / attr->trans_y)) * 0.78;
 	draw->sprite_width = draw->sprite_height;
 
 	// *START_X
@@ -56,18 +57,18 @@ static void	init_item_draw_attributes(t_item_draw *draw, t_item_attr *attr)
 
 	// *END_X
 	draw->draw_end_x = draw->sprite_width / 2 + draw->sprite_screen_x;
-	if (draw->draw_end_x >= WINDOW_WIDTH)
-		draw->draw_end_x = WINDOW_WIDTH - 1;
+	if (draw->draw_end_x >= window->width)
+		draw->draw_end_x = window->width - 1;
 
 	// *START_Y
-	draw->draw_start_y = -draw->sprite_height / 2 + WINDOW_HEIGHT / 2 + attr->v_move_screen;
+	draw->draw_start_y = -draw->sprite_height / 2 + window->half_height + attr->v_move_screen;
 	if (draw->draw_start_y < 0)
 		draw->draw_start_y = 0;
 
 	// *END_Y
-	draw->draw_end_y = draw->sprite_height / 2 + WINDOW_HEIGHT / 2 + attr->v_move_screen;
-	if (draw->draw_end_y >= WINDOW_HEIGHT)
-		draw->draw_end_y = WINDOW_HEIGHT - 1;
+	draw->draw_end_y = draw->sprite_height / 2 + window->half_height + attr->v_move_screen;
+	if (draw->draw_end_y >= window->height)
+		draw->draw_end_y = window->height - 1;
 
 	draw->tex_x = 0;
 	draw->tex_y = 0;
@@ -92,14 +93,14 @@ static void	init_enemy_attributes(t_enemy *enemy, t_player *player,
 	attr->v_move_screen = 128 / attr->trans_y;
 }
 
-static void	init_enemy(t_player *player, t_enemy *enemey, t_raycast *raycast,
+static void	init_enemy(t_cub3d *cub3d, t_enemy *enemy, t_raycast *raycast,
 		t_scene *scene)
 {
 	t_item_render	randy_render;
 
-	init_enemy_attributes(enemey, player, raycast, &randy_render.attr);
-	init_item_draw_attributes(&randy_render.draw, &randy_render.attr);
-	draw_item(&randy_render, raycast, scene, &enemey->sprite);
+	init_enemy_attributes(enemy, &cub3d->player, raycast, &randy_render.attr);
+	init_item_draw_attributes(&cub3d->window, &randy_render.draw, &randy_render.attr);
+	draw_item(&randy_render, raycast, scene, &enemy->sprite);
 }
 
 void	render_enemy(t_cub3d *cub3d, t_raycast *raycast, t_scene *scene)
@@ -108,5 +109,5 @@ void	render_enemy(t_cub3d *cub3d, t_raycast *raycast, t_scene *scene)
 
 	i = 0;
 	while (i < cub3d->nb_enemy)
-		init_enemy(&cub3d->player, &cub3d->randy[i++], raycast, scene);
+		init_enemy(cub3d, &cub3d->randy[i++], raycast, scene);
 }

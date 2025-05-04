@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:28:20 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 15:54:21 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/04 04:30:49 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_ray(t_cub3d *cub3d, t_floor_ray *ray, int x, int y)
 	color = *(unsigned int *)(img->addr + offset);
 	draw_pixel_color(&cub3d->scene.img, x, y, color);
 	color = (color >> 1) & 8355711;
-	draw_pixel_color(&cub3d->scene.img, x, WINDOW_HEIGHT - y - 1, color);
+	draw_pixel_color(&cub3d->scene.img, x, cub3d->window.height - y - 1, color);
 }
 
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y)
@@ -48,7 +48,7 @@ void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y)
 	int x;
 
 	x = 0;
-	while (x < WINDOW_WIDTH)
+	while (x < cub3d->window.width)
 	{
 		draw_ray(cub3d, ray, x, y);
 		ray->floor_x += ray->floor_step_x;
