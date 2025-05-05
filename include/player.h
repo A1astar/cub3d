@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:40:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/04 01:02:51 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/05 18:08:16 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_player
 	t_render		render;
 	t_orientation	orientation;
 	t_animation		animation;
+	t_animation		magic;
 
 	double			x_pos;
 	double			y_pos;

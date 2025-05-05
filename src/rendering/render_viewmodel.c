@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 15:48:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 19:15:30 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,49 @@ t_img	*select_viewmodel(t_cub3d *cub3d, t_animation *animation,
 		return (select_sword_frames(cub3d, animation, viewmodel));
 }
 
+t_img	*select_magic(t_animation *magic, t_textures *textures)
+{
+	if (!magic->active)
+		return (NULL);
+	magic->delay_count++;
+	if (magic->delay_count >= magic->frame_delay)
+	{
+		magic->delay_count = 0;
+		magic->current_frame++;
+		if (magic->current_frame >= magic->frame_count)
+		{
+			magic->active = false;
+			return (NULL);
+		}
+	}
+	return (&textures->fireball[magic->current_frame]);
+}
+
+void	render_magic(t_cub3d *cub3d, t_window *window, t_scene *scene)
+{
+	t_img	*magic_img;
+	int		x_start;
+	int		y_start;
+
+	magic_img = select_magic(&cub3d->player.magic, &cub3d->textures);
+	if (!magic_img)
+		return ;
+	x_start = (window->width - magic_img->width) / 2;
+	y_start = (window->height - magic_img->height) / 2;
+	draw_viewmodel(magic_img, scene, x_start, y_start);
+}
+
 void	render_viewmodel(t_cub3d *cub3d, t_window *window,
 		t_viewmodel *viewmodel, t_scene *scene)
 {
 	int		x_start;
 	int		y_start;
-	t_img	*img;
+	t_img	*view_img;
 
-	img = select_viewmodel(cub3d, &cub3d->player.animation, viewmodel);
+	view_img = select_viewmodel(cub3d, &cub3d->player.animation, viewmodel);
 	x_start = window->half_width - viewmodel->normal_stand.width / 2;
 	y_start = window->height - viewmodel->normal_stand.height
 		+ viewmodel->draw_pos;
-	draw_viewmodel(img, scene, x_start, y_start);
+	render_magic(cub3d, window, scene);
+	draw_viewmodel(view_img, scene, x_start, y_start);
 }

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 13:27:18 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:56:39 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,23 @@ static void	load_trip_assets(t_cub3d *cub3d, t_textures *textures)
 		"asset/trip_tiles/xpm/trip_closed_door.xpm");
 	load_texture(cub3d, &textures->trip_o_door,
 		"asset/trip_tiles/xpm/trip_open_door.xpm");
+}
+
+static void	load_fireball_assets(t_cub3d *cub3d, t_textures *textures)
+{
+	load_texture(cub3d, &textures->fireball[0], "asset/magic/xpm/fireball_01.xpm");
+	load_texture(cub3d, &textures->fireball[1], "asset/magic/xpm/fireball_02.xpm");
+	load_texture(cub3d, &textures->fireball[2], "asset/magic/xpm/fireball_03.xpm");
+	load_texture(cub3d, &textures->fireball[3], "asset/magic/xpm/fireball_04.xpm");
+	load_texture(cub3d, &textures->fireball[4], "asset/magic/xpm/fireball_05.xpm");
+	load_texture(cub3d, &textures->fireball[5], "asset/magic/xpm/fireball_06.xpm");
+	load_texture(cub3d, &textures->fireball[6], "asset/magic/xpm/fireball_07.xpm");
+	load_texture(cub3d, &textures->fireball[7], "asset/magic/xpm/fireball_08.xpm");
+	load_texture(cub3d, &textures->fireball[8], "asset/magic/xpm/fireball_09.xpm");
+	load_texture(cub3d, &textures->fireball[9], "asset/magic/xpm/fireball_10.xpm");
+	load_texture(cub3d, &textures->fireball[10], "asset/magic/xpm/fireball_11.xpm");
+	load_texture(cub3d, &textures->fireball[11], "asset/magic/xpm/fireball_12.xpm");
+	load_texture(cub3d, &textures->fireball[12], "asset/magic/xpm/fireball_13.xpm");
 }
 
 static void	load_normal_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels)
@@ -146,6 +163,7 @@ void	init_bonus_assets(t_cub3d *cub3d)
 {
 	load_env_assets(cub3d, &cub3d->textures);
 	load_trip_assets(cub3d, &cub3d->textures);
+	load_fireball_assets(cub3d, &cub3d->textures);
 	load_others_assets(cub3d, &cub3d->item, &cub3d->textures);
 	load_normal_viewmodel(cub3d, &cub3d->player.viewmodel);
 	load_trip_viewmodel(cub3d, &cub3d->player.viewmodel);
