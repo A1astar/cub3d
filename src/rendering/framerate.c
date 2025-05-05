@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-struct timeval	get_tick(void)
+void	get_tick(struct timeval *time)
 {
 	gettimeofday(time, NULL);
 }
@@ -39,7 +39,7 @@ void	frame_delay(long frame_delay_ms)
 	// while ((time_value - start_time) < frame_delay_ms)
 	{
 		// time_value = get_time(&time);
-		// printf("time value sec %ld, time value usec %ld\n",
+		// printf("time value sec %ld, time value usec %ld\n",	
 		// 	time.tv_sec, time.tv_usec);
 		usleep(100);
 	}
@@ -55,8 +55,8 @@ void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 
 	gettimeofday(&time, NULL);
 	scene->delta_time = get_time(&time) - get_time(&previous_time);
-	printf("%d\n", scene->delta_time);
-	cub3d->scene.frame_end = get_tick();
+	printf("%f\n", scene->delta_time);
+	get_tick(&cub3d->scene.frame_end);
 	scene->frame_delay_ms = scene->frame_ms
 		- ((scene->frame_end.tv_sec - scene->frame_start.tv_sec) / 1000);
 	// scene->fps_time += frame_delay(scene->frame_delay_ms);
@@ -66,7 +66,7 @@ void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 	sec += get_time(&time);
 	if (sec >= 1000)
 	{
-		printf("FPS: %d | sec: %ld | delay = %ld\n",
+		printf("FPS: %d | sec: %ld | delay = %ld\n", 
 			scene->fps_counter, sec, scene->frame_delay_ms);
 		scene->fps_counter = 0;
 		scene->fps_time = 0;
