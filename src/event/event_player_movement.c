@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_movement.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:24:39 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/05 11:11:45 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:32:01 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	move_player_north(t_cub3d *cub3d)
 {
 	if (!can_move_to_north(&cub3d->raycast, &cub3d->player, &cub3d->map))
 		return ;
-	cub3d->player.x_pos += cub3d->raycast.x_dir * cub3d->player.velocity;
-	cub3d->player.y_pos += cub3d->raycast.y_dir * cub3d->player.velocity;
-	// cub3d->player.x_pos += cub3d->raycast.x_dir * cub3d->scene.delta_time;
-	// cub3d->player.y_pos += cub3d->raycast.y_dir * cub3d->scene.delta_time;
+	// cub3d->player.x_pos += cub3d->raycast.x_dir * cub3d->player.velocity;
+	// cub3d->player.y_pos += cub3d->raycast.y_dir * cub3d->player.velocity;
+	cub3d->player.x_pos += cub3d->raycast.x_dir * cub3d->scene.delta_time;
+	cub3d->player.y_pos += cub3d->raycast.y_dir * cub3d->scene.delta_time;
 }
 
 void	move_player_east(t_cub3d *cub3d)
