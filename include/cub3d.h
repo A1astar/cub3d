@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 11:54:34 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:44:45 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 
 int		exit_cub3d(t_cub3d *cub3d);
 
-void	player_sword(t_animation *animation);
-void	player_cast(t_animation *animation);
+void	player_sword(t_cub3d *cub3d, t_animation *animation);
+void	player_cast(t_cub3d *cub3d, t_animation *animation);
 
 /*##############################	INIT	##################################*/
 bool	is_rgb_code(char **tab);

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:42:21 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/05 12:33:36 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:45:14 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	player_action_button(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == Button1)
-		player_cast(&cub3d->player.animation);
+		player_cast(cub3d, &cub3d->player.animation);
 	else if (keynum == Button3)
-		player_sword(&cub3d->player.animation);
+		player_sword(cub3d, &cub3d->player.animation);
 }
