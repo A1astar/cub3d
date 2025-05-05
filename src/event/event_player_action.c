@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:18:38 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 15:43:10 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:53:46 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,6 @@ static void	doors_open_close(t_player *player, t_map *map)
 		map->map[(int)(player->y_pos)][(int)(player->x_pos + 1)] = 'C';
 	else if (map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] == 'O')
 		map->map[(int)(player->y_pos)][(int)(player->x_pos - 1)] = 'C';
-}
-
-static void	player_sword(t_animation *animation)
-{
-	animation->state = sword;
-	animation->active = true;
-	animation->current_frame = 0;
-	animation->delay_count = 0;
-}
-
-static void	player_cast(t_animation *animation)
-{
-	animation->state = cast;
-	animation->active = true;
-	animation->current_frame = 0;
-	animation->delay_count = 0;
 }
 
 static void	player_interaction(t_cub3d *cub3d)
