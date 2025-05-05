@@ -29,49 +29,37 @@ long	get_time(struct timeval *start_time)
 void	frame_delay(long frame_delay_ms)
 {
 	struct timeval	time;
-	long			time_value;
 	long			start_time;
 
 	gettimeofday(&time, NULL);
 	start_time = get_time(&time);
-	time_value = 0;
 	while ((get_time(&time) - start_time) < frame_delay_ms)
-	// while ((time_value - start_time) < frame_delay_ms)
-	{
-		// time_value = get_time(&time);
-		// printf("time value sec %ld, time value usec %ld\n",	
-		// 	time.tv_sec, time.tv_usec);
 		usleep(100);
-	}
-	// return (time_value);
 }
 
 void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 {
-	struct timeval			time;
-	static struct timeval	previous_time;
-	// static struct timeval	sec;
+	static long	previous_time;
+	static long	current_time;
 	static long	sec;
 
-	gettimeofday(&time, NULL);
-	scene->delta_time = get_time(&time) - get_time(&previous_time);
-	printf("%f\n", scene->delta_time);
+	current_time = get_time(&cub3d->time);
+	printf("previous time = %ld | current time = %ld\n", previous_time, current_time);
+	scene->delta_time = ((float)get_time(&cub3d->time) - (float)previous_time);
+	printf("delta time: %f\n", scene->delta_time / 1000);
 	get_tick(&cub3d->scene.frame_end);
 	scene->frame_delay_ms = scene->frame_ms
 		- ((scene->frame_end.tv_sec - scene->frame_start.tv_sec) / 1000);
-	// scene->fps_time += frame_delay(scene->frame_delay_ms);
-	// printf("fps_time = %ld | framerate = %d\n", scene->fps_time, scene->framerate);
+	printf("frame_ms %ld | frame delay ms = %f\n", scene->frame_ms, scene->frame_delay_ms);
 	frame_delay(scene->frame_delay_ms);
 	scene->fps_counter++;
-	sec += get_time(&time);
+	sec += get_time(&cub3d->time);
 	if (sec >= 1000)
 	{
-		printf("FPS: %d | sec: %ld | delay = %ld\n", 
+		printf("FPS: %d | sec: %ld | delay = %f\n", 
 			scene->fps_counter, sec, scene->frame_delay_ms);
 		scene->fps_counter = 0;
-		scene->fps_time = 0;
 		sec = 0;
 	}
-	previous_time.tv_sec = time.tv_sec;
-	previous_time.tv_usec = time.tv_usec;
+	previous_time = current_time;
 }

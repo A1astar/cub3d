@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/03 19:11:29 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/05 18:13:01 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	cub3d;
 
-	// printf("%d\n", getpid());
 	if (argument_count_correct(argc))
 	{
 		init_program(&cub3d, argv);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/05 15:21:41 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:17:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	init_program(t_cub3d *cub3d, char **argv)
 {
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	parsing(cub3d, argv[1]);
+	gettimeofday(&cub3d->time, NULL);
 	// init_thread(cub3d, &cub3d->thread);
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;
