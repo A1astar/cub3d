@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:24:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/27 18:12:52 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:31:07 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void	update_game_data(t_cub3d *cub3d)
 {
 	update_player_data(cub3d);
+
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/04 04:33:30 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/05 15:21:41 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,23 @@ static void	init_raycast(t_window *window, t_raycast *raycast, t_player *player)
 	raycast->height = window->height;
 }
 
+static void	init_death_anim(t_animation *death_anim)
+{
+	death_anim->frame_count = 3;
+	death_anim->frame_delay = 5;
+	death_anim->active = false;
+}
+
+static void	init_enemy(t_cub3d *cub3d)
+{
+	int i;
+
+	i = 0;
+	while(i < cub3d->nb_enemy)
+		init_death_anim(&cub3d->randy[i++].death_anim);
+}
+
+
 void	init_program(t_cub3d *cub3d, char **argv)
 {
 	ft_bzero(cub3d, sizeof(t_cub3d));
@@ -55,5 +72,6 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	init_asset(cub3d);
 	init_minimap(&cub3d->window, &cub3d->minimap);
 	init_player(&cub3d->player, &cub3d->minimap);
+	init_enemy(cub3d);
 	init_raycast(&cub3d->window, &cub3d->raycast, &cub3d->player);
 }

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 11:35:50 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:27:18 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ static void	load_others_assets(t_cub3d *cub3d, t_item *item,
 	load_texture(cub3d, &textures->blood[0], "asset/blood/xpm/blood01.xpm");
 	load_texture(cub3d, &textures->blood[1], "asset/blood/xpm/blood02.xpm");
 	load_texture(cub3d, &textures->blood[2], "asset/blood/xpm/blood03.xpm");
+	load_texture(cub3d, &textures->cadaver, "asset/enemy/xpm/dead.xpm");
 }
 
 static void	load_enemy_assets(t_cub3d *cub3d)

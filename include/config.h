@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 12:42:12 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:07:54 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ enum e_rendering {normal, psychedelic};
 enum e_key_press {release, pressed};
 enum e_viewmodel {down, up};
 
-typedef enum e_randy_state {angry, stoned, drunk, godlike, dying}t_randy_state;
+typedef enum e_randy_state {angry, stoned, drunk, godlike, dying, dead}t_randy_state;
 typedef enum e_orientation {north, south, east, west}t_orientation;
 typedef enum e_anim_state{stand, cast, sword}t_anim_state;
 

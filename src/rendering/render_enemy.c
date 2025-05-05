@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_enemy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:26:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/04 04:16:46 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/05 16:37:00 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,51 @@ static void	init_enemy_attributes(t_enemy *enemy, t_player *player,
 	attr->trans_y = inv_det * (-raycast->y_plane * rel_x + raycast->x_plane
 			* rel_y);
 	attr->distance = rel_x * rel_x + rel_y * rel_y;
-	attr->v_move_screen = 128 / attr->trans_y;
+	if(enemy->state != dead)
+		attr->v_move_screen = 128 / attr->trans_y;
+	else
+		attr->v_move_screen = 300 / attr->trans_y;
 }
+
+
+
+t_img *select_blood_frame(t_enemy *enemy, t_animation *death_animation, t_textures *texture)
+{
+	if(death_animation->current_frame >= death_animation->frame_count)
+	{
+		enemy->state = dead;
+		return(&texture->cadaver);
+	}
+	death_animation->delay_count++;
+	if(death_animation->delay_count >= death_animation->frame_delay)
+	{
+		death_animation->delay_count = 0;
+		death_animation->current_frame++;
+	}
+	return (&texture->blood[death_animation->current_frame]);
+}
+
+t_img *select_sprite(t_enemy *enemy, t_textures *texture)
+{
+	if(enemy->state == dying)
+		return(select_blood_frame(enemy, &enemy->death_anim, texture));
+	else if (enemy->state == dead)
+		return(&texture->cadaver);
+	else
+		return (&enemy->sprite);
+}
+
 
 static void	init_enemy(t_cub3d *cub3d, t_enemy *enemy, t_raycast *raycast,
 		t_scene *scene)
 {
 	t_item_render	randy_render;
+	t_img			*img;
 
+	img	= select_sprite(enemy, &cub3d->textures);
 	init_enemy_attributes(enemy, &cub3d->player, raycast, &randy_render.attr);
 	init_item_draw_attributes(&cub3d->window, &randy_render.draw, &randy_render.attr);
-	draw_item(&randy_render, raycast, scene, &enemy->sprite);
+	draw_item(&randy_render, raycast, scene, img);
 }
 
 void	render_enemy(t_cub3d *cub3d, t_raycast *raycast, t_scene *scene)
