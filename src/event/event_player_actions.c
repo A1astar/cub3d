@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:29 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 12:45:33 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:46:18 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ static void	activate_animation(t_animation *animation, t_anim_state state)
 
 void	player_sword(t_cub3d *cub3d, t_animation *animation)
 {
+	(void)cub3d;
 	activate_animation(animation, sword);
 }
 
 void	player_cast(t_cub3d *cub3d, t_animation *animation)
 {
+	(void)cub3d;
 	activate_animation(animation, cast);
 }
