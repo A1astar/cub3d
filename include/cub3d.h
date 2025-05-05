@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 12:54:03 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/05 17:24:45 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,14 @@ void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			t_player *player, t_render *render);
 void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap,
 			t_player *player);
+void	draw_sprite(t_item_render *item, t_raycast *ray, t_scene *scene,
+			t_img *img);
+void	init_sprite_draw_attributes(t_window *window, t_item_draw *draw,
+			t_item_attr *attr);
+void	init_enemy_attributes(t_enemy *enemy, t_player *player,
+			t_raycast *raycast, t_item_attr *attr);
+void	init_item_attributes(t_item *item, t_player *player,
+			t_raycast *raycast, t_item_attr *attr);
 
 /*##############################	STAT	##################################*/
 void	update_game_data(t_cub3d *cub3d);

@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/05 11:55:09 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/05 17:18:08 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ SRC					:= data/data_game.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
 					physics/hitbox_player.c \
+					rendering/draw_item.c \
 					rendering/framerate.c \
 					rendering/raycast_doors.c \
 					rendering/raycast_floor.c \
