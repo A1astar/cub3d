@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 12:50:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:35:50 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,13 @@ static void	load_trip_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels)
 		"asset/viewmodel/xpm/trip_cig_4.xpm");
 }
 
-static void	load_items_assets(t_cub3d *cub3d, t_item *item)
+static void	load_others_assets(t_cub3d *cub3d, t_item *item,
+		t_textures *textures)
 {
 	load_texture(cub3d, &item->sprite, "asset/item/xpm/shroom.xpm");
+	load_texture(cub3d, &textures->blood[0], "asset/blood/xpm/blood01.xpm");
+	load_texture(cub3d, &textures->blood[1], "asset/blood/xpm/blood02.xpm");
+	load_texture(cub3d, &textures->blood[2], "asset/blood/xpm/blood03.xpm");
 }
 
 static void	load_enemy_assets(t_cub3d *cub3d)
@@ -141,7 +145,7 @@ void	init_bonus_assets(t_cub3d *cub3d)
 {
 	load_env_assets(cub3d, &cub3d->textures);
 	load_trip_assets(cub3d, &cub3d->textures);
-	load_items_assets(cub3d, &cub3d->item);
+	load_others_assets(cub3d, &cub3d->item, &cub3d->textures);
 	load_normal_viewmodel(cub3d, &cub3d->player.viewmodel);
 	load_trip_viewmodel(cub3d, &cub3d->player.viewmodel);
 	load_enemy_assets(cub3d);

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:39:25 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 13:40:39 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:31:56 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_textures
 	t_img	trip_floor;
 	t_img	trip_o_door;
 	t_img	trip_c_door;
+	t_img	blood[3];
 }			t_textures;
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/03 19:10:51 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/05 11:55:09 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRC					:= data/data_game.c \
 					event/event_player_mouse.c \
 					event/event_player_movement.c \
 					event/event.c \
+					event/event_player_actions.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \
 					init/init_background.c \
