@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-void	get_tick(struct timeval *time)
+struct timeval	get_tick(void)
 {
 	gettimeofday(time, NULL);
 }
@@ -56,7 +56,7 @@ void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 	gettimeofday(&time, NULL);
 	scene->delta_time = get_time(&time) - get_time(&previous_time);
 	printf("%d\n", scene->delta_time);
-	get_tick(&cub3d->scene.frame_end);
+	cub3d->scene.frame_end = get_tick();
 	scene->frame_delay_ms = scene->frame_ms
 		- ((scene->frame_end.tv_sec - scene->frame_start.tv_sec) / 1000);
 	// scene->fps_time += frame_delay(scene->frame_delay_ms);
