@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/05 14:50:31 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 11:41:47 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 		}
 		y++;
 	}
-	// if (main_menu->blink == FRAMERATE)
-	if (main_menu->blink == 255 - FRAMERATE)
+	if (main_menu->blink == 255)
 		main_menu->blink_direction = down;
 	else if (main_menu->blink == 0)
 		main_menu->blink_direction = up;
@@ -142,8 +141,13 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 
 int	main_menu_loop(t_cub3d *cub3d)
 {
-	get_tick(&cub3d->scene.frame_start);
+	// get_tick(&cub3d->time);
+	cub3d->scene.frame_start = get_time(&cub3d->time);
+	printf("frame start main_menu = %ld\n", cub3d->scene.frame_start);
 	render_main_menu(cub3d, &cub3d->window, &cub3d->scene);
+	// get_tick(&cub3d->time);
+	cub3d->scene.frame_end = get_time(&cub3d->time);
+	printf("frame end main_menu = %ld\n", cub3d->scene.frame_end);
 	update_frame_rate(cub3d, &cub3d->scene);
 	return (0);
 }
