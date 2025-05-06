@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_game.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/05 18:07:29 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 11:25:03 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 		raycast_floor(cub3d, &cub3d->raycast, &cub3d->player);
 	else
 	{
-		rendering_psychedelic(cub3d, &cub3d->scene, &cub3d->map, ep_ceiling);
+		rendering_psychedelic(&cub3d->scene, &cub3d->map, ep_ceiling);
 		// rendering_psychedelic(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
 		// render_floor(scene, &cub3d->map);
 		// render_ceiling(scene, &cub3d->map);
