@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/05 17:18:08 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/06 11:09:48 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ SRC					:= data/data_game.c \
 					event/event_launcher.c \
 					event/event_level_menu.c \
 					event/event_main_menu.c \
-					event/event_player_action.c \
+					event/event_player_interaction.c \
 					event/event_player_key_press.c \
 					event/event_player_key_release.c \
 					event/event_player_mouse.c \

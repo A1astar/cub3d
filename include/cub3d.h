@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 09:44:18 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 11:37:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,8 +173,7 @@ void	draw_pixel_asset(t_img *img, int x, int y, char *pixel);
 void	draw_pixel_color(t_img *scene, int x, int y, int color);
 void	draw_square(t_cub3d *cub3d, int x_index, int y_index,
 			unsigned int color);
-void	rendering_psychedelic(t_cub3d *cub3d, t_scene *scene, t_map *map,
-			int which);
+void	rendering_psychedelic(t_scene *scene, t_map *map, int which);
 void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
 			t_player *player, t_render *render);
 void	render_minimap(t_cub3d *cub3d, t_map *map, t_minimap *minimap,
