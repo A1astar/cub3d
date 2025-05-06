@@ -1,4 +1,3 @@
-[🇬🇧 English](#-english-version)
 # 🧙‍♂️ Cub3D - 𝔗𝔦𝔱𝔦 𝔗𝔞𝔱𝔞 𝔗𝔲𝔱𝔲 𝔗𝔬𝔱𝔬: The Quest for Randy Marsh
 
 > A 42 school project turned into a fantasy adventure game, where you play as a wizard roaming haunted catacombs filled with twisted enemies and psychedelic secrets...
