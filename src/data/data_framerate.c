@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   data_framerate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 17:28:20 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/04 03:10:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:35:02 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-long	get_time()
+long	get_time(void)
 {
-	
 }

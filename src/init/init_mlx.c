@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/03 13:48:32 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:28:25 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
-	// mlx_get_screen_size(window->mlx_ptr, &window->width, &window->height);
 	window->width = WINDOW_WIDTH;
 	window->height = WINDOW_HEIGHT;
 	window->win_ptr = mlx_new_window(window->mlx_ptr,

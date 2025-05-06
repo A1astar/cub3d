@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_asset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:42:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/06 11:42:32 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:33:49 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
 void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene)
 {
 	scene->img.ptr = mlx_new_image(window->mlx_ptr, window->width,

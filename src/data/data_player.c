@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:21:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/02 17:28:51 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:34:45 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	update_viewmodel(t_viewmodel *viewmodel)
 
 static void	update_player_pos(t_cub3d *cub3d, t_player *player)
 {
-	// printf("%d\n", player->movement_w_s);
 	if (player->movement_w_s == 1)
 		move_player_north(cub3d);
 	if (player->movement_w_s == -1)

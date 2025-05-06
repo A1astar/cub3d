@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:58:31 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:09:18 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,13 @@ void	init_player(t_player *player, t_minimap *minimap);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
+void	load_texture(t_cub3d *cub3d, t_img *texture, char *asset_path);
+void	load_fireball_assets(t_cub3d *cub3d, t_textures *text);
+void	load_normal_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);
+void	load_trip_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);
+void	load_env_assets(t_cub3d *cub3d, t_textures *textures);
+void	load_trip_assets(t_cub3d *cub3d, t_textures *textures);
+void	load_others_assets(t_cub3d *cub3d, t_item *item,t_textures *textures);
 
 /*##############################	MEMORY	##################################*/
 void	free_t_img(t_window *window, t_img *img);

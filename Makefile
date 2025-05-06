@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/06 11:55:06 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/06 12:08:39 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,8 @@ SRC					:= data/data_game.c \
 					init/init_mlx.c \
 					init/init_player.c \
 					init/init.c \
+					init/load_env_xpm_files.c \
+					init/load_view_xpm_files.c \
 					parsing/extract_assets_paths.c \
 					parsing/extract_map.c \
 					parsing/extract_utils.c \

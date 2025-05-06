@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 11:42:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:54:14 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:01:41 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	handle_player(t_cub3d *cub3d, char tile, size_t x, size_t y)
 		check_player_nb(cub3d, cub3d->nb_player);
 	}
 }
+
 static void	handle_enemy(t_cub3d *cub3d, char tile, size_t x, size_t y)
 {
 	if (is_enemy_spawn(tile))
@@ -33,6 +34,7 @@ static void	handle_enemy(t_cub3d *cub3d, char tile, size_t x, size_t y)
 		cub3d->nb_enemy++;
 	}
 }
+
 static void	handle_item(t_cub3d *cub3d, char tile, size_t x, size_t y)
 {
 	if (is_item(tile))
