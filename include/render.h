@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:47:14 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 13:52:34 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:11:12 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,50 +102,33 @@ typedef struct s_raycast
 {
 	int			width;
 	int			height;
-
 	int			hit;
 	int			side;
-
 	int			line_height;
 	int			pitch;
-
 	int			draw_start;
 	int			draw_end;
-
 	int			x_step;
 	int			y_step;
-
 	double		x_dir;
 	double		y_dir;
 	double		x_old_dir;
 	double		y_old_dir;
-
-	double x_camera; // 2 * x / double(w) - 1
+	double		x_camera;
 	double		y_camera;
-
-	double x_raydir; // x_dir + x_plane * x_camera
-	double y_raydir; // y_dir + y_plane * x_camera
-
+	double		x_raydir;
+	double		y_raydir;
 	double		x_plane;
 	double		y_plane;
 	double		x_old_plane;
 	double		y_old_plane;
-
 	double		x_map;
 	double		y_map;
-
-	double x_delta; // sqrt(1 + (y_raydir * y_raydir) / (x_raydir * x_raydir))
-					// abs(raydir / x_raydir)
-	double y_delta; // sqrt(1 + (x_raydir * x_raydir) / (y_raydir * y_raydir))
-					// abs(raydir / y_raydir)
-
-	double x_side; // if x_raydir < 0 : (x_pos - x_map) * x_delta
-					// if x_raydir > 0 : (x_map + 1.0 - x_pos) * x_delta
-	double y_side; // if y_raydir < 0 : (y_pos - y_map) * y_delta
-					// if y_raydir > 0 : (y_map + 1.0 - y_pos) * y_delta
-
+	double		x_delta;
+	double		y_delta;
+	double		x_side;
+	double		y_side;
 	double		perp_wall;
-
 	double		fov;
 	double		fov_rad;
 	double		z_buffer[WINDOW_WIDTH];
