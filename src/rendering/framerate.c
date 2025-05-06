@@ -55,9 +55,9 @@ void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 		get_tick(&time);
 	printf("result : %ld\n", scene->frame_end - scene->frame_start);
 	scene->frame_delay_ms = scene->frame_ms - (scene->frame_end - scene->frame_start);
-	printf("frame delay = %f\n", scene->frame_delay_ms);
-	frame_delay(scene->frame_delay_ms);
 	scene->delta_time = scene->frame_end - scene->frame_start;
+	printf("frame delay = %f\n", scene->frame_delay_ms);
+	frame_delay(scene->frame_delay_ms + scene->delta_time);
 	scene->fps_counter++;
 	sec += get_time(&time);
 	printf("sec =  %ld\n", sec);
