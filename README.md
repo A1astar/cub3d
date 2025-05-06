@@ -77,7 +77,7 @@ Meet the multiple incarnations of the dark wizard Randy Marsh throughout your jo
 
 ### Clone the repository
 ```bash
-git clone https://github.com/your-username/cub3d.git
+git clone https://github.com/A1astar/cub3d.git
 cd cub3d
 make
 ./cub3d maps/catacombs.cub
@@ -159,7 +159,7 @@ Rencontrez les différentes incarnations du mage noir Randy Marsh au fil de votr
 
 ### Cloner le dépôt
 ```bash
-git clone https://github.com/votre-utilisateur/cub3d.git
+git clone https://github.com/A1astar/cub3d.git
 cd cub3d
 make
 ./cub3d maps/catacombs.cub
