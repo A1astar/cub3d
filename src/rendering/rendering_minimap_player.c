@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 12:13:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 13:05:01 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:52:38 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@
 // }
 
 void	render_minimap_player(t_cub3d *cub3d, t_minimap *minimap,
-	t_player *player, t_render *render)
+		t_player *player, t_render *render)
 {
 	double	px;
 	double	py;
 	double	size;
 	double	y;
 	double	x;
-	(void)render;
 
+	(void)render;
 	px = (player->x_pos + 0.5) * minimap->tile_width * minimap->scale
 		+ minimap->x_origin;
 	py = (player->y_pos + 0.5) * minimap->tile_height * minimap->scale

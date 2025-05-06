@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_floor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:28:20 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/04 04:30:49 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:52:19 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	draw_ray(t_cub3d *cub3d, t_floor_ray *ray, int x, int y)
 
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (x < cub3d->window.width)

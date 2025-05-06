@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 12:09:18 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:12:50 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	load_normal_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);
 void	load_trip_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);
 void	load_env_assets(t_cub3d *cub3d, t_textures *textures);
 void	load_trip_assets(t_cub3d *cub3d, t_textures *textures);
-void	load_others_assets(t_cub3d *cub3d, t_item *item,t_textures *textures);
+void	load_others_assets(t_cub3d *cub3d, t_item *item, t_textures *textures);
 
 /*##############################	MEMORY	##################################*/
 void	free_t_img(t_window *window, t_img *img);
@@ -157,7 +157,7 @@ void	print_usage(void);
 
 /*##############################	RENDERING	##############################*/
 long	get_time(struct timeval *start_time);
-double 	get_frame_time(struct timeval *start_time);
+double	get_frame_time(struct timeval *start_time);
 void	get_tick(struct timeval *time);
 void	update_frame_rate(t_cub3d *cub3d, t_scene *scene);
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
@@ -176,6 +176,7 @@ void	update_draw_attributes(t_item_draw *draw, t_item_attr *attr, t_img *img,
 			int y);
 void	render_viewmodel(t_cub3d *cub3d, t_window *window,
 			t_viewmodel *viewmodel, t_scene *scene);
+void	render_magic(t_cub3d *cub3d, t_window *window, t_scene *scene);
 char	*get_pixel(t_img *img, int x, int y);
 int		get_alpha(unsigned int color);
 int		game_loop(t_cub3d *cub3d);
@@ -198,6 +199,9 @@ void	init_enemy_attributes(t_enemy *enemy, t_player *player,
 			t_raycast *raycast, t_item_attr *attr);
 void	init_item_attributes(t_item *item, t_player *player,
 			t_raycast *raycast, t_item_attr *attr);
+void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
+			int y_start);
+t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures);
 
 /*##############################	STAT	##################################*/
 void	update_game_data(t_cub3d *cub3d);

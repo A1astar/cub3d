@@ -6,34 +6,13 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 19:15:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:43:47 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
-		int y_start)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (y < viewmodel->height)
-	{
-		x = 0;
-		while (x < viewmodel->width)
-		{
-			draw_pixel_asset(&scene->img, x_start + x, y_start + y,
-				get_pixel(viewmodel, x, y));
-			x++;
-		}
-		y++;
-	}
-}
-
-t_img	*select_stand(t_cub3d *cub3d, t_viewmodel *viewmodel)
+static t_img	*select_stand(t_cub3d *cub3d, t_viewmodel *viewmodel)
 {
 	if (cub3d->rendering_state == normal)
 		return (&viewmodel->normal_stand);
@@ -41,7 +20,7 @@ t_img	*select_stand(t_cub3d *cub3d, t_viewmodel *viewmodel)
 		return (&viewmodel->trip_stand);
 }
 
-t_img	*select_cast_frames(t_cub3d *cub3d, t_animation *animation,
+static t_img	*select_cast_frames(t_cub3d *cub3d, t_animation *animation,
 		t_viewmodel *viewmodel)
 {
 	if (cub3d->rendering_state == normal)
@@ -50,7 +29,7 @@ t_img	*select_cast_frames(t_cub3d *cub3d, t_animation *animation,
 		return (&viewmodel->trip_cig_sprite[animation->current_frame]);
 }
 
-t_img	*select_sword_frames(t_cub3d *cub3d, t_animation *animation,
+static t_img	*select_sword_frames(t_cub3d *cub3d, t_animation *animation,
 		t_viewmodel *viewmodel)
 {
 	if (cub3d->rendering_state == normal)
@@ -59,7 +38,7 @@ t_img	*select_sword_frames(t_cub3d *cub3d, t_animation *animation,
 		return (&viewmodel->trip_sword_sprite[animation->current_frame]);
 }
 
-t_img	*select_viewmodel(t_cub3d *cub3d, t_animation *animation,
+static t_img	*select_viewmodel(t_cub3d *cub3d, t_animation *animation,
 		t_viewmodel *viewmodel)
 {
 	if (!animation->active)
@@ -80,38 +59,6 @@ t_img	*select_viewmodel(t_cub3d *cub3d, t_animation *animation,
 		return (select_cast_frames(cub3d, animation, viewmodel));
 	else
 		return (select_sword_frames(cub3d, animation, viewmodel));
-}
-
-t_img	*select_magic(t_animation *magic, t_textures *textures)
-{
-	if (!magic->active)
-		return (NULL);
-	magic->delay_count++;
-	if (magic->delay_count >= magic->frame_delay)
-	{
-		magic->delay_count = 0;
-		magic->current_frame++;
-		if (magic->current_frame >= magic->frame_count)
-		{
-			magic->active = false;
-			return (NULL);
-		}
-	}
-	return (&textures->fireball[magic->current_frame]);
-}
-
-void	render_magic(t_cub3d *cub3d, t_window *window, t_scene *scene)
-{
-	t_img	*magic_img;
-	int		x_start;
-	int		y_start;
-
-	magic_img = select_magic(&cub3d->player.magic, &cub3d->textures);
-	if (!magic_img)
-		return ;
-	x_start = (window->width - magic_img->width) / 2;
-	y_start = (window->height - magic_img->height) / 2;
-	draw_viewmodel(magic_img, scene, x_start, y_start);
 }
 
 void	render_viewmodel(t_cub3d *cub3d, t_window *window,

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 13:07:54 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:11:53 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,88 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 
-enum e_program_state {game, level_menu, main_menu};
-enum e_main_menu_state {launcher, option};
-enum e_main_menu_option_state {start_game, exit_game};
-enum e_main_menu_settings_state {resolution, sensibility};
-enum e_resolution {res_1280x720, res_1920x1080};
-enum e_playing_state {running, playing_menu};
-enum e_epileptic {ep_floor, ep_ceiling};
-enum e_rendering {normal, psychedelic};
-enum e_key_press {release, pressed};
-enum e_viewmodel {down, up};
+enum	e_program_state
+{
+	game,
+	level_menu,
+	main_menu
+};
 
-typedef enum e_randy_state {angry, stoned, drunk, godlike, dying, dead}t_randy_state;
-typedef enum e_orientation {north, south, east, west}t_orientation;
-typedef enum e_anim_state{stand, cast, sword}t_anim_state;
+enum	e_main_menu_state
+{
+	launcher,
+	option
+};
+
+enum	e_main_menu_option_state
+{
+	start_game,
+	exit_game
+};
+
+enum	e_main_menu_settings_state
+{
+	resolution,
+	sensibility
+};
+
+enum	e_resolution
+{
+	res_1280x720,
+	res_1920x1080
+};
+
+enum	e_playing_state
+{
+	running,
+	playing_menu
+};
+
+enum	e_epileptic
+{
+	ep_floor,
+	ep_ceiling
+};
+
+enum	e_rendering
+{
+	normal,
+	psychedelic
+};
+
+enum	e_key_press
+{
+	release,
+	pressed
+};
+
+enum	e_viewmodel
+{
+	down,
+	up
+};
+
+typedef enum e_randy_state
+{
+	angry,
+	stoned,
+	drunk,
+	godlike,
+	dying,
+	dead
+}		t_randy_state;
+typedef enum e_orientation
+{
+	north,
+	south,
+	east,
+	west
+}		t_orientation;
+typedef enum e_anim_state
+{
+	stand,
+	cast,
+	sword
+}		t_anim_state;
 
 #endif

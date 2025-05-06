@@ -1,16 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_item.c                                        :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:01:59 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 17:26:07 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:43:57 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
+		int y_start)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (y < viewmodel->height)
+	{
+		x = 0;
+		while (x < viewmodel->width)
+		{
+			draw_pixel_asset(&scene->img, x_start + x, y_start + y,
+				get_pixel(viewmodel, x, y));
+			x++;
+		}
+		y++;
+	}
+}
 
 void	draw_sprite(t_item_render *item, t_raycast *ray, t_scene *scene,
 		t_img *img)

@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/06 12:08:39 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/06 15:04:51 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ SRC					:= data/data_game.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
 					physics/hitbox_player.c \
-					rendering/draw_item.c \
+					rendering/draw.c \
 					rendering/framerate.c \
 					rendering/raycast_doors.c \
 					rendering/raycast_floor.c \
@@ -96,6 +96,7 @@ SRC					:= data/data_game.c \
 					rendering/render_floor.c \
 					rendering/render_item_utils.c \
 					rendering/render_item.c \
+					rendering/render_magic.c \
 					rendering/render_raycast.c \
 					rendering/render_viewmodel.c \
 					rendering/rendering_game.c \
@@ -106,6 +107,7 @@ SRC					:= data/data_game.c \
 					rendering/rendering_psychedelic.c \
 					rendering/rendering_utils.c \
 					rendering/rendering.c \
+					rendering/select_textures.c \
 					thread/init_thread.c \
 					error.c \
 					memory/free_game.c \
