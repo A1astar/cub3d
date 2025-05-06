@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checking_utils2.c                              :+:      :+:    :+:   */
+/*   map_checking_nb.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 12:50:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:38:13 by alacroix         ###   ########.fr       */
+/*   Created: 2025/05/06 11:36:28 by alacroix          #+#    #+#             */
+/*   Updated: 2025/05/06 11:36:42 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-bool	is_player_spawn(t_player *player, char c)
+void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb)
 {
-	if (c == 'N')
-		return (player->orientation = north, true);
-	if (c == 'S')
-		return (player->orientation = south, true);
-	if (c == 'E')
-		return (player->orientation = east, true);
-	if (c == 'W')
-		return (player->orientation = west, true);
-	return (false);
+	if (enemy_nb > 3)
+	{
+		error_msg("Too many enemies", NULL);
+		free_program(cub3d);
+	}
 }
 
-bool	is_enemy_spawn(char c)
+void	check_player_nb(t_cub3d *cub3d, int player_nb)
 {
-	if (c == 'R')
-		return (true);
-	return (false);
+	if (player_nb > 1)
+	{
+		error_msg("Too many player", NULL);
+		free_program(cub3d);
+	}
 }
 
-bool	is_item(char c)
+void	check_item_nb(t_cub3d *cub3d, int item_nb)
 {
-	if (c == 'M')
-		return (true);
-	return (false);
+	if (item_nb > 1)
+	{
+		error_msg("Too many item", NULL);
+		free_program(cub3d);
+	}
 }

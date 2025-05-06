@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 17:19:46 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:55:45 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static void	flood_fill(char **map, int x, int y, t_map *content)
 		return ;
 	if (map[y][x] <= ' ' || map[y][x] == '\0')
 	{
-		//error_msg(MAP_UNCL, NULL);
-		error_msg("zzi", NULL);
-		printf("y= %d", y);
-		printf("x= %d", x);
+		error_msg(MAP_UNCL, NULL);
 		content->is_valid_map = false;
 		return ;
 	}
@@ -39,51 +36,6 @@ static void	flood_fill(char **map, int x, int y, t_map *content)
 	flood_fill(map, x - 1, y, content);
 	flood_fill(map, x, y + 1, content);
 	flood_fill(map, x, y - 1, content);
-}
-
-static void	update_map_size(t_cub3d *cub3d, char *map_line)
-{
-	size_t	map_size;
-
-	map_size = ft_strlen(map_line);
-	if (map_size > (size_t)cub3d->minimap.width)
-		cub3d->minimap.width = map_size;
-}
-
-static void	scan_map_line(t_cub3d *cub3d, char *map_line, size_t row)
-{
-	size_t	i;
-
-	i = 0;
-	update_map_size(cub3d, map_line);
-	while (map_line[i])
-	{
-		if (is_player_spawn(&cub3d->player, map_line[i]))
-		{
-			cub3d->player.x_pos = i;
-			cub3d->player.y_pos = row;
-			cub3d->nb_player++;
-			check_player_nb(cub3d, cub3d->nb_player);
-		}
-		else if (is_enemy_spawn(map_line[i]))
-		{
-			check_enemy_nb(cub3d, cub3d->nb_enemy);
-			apply_enemy_state(&cub3d->randy[cub3d->nb_enemy], cub3d->nb_enemy);
-			cub3d->randy[cub3d->nb_enemy].x_pos = i;
-			cub3d->randy[cub3d->nb_enemy].y_pos = row;
-			cub3d->nb_enemy++;
-		}
-		else if (is_item(map_line[i]))
-		{
-			cub3d->item.x_pos = i;
-			cub3d->item.y_pos = row;
-			cub3d->nb_item++;
-			check_item_nb(cub3d, cub3d->nb_item);
-		}
-		else
-			check_valid_element(cub3d, map_line[i]);
-		i++;
-	}
 }
 
 void	check_map(t_cub3d *cub3d, t_map *map)

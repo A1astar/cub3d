@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 17:03:16 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 17:21:56by algadea          ###   ########.fr       */
+/*   Created: 2025/05/06 11:31:37 by alacroix          #+#    #+#             */
+/*   Updated: 2025/05/06 11:31:41 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 {
 	int	last_x;
-    int	delta_x;
+	int	delta_x;
 
-    (void) y;
-    last_x = cub3d->window.half_width;
-    delta_x = x - last_x;
+	(void)y;
+	last_x = cub3d->window.half_width;
+	delta_x = x - last_x;
 	if (delta_x < 0)
 		rotate_player_left(cub3d);
 	else if (delta_x > 0)
 		rotate_player_right(cub3d);
 	mlx_mouse_move(cub3d->window.mlx_ptr, cub3d->window.win_ptr,
 		cub3d->window.half_width, cub3d->window.half_height);
-    return (0);
+	return (0);
 }
 
 int	game_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
@@ -40,10 +40,9 @@ int	game_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 
 bool	is_player_movement_key(int keynum)
 {
-	if (keynum == XK_w || keynum == XK_s
-		|| keynum == XK_a || keynum == XK_d
-		|| keynum == XK_Up || keynum == XK_Down
-		|| keynum == XK_Left || keynum == XK_Right || keynum == XK_Shift_L)
+	if (keynum == XK_w || keynum == XK_s || keynum == XK_a || keynum == XK_d
+		|| keynum == XK_Up || keynum == XK_Down || keynum == XK_Left
+		|| keynum == XK_Right || keynum == XK_Shift_L)
 		return (true);
 	return (false);
 }

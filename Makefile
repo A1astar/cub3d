@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/06 11:09:48 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/06 11:55:06 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,8 @@ SRC					:= data/data_game.c \
 					parsing/extract_assets_paths.c \
 					parsing/extract_map.c \
 					parsing/extract_utils.c \
+					parsing/map_checking_line.c \
+					parsing/map_checking_nb.c \
 					parsing/map_checking_utils.c \
 					parsing/map_checking_utils2.c \
 					parsing/map_checking.c \
@@ -107,7 +109,7 @@ SRC					:= data/data_game.c \
 					memory/free_game.c \
 					memory/free_graphics.c \
 					main.c \
-					print.c
+
 SRC					:= $(addprefix $(SRC_DIR)/, $(SRC))
 
 ###########################		  COMPILATION		###########################

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:11:26 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:56:34 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,18 @@ char	**dup_tab(char **map, size_t map_row_len);
 int		open_file(t_cub3d *cub3d, char *filename);
 void	check_valid_element(t_cub3d *cub3d, char c);
 void	extract_data(t_cub3d *game, char *filename);
+void	scan_map_line(t_cub3d *cub3d, char *map_line, size_t row);
 void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb);
 void	check_player_nb(t_cub3d *cub3d, int player_nb);
 void	check_item_nb(t_cub3d *cub3d, int item_nb);
 int		get_line_count(t_cub3d *cub3d, char *filename);
 void	extract_assets_path(t_cub3d *game, char **data);
 void	apply_enemy_state(t_enemy *randy, int nb_enemy);
+void	update_map_size(t_cub3d *cub3d, char *map_line);
 char	*append_line(t_cub3d *cub3d, char *buffer, char *line);
+void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb);
+void	check_player_nb(t_cub3d *cub3d, int player_nb);
+void	check_item_nb(t_cub3d *cub3d, int item_nb);
 
 /*##############################	PHYSICS	##################################*/
 bool	can_move_to_north(t_raycast *raycast, t_player *player, t_map *map);

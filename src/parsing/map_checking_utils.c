@@ -6,11 +6,20 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:10:09 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 16:57:38 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:55:57 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	update_map_size(t_cub3d *cub3d, char *map_line)
+{
+	size_t	map_size;
+
+	map_size = ft_strlen(map_line);
+	if (map_size > (size_t)cub3d->minimap.width)
+		cub3d->minimap.width = map_size;
+}
 
 void	apply_enemy_state(t_enemy *randy, int nb_enemy)
 {
@@ -22,33 +31,6 @@ void	apply_enemy_state(t_enemy *randy, int nb_enemy)
 		randy->state = stoned;
 	else
 		randy->state = godlike;
-}
-
-void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb)
-{
-	if (enemy_nb > 3)
-	{
-		error_msg("Too many enemies", NULL);
-		free_program(cub3d);
-	}
-}
-
-void	check_player_nb(t_cub3d *cub3d, int player_nb)
-{
-	if (player_nb > 1)
-	{
-		error_msg("Too many player", NULL);
-		free_program(cub3d);
-	}
-}
-
-void	check_item_nb(t_cub3d *cub3d, int item_nb)
-{
-	if (item_nb > 1)
-	{
-		error_msg("Too many item", NULL);
-		free_program(cub3d);
-	}
 }
 
 void	check_valid_element(t_cub3d *cub3d, char c)
