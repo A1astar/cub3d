@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 15:12:50 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:19:47 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,10 +150,6 @@ bool	can_move_to_north(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_south(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_east(t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_west(t_raycast *raycast, t_player *player, t_map *map);
-
-/*##############################	PRINT	##################################*/
-void	print_2d_array_string(char **str);
-void	print_usage(void);
 
 /*##############################	RENDERING	##############################*/
 long	get_time(struct timeval *start_time);

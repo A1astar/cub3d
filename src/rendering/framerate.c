@@ -34,14 +34,13 @@ double 	get_frame_time(struct timeval *start_time)
 		+ (double)((current_time.tv_usec - start_time->tv_usec) / 1000));
 }
 
-void	frame_delay(long frame_delay_ms)
+void	frame_delay(long frame_delay_ms, long frame_end)
 {
 	struct timeval	time;
-	long			start_time;
 
 	gettimeofday(&time, NULL);
-	start_time = get_time(&time);
-	while ((get_time(&time) - start_time) < frame_delay_ms)
+	print("%ld\n", time.tv_sec);
+	while ((get_time(&time) - frame_end) < frame_delay_ms)
 		usleep(100);
 }
 
@@ -54,10 +53,11 @@ void	update_frame_rate(t_cub3d *cub3d, t_scene *scene)
 	if (time.tv_sec == 0)
 		get_tick(&time);
 	printf("result : %ld\n", scene->frame_end - scene->frame_start);
+	printf("frame ms = %ld\n", scene->frame_ms);
 	scene->frame_delay_ms = scene->frame_ms - (scene->frame_end - scene->frame_start);
 	scene->delta_time = scene->frame_end - scene->frame_start;
 	printf("frame delay = %f\n", scene->frame_delay_ms);
-	frame_delay(scene->frame_delay_ms + scene->delta_time);
+	frame_delay(scene->frame_delay_ms, get_time(&scene->frame_end));
 	scene->fps_counter++;
 	sec += get_time(&time);
 	printf("sec =  %ld\n", sec);
