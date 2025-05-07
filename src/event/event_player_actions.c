@@ -6,18 +6,11 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:29 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 19:26:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:02:06 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static void	activate_player_magic(t_animation *magic)
-{
-	magic->active = true;
-	magic->current_frame = 0;
-	magic->delay_count = 0;
-}
 
 static void	activate_player_animation(t_animation *animation,
 		t_anim_state state)
@@ -56,15 +49,16 @@ static void	kill_enemy(t_cub3d *cub3d, t_player *player, t_raycast *raycast,
 	}
 }
 
-void	player_sword(t_cub3d *cub3d, t_animation *animation)
+void	player_sword(t_cub3d *cub3d, t_player *player)
 {
-	activate_player_animation(animation, sword);
-	kill_enemy(cub3d, &cub3d->player, &cub3d->raycast, sword);
+	activate_player_animation(&player->animation, sword);
+	activate_player_animation(&player->slash, sword);
+	kill_enemy(cub3d, player, &cub3d->raycast, sword);
 }
 
-void	player_cast(t_cub3d *cub3d, t_animation *animation)
+void	player_cast(t_cub3d *cub3d, t_player *player)
 {
-	activate_player_animation(animation, cast);
-	activate_player_magic(&cub3d->player.magic);
-	kill_enemy(cub3d, &cub3d->player, &cub3d->raycast, cast);
+	activate_player_animation(&player->animation, cast);
+	activate_player_animation(&player->magic, cast);
+	kill_enemy(cub3d, player, &cub3d->raycast, cast);
 }

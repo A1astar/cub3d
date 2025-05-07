@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 14:43:47 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:15:57 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	render_viewmodel(t_cub3d *cub3d, t_window *window,
 	x_start = window->half_width - viewmodel->normal_stand.width / 2;
 	y_start = window->height - viewmodel->normal_stand.height
 		+ viewmodel->draw_pos;
-	render_magic(cub3d, window, scene);
+	render_effect(cub3d, window, scene, &cub3d->player.magic);
+	render_effect(cub3d, window, scene, &cub3d->player.slash);
 	draw_viewmodel(view_img, scene, x_start, y_start);
 }
