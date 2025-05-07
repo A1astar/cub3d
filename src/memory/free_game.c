@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/01 16:32:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 11:21:14 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+static void	free_t_fireball(t_textures *textures, t_window *window)
+{
+	free_t_img(window, &textures->fireball[0]);
+	free_t_img(window, &textures->fireball[1]);
+	free_t_img(window, &textures->fireball[2]);
+	free_t_img(window, &textures->fireball[3]);
+	free_t_img(window, &textures->fireball[4]);
+	free_t_img(window, &textures->fireball[5]);
+	free_t_img(window, &textures->fireball[6]);
+	free_t_img(window, &textures->fireball[7]);
+	free_t_img(window, &textures->fireball[8]);
+	free_t_img(window, &textures->fireball[9]);
+	free_t_img(window, &textures->fireball[10]);
+	free_t_img(window, &textures->fireball[11]);
+	free_t_img(window, &textures->fireball[12]);
+}
 
 static void	free_t_textures(t_textures *textures, t_window *window)
 {
@@ -32,6 +49,11 @@ static void	free_t_textures(t_textures *textures, t_window *window)
 	free_t_img(window, &textures->trip_floor);
 	free_t_img(window, &textures->trip_o_door);
 	free_t_img(window, &textures->trip_c_door);
+	free_t_img(window, &textures->blood[0]);
+	free_t_img(window, &textures->blood[1]);
+	free_t_img(window, &textures->blood[2]);
+	free_t_img(window, &textures->cadaver);
+	free_t_fireball(textures, window);
 }
 
 static void	free_t_viewmodel(t_viewmodel *viewmodel, t_window *window)
