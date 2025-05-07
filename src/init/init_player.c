@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 16:35:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 11:57:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:26:46 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	init_animation_attributes(t_animation *animation,
 	magic->frame_delay = 5;
 	magic->active = false;
 	magic->state = stand;
-	slash->frame_count = 9;
+	slash->frame_count = 5;
 	slash->frame_delay = 5;
 	slash->active = false;
 	slash->state = stand;
