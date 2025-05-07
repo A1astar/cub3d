@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_magic.c                                     :+:      :+:    :+:   */
+/*   render_effects.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:42:05 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 12:18:13 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:34:05 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ static t_img	*select_effect_frame(t_animation *anim, t_textures *textures)
 			return (NULL);
 		}
 	}
-	if(anim->state == cast)
+	if (anim->state == cast)
 		return (&textures->fireball[anim->current_frame]);
 	return (&textures->slash[anim->current_frame]);
 }
 
-void	render_effect(t_cub3d *cub3d, t_window *window, t_scene *scene, t_animation *effect)
+void	render_effect(t_cub3d *cub3d, t_window *window, t_scene *scene,
+		t_animation *effect)
 {
 	t_img	*effect_frame;
 	int		x_start;
