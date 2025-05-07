@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/06 16:33:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 15:01:21 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ static void	init_raycast(t_window *window, t_raycast *raycast, t_player *player)
 	raycast->height = window->height;
 }
 
-static void	init_death_anim(t_animation *death_anim)
+static void	init_enemy_attr(t_enemy *enemy)
 {
-	death_anim->frame_count = 3;
-	death_anim->frame_delay = 5;
-	death_anim->active = false;
+	enemy->death_anim.frame_count = 3;
+	enemy->death_anim.frame_delay = 5;
+	enemy->death_anim.active = false;
+	enemy->direction = LEFT;
 }
 
 static void	init_enemy(t_cub3d *cub3d)
@@ -58,7 +59,7 @@ static void	init_enemy(t_cub3d *cub3d)
 
 	i = 0;
 	while (i < cub3d->nb_enemy)
-		init_death_anim(&cub3d->randy[i++].death_anim);
+		init_enemy_attr(&cub3d->randy[i++]);
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)

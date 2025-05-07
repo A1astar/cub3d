@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 12:50:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 14:57:54 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 // # define FRAMERATE 1
 
 # define RUNNING 1
+
+# define LEFT -1
+# define RIGHT -1
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:53:29 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 12:02:06 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:51:28 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	kill_enemy(t_cub3d *cub3d, t_player *player, t_raycast *raycast,
 		distance = sqrtf(dx * dx + dy * dy);
 		if (distance < hitbox)
 		{
-			if (cub3d->randy[i].state != dead || cub3d->randy[i].state != dying)
+			if (cub3d->randy[i].state != dead)
 				cub3d->randy[i].state = dying;
 		}
 		i++;

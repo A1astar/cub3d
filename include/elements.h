@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:42:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 13:26:01 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 14:58:22 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_enemy
 	int				sprite_height;
 	double			x_pos;
 	double			y_pos;
+	int				direction;
 	t_animation		death_anim;
 	t_img			sprite;
 }					t_enemy;
