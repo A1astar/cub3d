@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 12:02:46 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 12:33:10 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 
 int		exit_cub3d(t_cub3d *cub3d);
 
-void	player_sword(t_cub3d *cub3d, t_animation *animation);
-void	player_cast(t_cub3d *cub3d, t_animation *animation);
+void	player_sword(t_cub3d *cub3d, t_player *player);
+void	player_cast(t_cub3d *cub3d, t_player *player);
 
 /*##############################	INIT	##################################*/
 bool	is_rgb_code(char **tab);
@@ -105,6 +105,7 @@ void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
 void	load_texture(t_cub3d *cub3d, t_img *texture, char *asset_path);
+void	load_slash_assets(t_cub3d *cub3d, t_textures *text);
 void	load_fireball_assets(t_cub3d *cub3d, t_textures *text);
 void	load_normal_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);
 void	load_trip_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);
@@ -172,7 +173,8 @@ void	update_draw_attributes(t_item_draw *draw, t_item_attr *attr, t_img *img,
 			int y);
 void	render_viewmodel(t_cub3d *cub3d, t_window *window,
 			t_viewmodel *viewmodel, t_scene *scene);
-void	render_magic(t_cub3d *cub3d, t_window *window, t_scene *scene);
+void	render_effect(t_cub3d *cub3d, t_window *window, t_scene *scene,
+			t_animation *effect);
 char	*get_pixel(t_img *img, int x, int y);
 int		get_alpha(unsigned int color);
 int		game_loop(t_cub3d *cub3d);

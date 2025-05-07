@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/06 15:04:51 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/07 12:18:40 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ SRC					:= data/data_game.c \
 					rendering/render_floor.c \
 					rendering/render_item_utils.c \
 					rendering/render_item.c \
-					rendering/render_magic.c \
+					rendering/render_effects.c \
 					rendering/render_raycast.c \
 					rendering/render_viewmodel.c \
 					rendering/rendering_game.c \

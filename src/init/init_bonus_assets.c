@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 12:09:11 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:51:51 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	init_bonus_assets(t_cub3d *cub3d)
 	load_env_assets(cub3d, &cub3d->textures);
 	load_trip_assets(cub3d, &cub3d->textures);
 	load_fireball_assets(cub3d, &cub3d->textures);
+	load_slash_assets(cub3d, &cub3d->textures);
 	load_others_assets(cub3d, &cub3d->item, &cub3d->textures);
 	load_normal_viewmodel(cub3d, &cub3d->player.viewmodel);
 	load_trip_viewmodel(cub3d, &cub3d->player.viewmodel);

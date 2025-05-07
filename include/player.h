@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:40:49 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/05 18:08:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:55:30 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_player
 	t_orientation	orientation;
 	t_animation		animation;
 	t_animation		magic;
+	t_animation		slash;
 
 	double			x_pos;
 	double			y_pos;

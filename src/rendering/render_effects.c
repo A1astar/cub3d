@@ -6,40 +6,42 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:42:05 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 14:42:54 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:18:13 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static t_img	*select_magic(t_animation *magic, t_textures *textures)
+static t_img	*select_effect_frame(t_animation *anim, t_textures *textures)
 {
-	if (!magic->active)
+	if (!anim->active)
 		return (NULL);
-	magic->delay_count++;
-	if (magic->delay_count >= magic->frame_delay)
+	anim->delay_count++;
+	if (anim->delay_count >= anim->frame_delay)
 	{
-		magic->delay_count = 0;
-		magic->current_frame++;
-		if (magic->current_frame >= magic->frame_count)
+		anim->delay_count = 0;
+		anim->current_frame++;
+		if (anim->current_frame >= anim->frame_count)
 		{
-			magic->active = false;
+			anim->active = false;
 			return (NULL);
 		}
 	}
-	return (&textures->fireball[magic->current_frame]);
+	if(anim->state == cast)
+		return (&textures->fireball[anim->current_frame]);
+	return (&textures->slash[anim->current_frame]);
 }
 
-void	render_magic(t_cub3d *cub3d, t_window *window, t_scene *scene)
+void	render_effect(t_cub3d *cub3d, t_window *window, t_scene *scene, t_animation *effect)
 {
-	t_img	*magic_img;
+	t_img	*effect_frame;
 	int		x_start;
 	int		y_start;
 
-	magic_img = select_magic(&cub3d->player.magic, &cub3d->textures);
-	if (!magic_img)
+	effect_frame = select_effect_frame(effect, &cub3d->textures);
+	if (!effect_frame)
 		return ;
-	x_start = (window->width - magic_img->width) / 2;
-	y_start = (window->height - magic_img->height) / 2;
-	draw_viewmodel(magic_img, scene, x_start, y_start);
+	x_start = (window->width - effect_frame->width) / 2;
+	y_start = (window->height - effect_frame->height) / 2;
+	draw_viewmodel(effect_frame, scene, x_start, y_start);
 }
