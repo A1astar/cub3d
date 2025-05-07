@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 14:32:13 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 16:06:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 // # define FRAMERATE 1
 
 # define RUNNING 1
+
+# define LEFT -1
+# define RIGHT -1
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
