@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/06 16:33:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 13:06:13 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void	init_minimap(t_window *window, t_minimap *minimap)
 	if (map_height + minimap->y_origin > window->height)
 		minimap->y_origin = window->height - map_height;
 	minimap->x_origin = window->width - minimap->width - (5 * minimap->width);
-	minimap->y_origin = window->height - minimap->height - (5
-			* minimap->height);
+	minimap->y_origin = window->height - minimap->height - (5 * minimap->height);
 }
 
 static void	init_raycast(t_window *window, t_raycast *raycast, t_player *player)
@@ -65,7 +64,6 @@ void	init_program(t_cub3d *cub3d, char **argv)
 {
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	parsing(cub3d, argv[1]);
-	// clock_gettime(CLOCK_MONOTONIC_RAW);
 	gettimeofday(&cub3d->time, NULL);
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;

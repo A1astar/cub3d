@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:24:39 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 12:51:54 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 12:57:40 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	move_player_south(t_cub3d *cub3d)
 	if (!can_move_to_south(&cub3d->scene, &cub3d->raycast,
 				&cub3d->player, &cub3d->map))
 		return ;
-	// cub3d->player.x_pos -= cub3d->raycast.x_dir * cub3d->player.velocity;
-	// cub3d->player.y_pos -= cub3d->raycast.y_dir * cub3d->player.velocity;
 	cub3d->player.x_pos -= cub3d->raycast.x_dir * cub3d->player.velocity * cub3d->scene.delta_time;
 	cub3d->player.y_pos -= cub3d->raycast.y_dir * cub3d->player.velocity * cub3d->scene.delta_time;
 }
