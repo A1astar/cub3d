@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:04:58 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 11:51:01 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:22:11 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	load_slash_assets(t_cub3d *cub3d, t_textures *text)
 {
-	load_texture(cub3d, &text->slash[0], "asset/slash/xpm/Slash_1");
-	load_texture(cub3d, &text->slash[1], "asset/slash/xpm/Slash_2");
-	load_texture(cub3d, &text->slash[2], "asset/slash/xpm/Slash_3");
-	load_texture(cub3d, &text->slash[3], "asset/slash/xpm/Slash_4");
-	load_texture(cub3d, &text->slash[4], "asset/slash/xpm/Slash_5");
-	load_texture(cub3d, &text->slash[5], "asset/slash/xpm/Slash_6");
-	load_texture(cub3d, &text->slash[6], "asset/slash/xpm/Slash_7");
-	load_texture(cub3d, &text->slash[7], "asset/slash/xpm/Slash_8");
-	load_texture(cub3d, &text->slash[8], "asset/slash/xpm/Slash_9");
+	load_texture(cub3d, &text->slash[0], "asset/slash/xpm/Slash_1.xpm");
+	load_texture(cub3d, &text->slash[1], "asset/slash/xpm/Slash_2.xpm");
+	load_texture(cub3d, &text->slash[2], "asset/slash/xpm/Slash_3.xpm");
+	load_texture(cub3d, &text->slash[3], "asset/slash/xpm/Slash_4.xpm");
+	load_texture(cub3d, &text->slash[4], "asset/slash/xpm/Slash_5.xpm");
+	load_texture(cub3d, &text->slash[5], "asset/slash/xpm/Slash_6.xpm");
+	load_texture(cub3d, &text->slash[6], "asset/slash/xpm/Slash_7.xpm");
+	load_texture(cub3d, &text->slash[7], "asset/slash/xpm/Slash_8.xpm");
+	load_texture(cub3d, &text->slash[8], "asset/slash/xpm/Slash_9.xpm");
 }
 
 void	load_fireball_assets(t_cub3d *cub3d, t_textures *text)
