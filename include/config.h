@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 15:11:53 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:50:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 # define PI 3.14159265358979323846
 # define VELOCITY 0.02
-# define SENSIBILITY 0.05
+# define SENSIBILITY 0.02
 # define FRAMERATE 60
 // # define FRAMERATE 1
 
