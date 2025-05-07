@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 17:21:51 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 12:02:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	move_player_west(t_cub3d *cub3d);
 void	move_player_east(t_cub3d *cub3d);
 void	move_player_north(t_cub3d *cub3d);
 void	move_player_south(t_cub3d *cub3d);
-void	rotate_player_left(t_cub3d *cub3d);
-void	rotate_player_right(t_cub3d *cub3d);
+void	rotate_player_left(t_cub3d *cub3d, t_scene *scene);
+void	rotate_player_right(t_cub3d *cub3d, t_scene *scene);
 
 int		cub3d_loop(t_cub3d *cub3d);
 int		key_press_hook(int keynum, t_cub3d *cub3d);

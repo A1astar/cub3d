@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:58:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 11:58:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 12:14:52 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ void	player_key_release_hook(int keynum, t_cub3d *cub3d)
 	else if (keynum == XK_Left)
 	{
 		cub3d->key_state.left = release;
-		rotate_player_left(cub3d);
+		rotate_player_left(cub3d, &cub3d->scene);
 	}
 	else if (keynum == XK_Right)
 	{
 		cub3d->key_state.right = release;
-		rotate_player_right(cub3d);
+		rotate_player_right(cub3d, &cub3d->scene);
 	}
 	else if (keynum == XK_Shift_L)
 	{

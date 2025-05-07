@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:59:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 11:59:29 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 12:14:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 	last_x = cub3d->window.half_width;
 	delta_x = x - last_x;
 	if (delta_x < 0)
-		rotate_player_left(cub3d);
+		rotate_player_left(cub3d, &cub3d->scene);
 	else if (delta_x > 0)
-		rotate_player_right(cub3d);
+		rotate_player_right(cub3d, &cub3d->scene);
 	mlx_mouse_move(cub3d->window.mlx_ptr, cub3d->window.win_ptr,
 		cub3d->window.half_width, cub3d->window.half_height);
 	return (0);
