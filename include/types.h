@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 08:57:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 11:51:34 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct s_key_state
 
 typedef struct s_scene
 {
-	// struct timeval	frame_start;
-	// struct timeval	frame_end;
 	long			frame_start;
 	long			frame_end;
 	int				framerate;

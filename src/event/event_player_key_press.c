@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_key_press.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 11:32:22 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:32:28 by alacroix         ###   ########.fr       */
+/*   Created: 2025/05/07 11:58:32 by algadea           #+#    #+#             */
+/*   Updated: 2025/05/07 11:58:33 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../include/cub3d.h"
 

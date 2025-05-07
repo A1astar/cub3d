@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   hitbox_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 14:40:25 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 15:42:26 by alacroix         ###   ########.fr       */
+/*   Created: 2025/05/07 11:58:09 by algadea           #+#    #+#             */
+/*   Updated: 2025/05/07 11:58:10 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../include/cub3d.h"
 
