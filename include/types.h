@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 11:51:34 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/07 23:03:25 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ typedef struct s_key_state
 
 typedef struct s_scene
 {
+	struct timeval	game_start_timeval;
+	long			game_start;
 	long			frame_start;
 	long			frame_end;
 	int				framerate;
-	double			frame_delay_ms;
+	int				frame_delay_ms;
 	int				fps_counter;
 	int				delta_time_ms;
 	double			delta_time;
@@ -62,7 +64,6 @@ typedef struct s_scene
 
 typedef struct s_cub3d
 {
-	struct timeval	time;
 	int				nb_enemy;
 	int				nb_player;
 	int				nb_item;

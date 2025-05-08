@@ -25,7 +25,7 @@ build_bin() {
 	echo "✅ Compilation ok"
 }
 
-main(){
+main() {
 	print_header
 	build_bin
 
