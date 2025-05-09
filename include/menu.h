@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:50:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/02 15:45:20 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 22:20:17 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ typedef struct s_main_menu
 	int		delay;
 	int		state;
 	uint8_t	blink;
+	uint8_t blink_max;
+	double	animation_timer;
 	bool	blink_direction;
 	int		index_option;
 	int		index_option_static;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:01:59 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 14:43:57 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/09 21:44:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 		x = 0;
 		while (x < viewmodel->width)
 		{
-			draw_pixel_asset(&scene->img, x_start + x, y_start + y,
-				get_pixel(viewmodel, x, y));
+			if (!(x_start + x < 0 || x_start + x > WINDOW_WIDTH
+				|| y_start + y < 0 || y_start + y > WINDOW_HEIGHT))
+			{
+				draw_pixel_asset(&scene->img, x_start + x, y_start + y,
+					get_pixel(viewmodel, x, y));
+			}
 			x++;
 		}
 		y++;

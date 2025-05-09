@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 13:37:59 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 22:20:06 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,17 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 			{
 				if (main_menu->blink_direction == down
 					&& *(unsigned *)pixel != 0x00000000)
-					*(unsigned int *)pixel -= 0x00010101 * FRAMERATE;
+					*(unsigned int *)pixel -= 0x00010101 * 2;
 				else if (main_menu->blink_direction == up
 					&& *(unsigned *)pixel != 0x00FFFFFF)
-					*(unsigned int *)pixel += 0x00010101 * FRAMERATE;
+					*(unsigned int *)pixel += 0x00010101 * 2;
 				draw_pixel_asset(&scene->img, x, y, pixel);
 			}
 			x++;
 		}
 		y++;
 	}
-	if (main_menu->blink == 255)
+	if (main_menu->blink == main_menu->blink_max)
 		main_menu->blink_direction = down;
 	else if (main_menu->blink == 0)
 		main_menu->blink_direction = up;
@@ -114,9 +114,14 @@ void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
 		}
 		y++;
 	}
-	main_menu->index_background++;
-	if (main_menu->index_background == 50)
-		main_menu->index_background = 0;
+	if (main_menu->animation_timer >= 0.05)
+	{
+		main_menu->animation_timer -= 0.05;
+		main_menu->index_background++;
+		if (main_menu->index_background == 50)
+			main_menu->index_background = 0;
+	}
+	main_menu->animation_timer += cub3d->time.delta_time;
 }
 
 void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
@@ -140,9 +145,7 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 
 int	main_menu_loop(t_cub3d *cub3d)
 {
-	cub3d->time.frame_start = get_time(&cub3d->time.game_start_timeval);
-	render_main_menu(cub3d, &cub3d->window, &cub3d->scene);
-	cub3d->time.frame_end = get_time(&cub3d->time.game_start_timeval);
 	update_frame_rate(cub3d, &cub3d->time);
+	render_main_menu(cub3d, &cub3d->window, &cub3d->scene);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_viewmodel.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 19:02:41 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 12:15:57 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/09 21:37:29 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	render_viewmodel(t_cub3d *cub3d, t_window *window,
 	int		y_start;
 	t_img	*view_img;
 
+	(void)scene;
 	view_img = select_viewmodel(cub3d, &cub3d->player.animation, viewmodel);
 	x_start = window->half_width - viewmodel->normal_stand.width / 2;
 	y_start = window->height - viewmodel->normal_stand.height

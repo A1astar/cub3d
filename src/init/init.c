@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 13:35:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 18:10:59 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	init_time(t_time *time)
 {
 	gettimeofday(&time->game_start_timeval, NULL);
 	time->target_fps = FRAMERATE;
-	time->frame_ms = 1000.0 / time->target_fps;
+	time->target_frame_time = 1.0 / (double)time->target_fps;
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)
