@@ -6,17 +6,17 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/08 18:09:12 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/09 23:22:18 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-###########################		     TARGET			###########################
+###########################          TARGET         ###########################
 
 NAME				= cub3D
 MLX					= minilibx-linux/libmlx.a
 LIBFT				= libft/libft.a
 
-###########################		 	  FLAG			###########################
+###########################           FLAG          ###########################
 
 CC					= clang
 CFLAGS				= -g3 -Wall -Wextra -Werror -MMD -pthread
@@ -31,7 +31,7 @@ ifdef TSAN
 endif
 LIBFLAGS			= -Llibft -lft -lX11 -lXext -Lminilibx-linux -lmlx -lm
 
-###########################		 	 INCLUDE		###########################
+###########################          INCLUDE        ###########################
 
 INCLUDE_DIR			:= include
 INCLUDE				:= cub3d.h \
@@ -46,7 +46,7 @@ INCLUDE				:= cub3d.h \
 					types.h
 INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
-###########################		 	 SOURCE			###########################
+###########################          SOURCE         ###########################
 
 SRC_DIR				:= src
 SRC					:= data/data_game.c \
@@ -116,7 +116,7 @@ SRC					:= data/data_game.c \
 
 SRC					:= $(addprefix $(SRC_DIR)/, $(SRC))
 
-###########################		  COMPILATION		###########################
+###########################       COMPILATION       ###########################
 
 PP_DIR				:= pp
 PP					:= $(patsubst $(SRC_DIR)/%.c, $(PP_DIR)/%.i, $(SRC))
@@ -127,7 +127,7 @@ ASM					:= $(patsubst $(SRC_DIR)/%.c, $(ASM_DIR)/%.s, $(SRC))
 OBJ_DIR				:= obj
 OBJ					:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
-###########################		 	 RULE			###########################
+###########################          RULE           ###########################
 
 all: $(MLX) $(LIBFT) $(NAME)
 
@@ -183,7 +183,7 @@ re: fclean all
 
 .PHONY: all pp asm libft clean clean-pp clean-asm fclean re
 
-###########################		ESCAPE SEQUENCE		###########################
+###########################     ESCAPE SEQUENCE     ###########################
 
 DEFAULT=\033[0m
 BOLD=\033[1m
