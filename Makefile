@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 10:52:20 by agadea            #+#    #+#              #
-#    Updated: 2025/05/07 12:50:03 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/08 18:09:12 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT				= libft/libft.a
 ###########################		 	  FLAG			###########################
 
 CC					= clang
-CFLAGS				= -g3 -Wall -Wextra -Werror -pthread
+CFLAGS				= -g3 -Wall -Wextra -Werror -MMD -pthread
 ifdef GPROF
 	CFLAGS			+= -pg
 endif
@@ -112,7 +112,7 @@ SRC					:= data/data_game.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \
-					main.c \
+					main.c
 
 SRC					:= $(addprefix $(SRC_DIR)/, $(SRC))
 

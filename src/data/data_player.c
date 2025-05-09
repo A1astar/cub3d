@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:21:59 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 12:13:48 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 12:53:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	update_player_pos(t_cub3d *cub3d, t_player *player)
 	if (player->movement_a_d == 1)
 		move_player_east(cub3d);
 	if (cub3d->key_state.left == pressed)
-		rotate_player_left(cub3d, &cub3d->scene);
+		rotate_player_left(cub3d, &cub3d->time);
 	if (cub3d->key_state.right == pressed)
-		rotate_player_right(cub3d, &cub3d->scene);
+		rotate_player_right(cub3d, &cub3d->time);
 	if (cub3d->key_state.shift_l == pressed)
 		player->velocity = 0.04;
 }

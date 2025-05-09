@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 23:20:06 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 13:35:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,17 @@ static void	init_enemy(t_cub3d *cub3d)
 		init_enemy_attr(&cub3d->randy[i++]);
 }
 
+void	init_time(t_time *time)
+{
+	gettimeofday(&time->game_start_timeval, NULL);
+	time->target_fps = FRAMERATE;
+	time->frame_ms = 1000.0 / time->target_fps;
+}
+
 void	init_program(t_cub3d *cub3d, char **argv)
 {
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	parsing(cub3d, argv[1]);
-	gettimeofday(&cub3d->scene.game_start_timeval, NULL);
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;
 	init_mlx(cub3d, &cub3d->window);
@@ -74,4 +80,5 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	init_player(&cub3d->player, &cub3d->minimap);
 	init_enemy(cub3d);
 	init_raycast(&cub3d->window, &cub3d->raycast, &cub3d->player);
+	init_time(&cub3d->time);
 }

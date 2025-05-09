@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 23:05:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 13:37:59 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,9 +140,9 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 
 int	main_menu_loop(t_cub3d *cub3d)
 {
-	cub3d->scene.frame_start = get_time(&cub3d->scene.game_start_timeval);
+	cub3d->time.frame_start = get_time(&cub3d->time.game_start_timeval);
 	render_main_menu(cub3d, &cub3d->window, &cub3d->scene);
-	cub3d->scene.frame_end = get_time(&cub3d->scene.game_start_timeval);
-	update_frame_rate(cub3d, &cub3d->scene);
+	cub3d->time.frame_end = get_time(&cub3d->time.game_start_timeval);
+	update_frame_rate(cub3d, &cub3d->time);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 23:03:25 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 13:47:08 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 # define TYPES_H
 
 # include "cub3d.h"
+
+typedef struct s_time
+{
+	struct timeval	game_start_timeval;
+	// struct timeval	current_frame;
+	// struct timeval	previous_frame;
+	long			game_start;
+	long			frame_start;
+	long			frame_end;
+	long			current_frame;
+	long			previous_frame;
+	int				target_fps;
+	int				target_dt;
+	int				fps_counter;
+	double			delta_time;
+	double			frame_ms;
+}t_time;
 
 typedef struct s_window
 {
@@ -49,16 +66,6 @@ typedef struct s_key_state
 
 typedef struct s_scene
 {
-	struct timeval	game_start_timeval;
-	long			game_start;
-	long			frame_start;
-	long			frame_end;
-	int				framerate;
-	int				frame_delay_ms;
-	int				fps_counter;
-	int				delta_time_ms;
-	double			delta_time;
-	long			frame_ms;
 	t_img			img;
 }					t_scene;
 
@@ -70,6 +77,8 @@ typedef struct s_cub3d
 	uint8_t			program_state;
 	uint8_t			rendering_state;
 	t_map			map;
+	t_time			time;
+	t_item			item;
 	t_scene			scene;
 	t_player		player;
 	t_window		window;
@@ -77,7 +86,6 @@ typedef struct s_cub3d
 	t_setting		setting;
 	t_raycast		raycast;
 	t_enemy			randy[4];
-	t_item			item;
 	t_textures		textures;
 	t_main_menu		main_menu;
 	t_key_state		key_state;

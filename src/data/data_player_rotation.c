@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:33:40 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 12:01:49y algagadea        ###   ########.fr       */
+/*   Updated: 2025/05/09 12:49:07 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static void	normalize_player_angle(t_player *player)
 	player->radian = player->angle * (PI / 180.0);
 }
 
-void	rotate_player_left(t_cub3d *cub3d, t_scene *scene)
+void	rotate_player_left(t_cub3d *cub3d, t_time *time)
 {
 	double	x_old_dir;
 	double	x_old_plane;
 
-	(void)scene;
+	(void)time;
 	x_old_dir = cub3d->raycast.x_dir;
 	cub3d->raycast.x_dir = cub3d->raycast.x_dir * cos(-SENSIBILITY)
 		- cub3d->raycast.y_dir * sin(-SENSIBILITY);
@@ -41,17 +41,17 @@ void	rotate_player_left(t_cub3d *cub3d, t_scene *scene)
 	cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
 	cub3d->player.x_dir = cub3d->raycast.x_dir;
 	cub3d->player.y_dir = cub3d->raycast.y_dir;
-	// cub3d->player.x_dir = cub3d->raycast.x_dir * scene->delta_time;
-	// cub3d->player.y_dir = cub3d->raycast.y_dir * scene->delta_time;
+	// cub3d->player.x_dir = cub3d->raycast.x_dir * time->delta_time;
+	// cub3d->player.y_dir = cub3d->raycast.y_dir * time->delta_time;
 	normalize_player_angle(&cub3d->player);
 }
 
-void	rotate_player_right(t_cub3d *cub3d, t_scene *scene)
+void	rotate_player_right(t_cub3d *cub3d, t_time *time)
 {
 	double	x_old_dir;
 	double	x_old_plane;
 
-	(void)scene;
+	(void)time;
 	x_old_dir = cub3d->raycast.x_dir;
 	cub3d->raycast.x_dir = cub3d->raycast.x_dir * cos(SENSIBILITY)
 		- cub3d->raycast.y_dir * sin(SENSIBILITY);
@@ -66,7 +66,7 @@ void	rotate_player_right(t_cub3d *cub3d, t_scene *scene)
 	cub3d->player.radian = cub3d->player.angle * (PI / 180.0);
 	cub3d->player.x_dir = cub3d->raycast.x_dir;
 	cub3d->player.y_dir = cub3d->raycast.y_dir;
-	// cub3d->player.x_dir = cub3d->raycast.x_dir * scene->delta_time;
-	// cub3d->player.y_dir = cub3d->raycast.y_dir * scene->delta_time;
+	// cub3d->player.x_dir = cub3d->raycast.x_dir * time->delta_time;
+	// cub3d->player.y_dir = cub3d->raycast.y_dir * time->delta_time;
 	normalize_player_angle(&cub3d->player);
 }
