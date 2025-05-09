@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 22:20:06 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 22:25:49 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ void	render_main_menu_blink(t_scene *scene, t_window *window,
 			{
 				if (main_menu->blink_direction == down
 					&& *(unsigned *)pixel != 0x00000000)
-					*(unsigned int *)pixel -= 0x00010101 * 2;
+					*(unsigned int *)pixel -= 0x00010101 * 4;
 				else if (main_menu->blink_direction == up
 					&& *(unsigned *)pixel != 0x00FFFFFF)
-					*(unsigned int *)pixel += 0x00010101 * 2;
+					*(unsigned int *)pixel += 0x00010101 * 4;
 				draw_pixel_asset(&scene->img, x, y, pixel);
 			}
 			x++;

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 12:47:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 22:30:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	main_menu_selection(t_cub3d *cub3d)
 	if (cub3d->main_menu.index_option == start_game)
 	{
 		cub3d->program_state = game;
-		gettimeofday(&cub3d->time.game_start_timeval, NULL);
-		cub3d->time.game_start = get_time(&cub3d->time.game_start_timeval);
 		// release_all_keys(&cub3d->key_state);
 	}
 	else if (cub3d->main_menu.index_option == exit_game)
@@ -40,7 +38,7 @@ void	main_menu_selection(t_cub3d *cub3d)
 
 void	reset_blink_value(t_main_menu *main_menu)
 {
-	main_menu->blink = 0xCC;
+	main_menu->blink = 0xCC / 4;
 	main_menu->blink_direction = down;
 }
 
