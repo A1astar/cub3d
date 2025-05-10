@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:07:07 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 23:43:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/10 11:56:17 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	*thread_pool(void *args)
 
 void	init_mutex(t_cub3d *cub3d, t_thread *thread)
 {
-	if (pthread_mutex_init(&thread->task, NULL) == -1
+	(void)cub3d;
+	if (pthread_mutex_init(&thread->task_giver, NULL) == -1
 		|| pthread_mutex_init(&thread->render, NULL) == -1
 		|| pthread_mutex_init(&thread->init, NULL) == -1)
 	{

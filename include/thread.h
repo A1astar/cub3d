@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:07:05 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 23:53:41 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/10 11:57:26 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 # include <pthread.h>
 
-enum e_task{init, render, logic};
+enum e_task
+{
+	initalization,
+	rendering,
+	logic
+};
 
 typedef struct s_task
 {
