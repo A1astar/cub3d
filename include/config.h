@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/09 13:05:42 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 23:52:07 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 
 enum	e_program_state
 {
+	init,
 	game,
 	level_menu,
 	main_menu

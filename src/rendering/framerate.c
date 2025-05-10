@@ -6,18 +6,11 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 19:03:29 by lgadea            #+#    #+#             */
-/*   Updated: 2025/05/09 19:14:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/09 23:55:09 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-long	get_game_time(struct timeval *game_start_time,
-			struct timeval *current_time)
-{
-	return ((current_time->tv_sec - game_start_time->tv_sec) * 1000
-		+ (current_time->tv_usec - game_start_time->tv_usec) / 1000);
-}
 
 long	get_time(struct timeval *start_time)
 {
