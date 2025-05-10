@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/09 23:24:44 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/10 12:24:41 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,11 @@ SRC					:= data/data_game.c \
 					rendering/rendering_utils.c \
 					rendering/rendering.c \
 					rendering/select_textures.c \
+					thread/destroy_thread.c \
+					thread/init_thread_mutex.c \
+					thread/init_thread_task.c \
 					thread/init_thread.c \
+					thread/thread_pool.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \

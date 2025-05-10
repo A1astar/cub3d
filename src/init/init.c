@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/10 11:58:05 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/10 13:32:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,22 @@ void	init_time(t_time *time)
 	time->target_frame_time = 1.0 / (double)time->target_fps;
 }
 
+bool	got_init_task(t_cub3d *cub3d)
+{
+
+}
+
 void	init_program(t_cub3d *cub3d, char **argv)
 {
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	parsing(cub3d, argv[1]);
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;
-	// init_thread(cub3d, &cub3d->thread);
+	init_thread(cub3d, &cub3d->thread);
 	init_mlx(cub3d, &cub3d->window);
+	while (got_init_task(cub3d))
+	{
+	}
 	init_asset(cub3d);
 	init_minimap(&cub3d->window, &cub3d->minimap);
 	init_player(&cub3d->player, &cub3d->minimap);

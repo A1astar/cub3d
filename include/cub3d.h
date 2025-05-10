@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/09 18:42:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/10 12:35:27 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,5 +205,8 @@ t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures);
 /*##############################	STAT	##################################*/
 void	update_game_data(t_cub3d *cub3d);
 void	update_player_data(t_cub3d *cub3d);
+
+/*##############################   THREAD   ##################################*/
+void	*thread_pool(void *args);
 
 #endif
