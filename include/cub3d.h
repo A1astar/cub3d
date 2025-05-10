@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/09 18:42:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/10 15:45:16 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,5 +205,6 @@ t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures);
 /*##############################	STAT	##################################*/
 void	update_game_data(t_cub3d *cub3d);
 void	update_player_data(t_cub3d *cub3d);
+void	update_enemy(t_cub3d *cub3d);
 
 #endif
