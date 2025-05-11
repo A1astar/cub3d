@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:43:53 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 16:00:40 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:59:54 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	player_detected(t_enemy *enemy, t_player *player)
 	distance = sqrtf(dx * dx  + dy * dy);
 	if(distance <= detection_zone)
 		return(true);
-	return(false);
+	return (false);
 }
 
 double	linear_interpol(double start, double end, double step)
@@ -41,7 +41,8 @@ void	enemy_chase_mode(t_enemy *enemy, t_player *player, t_map *map)
 	next_x = linear_interpol(enemy->x_pos, player->x_pos, 0.01);
 	next_y = linear_interpol(enemy->y_pos, player->y_pos, 0.01);
 	if(map->map[(int)next_y][(int)next_x] != '1'
-		&& map->map[(int)next_y][(int)next_x] != 'C')
+		&& map->map[(int)next_y][(int)next_x] != 'C'
+		&& !entity_collision(next_x, next_y, player->x_pos, player->y_pos))
 	{
 		enemy->x_pos = next_x;
 		enemy->y_pos = next_y;

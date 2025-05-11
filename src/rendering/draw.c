@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:01:59 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 16:07:17 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 18:09:47 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ void	draw_sprite(t_item_render *item, t_raycast *ray, t_scene *scene,
 				update_draw_attributes(&item->draw, &item->attr, img, y);
 				offset = item->draw.tex_y * img->size_line + item->draw.tex_x
 					* (img->bpp / 8);
-				color = *(unsigned int *)(img->addr + offset);
-				if (get_alpha(color) != 0)
-					draw_pixel_color(&scene->img, stripe, y, color);
+				if(offset >= 0 && offset < img->height * img->size_line)
+				{
+					color = *(unsigned int *)(img->addr + offset);
+					if (get_alpha(color) != 0)
+						draw_pixel_color(&scene->img, stripe, y, color);
+				}
 				y++;
 			}
 		}

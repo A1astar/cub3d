@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 15:45:53 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:45:32 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	check_player_nb(t_cub3d *cub3d, int player_nb);
 void	check_item_nb(t_cub3d *cub3d, int item_nb);
 
 /*##############################	PHYSICS	##################################*/
+bool	entity_collision(double x_origin, double y_origin, double target_x, double target_y);
 bool	can_move_to_north(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_south(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_east(t_time *time, t_raycast *raycast, t_player *player, t_map *map);

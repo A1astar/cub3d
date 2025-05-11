@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_movement.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:24:39 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 15:44:07 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:58:00 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	move_player_west(t_cub3d *cub3d)
 	if (!can_move_to_west(&cub3d->time, &cub3d->raycast,
 				&cub3d->player, &cub3d->map))
 		return ;
-	cub3d->player.x_pos += cub3d->raycast.y_dir 
+	cub3d->player.x_pos += cub3d->raycast.y_dir
 		* cub3d->player.velocity * cub3d->time.delta_time;
 	cub3d->player.y_pos -= cub3d->raycast.x_dir
 		* cub3d->player.velocity * cub3d->time.delta_time;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hitbox_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:58:09 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 15:16:40 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 17:45:14 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,12 @@
 // 	return (true);
 // }
 
+bool	entity_collision(double x_origin, double y_origin, double target_x, double target_y)
+{
+	if((int)x_origin == (int)target_x && (int)y_origin == (int)target_y)
+		return (true);
+	return (false);
+}
 
 bool	can_move_to_north(t_time *time, t_raycast *raycast,
 			t_player *player, t_map *map)
