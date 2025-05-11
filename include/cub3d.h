@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/10 15:45:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 15:45:53 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ long	get_time(struct timeval *start_time);
 double	get_time_seconds();
 double	get_frame_time(struct timeval *start_time);
 void	get_tick(struct timeval *time);
-void	update_frame_rate(t_cub3d *cub3d, t_time *time);
+void	update_frame_rate(t_time *time);
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player);

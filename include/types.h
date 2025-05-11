@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/09 22:49:06 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 15:47:21 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 typedef struct s_time
 {
 	struct timeval	game_start_timeval;
-	// struct timeval	current_frame;
-	// struct timeval	previous_frame;
-	long			game_start;
 	double			current_frame;
 	double			previous_frame;
 	int				target_fps;
