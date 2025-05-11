@@ -6,12 +6,16 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:07:05 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 14:43:48 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 18:46:14 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef THREAD_H
 # define THREAD_H
+
+typedef struct s_cub3d t_cub3d;
+typedef struct s_window t_window;
+typedef struct s_scene t_scene;
 
 enum e_task_state
 {
@@ -27,25 +31,28 @@ enum e_task
 
 typedef struct s_task_init
 {
-	uint8_t	task_nbr;
-	uint8_t	task_done;
-	bool	task[4];
-	void	(*init_scene)(t_cub3d *, t_window *, t_scene *);
-	void	(*init_main_menu)(t_cub3d *);
-	void	(*init_mandatory_assets)(t_cub3d *, char **);
-	void	(*init_bonus_assets)(t_cub3d *);
-}			t_task_init;
+	uint8_t		task_nbr;
+	uint8_t		task_done;
+	bool		task[4];
+}t_task_init;
+
+typedef struct s_task
+{
+	t_task_init	init;
+	// t_task_game	game;
+}				t_task;
 
 typedef struct s_thread
 {
-	t_task_init			initialization;
+	pthread_t			tid;
 	uint8_t				state;
-	long				cpu_core_nbr;
-	pthread_t			*tid;
-	pthread_mutex_t		lock;
+	t_cub3d				*cub3d;
+	t_task				*task;
+	pthread_mutex_t		*lock;
+	void				(*task_to_execute)(t_cub3d *);
 }						t_thread;
 
-void	get_cpu_core_number(t_cub3d *cub3d, t_thread *thread);
+void	get_cpu_core_number(t_cub3d *cub3d);
 void	destroy_thread(t_cub3d *cub3d, t_thread *thread);
 
 #endif

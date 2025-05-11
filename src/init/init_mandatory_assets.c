@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mandatory_assets.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 16:08:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:37:21by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,33 @@ static void	load_assets(t_cub3d *cub3d, t_textures *textures, char *asset_line,
 		load_img(cub3d, &textures->e_wall, asset_line);
 }
 
-void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)
+// void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)
+// {
+// 	size_t	line_lengh;
+
+// 	line_lengh = 0;
+// 	while (*assets_paths)
+// 	{
+// 		line_lengh = ft_strlen(*assets_paths);
+// 		if (is_asset_line(*assets_paths, line_lengh))
+// 			load_assets(cub3d, &cub3d->textures, *assets_paths, line_lengh);
+// 		if (is_rgb_line(*assets_paths, line_lengh))
+// 			load_rgb(cub3d, &cub3d->map, *assets_paths, line_lengh);
+// 		assets_paths++;
+// 	}
+// 	if (mandatory_assets_are_missing(&cub3d->textures))
+// 	{
+// 		error_msg("Missing assets", NULL);
+// 		free_program(cub3d);
+// 	}
+// }
+
+void	init_mandatory_assets(t_cub3d *cub3d)
 {
 	size_t	line_lengh;
+	char	**assets_paths;
 
+	assets_paths = cub3d->map.assets_paths;
 	line_lengh = 0;
 	while (*assets_paths)
 	{

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 13:29:30 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 19:22:59 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	init_main_menu_option(t_cub3d *cub3d,
 static void	init_main_menu_launcher(t_cub3d *cub3d,
 			t_window *window, t_main_menu *main_menu)
 {
+	pthread_mutex_lock(&cub3d->lock);
 	main_menu->launcher_blink.ptr = mlx_xpm_file_to_image(window->mlx_ptr,
 			"asset/main_menu/main_menu-blink720.xpm",
 			&main_menu->launcher_blink.width,
@@ -48,6 +49,7 @@ static void	init_main_menu_launcher(t_cub3d *cub3d,
 		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
+	pthread_mutex_unlock(&cub3d->lock);
 }
 
 // static void init_main_menu_asset(t_cub3d *cub3d, t_main_menu *main_menu)

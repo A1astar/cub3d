@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/10 12:24:41 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/11 17:42:21 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ SRC					:= data/data_game.c \
 					init/init_mandatory_assets.c \
 					init/init_mlx.c \
 					init/init_player.c \
+					init/init_utils.c \
 					init/init.c \
 					init/load_env_xpm_files.c \
 					init/load_view_xpm_files.c \
@@ -113,6 +114,7 @@ SRC					:= data/data_game.c \
 					thread/init_thread_task.c \
 					thread/init_thread.c \
 					thread/thread_pool.c \
+					thread/thread_utils.c \
 					error.c \
 					memory/free_game.c \
 					memory/free_graphics.c \

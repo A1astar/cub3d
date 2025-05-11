@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 14:26:28 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 18:49:29 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_cub3d
 	int				nb_enemy;
 	int				nb_player;
 	int				nb_item;
+	long			cpu_core_nbr;
 	uint8_t			program_state;
 	uint8_t			rendering_state;
 	t_map			map;
@@ -75,6 +76,7 @@ typedef struct s_cub3d
 	t_scene			scene;
 	t_player		player;
 	t_window		window;
+	t_thread		*thread;
 	t_minimap		minimap;
 	t_setting		setting;
 	t_raycast		raycast;
@@ -83,7 +85,7 @@ typedef struct s_cub3d
 	t_main_menu		main_menu;
 	t_key_state		key_state;
 	t_level_menu	level_menu;
-	t_thread		thread;
+	pthread_mutex_t	lock;
 }					t_cub3d;
 
 #endif

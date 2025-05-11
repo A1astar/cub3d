@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 15:02:10 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 18:40:54 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 # include "player.h"
 # include "elements.h"
 # include "menu.h"
-# include "types.h"
 # include "thread.h"
+# include "types.h"
 
 /*##############################	ERROR	##################################*/
 void	error_msg(const char *msg, const char *context);
@@ -100,10 +100,12 @@ void	init_main_menu_addr(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d);
-void	init_thread(t_cub3d *cub3d, t_thread *thread);
+void	init_thread(t_cub3d *cub3d);
 void	init_player(t_player *player, t_minimap *minimap);
-void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
-void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene);
+// void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
+void	init_mandatory_assets(t_cub3d *cub3d);
+void	init_scene(t_cub3d *cub3d);
+// void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
 void	load_asset(t_cub3d *cub3d, t_img *texture, char *asset_path);

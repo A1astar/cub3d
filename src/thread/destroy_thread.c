@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:04:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 12:35:43 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 18:50:31 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	destroy_thread_mutex(t_cub3d *cub3d, t_thread *thread)
 {
-	(void)cub3d;
-	pthread_mutex_destroy(&thread->lock);
-	if (thread->tid)
-		free(thread->tid);
+	(void)thread;
+	pthread_mutex_destroy(&cub3d->lock);
+	if (cub3d->thread)
+		free(cub3d->thread);
 }
 
 void	destroy_thread(t_cub3d *cub3d, t_thread *thread)
