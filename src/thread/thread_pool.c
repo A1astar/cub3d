@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:44:05 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/10 13:27:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/10 16:59:25 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ uint8_t	get_program_state(t_cub3d *cub3d, t_thread *thread)
 
 void	thread_init_task(t_cub3d *cub3d)
 {
-	// while (get_program_state(cub3d) == initalization)
-	// {
+	while (get_program_state(cub3d, &cub3d->thread) == initalization)
+	{
+		if
 
-	// }
+	}
 }
 
 void	*thread_pool(void *args)
@@ -48,7 +49,7 @@ void	*thread_pool(void *args)
 	cub3d = (t_cub3d *)args;
 	while (RUNNING)
 	{
-		program_state = get_program_state(cub3d);
+		program_state = get_program_state(cub3d, &cub3d->thread);
 		if (program_state == initalization)
 			thread_init_task(cub3d);
 		// else if (program_state == game_logic)

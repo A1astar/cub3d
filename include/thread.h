@@ -6,13 +6,15 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:07:05 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/10 13:32:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/10 15:26:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef THREAD_H
 # define THREAD_H
 
+# include "cub3d.h"
+# include "types.h"
 # include <pthread.h>
 
 enum e_task
@@ -24,7 +26,12 @@ enum e_task
 
 typedef struct s_task
 {
-	void	(*task_ptr)(t_cub3d *);
+	uint8_t	task_nbr;
+	void	(*init_asset)(t_cub3d *);
+	void	(*init_scene)(t_cub3d *, t_window *, t_scene *);
+	void	(*init_main_menu)(t_cub3d *);
+	void	(*init_mandatory_assets)(t_cub3d *, char **);
+	void	(*init_bonus_assets)(t_cub3d *);
 }				t_task;
 
 typedef struct s_thread
