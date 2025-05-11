@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:07:07 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 18:58:03 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 23:28:19 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ void	init_task(t_task *task)
 	task->init.task[3] = not_assigned;
 }
 
+void	wait_init_thread(t_cub3d *cub3d)
+{
+	int	i;
+
+	i = 0;
+	while (i < cub3d->cpu_core_nbr - 1)
+	{
+		pthread_join(cub3d->thread[i].tid, NULL);
+		i++;
+	}
+}
+
 void	create_thread(t_cub3d *cub3d)
 {
 	int				i;
@@ -55,6 +67,7 @@ void	create_thread(t_cub3d *cub3d)
 	i = 0;
 	init_task(&task);
 	init_mutex(cub3d);
+	pthread_mutex_lock(&cub3d->lock);
 	while (i < cub3d->cpu_core_nbr - 1)
 	{
 		init_thread_attributes(cub3d, &cub3d->thread[i], &task);
@@ -67,6 +80,8 @@ void	create_thread(t_cub3d *cub3d)
 		}
 		i++;
 	}
+	pthread_mutex_unlock(&cub3d->lock);
+	wait_init_thread(cub3d);
 }
 
 void	init_thread(t_cub3d *cub3d)
