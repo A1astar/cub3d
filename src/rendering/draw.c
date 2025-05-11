@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:01:59 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/09 21:44:46 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 16:07:17 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ void	init_enemy_attributes(t_enemy *enemy, t_player *player,
 	double	rel_x;
 	double	rel_y;
 
-	rel_x = (enemy->x_pos + 0.5) - player->x_pos;
-	rel_y = (enemy->y_pos + 0.5) - player->y_pos;
+	rel_x = (enemy->x_pos) - player->x_pos;
+	rel_y = (enemy->y_pos) - player->y_pos;
 	inv_det = 1.0 / (raycast->x_plane * player->y_dir - player->x_dir
 			* raycast->y_plane);
 	attr->trans_x = inv_det * (player->y_dir * rel_x - player->x_dir * rel_y);
@@ -115,8 +115,8 @@ void	init_item_attributes(t_item *item, t_player *player, t_raycast *raycast,
 	double	rel_x;
 	double	rel_y;
 
-	rel_x = (item->x_pos + 0.5) - player->x_pos;
-	rel_y = (item->y_pos + 0.5) - player->y_pos;
+	rel_x = (item->x_pos) - player->x_pos;
+	rel_y = (item->y_pos) - player->y_pos;
 	inv_det = 1.0 / (raycast->x_plane * player->y_dir - player->x_dir
 			* raycast->y_plane);
 	attr->trans_x = inv_det * (player->y_dir * rel_x - player->x_dir * rel_y);

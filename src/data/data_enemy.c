@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:43:53 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/10 18:35:00 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:00:40 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	player_detected(t_enemy *enemy, t_player *player)
 	float	distance;
 	float	detection_zone;
 
-	detection_zone = 5.0;
+	detection_zone = 4.0;
 	dx = enemy->x_pos - (player->x_pos);
 	dy = enemy->y_pos - (player->y_pos);
 	distance = sqrtf(dx * dx  + dy * dy);
@@ -43,9 +43,6 @@ void	enemy_chase_mode(t_enemy *enemy, t_player *player, t_map *map)
 	if(map->map[(int)next_y][(int)next_x] != '1'
 		&& map->map[(int)next_y][(int)next_x] != 'C')
 	{
-		printf("%c\n", map->map[(int)next_y][(int)next_x]);
-		printf("next_x: %lf\n", next_x);
-		printf("next_y: %lf\n", next_y);
 		enemy->x_pos = next_x;
 		enemy->y_pos = next_y;
 	}
@@ -81,3 +78,4 @@ void	update_enemy(t_cub3d *cub3d)
 	while (enemy_id < cub3d->nb_enemy)
 		update_enemy_pos(&cub3d->randy[enemy_id++], &cub3d->player, &cub3d->map);
 }
+
