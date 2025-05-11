@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/10 15:27:00 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 14:26:42 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # include <stdio.h>
 # include <sys/stat.h>
 # include <sys/time.h>
+# include <pthread.h>
 # include <time.h>
 
-# include "thread.h"
 # include "config.h"
 # include "errors.h"
 # include "map.h"
@@ -41,6 +41,7 @@
 # include "elements.h"
 # include "menu.h"
 # include "types.h"
+# include "thread.h"
 
 /*##############################	ERROR	##################################*/
 void	error_msg(const char *msg, const char *context);
@@ -102,9 +103,10 @@ void	init_mlx(t_cub3d *cub3d, t_window *scene);
 void	init_thread(t_cub3d *cub3d, t_thread *thread);
 void	init_player(t_player *player, t_minimap *minimap);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
+void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
-void	load_texture(t_cub3d *cub3d, t_img *texture, char *asset_path);
+void	load_asset(t_cub3d *cub3d, t_img *texture, char *asset_path);
 void	load_slash_assets(t_cub3d *cub3d, t_textures *text);
 void	load_fireball_assets(t_cub3d *cub3d, t_textures *text);
 void	load_normal_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);

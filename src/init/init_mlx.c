@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/06 14:28:25 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 13:01:48 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	init_mlx_window(t_cub3d *cub3d, t_window *window)
+static void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 {
 	window->mlx_ptr = mlx_init();
 	if (window->mlx_ptr == NULL)
@@ -35,7 +35,7 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	window->half_height = WINDOW_HEIGHT / 2;
 }
 
-void	init_mlx_hook(t_cub3d *cub3d, t_window *window)
+static void	init_mlx_hook(t_cub3d *cub3d, t_window *window)
 {
 	mlx_loop_hook(cub3d->window.mlx_ptr, cub3d_loop, cub3d);
 	mlx_hook(window->win_ptr, ButtonPress,
@@ -50,7 +50,7 @@ void	init_mlx_hook(t_cub3d *cub3d, t_window *window)
 		StructureNotifyMask, &exit_cub3d, cub3d);
 }
 
-void	init_mlx_mouse(t_window *window)
+static void	init_mlx_mouse(t_window *window)
 {
 	mlx_mouse_move(window->mlx_ptr, window->win_ptr,
 		window->half_width, window->half_height);

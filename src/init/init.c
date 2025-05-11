@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/10 16:02:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 13:31:25 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,14 @@ void	init_time(t_time *time)
 bool	got_init_task(t_cub3d *cub3d)
 {
 	pthread_mutex_lock(&cub3d->thread.lock);
-	if (cub3d->thread.task_init.task_nbr)
+	if (cub3d->thread.initialization.task_done
+		== cub3d->thread.initialization.task_nbr)
+	{
+		pthread_mutex_unlock(&cub3d->thread.lock);
+		return (true);
+	}
 	pthread_mutex_unlock(&cub3d->thread.lock);
+	return (false);
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)

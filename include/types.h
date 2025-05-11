@@ -6,21 +6,16 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/10 13:15:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 14:26:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-# include "cub3d.h"
-
 typedef struct s_time
 {
 	struct timeval	game_start_timeval;
-	// struct timeval	current_frame;
-	// struct timeval	previous_frame;
-	long			game_start;
 	double			current_frame;
 	double			previous_frame;
 	int				target_fps;
@@ -28,7 +23,7 @@ typedef struct s_time
 	int				fps_counter;
 	double			delta_time;
 	double			target_frame_time;
-}t_time;
+}					t_time;
 
 typedef struct s_window
 {

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread_utils.c                                     :+:      :+:    :+:   */
+/*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 12:36:55 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 12:18:20 by algadea          ###   ########.fr       */
+/*   Created: 2025/05/11 13:00:45 by algadea           #+#    #+#             */
+/*   Updated: 2025/05/11 13:03:56 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	get_cpu_core_number(t_cub3d *cub3d, t_thread *thread)
+void	load_asset(t_cub3d *cub3d, t_img *texture, char *asset_path)
 {
-	thread->cpu_core_nbr = sysconf(_SC_NPROCESSORS_ONLN);
-	if (thread->cpu_core_nbr == -1)
+	texture->ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
+			&texture->width, &texture->height);
+	if (!texture->ptr)
 	{
-		printf(BOLD RED"SYSCONF ERROR\n"DEFAULT);
+		error_msg("Wrong asset address: ", asset_path);
 		free_program(cub3d);
-		exit(EXIT_FAILURE);
+	}
+	texture->addr = mlx_get_data_addr(texture->ptr, &texture->bpp,
+			&texture->size_line, &texture->endian);
+	if (!texture->addr)
+	{
+		error_msg("Cannot load asset: ", asset_path);
+		free_program(cub3d);
 	}
 }
