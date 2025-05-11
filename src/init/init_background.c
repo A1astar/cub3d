@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_background.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:50:43 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/06 14:26:29 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:51:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,11 @@ void	init_main_menu_background_frame_img(t_cub3d *cub3d, t_window *window,
 	while (i < 50)
 	{
 		filename = get_filename(cub3d, i + 1);
+		pthread_mutex_lock(&cub3d->lock);
 		main_menu->background[i].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
 				filename, &main_menu->background[i].width,
 				&main_menu->background[i].height);
+		pthread_mutex_unlock(&cub3d->lock);
 		free(filename);
 		if (!main_menu->background[i].ptr)
 		{

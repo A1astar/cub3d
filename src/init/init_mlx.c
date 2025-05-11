@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 18:56:20 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 19:47:04 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ static void	init_mlx_mouse(t_window *window)
 
 void	init_mlx(t_cub3d *cub3d)
 {
-    if (!XInitThreads()) {
-        fprintf(stderr, "XInitThreads failed\n");
-        return ;
+    if (!XInitThreads())
+	{
+		printf(BOLD RED"XInitThreads error\n"DEFAULT);
+		free_program(cub3d);
+		exit(EXIT_FAILURE);
     }
 	init_mlx_window(cub3d, &cub3d->window);
 	init_mlx_hook(cub3d, &cub3d->window);
