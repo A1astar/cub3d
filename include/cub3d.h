@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 14:26:42 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 15:02:10 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	init_main_menu_background(t_cub3d *cub3d);
 void	init_main_menu_addr(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
-void	init_mlx(t_cub3d *cub3d, t_window *scene);
+void	init_mlx(t_cub3d *cub3d);
 void	init_thread(t_cub3d *cub3d, t_thread *thread);
 void	init_player(t_player *player, t_minimap *minimap);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);

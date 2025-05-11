@@ -6,13 +6,18 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:07:05 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 14:26:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 14:43:48 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef THREAD_H
 # define THREAD_H
 
+enum e_task_state
+{
+	assigned,
+	not_assigned
+};
 
 enum e_task
 {
@@ -24,6 +29,7 @@ typedef struct s_task_init
 {
 	uint8_t	task_nbr;
 	uint8_t	task_done;
+	bool	task[4];
 	void	(*init_scene)(t_cub3d *, t_window *, t_scene *);
 	void	(*init_main_menu)(t_cub3d *);
 	void	(*init_mandatory_assets)(t_cub3d *, char **);

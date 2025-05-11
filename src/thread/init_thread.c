@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:07:07 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 13:56:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 14:45:39 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	init_mutex(t_cub3d *cub3d, t_thread *thread)
 void	init_thread_task_init(t_cub3d *cub3d, t_thread *thread)
 {
 	thread->initialization.task_nbr = 4;
+	thread->initialization.task[0] = not_assigned;
+	thread->initialization.task[1] = not_assigned;
+	thread->initialization.task[2] = not_assigned;
+	thread->initialization.task[3] = not_assigned;
 	thread->initialization.init_scene = init_scene;
 	thread->initialization.init_main_menu = init_main_menu;
 	thread->initialization.init_mandatory_assets = init_mandatory_assets;

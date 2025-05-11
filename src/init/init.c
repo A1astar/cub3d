@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 13:31:25 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 15:03:51 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,9 @@ void	init_time(t_time *time)
 	time->target_frame_time = 1.0 / (double)time->target_fps;
 }
 
-bool	got_init_task(t_cub3d *cub3d)
+void	wait_init_thread(t_cub3d *cub3d, t_thread *thread)
 {
-	pthread_mutex_lock(&cub3d->thread.lock);
-	if (cub3d->thread.initialization.task_done
-		== cub3d->thread.initialization.task_nbr)
-	{
-		pthread_mutex_unlock(&cub3d->thread.lock);
-		return (true);
-	}
-	pthread_mutex_unlock(&cub3d->thread.lock);
-	return (false);
+
 }
 
 void	init_program(t_cub3d *cub3d, char **argv)
@@ -88,14 +80,12 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;
 	init_thread(cub3d, &cub3d->thread);
-	init_mlx(cub3d, &cub3d->window);
-	while (got_init_task(cub3d))
-	{
-	}
-	init_asset(cub3d);
+	init_mlx(cub3d);
+	// init_asset(cub3d);
 	init_minimap(&cub3d->window, &cub3d->minimap);
 	init_player(&cub3d->player, &cub3d->minimap);
 	init_enemy(cub3d);
 	init_raycast(&cub3d->window, &cub3d->raycast, &cub3d->player);
 	init_time(&cub3d->time);
+	wait_init_thread(cub3d, &cub3d->thread);
 }
