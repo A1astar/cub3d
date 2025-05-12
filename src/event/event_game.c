@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:59:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 12:54:10 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 19:54:07 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 
 	(void)y;
 	last_x = cub3d->window.half_width;
+	if(x == last_x)
+		return (0);
 	delta_x = x - last_x;
 	if (delta_x < 0)
 		rotate_player_left(cub3d, &cub3d->time);
