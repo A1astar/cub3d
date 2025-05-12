@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:00:45 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 19:13:39 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 20:34:25 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	load_asset(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!texture->ptr)
 	{
 		error_msg("Wrong asset address: ", asset_path);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	pthread_mutex_unlock(&cub3d->lock);
 	texture->addr = mlx_get_data_addr(texture->ptr, &texture->bpp,
@@ -28,6 +28,6 @@ void	load_asset(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!texture->addr)
 	{
 		error_msg("Cannot load asset: ", asset_path);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }

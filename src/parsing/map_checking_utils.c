@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:10:09 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/12 18:47:05 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:55:11 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	check_valid_element(t_cub3d *cub3d, char c)
 	else
 	{
 		error_msg(MAP_ELEM, NULL);
-		free_program_and_exit(cub3d);
 		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }

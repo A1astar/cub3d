@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/12 18:53:31 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 20:29:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,10 @@ int		game_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		main_menu_key_hook(int keynum, t_cub3d *cub3d);
 void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d);
-int		main_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
-int		main_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 void	main_menu_launcher_key_hook(int keynum, t_cub3d *cub3d);
 
 int		level_menu_loop(t_cub3d *cub3d);
 int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
-int		level_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
-int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 
 int		exit_cub3d(t_cub3d *cub3d);
 
@@ -102,10 +98,8 @@ void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d);
 void	init_thread(t_cub3d *cub3d);
 void	init_player(t_player *player, t_minimap *minimap);
-// void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	init_mandatory_assets(t_cub3d *cub3d);
 void	init_scene(t_cub3d *cub3d);
-// void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
 void	load_asset(t_cub3d *cub3d, t_img *texture, char *asset_path);

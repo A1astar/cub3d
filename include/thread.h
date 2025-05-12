@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:07:05 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/12 17:51:22 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 20:33:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ enum e_task
 
 typedef struct s_task
 {
-	void	(*task_to_execute)(t_cub3d *)
+	void	(*task_to_execute)(t_cub3d *);
 }				t_task;
 
 typedef struct s_thread

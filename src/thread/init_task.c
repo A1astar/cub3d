@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 12:20:10 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/12 18:36:49 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 20:46:51 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,20 @@ void	init_task_initialization(t_task *task)
 	// task->init.task_done = 0;
 	// task->init.task_nbr = 4;
 
-	// INIT ASSETS
+	/* INIT ASSETS IMG */
 	task[0].task_to_execute = init_scene;
-	task[0].task_to_execute = init_asset;
-	task[0].task_to_execute = init_asset;
+	task[0].task_to_execute = init_main_menu;
 
-	// INIT ATTRIBUTES
+	// mandatory assets
+	task[0].task_to_execute = init_mandatory_assets;
+	//->load_assets
+
+	// bonus assets
+	task[0].task_to_execute = init_bonus_assets;
+
+	/* INIT ASSETS ADDR */
+
+	/* INIT ATTRIBUTES */
 	task[0].task_to_execute = init_minimap;
 	task[1].task_to_execute = init_player;
 	task[2].task_to_execute = init_enemy;

@@ -6,13 +6,13 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 23:04:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 18:50:31 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 20:44:20 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	destroy_thread_mutex(t_cub3d *cub3d, t_thread *thread)
+void	destroy_mutex(t_cub3d *cub3d, t_thread *thread)
 {
 	(void)thread;
 	pthread_mutex_destroy(&cub3d->lock);
@@ -22,5 +22,5 @@ void	destroy_thread_mutex(t_cub3d *cub3d, t_thread *thread)
 
 void	destroy_thread(t_cub3d *cub3d, t_thread *thread)
 {
-	destroy_thread_mutex(cub3d, thread);
+	destroy_mutex(cub3d, thread);
 }
