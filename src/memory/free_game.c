@@ -6,11 +6,20 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 11:21:14 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:54:53 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	free_t_loadbar(t_textures *textures, t_window *window)
+{
+	int	i;
+
+	i = 0;
+	while (i < 33)
+		free_t_img(window, &textures->load[i++]);
+}
 
 static void	free_t_fireball(t_textures *textures, t_window *window)
 {
@@ -54,6 +63,7 @@ static void	free_t_textures(t_textures *textures, t_window *window)
 	free_t_img(window, &textures->blood[2]);
 	free_t_img(window, &textures->cadaver);
 	free_t_fireball(textures, window);
+	free_t_loadbar(textures, window);
 }
 
 static void	free_t_viewmodel(t_viewmodel *viewmodel, t_window *window)

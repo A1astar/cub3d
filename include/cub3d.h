@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 17:45:32 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:11:26 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,9 @@ void	init_player(t_player *player, t_minimap *minimap);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
-void	load_texture(t_cub3d *cub3d, t_img *texture, char *asset_path);
+void	load_loadbar(t_cub3d *cub3d);
+void	display_loadbar(t_window *window, t_textures *textures);
+void	load_text(t_cub3d *cub3d, t_img *texture, char *asset_path);
 void	load_slash_assets(t_cub3d *cub3d, t_textures *text);
 void	load_fireball_assets(t_cub3d *cub3d, t_textures *text);
 void	load_normal_viewmodel(t_cub3d *cub3d, t_viewmodel *viewmodels);

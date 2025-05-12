@@ -6,7 +6,7 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/12 16:20:16 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/12 17:55:27 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRC_SHARED			:= data/data_player_rotation.c \
 					init/init.c \
 					init/load_env_xpm_files.c \
 					init/load_view_xpm_files.c \
+					init/loading_bar.c \
 					parsing/extract_assets_paths.c \
 					parsing/extract_map.c \
 					parsing/extract_utils.c \

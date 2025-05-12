@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:39:25 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 11:47:00 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:42:32 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_img
 
 typedef struct s_textures
 {
+	t_img	load[33];
 	t_img	n_wall;
 	t_img	s_wall;
 	t_img	e_wall;

@@ -6,13 +6,13 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 11:51:51 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:11:57 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	load_texture(t_cub3d *cub3d, t_img *texture, char *asset_path)
+void	load_text(t_cub3d *cub3d, t_img *texture, char *asset_path)
 {
 	texture->ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
 			&texture->width, &texture->height);
@@ -28,6 +28,7 @@ void	load_texture(t_cub3d *cub3d, t_img *texture, char *asset_path)
 		error_msg("Cannot load asset: ", asset_path);
 		free_program(cub3d);
 	}
+	display_loadbar(&cub3d->window, &cub3d->textures);
 }
 
 static void	load_enemy_assets(t_cub3d *cub3d)
@@ -38,16 +39,16 @@ static void	load_enemy_assets(t_cub3d *cub3d)
 	while (i < cub3d->nb_enemy)
 	{
 		if (cub3d->randy[i].state == angry)
-			load_texture(cub3d, &cub3d->randy[i].sprite,
+			load_text(cub3d, &cub3d->randy[i].sprite,
 				"asset/enemy/xpm/angry_randy.xpm");
 		else if (cub3d->randy[i].state == stoned)
-			load_texture(cub3d, &cub3d->randy[i].sprite,
+			load_text(cub3d, &cub3d->randy[i].sprite,
 				"asset/enemy/xpm/stoned_randy.xpm");
 		else if (cub3d->randy[i].state == drunk)
-			load_texture(cub3d, &cub3d->randy[i].sprite,
+			load_text(cub3d, &cub3d->randy[i].sprite,
 				"asset/enemy/xpm/drunk_randy.xpm");
 		else
-			load_texture(cub3d, &cub3d->randy[i].sprite,
+			load_text(cub3d, &cub3d->randy[i].sprite,
 				"asset/enemy/xpm/godlike_randy.xpm");
 		i++;
 	}
