@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:28:20 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 14:52:19 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:04:43 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	draw_ray(t_cub3d *cub3d, t_floor_ray *ray, int x, int y)
 		img = &cub3d->textures.trip_floor;
 	else
 		img = &cub3d->textures.floor;
-	ft_bzero(&draw, sizeof(t_floor_draw));
 	init_floor_draw(&draw, cub3d, ray);
 	offset = draw.tex_y * img->size_line + draw.tex_x * (img->bpp / 8);
 	color = *(unsigned int *)(img->addr + offset);

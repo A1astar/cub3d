@@ -6,41 +6,33 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 18:37:01 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 14:46:11 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:53:53 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static bool	wall_hit(t_map *map, t_raycast *raycast)
+static inline bool	wall_hit(t_map *map, t_raycast *raycast)
 {
-	if (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'O'
+	return (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'O'
 		|| map->map[(int)raycast->y_map][(int)raycast->x_map] == 'C'
-		|| map->map[(int)raycast->y_map][(int)raycast->x_map] == '1')
-		return (true);
-	return (false);
+		|| map->map[(int)raycast->y_map][(int)raycast->x_map] == '1');
 }
 
-static bool	is_a_door(t_map *map, t_raycast *raycast)
+static inline bool	is_a_door(t_map *map, t_raycast *raycast)
 {
-	if (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'O'
-		|| map->map[(int)raycast->y_map][(int)raycast->x_map] == 'C')
-		return (true);
-	return (false);
+	return (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'O'
+		|| map->map[(int)raycast->y_map][(int)raycast->x_map] == 'C');
 }
 
-static bool	is_closed(t_map *map, t_raycast *raycast)
+static inline bool	is_closed(t_map *map, t_raycast *raycast)
 {
-	if (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'C')
-		return (true);
-	return (false);
+	return (map->map[(int)raycast->y_map][(int)raycast->x_map] == 'C');
 }
 
-static bool	is_smaller_perp(t_raycast *raycast, int x)
+static inline bool	is_smaller_perp(t_raycast *raycast, int x)
 {
-	if (raycast->perp_wall < raycast->z_buffer[x])
-		return (true);
-	return (false);
+	return (raycast->perp_wall < raycast->z_buffer[x]);
 }
 
 void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player)

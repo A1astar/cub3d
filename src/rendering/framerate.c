@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   framerate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 19:03:29 by lgadea            #+#    #+#             */
-/*   Updated: 2025/05/11 15:45:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 14:37:03 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ long	get_time(struct timeval *start_time)
 }
 
 double	get_time_seconds() {
-    struct timeval	tv;
+	struct timeval	tv;
 
-    gettimeofday(&tv, NULL);
+	gettimeofday(&tv, NULL);
     return (double)tv.tv_sec + (double)tv.tv_usec / 1000000.0;
 }
 
