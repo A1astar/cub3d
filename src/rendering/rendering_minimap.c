@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_minimap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:58:36 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/04 00:21:47 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 15:32:15 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static bool	is_floor(char element)
+static inline bool	is_floor(char element)
 {
-	if (element == '0' || element == 'N' || element == 'S' || element == 'E'
-		|| element == 'W' || element == 'R' || element == 'M')
-		return (true);
-	return (false);
+	return (element == '0' || element == 'N' || element == 'S' || element == 'E'
+		|| element == 'W' || element == 'R' || element == 'M');
 }
 
 void	render_minimap_enemy(t_cub3d *cub3d, t_minimap *minimap, t_enemy *enemy)

@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:42:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/07 14:58:22 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:07:08 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct s_item
 {
-	long			x_pos;
-	long			y_pos;
+	double			x_pos;
+	double			y_pos;
 	t_img			sprite;
 }					t_item;
 

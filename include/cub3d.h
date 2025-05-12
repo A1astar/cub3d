@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 18:40:54 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 16:20:16 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ void	check_player_nb(t_cub3d *cub3d, int player_nb);
 void	check_item_nb(t_cub3d *cub3d, int item_nb);
 
 /*##############################	PHYSICS	##################################*/
+bool	entity_collision(double x_origin, double y_origin, double target_x, double target_y);
 bool	can_move_to_north(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_south(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
 bool	can_move_to_east(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
@@ -161,7 +162,7 @@ long	get_time(struct timeval *start_time);
 double	get_time_seconds();
 double	get_frame_time(struct timeval *start_time);
 void	get_tick(struct timeval *time);
-void	update_frame_rate(t_cub3d *cub3d, t_time *time);
+void	update_frame_rate(t_time *time);
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
@@ -209,6 +210,7 @@ t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures);
 /*##############################	STAT	##################################*/
 void	update_game_data(t_cub3d *cub3d);
 void	update_player_data(t_cub3d *cub3d);
+void	update_enemy(t_cub3d *cub3d);
 
 /*##############################   THREAD   ##################################*/
 void	*thread_pool(void *args);

@@ -6,17 +6,15 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 15:55:58 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/28 14:32:30 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:51:05 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-bool	wall_hit(t_map *map, t_raycast *raycast)
+static inline bool	wall_hit(t_map *map, t_raycast *raycast)
 {
-	if (map->map[(int)raycast->y_map][(int)raycast->x_map] == '1')
-		return (true);
-	return (false);
+	return (map->map[(int)raycast->y_map][(int)raycast->x_map] == '1');
 }
 
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player)

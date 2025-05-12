@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/11 17:42:21 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/12 16:19:57 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 SRC_DIR				:= src
 SRC					:= data/data_game.c \
 					data/data_player_rotation.c \
+					data/data_enemy.c \
 					data/data_player.c \
 					event/event_exit.c \
 					event/event_game.c \

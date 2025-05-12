@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 22:25:49 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/11 15:46:18 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 
 int	main_menu_loop(t_cub3d *cub3d)
 {
-	update_frame_rate(cub3d, &cub3d->time);
+	update_frame_rate(&cub3d->time);
 	render_main_menu(cub3d, &cub3d->window, &cub3d->scene);
 	return (0);
 }
