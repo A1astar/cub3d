@@ -6,13 +6,14 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/10 15:45:38 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/12 16:20:16 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ###########################          TARGET         ###########################
 
 NAME				= cub3D
+NAME_BONUS				= cub3D_bonus
 MLX					= minilibx-linux/libmlx.a
 LIBFT				= libft/libft.a
 
@@ -49,8 +50,8 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 ###########################          SOURCE         ###########################
 
 SRC_DIR				:= src
-SRC					:= data/data_game.c \
-					data/data_player_rotation.c \
+
+SRC_SHARED			:= data/data_player_rotation.c \
 					data/data_enemy.c \
 					data/data_player.c \
 					event/event_exit.c \
@@ -100,7 +101,6 @@ SRC					:= data/data_game.c \
 					rendering/render_effects.c \
 					rendering/render_raycast.c \
 					rendering/render_viewmodel.c \
-					rendering/rendering_game.c \
 					rendering/rendering_level_menu.c \
 					rendering/rendering_main_menu.c \
 					rendering/rendering_minimap_player.c \
@@ -115,7 +115,15 @@ SRC					:= data/data_game.c \
 					memory/free_graphics.c \
 					main.c
 
-SRC					:= $(addprefix $(SRC_DIR)/, $(SRC))
+SRC_MANDATORY		:= data/data_mandatory_game.c \
+						rendering/rendering_mandatory_game.c \
+
+SRC_BONUS			:= data/data_bonus_game.c \
+						rendering/rendering_bonus_game.c \
+
+SRC_SHARED			:= $(addprefix $(SRC_DIR)/, $(SRC_SHARED))
+SRC_MANDATORY		:= $(addprefix $(SRC_DIR)/, $(SRC_MANDATORY))
+SRC_BONUS			:= $(addprefix $(SRC_DIR)/, $(SRC_BONUS))
 
 ###########################       COMPILATION       ###########################
 
@@ -126,7 +134,9 @@ ASM_DIR				:= asm
 ASM					:= $(patsubst $(SRC_DIR)/%.c, $(ASM_DIR)/%.s, $(SRC))
 
 OBJ_DIR				:= obj
-OBJ					:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+OBJ_SHARED			:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_SHARED))
+OBJ_MANDATORY		:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_MANDATORY))
+OBJ_BONUS			:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_BONUS))
 
 ###########################          RULE           ###########################
 
@@ -136,7 +146,7 @@ pp: $(PP)
 
 asm: $(ASM)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ_SHARED) $(OBJ_MANDATORY) $(LIBFT)
 	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
 	@echo "$(GREEN)> $(NAME) creation successful!$(DEFAULT)"
 
@@ -162,8 +172,15 @@ $(ASM_DIR)/%.s: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -S $< -o $@
 
+bonus : CFLAGS += -DBONUS
+bonus: $(MLX) $(LIBFT) $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJ_SHARED) $(OBJ_BONUS)
+	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
+	@echo "$(GREEN)> $(NAME_BONUS) build successful!$(DEFAULT)"
+
 clean:
-	@$(RM) -rf $(OBJ) $(OBJ_BONUS)
+	@$(RM) -rf $(OBJ_SHARED) $(OBJ_MANDATORY) $(OBJ_BONUS)
 	@echo "$(YELLOW)> $(NAME) objects files removed!$(DEFAULT)"
 
 clean-pp:
