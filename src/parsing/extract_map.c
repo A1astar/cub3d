@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:32:43 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/25 17:14:07 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:53:45 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static bool	is_only_map_lines(char **data)
 	return (true);
 }
 
-void	extract_map(t_cub3d *game, char **data)
+void	extract_map(t_cub3d *cub3d, char **data)
 {
 	char	*buffer;
 
@@ -64,13 +64,13 @@ void	extract_map(t_cub3d *game, char **data)
 	if (!*data)
 	{
 		error_msg("Empty map", NULL);
-		free_program(game);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
-	game->map.map = dup_tab(&(*data), ft_tabsize((void **)&(*data)));
+	cub3d->map.map = dup_tab(&(*data), ft_tabsize((void **)&(*data)));
 	free(buffer);
-	if (!game->map.map)
+	if (!cub3d->map.map)
 	{
 		error_msg(MEM, "extract_map");
-		free_program(game);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 11:21:14 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:34:18 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static void	free_t_map(t_map *map)
 		ft_free_tab((void **)map->assets_paths);
 }
 
-void	free_program(t_cub3d *cub3d)
+void	free_program(t_cub3d *cub3d, int exit_code)
 {
 	free_t_textures(&cub3d->textures, &cub3d->window);
 	free_t_viewmodel(&cub3d->player.viewmodel, &cub3d->window);
@@ -106,5 +106,5 @@ void	free_program(t_cub3d *cub3d)
 	free_t_main_menu(&cub3d->main_menu, &cub3d->window);
 	free_t_scene(&cub3d->scene, &cub3d->window);
 	free_t_window(&cub3d->window);
-	exit(EXIT_SUCCESS);
+	exit(exit_code);
 }

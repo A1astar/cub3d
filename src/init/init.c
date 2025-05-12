@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/12 16:21:14 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:32:10 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	cub3d->rendering_state = normal;
 	init_mlx(cub3d);
 	init_thread(cub3d);
-	// init_asset(cub3d);
+	init_asset(cub3d);
 	init_minimap(&cub3d->window, &cub3d->minimap);
 	init_player(&cub3d->player, &cub3d->minimap);
 	init_enemy(cub3d);

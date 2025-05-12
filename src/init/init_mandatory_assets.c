@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 19:50:22 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:45:52 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!asset_path || !*(asset_path + 1))
 	{
 		error_msg("No asset_path found", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	asset_path++;
 	pthread_mutex_lock(&cub3d->lock);
@@ -29,7 +30,7 @@ static void	load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!texture->ptr)
 	{
 		error_msg("Wrong asset address", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	pthread_mutex_unlock(&cub3d->lock);
 	texture->addr = mlx_get_data_addr(texture->ptr, &texture->bpp,
@@ -37,7 +38,7 @@ static void	load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!texture->addr)
 	{
 		error_msg("Cannot load asset", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 
@@ -54,12 +55,12 @@ static void	extract_rgb_code(t_cub3d *cub3d, int *rgb_tab, char *line)
 	if (!temp_tab)
 	{
 		error_msg(MEM, "extract_rgb_code");
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	if (ft_tabsize((void **)temp_tab) != 3 || !is_rgb_code(temp_tab))
 	{
 		error_msg("wrong rgb format", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	rgb_tab[0] = ft_atoi(temp_tab[0]);
 	rgb_tab[1] = ft_atoi(temp_tab[1]);
@@ -129,6 +130,6 @@ void	init_mandatory_assets(t_cub3d *cub3d)
 	if (mandatory_assets_are_missing(&cub3d->textures))
 	{
 		error_msg("Missing assets", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }

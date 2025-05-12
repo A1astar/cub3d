@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:07:05 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 18:46:14 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 17:51:22 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 typedef struct s_cub3d t_cub3d;
 typedef struct s_window t_window;
 typedef struct s_scene t_scene;
+
+# define TASK_NBR_INIT 20
+# define TASK_NBR_RENDERING 10
+# define TASK_NBR_GAME_LOGIC 10
 
 enum e_task_state
 {
@@ -29,17 +33,10 @@ enum e_task
 	game_logic
 };
 
-typedef struct s_task_init
-{
-	uint8_t		task_nbr;
-	uint8_t		task_done;
-	bool		task[4];
-}t_task_init;
 
 typedef struct s_task
 {
-	t_task_init	init;
-	// t_task_game	game;
+	void	(*task_to_execute)(t_cub3d *)
 }				t_task;
 
 typedef struct s_thread
@@ -52,6 +49,7 @@ typedef struct s_thread
 	void				(*task_to_execute)(t_cub3d *);
 }						t_thread;
 
+void	init_task(t_cub3d *cub3d);
 void	get_cpu_core_number(t_cub3d *cub3d);
 void	destroy_thread(t_cub3d *cub3d, t_thread *thread);
 

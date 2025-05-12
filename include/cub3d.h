@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/12 16:20:16 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:53:31 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	load_others_assets(t_cub3d *cub3d, t_item *item, t_textures *textures);
 /*##############################	MEMORY	##################################*/
 void	free_t_img(t_window *window, t_img *img);
 void	free_t_main_menu(t_main_menu *menu, t_window *window);
-void	free_program(t_cub3d *cub3d);
+void	free_program_and_exit(t_cub3d *cub3d, int exit_code);
 void	free_t_window(t_window *scene);
 void	free_image(void *mlx, void *image);
 void	free_t_scene(t_scene *scene, t_window *window);
@@ -136,13 +136,13 @@ void	extract_map(t_cub3d *game, char **data);
 char	**dup_tab(char **map, size_t map_row_len);
 int		open_file(t_cub3d *cub3d, char *filename);
 void	check_valid_element(t_cub3d *cub3d, char c);
-void	extract_data(t_cub3d *game, char *filename);
+void	extract_data(t_cub3d *cub3d, char *filename);
 void	scan_map_line(t_cub3d *cub3d, char *map_line, size_t row);
 void	check_enemy_nb(t_cub3d *cub3d, int enemy_nb);
 void	check_player_nb(t_cub3d *cub3d, int player_nb);
 void	check_item_nb(t_cub3d *cub3d, int item_nb);
 int		get_line_count(t_cub3d *cub3d, char *filename);
-void	extract_assets_path(t_cub3d *game, char **data);
+void	extract_assets_path(t_cub3d *cub3d, char **data);
 void	apply_enemy_state(t_enemy *randy, int nb_enemy);
 void	update_map_size(t_cub3d *cub3d, char *map_line);
 char	*append_line(t_cub3d *cub3d, char *buffer, char *line);

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 16:50:43 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 19:51:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:44:40 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	handle_alloc_error(t_cub3d *cub3d)
 {
 	printf(BOLD RED "MALLOC ERROR\n" DEFAULT);
-	free_program(cub3d);
-	exit(EXIT_FAILURE);
+	free_program_and_exit(cub3d, EXIT_FAILURE);
 }
 
 void	init_main_menu_background_frame_addr(t_cub3d *cub3d, t_main_menu *main)
@@ -32,8 +31,7 @@ void	init_main_menu_background_frame_addr(t_cub3d *cub3d, t_main_menu *main)
 		if (!main->background[i].addr)
 		{
 			printf(BOLD RED "MAIN MENU BACKGROUND ADDR ERROR\n" DEFAULT);
-			free_program(cub3d);
-			exit(EXIT_FAILURE);
+			free_program_and_exit(cub3d, EXIT_FAILURE);
 		}
 		i++;
 	}
@@ -78,8 +76,7 @@ void	init_main_menu_background_frame_img(t_cub3d *cub3d, t_window *window,
 		if (!main_menu->background[i].ptr)
 		{
 			printf(BOLD RED "MAIN MENU BACKGROUND XPM ERROR\n" DEFAULT);
-			free_program(cub3d);
-			exit(EXIT_FAILURE);
+			free_program_and_exit(cub3d, EXIT_FAILURE);
 		}
 		i++;
 	}

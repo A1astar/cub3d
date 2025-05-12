@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:52:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:28:19 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:43:54 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	main(int argc, char **argv)
 	{
 		init_program(&cub3d, argv);
 		mlx_loop(cub3d.window.mlx_ptr);
-		free_program(&cub3d);
-		return (EXIT_SUCCESS);
+		free_program_and_exit(&cub3d, EXIT_SUCCESS);
 	}
 	return (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 19:47:04 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:46:32 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ static void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	if (window->mlx_ptr == NULL)
 	{
 		error_msg(BOLD RED "MLX init" DEFAULT, NULL);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	window->width = WINDOW_WIDTH;
 	window->height = WINDOW_HEIGHT;
@@ -28,8 +27,7 @@ static void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	if (window->win_ptr == NULL)
 	{
 		error_msg(BOLD RED "MLX new window" DEFAULT, NULL);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	window->half_width = WINDOW_WIDTH / 2;
 	window->half_height = WINDOW_HEIGHT / 2;
@@ -58,12 +56,11 @@ static void	init_mlx_mouse(t_window *window)
 
 void	init_mlx(t_cub3d *cub3d)
 {
-    if (!XInitThreads())
+	if (!XInitThreads())
 	{
 		printf(BOLD RED"XInitThreads error\n"DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
-    }
+		free_program_and_exit(cub3d, EXIT_FAILURE);
+	}
 	init_mlx_window(cub3d, &cub3d->window);
 	init_mlx_hook(cub3d, &cub3d->window);
 	init_mlx_mouse(&cub3d->window);

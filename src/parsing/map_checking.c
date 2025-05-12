@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checking.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:12:39 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:55:45 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:52:42 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	check_map(t_cub3d *cub3d, t_map *map)
 	if (cub3d->nb_player == 0)
 	{
 		error_msg("Incorret map, no player found", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	map_copy = dup_tab(map->map, map->height);
 	if (!map_copy)
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	map->is_valid_map = true;
 	flood_fill(map_copy, cub3d->player.x_pos, cub3d->player.y_pos, &cub3d->map);
 	ft_free_tab((void **)map_copy);
 	if (!cub3d->map.is_valid_map)
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 }

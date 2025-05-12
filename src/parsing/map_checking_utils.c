@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checking_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 11:10:09 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/06 11:55:57 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:47:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	check_valid_element(t_cub3d *cub3d, char c)
 	else
 	{
 		error_msg(MAP_ELEM, NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 

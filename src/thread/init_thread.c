@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:07:07 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/12 16:21:46 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:52:12 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	init_mutex(t_cub3d *cub3d)
 	if (pthread_mutex_init(&cub3d->lock, NULL) == -1)
 	{
 		printf(BOLD RED"ERROR MUTEX INIT\n"DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 
@@ -29,18 +28,7 @@ void	init_thread_attributes(t_cub3d *cub3d, t_thread *thread, t_task *task)
 	thread->lock = &cub3d->lock;
 	thread->task_to_execute = NULL;
 }
-
-void	init_task(t_task *task)
-{
-	task->init.task_done = 0;
-	task->init.task_nbr = 4;
-	task->init.task[0] = not_assigned;
-	task->init.task[1] = not_assigned;
-	task->init.task[2] = not_assigned;
-	task->init.task[3] = not_assigned;
-}
-
-void	wait_init_thread(t_cub3d *cub3d)
+void	join_thread(t_cub3d *cub3d)
 {
 	int	i;
 
@@ -61,31 +49,38 @@ void	create_thread(t_cub3d *cub3d)
 	if (!cub3d->thread)
 	{
 		printf(BOLD RED"MALLOC ERROR\n"DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	i = 0;
 	init_task(&task);
 	init_mutex(cub3d);
+}
+
+void	launch_thread(t_cub3d *cub3d)
+{
+	int	i;
+	
 	pthread_mutex_lock(&cub3d->lock);
+	i = 0;
 	while (i < cub3d->cpu_core_nbr - 1)
 	{
-		init_thread_attributes(cub3d, &cub3d->thread[i], &task);
+		init_thread_attributes(cub3d, &cub3d->thread[i], &cub3d->task);
 		if (pthread_create(&cub3d->thread[i].tid,
 				NULL, thread_pool, &cub3d->thread[i]) == -1)
 		{
 			printf(BOLD RED"PTHREAD CREATE ERROR\n"DEFAULT);
-			free_program(cub3d);
-			exit(EXIT_FAILURE);
+			free_program_and_exit(cub3d, EXIT_FAILURE);
 		}
 		i++;
 	}
 	pthread_mutex_unlock(&cub3d->lock);
-	wait_init_thread(cub3d);
+	join_thread(cub3d);
 }
 
 void	init_thread(t_cub3d *cub3d)
 {
+	init_task(cub3d);
 	get_cpu_core_number(cub3d);
 	create_thread(cub3d);
+	launch_thread(cub3d);
 }
