@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 22:25:53 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 16:48:52 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static void	init_main_menu_attributes(t_main_menu *main_menu)
 	main_menu->index_option = 0;
 	main_menu->index_option_static = 1;
 	main_menu->state = launcher;
-	main_menu->blink = 0xCC / 4;
-	main_menu->blink_max = 255 / 4;
-	main_menu->blink_direction = down;
+	main_menu->blink.value = 0xCC / 4;
+	main_menu->blink.max = 255 / 4;
+	main_menu->blink.direction = down;
 }
 
 void	init_main_menu(t_cub3d *cub3d)

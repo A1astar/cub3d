@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:32:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 15:56:10 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:35:23 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 # define VELOCITY 1.5
 # define SENSIBILITY 1.5
 # define FRAMERATE 60
-// # define FRAMERATE 1
 
 # define RUNNING 1
 
@@ -53,24 +52,6 @@ enum	e_program_state
 	game,
 	level_menu,
 	main_menu
-};
-
-enum	e_main_menu_state
-{
-	launcher,
-	option
-};
-
-enum	e_main_menu_option_state
-{
-	start_game,
-	exit_game
-};
-
-enum	e_main_menu_settings_state
-{
-	resolution,
-	sensibility
 };
 
 enum	e_resolution

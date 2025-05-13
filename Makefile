@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/13 14:11:46 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/13 14:13:57 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -175,13 +175,6 @@ $(PP_DIR)/%.i: $(SRC_DIR)/%.c
 $(ASM_DIR)/%.s: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -S $< -o $@
-
-# bonus : CFLAGS += -DBONUS
-# bonus: $(MLX) $(LIBFT) $(NAME_BONUS)
-
-# $(NAME_BONUS): $(OBJ_SHARED) $(OBJ_BONUS)
-# 	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
-# 	@echo "$(GREEN)> $(NAME_BONUS) build successful!$(DEFAULT)"
 
 clean:
 	@$(RM) -rf $(OBJ)

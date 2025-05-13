@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_main_menu.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 12:27:15 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:54:36 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 void	render_main_menu_option(t_scene *scene, t_window *window,
-		t_main_menu *main)
+		t_main_menu *main_menu)
 {
 	int		y;
 	int		x;
@@ -25,7 +25,8 @@ void	render_main_menu_option(t_scene *scene, t_window *window,
 		x = 0;
 		while (x < window->width)
 		{
-			pixel = get_pixel(&main->option[main->index_option_static], x, y);
+			pixel = get_pixel(
+				&main_menu->option[main_menu->index_option_static], x, y);
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
 				*(unsigned int *)pixel = 0x00CCCCCC;
@@ -55,44 +56,6 @@ void	render_main_menu_title(t_scene *scene, t_window *window,
 		}
 		y++;
 	}
-}
-
-void	render_main_menu_blink(t_scene *scene, t_window *window,
-		t_main_menu *main_menu, t_img *main_menu_img)
-{
-	int		y;
-	int		x;
-	char	*pixel;
-
-	y = 0;
-	while (y < window->height)
-	{
-		x = 0;
-		while (x < window->width)
-		{
-			pixel = get_pixel(main_menu_img, x, y);
-			if (*(unsigned *)pixel != 0xFF000000)
-			{
-				if (main_menu->blink_direction == down
-					&& *(unsigned *)pixel != 0x00000000)
-					*(unsigned int *)pixel -= 0x00010101 * 4;
-				else if (main_menu->blink_direction == up
-					&& *(unsigned *)pixel != 0x00FFFFFF)
-					*(unsigned int *)pixel += 0x00010101 * 4;
-				draw_pixel_asset(&scene->img, x, y, pixel);
-			}
-			x++;
-		}
-		y++;
-	}
-	if (main_menu->blink == main_menu->blink_max)
-		main_menu->blink_direction = down;
-	else if (main_menu->blink == 0)
-		main_menu->blink_direction = up;
-	if (main_menu->blink_direction == up)
-		main_menu->blink++;
-	else if (main_menu->blink_direction == down)
-		main_menu->blink--;
 }
 
 void	render_main_menu_background(t_cub3d *cub3d, t_main_menu *main_menu)
@@ -129,17 +92,17 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	if (cub3d->main_menu.state == launcher)
 	{
 		render_main_menu_title(scene, window, &cub3d->main_menu);
-		render_main_menu_blink(scene, window, &cub3d->main_menu,
+		render_blink(scene, window, &cub3d->main_menu,
 			&cub3d->main_menu.launcher_blink);
 	}
-	else if (cub3d->main_menu.state == option)
+	else if (cub3d->main_menu.state == main_menu_option)
 	{
-		render_main_menu_blink(scene, window, &cub3d->main_menu,
+		render_blink(scene, window, &cub3d->main_menu,
 			&cub3d->main_menu.option[cub3d->main_menu.index_option]);
 		render_main_menu_option(scene, window, &cub3d->main_menu);
 	}
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
-		0);
+	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
+			scene->img.ptr, 0, 0);
 }
 
 int	main_menu_loop(t_cub3d *cub3d)

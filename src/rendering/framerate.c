@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   framerate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 19:03:29 by lgadea            #+#    #+#             */
-/*   Updated: 2025/05/12 14:37:03 by alacroix         ###   ########.fr       */
+/*   Created: 2025/05/04 19:03:29 by algadea           #+#    #+#             */
+/*   Updated: 2025/05/13 16:56:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ long	get_time(struct timeval *start_time)
 	struct timeval	current_time;
 
 	gettimeofday(&current_time, NULL);
-	// return ((current_time.tv_sec - start_time->tv_sec) * 1000
-	// 	+ (current_time.tv_usec - start_time->tv_usec) / 1000);
 	return ((current_time.tv_sec - start_time->tv_sec) * 1000
 		+ (current_time.tv_usec - start_time->tv_usec) / 1000);
 }
@@ -33,27 +31,16 @@ double	get_time_seconds() {
 void	frame_delay(long frame_delay)
 {
 	struct timeval	time;
-	long	current;
 
 	gettimeofday(&time, NULL);
-	current = get_time(&time);
-	// while (get_time(&time) - frame_end < frame_delay)
-	while (current < frame_delay)
-	{
-		// printf("current = %ld | frame_end = %ld | frame delay = %ld\n", current, frame_end, frame_delay);
-		current = get_time(&time);
+	while (get_time(&time) < frame_delay)
 		usleep(100);
-	}
 }
 
 void	update_frame_rate(t_time *time)
 {
-	long					time_val;
-	double					sleep_time;
-	static struct timeval	current_time;
+	double	sleep_time;
 
-	if (current_time.tv_sec == 0)
-		gettimeofday(&current_time, NULL);
 	time->current_frame = get_time_seconds();
 	time->delta_time = time->current_frame - time->previous_frame;
 	if (time->delta_time < time->target_frame_time)
@@ -64,13 +51,5 @@ void	update_frame_rate(t_time *time)
 	else if (time->delta_time > time->target_frame_time)
 		time->delta_time = time->target_frame_time;
 	time->fps_counter++;
-	time_val = get_time(&current_time);
-	if (time_val >= time->target_fps * 1000
-		|| time->fps_counter == time->target_fps)
-	{
-	//	printf("FPS = %d | time = %ld\n", time->fps_counter, time_val);
-		time->fps_counter = 0;
-		current_time.tv_sec = 0;
-	}
 	time->previous_frame = time->current_frame;
 }

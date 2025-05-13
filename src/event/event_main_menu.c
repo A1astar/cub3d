@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 22:30:55 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 16:58:01 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	main_menu_selection(t_cub3d *cub3d)
 void	reset_blink_value(t_main_menu *main_menu)
 {
 	main_menu->blink = 0xCC / 4;
-	main_menu->blink_direction = down;
+	main_menu->blink.direction = down;
 }
 
 void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d)
@@ -76,7 +76,7 @@ int	main_menu_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (cub3d->main_menu.state == launcher)
 		main_menu_launcher_key_hook(keynum, cub3d);
-	else if (cub3d->main_menu.state == option)
+	else if (cub3d->main_menu.state == main_menu_option)
 		main_menu_option_key_hook(keynum, cub3d);
 	return (0);
 }

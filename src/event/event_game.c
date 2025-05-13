@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:59:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 11:24:40 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:41:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	is_player_movement_key(int keynum)
 int	game_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
-		cub3d->program_state = main_menu;
+		cub3d->program_state = level_menu;
 	else if (is_player_movement_key(keynum))
 		player_movement_key(keynum, cub3d);
 	else if (is_player_action_key(keynum))

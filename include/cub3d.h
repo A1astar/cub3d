@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 14:10:53 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 15:51:24 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ bool	is_asset_line(char *line, size_t len);
 void	init_asset(t_cub3d *cub3d);
 void	init_main_menu(t_cub3d *cub3d);
 void	init_main_menu_background(t_cub3d *cub3d);
+void	init_level_menu(t_cub3d *cub3d);
+void	init_level_menu_addr(t_cub3d *cub3d);
 void	init_main_menu_addr(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
@@ -178,6 +180,7 @@ void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	update_raycast(t_raycast *raycast, t_player *player, int x, int w);
 void	update_ray_step_x(t_raycast *raycast);
 void	update_ray_step_y(t_raycast *raycast);
+void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);
 void	render_item(t_cub3d *cub3d, t_item *item, t_raycast *raycast);
