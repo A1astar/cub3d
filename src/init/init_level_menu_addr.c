@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:18:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 20:10:40 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 23:09:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,6 @@ static void	init_level_menu_other_addr(t_cub3d *cub3d, t_level_menu *level_menu)
 	if (!level_menu->bindings.addr || !level_menu->background.addr)
 	{
 		printf(BOLD RED "LEVEL MENU OTHER ADDR ERROR\n" DEFAULT);
-		free_program_and_exit(cub3d, EXIT_FAILURE);
-	}
-}
-
-static void	init_level_menu_quit_addr(t_cub3d *cub3d, t_level_menu *level_menu)
-{
-	level_menu->quit[0].addr = mlx_get_data_addr(level_menu->quit[0].ptr,
-			&level_menu->quit[0].bpp, &level_menu->quit[0].size_line,
-			&level_menu->quit[0].endian);
-	level_menu->quit[1].addr = mlx_get_data_addr(level_menu->quit[1].ptr,
-			&level_menu->quit[1].bpp, &level_menu->quit[1].size_line,
-			&level_menu->quit[1].endian);
-	if (!level_menu->quit[0].addr || !level_menu->quit[1].addr)
-	{
-		printf(BOLD RED "LEVEL MENU QUIT ADDR ERROR\n" DEFAULT);
 		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
@@ -65,6 +50,5 @@ static void	init_level_menu_option_addr(t_cub3d *cub3d,
 void	init_level_menu_addr(t_cub3d *cub3d)
 {
 	init_level_menu_option_addr(cub3d, &cub3d->level_menu);
-	init_level_menu_quit_addr(cub3d, &cub3d->level_menu);
 	init_level_menu_other_addr(cub3d, &cub3d->level_menu);
 }

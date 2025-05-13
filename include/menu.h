@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:50:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 19:41:19 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 23:10:55 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ enum	e_main_menu_settings_state
 enum e_level_menu
 {
 	level_menu_option,
-	quit,
 	bindings
 };
 
@@ -65,11 +64,8 @@ typedef struct s_level_menu
 	int		state;
 	int		index_option;
 	int		index_option_static;
-	int		index_quit;
-	int		index_quit_static;
 	t_img	option[3];
 	t_img	bindings;
-	t_img	quit[2];
 	t_img	background;
 	t_img	pause;
 	t_blink	blink;
