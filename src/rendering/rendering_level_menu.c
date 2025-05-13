@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 17:21:51 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:35:43 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	render_level_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	if (cub3d->level_menu.state == level_menu_option)
 	{
 		render_img(scene, window, &cub3d->level_menu.background);
-		render_level_menu_option(scene, window, &cub3d->level_menu);
 		render_blink(scene, window, &cub3d->level_menu.blink,
 				&cub3d->level_menu.option[cub3d->level_menu.index_option]);
 	}
@@ -107,8 +106,8 @@ void	render_level_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 		render_img(scene, window, &cub3d->level_menu.bindings);
 	else if (cub3d->level_menu.state == quit)
 	{
-		render_img(&cub3d->scene,
-				&cub3d->window, &cub3d->level_menu.background);
+		render_img(&cub3d->scene, &cub3d->window,
+				&cub3d->level_menu.quit[cub3d->level_menu.index_quit]);
 		render_img(&cub3d->scene, &cub3d->window,
 				&cub3d->level_menu.quit[cub3d->level_menu.index_quit]);
 		render_blink(scene, window, &cub3d->level_menu.blink,

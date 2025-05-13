@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/06 14:28:25 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:53:57 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	if (window->mlx_ptr == NULL)
 	{
 		error_msg(BOLD RED "MLX init" DEFAULT, NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 		exit(EXIT_FAILURE);
 	}
 	window->width = WINDOW_WIDTH;
@@ -28,7 +28,7 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	if (window->win_ptr == NULL)
 	{
 		error_msg(BOLD RED "MLX new window" DEFAULT, NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 		exit(EXIT_FAILURE);
 	}
 	window->half_width = WINDOW_WIDTH / 2;

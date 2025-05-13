@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus_assets.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:07:42 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/12 18:11:57 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:55:21 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	load_text(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!texture->ptr)
 	{
 		error_msg("Wrong asset address: ", asset_path);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	texture->addr = mlx_get_data_addr(texture->ptr, &texture->bpp,
 			&texture->size_line, &texture->endian);
 	if (!texture->addr)
 	{
 		error_msg("Cannot load asset: ", asset_path);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	display_loadbar(&cub3d->window, &cub3d->textures);
 }

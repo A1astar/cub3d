@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 17:02:33 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:49:13 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	load_others_assets(t_cub3d *cub3d, t_item *item, t_textures *textures);
 void	free_t_img(t_window *window, t_img *img);
 void	free_t_textures(t_textures *textures, t_window *window);
 void	free_t_main_menu(t_main_menu *menu, t_window *window);
-void	free_program(t_cub3d *cub3d);
+void	free_program_and_exit(t_cub3d *cub3d, int exit_code);
 void	free_t_window(t_window *scene);
 void	free_image(void *mlx, void *image);
 void	free_t_scene(t_scene *scene, t_window *window);
@@ -171,8 +171,6 @@ bool	can_move_to_west(t_time *time, t_raycast *raycast, t_player *player,
 /*##############################	RENDERING	##############################*/
 long	get_time(struct timeval *start_time);
 double	get_time_seconds(void);
-double	get_frame_time(struct timeval *start_time);
-void	get_tick(struct timeval *time);
 void	update_frame_rate(t_time *time);
 void	raycast_map(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	raycast_doors(t_cub3d *cub3d, t_raycast *raycast, t_player *player);

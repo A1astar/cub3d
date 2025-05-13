@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   extract_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:37:40 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 12:26:20 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:53:07 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-char	*append_line(t_cub3d *game, char *buffer, char *line)
+char	*append_line(t_cub3d *cub3d, char *buffer, char *line)
 {
 	char	*temp;
 
@@ -25,19 +25,19 @@ char	*append_line(t_cub3d *game, char *buffer, char *line)
 	{
 		error_msg(MEM, "append_line");
 		free(buffer);
-		free_program(game);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	free(buffer);
 	return (temp);
 }
 
-int	open_file(t_cub3d *game, char *filename)
+int	open_file(t_cub3d *cub3d, char *filename)
 {
 	int	fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		free_program(game);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	return (fd);
 }
 

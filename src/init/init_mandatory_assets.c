@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mandatory_assets.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:05:00 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/23 16:08:59 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:54:20 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!asset_path || !*(asset_path + 1))
 	{
 		error_msg("No asset_path found", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	asset_path++;
 	texture->ptr = mlx_xpm_file_to_image(cub3d->window.mlx_ptr, asset_path,
@@ -28,14 +28,14 @@ static void	load_img(t_cub3d *cub3d, t_img *texture, char *asset_path)
 	if (!texture->ptr)
 	{
 		error_msg("Wrong asset address", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	texture->addr = mlx_get_data_addr(texture->ptr, &texture->bpp,
 			&texture->size_line, &texture->endian);
 	if (!texture->addr)
 	{
 		error_msg("Cannot load asset", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 
@@ -52,12 +52,12 @@ static void	extract_rgb_code(t_cub3d *cub3d, int *rgb_tab, char *line)
 	if (!temp_tab)
 	{
 		error_msg(MEM, "extract_rgb_code");
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	if (ft_tabsize((void **)temp_tab) != 3 || !is_rgb_code(temp_tab))
 	{
 		error_msg("wrong rgb format", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 	rgb_tab[0] = ft_atoi(temp_tab[0]);
 	rgb_tab[1] = ft_atoi(temp_tab[1]);
@@ -104,6 +104,6 @@ void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths)
 	if (mandatory_assets_are_missing(&cub3d->textures))
 	{
 		error_msg("Missing assets", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }

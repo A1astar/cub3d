@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:10:12 by algadea           #+#    #+#             */
-/*   Updated: 2025/04/22 15:11:26 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:56:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	exit_cub3d(t_cub3d *cub3d)
 {
-	free_program(cub3d);
-	exit(EXIT_SUCCESS);
+	free_program_and_exit(cub3d, EXIT_SUCCESS);
 	return (0);
 }

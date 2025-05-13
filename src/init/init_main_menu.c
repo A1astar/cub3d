@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:47:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 16:48:52 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:54:31 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static void	init_main_menu_option(t_cub3d *cub3d,
 	if (!main_menu->option[0].ptr || !main_menu->option[1].ptr)
 	{
 		printf(BOLD RED "MAIN MENU OPTION XPM ERROR\n" DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 
@@ -45,8 +44,7 @@ static void	init_main_menu_launcher(t_cub3d *cub3d,
 	if (!main_menu->launcher_blink.ptr || !main_menu->launcher_title.ptr)
 	{
 		printf(BOLD RED "MAIN MENU LAUNCHER XPM ERROR\n" DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 

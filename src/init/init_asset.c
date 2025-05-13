@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:42:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 17:24:05 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:55:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	init_scene(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	scene->img.ptr = mlx_new_image(window->mlx_ptr, window->width,
 			window->height);
 	if (!scene->img.ptr)
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	scene->img.addr = mlx_get_data_addr(scene->img.ptr, &scene->img.bpp,
 			&scene->img.size_line, &scene->img.endian);
 	if (!scene->img.addr)
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	mlx_mouse_hide(cub3d->window.mlx_ptr, cub3d->window.win_ptr);
 }
 

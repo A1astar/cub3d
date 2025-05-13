@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_assets_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:06:53 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/22 14:43:48 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:55:39 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture)
 	if (texture->ptr)
 	{
 		error_msg("Asset duplication", NULL);
-		free_program(cub3d);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:17:49 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 17:26:09 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:54:58 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ static void	init_level_menu_other(t_cub3d *cub3d,
 	if (!level_menu->background.ptr || !level_menu->bindings.ptr)
 	{
 		printf(BOLD RED "LEVEL MENU OTHER XPM ERROR\n" DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
-	printf("here\n");
 }
 
 static void	init_level_menu_quit(t_cub3d *cub3d,
@@ -46,8 +44,7 @@ static void	init_level_menu_quit(t_cub3d *cub3d,
 	if (!level_menu->quit[0].ptr || !level_menu->quit[1].ptr)
 	{
 		printf(BOLD RED "LEVEL MENU QUIT XPM ERROR\n" DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 
@@ -70,8 +67,7 @@ static void	init_level_menu_option(t_cub3d *cub3d,
 		|| !level_menu->option[2].ptr)
 	{
 		printf(BOLD RED "LEVEL MENU OPTION XPM ERROR\n" DEFAULT);
-		free_program(cub3d);
-		exit(EXIT_FAILURE);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
 

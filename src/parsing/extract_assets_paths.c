@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_assets_paths.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:33:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/04/11 11:22:49 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:53:35 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static bool	is_not_map_line(char *line)
 		return (false);
 }
 
-void	extract_assets_path(t_cub3d *game, char **data)
+void	extract_assets_path(t_cub3d *cub3d, char **data)
 {
 	char	*buffer;
 
@@ -37,19 +37,19 @@ void	extract_assets_path(t_cub3d *game, char **data)
 	while (*data)
 	{
 		if (is_not_map_line(*data))
-			buffer = append_line(game, buffer, *data);
+			buffer = append_line(cub3d, buffer, *data);
 		data++;
 	}
 	if (!buffer)
 	{
 		error_msg(TEXT, NULL);
-		free_program(game);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
-	game->map.assets_paths = ft_split(buffer, "\n");
+	cub3d->map.assets_paths = ft_split(buffer, "\n");
 	free(buffer);
-	if (!game->map.map)
+	if (!cub3d->map.map)
 	{
 		error_msg(MEM, "extract_data");
-		free_program(game);
+		free_program_and_exit(cub3d, EXIT_FAILURE);
 	}
 }
