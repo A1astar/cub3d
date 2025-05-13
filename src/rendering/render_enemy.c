@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:26:12 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 12:43:43 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:56:53 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static t_img	*select_sprite(t_enemy *enemy, t_textures *texture)
 		return (&enemy->sprite);
 }
 
-static void	init_enemy_sprite(t_cub3d *cub3d, t_enemy *enemy, t_raycast *raycast,
-		t_scene *scene)
+static void	init_enemy_sprite(t_cub3d *cub3d, t_enemy *enemy,
+		t_raycast *raycast, t_scene *scene)
 {
 	t_item_render	randy_render;
 	t_img			*img;
