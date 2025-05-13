@@ -79,5 +79,5 @@ Meet the multiple incarnations of the dark wizard Randy Marsh throughout your jo
 git clone https://github.com/A1astar/cub3d.git
 cd cub3d
 make
-./cub3d maps/catacombs.cub
+./cub3d maps/bonus/catacombs.cub
 ```
