@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 18:56:40 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 19:25:40 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	free_program_and_exit(t_cub3d *cub3d, int exit_code)
 	free_t_viewmodel(&cub3d->player.viewmodel, &cub3d->window);
 	free_t_map(&cub3d->map);
 	free_t_enemy(cub3d->randy, &cub3d->window);
+	free_t_level_menu(&cub3d->level_menu, &cub3d->window);
 	free_t_main_menu(&cub3d->main_menu, &cub3d->window);
 	free_t_scene(&cub3d->scene, &cub3d->window);
 	free_t_window(&cub3d->window);

@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:50:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 16:48:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 19:41:19 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_level_menu
 	t_img	bindings;
 	t_img	quit[2];
 	t_img	background;
+	t_img	pause;
 	t_blink	blink;
 }			t_level_menu;
 

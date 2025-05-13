@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_state_utils.c                                  :+:      :+:    :+:   */
+/*   event_key_press_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:03:37 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 11:08:24 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 20:18:22 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	key_press_w(t_key_state *key_state, t_player *player)
 {
 	key_state->w = pressed;
+	printf("here w \n");
 	player->movement_w_s++;
 }
 

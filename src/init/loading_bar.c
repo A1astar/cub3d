@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:11:59 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 18:53:44 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:57:53 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	load_loadbar_pt2(t_cub3d *cub3d)
 	load_img(cub3d, &cub3d->textures.load[32], "asset/load/xpm/load_33.xpm");
 }
 
-void	load_loadbar(t_cub3d *cub3d)
+void	init_loadbar(t_cub3d *cub3d)
 {
 	load_text(cub3d, &cub3d->textures.load[0], "asset/load/xpm/load_01.xpm");
 	load_img(cub3d, &cub3d->textures.load[1], "asset/load/xpm/load_02.xpm");

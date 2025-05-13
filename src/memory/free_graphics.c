@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/01 16:39:10 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 19:23:39 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,16 @@ void	free_t_img(t_window *window, t_img *img)
 		free_image(window->mlx_ptr, img->ptr);
 }
 
-// void	free_t_level_menu(t_level_menu *menu)
-// {
-// 	size_t	nb_img;
-
-// 	nb_img = 0;
-// 	while (nb_img < 3)
-// 	{
-// 		free_t_img(&menu->img[nb_img]);
-// 		nb_img++;
-// 	}
-// }
+void	free_t_level_menu(t_level_menu *level_menu, t_window *window)
+{
+	free_t_img(window, &level_menu->bindings);
+	free_t_img(window, &level_menu->background);
+	free_t_img(window, &level_menu->option[0]);
+	free_t_img(window, &level_menu->option[1]);
+	free_t_img(window, &level_menu->option[2]);
+	free_t_img(window, &level_menu->quit[0]);
+	free_t_img(window, &level_menu->quit[1]);
+}
 
 void	free_t_main_menu(t_main_menu *menu, t_window *window)
 {

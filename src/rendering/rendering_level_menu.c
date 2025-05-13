@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 18:35:43 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 19:27:43 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,18 @@ void	render_level_menu_option(t_scene *scene,
 	}
 }
 
+void	update_blink_value(t_blink *blink)
+{
+	if (blink->value == blink->max)
+		blink->direction = down;
+	else if (blink->value == 0)
+		blink->direction = up;
+	if (blink->direction == up)
+		blink->value++;
+	else if (blink->direction == down)
+		blink->value--;
+}
+
 void	render_blink(t_scene *scene, t_window *window,
 				t_blink *blink, t_img *level_menu_img)
 {
@@ -66,14 +78,7 @@ void	render_blink(t_scene *scene, t_window *window,
 		}
 		y++;
 	}
-	if (blink->value == blink->max)
-		blink->direction = down;
-	else if (blink->value == 0)
-		blink->direction = up;
-	if (blink->direction == up)
-		blink->value++;
-	else if (blink->direction == down)
-		blink->value--;
+	update_blink_value(blink);
 }
 
 void	render_img(t_scene *scene, t_window *window, t_img *img)
@@ -106,6 +111,7 @@ void	render_level_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 		render_img(scene, window, &cub3d->level_menu.bindings);
 	else if (cub3d->level_menu.state == quit)
 	{
+		render_img(scene, window, &cub3d->level_menu.background);
 		render_img(&cub3d->scene, &cub3d->window,
 				&cub3d->level_menu.quit[cub3d->level_menu.index_quit]);
 		render_img(&cub3d->scene, &cub3d->window,

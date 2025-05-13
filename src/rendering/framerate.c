@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 19:03:29 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 16:56:38 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 20:08:52 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ long	get_time(struct timeval *start_time)
 		+ (current_time.tv_usec - start_time->tv_usec) / 1000);
 }
 
-double	get_time_seconds() {
+double	get_time_seconds(void)
+{
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-    return (double)tv.tv_sec + (double)tv.tv_usec / 1000000.0;
+	return ((double)tv.tv_sec + (double)tv.tv_usec / 1000000.0);
 }
 
 void	frame_delay(long frame_delay)

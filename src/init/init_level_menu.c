@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:17:49 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 18:54:58 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 20:11:13 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,4 @@ void	init_level_menu(t_cub3d *cub3d)
 	init_level_menu_quit(cub3d, &cub3d->window, &cub3d->level_menu);
 	init_level_menu_other(cub3d, &cub3d->window, &cub3d->level_menu);
 	init_level_menu_addr(cub3d);
-
 }

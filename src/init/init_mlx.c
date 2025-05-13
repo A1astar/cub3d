@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 18:53:57 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 19:05:15 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	{
 		error_msg(BOLD RED "MLX init" DEFAULT, NULL);
 		free_program_and_exit(cub3d, EXIT_FAILURE);
-		exit(EXIT_FAILURE);
 	}
 	window->width = WINDOW_WIDTH;
 	window->height = WINDOW_HEIGHT;
@@ -29,7 +28,6 @@ void	init_mlx_window(t_cub3d *cub3d, t_window *window)
 	{
 		error_msg(BOLD RED "MLX new window" DEFAULT, NULL);
 		free_program_and_exit(cub3d, EXIT_FAILURE);
-		exit(EXIT_FAILURE);
 	}
 	window->half_width = WINDOW_WIDTH / 2;
 	window->half_height = WINDOW_HEIGHT / 2;

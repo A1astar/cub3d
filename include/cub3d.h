@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 18:49:13 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 20:02:20 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int		game_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 
 int		main_menu_loop(t_cub3d *cub3d);
 int		main_menu_key_hook(int keynum, t_cub3d *cub3d);
-void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d);
 void	main_menu_launcher_key_hook(int keynum, t_cub3d *cub3d);
 
 int		level_menu_loop(t_cub3d *cub3d);
@@ -79,6 +78,7 @@ int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
 
 int		exit_cub3d(t_cub3d *cub3d);
 
+void	reset_blink_value(t_blink *blink);
 void	player_sword(t_cub3d *cub3d, t_player *player);
 void	player_cast(t_cub3d *cub3d, t_player *player);
 
@@ -111,7 +111,7 @@ void	init_enemy(t_cub3d *cub3d);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
-void	load_loadbar(t_cub3d *cub3d);
+void	init_loadbar(t_cub3d *cub3d);
 void	display_loadbar(t_window *window, t_textures *textures);
 void	load_text(t_cub3d *cub3d, t_img *texture, char *asset_path);
 void	load_slash_assets(t_cub3d *cub3d, t_textures *text);
@@ -124,6 +124,7 @@ void	load_others_assets(t_cub3d *cub3d, t_item *item, t_textures *textures);
 
 /*##############################	MEMORY	##################################*/
 void	free_t_img(t_window *window, t_img *img);
+void	free_t_level_menu(t_level_menu *level_menu, t_window *window);
 void	free_t_textures(t_textures *textures, t_window *window);
 void	free_t_main_menu(t_main_menu *menu, t_window *window);
 void	free_program_and_exit(t_cub3d *cub3d, int exit_code);
