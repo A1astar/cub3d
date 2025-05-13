@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
+#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/13 13:55:32 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/13 14:11:46 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,7 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 ###########################          SOURCE         ###########################
 
 SRC_DIR				:= src
-
-SRC_SHARED			:= data/enemy_utils.c \
+SRC					:= data/data_enemy_utils.c \
 					data/data_enemy.c \
 					data/data_player_rotation.c \
 					data/data_player.c \
@@ -71,6 +70,7 @@ SRC_SHARED			:= data/enemy_utils.c \
 					init/init_assets_utils.c \
 					init/init_background.c \
 					init/init_bonus_assets.c \
+					init/init_enemy.c \
 					init/init_main_menu_addr.c \
 					init/init_main_menu.c \
 					init/init_mandatory_assets.c \
@@ -118,15 +118,15 @@ SRC_SHARED			:= data/enemy_utils.c \
 					error.c \
 					main.c
 
-SRC_MANDATORY		:= data/data_mandatory_game.c \
-						rendering/rendering_mandatory_game.c \
-
-SRC_BONUS			:= data/data_bonus_game.c \
-						rendering/rendering_bonus_game.c \
-
-SRC_SHARED			:= $(addprefix $(SRC_DIR)/, $(SRC_SHARED))
-SRC_MANDATORY		:= $(addprefix $(SRC_DIR)/, $(SRC_MANDATORY))
-SRC_BONUS			:= $(addprefix $(SRC_DIR)/, $(SRC_BONUS))
+ifdef BONUS
+	SRC += data/data_bonus_game.c \
+			rendering/rendering_bonus_game.c
+	NAME = $(NAME_BONUS)
+else
+	SRC += data/data_mandatory_game.c \
+			rendering/rendering_mandatory_game.c
+endif
+SRC					:= $(addprefix $(SRC_DIR)/, $(SRC))
 
 ###########################       COMPILATION       ###########################
 
@@ -137,19 +137,20 @@ ASM_DIR				:= asm
 ASM					:= $(patsubst $(SRC_DIR)/%.c, $(ASM_DIR)/%.s, $(SRC))
 
 OBJ_DIR				:= obj
-OBJ_SHARED			:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_SHARED))
-OBJ_MANDATORY		:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_MANDATORY))
-OBJ_BONUS			:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_BONUS))
+OBJ					:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
 ###########################          RULE           ###########################
 
 all: $(MLX) $(LIBFT) $(NAME)
 
+bonus:
+	$(MAKE) BONUS=yes
+
 pp: $(PP)
 
 asm: $(ASM)
 
-$(NAME): $(OBJ_SHARED) $(OBJ_MANDATORY) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
 	@echo "$(GREEN)> $(NAME) creation successful!$(DEFAULT)"
 
@@ -175,15 +176,15 @@ $(ASM_DIR)/%.s: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -S $< -o $@
 
-bonus : CFLAGS += -DBONUS
-bonus: $(MLX) $(LIBFT) $(NAME_BONUS)
+# bonus : CFLAGS += -DBONUS
+# bonus: $(MLX) $(LIBFT) $(NAME_BONUS)
 
-$(NAME_BONUS): $(OBJ_SHARED) $(OBJ_BONUS)
-	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
-	@echo "$(GREEN)> $(NAME_BONUS) build successful!$(DEFAULT)"
+# $(NAME_BONUS): $(OBJ_SHARED) $(OBJ_BONUS)
+# 	@$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $@
+# 	@echo "$(GREEN)> $(NAME_BONUS) build successful!$(DEFAULT)"
 
 clean:
-	@$(RM) -rf $(OBJ_SHARED) $(OBJ_MANDATORY) $(OBJ_BONUS)
+	@$(RM) -rf $(OBJ)
 	@echo "$(YELLOW)> $(NAME) objects files removed!$(DEFAULT)"
 
 clean-pp:

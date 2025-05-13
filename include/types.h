@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:36:23 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 15:47:21 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 14:09:34 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct s_cub3d
 	t_main_menu		main_menu;
 	t_key_state		key_state;
 	t_level_menu	level_menu;
-	t_thread		thread;
+	// t_thread		thread;
 }					t_cub3d;
 
 #endif
