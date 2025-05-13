@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/12 15:42:03 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:03:39 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	if (cub3d->rendering_state == normal)
 		raycast_floor(cub3d, &cub3d->raycast, &cub3d->player);
 	else
-	{
 		rendering_psychedelic(&cub3d->scene, &cub3d->map, ep_ceiling);
-		// rendering_psychedelic(cub3d, &cub3d->scene, &cub3d->map, ep_floor);
-		// render_floor(scene, &cub3d->map);
-		// render_ceiling(scene, &cub3d->map);
-	}
 	raycast_map(cub3d, &cub3d->raycast, &cub3d->player);
 	raycast_doors(cub3d, &cub3d->raycast, &cub3d->player);
 	if (cub3d->nb_item)

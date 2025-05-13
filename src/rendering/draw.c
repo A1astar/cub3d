@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:01:59 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/11 18:09:47 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:25:48 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 		x = 0;
 		while (x < viewmodel->width)
 		{
-			if (!(x_start + x < 0 || x_start + x > WINDOW_WIDTH
-				|| y_start + y < 0 || y_start + y > WINDOW_HEIGHT))
+			if (!(x_start + x < 0 || x_start + x > WINDOW_WIDTH || y_start
+					+ y < 0 || y_start + y > WINDOW_HEIGHT))
 			{
 				draw_pixel_asset(&scene->img, x_start + x, y_start + y,
 					get_pixel(viewmodel, x, y));
@@ -41,32 +41,25 @@ void	draw_sprite(t_item_render *item, t_raycast *ray, t_scene *scene,
 		t_img *img)
 {
 	unsigned int	color;
-	int				offset;
-	int				stripe;
+	int				x;
 	int				y;
 
-	stripe = item->draw.draw_start_x;
-	while (stripe < item->draw.draw_end_x)
+	x = item->draw.draw_start_x;
+	while (x < item->draw.draw_end_x)
 	{
-		if (item_on_screen(item, ray, stripe))
+		if (item_on_screen(item, ray, x))
 		{
-			item->draw.tex_x = get_tex_x(item, img, stripe);
+			item->draw.tex_x = get_tex_x(item, img, x);
 			y = item->draw.draw_start_y;
 			while (y < item->draw.draw_end_y)
 			{
 				update_draw_attributes(&item->draw, &item->attr, img, y);
-				offset = item->draw.tex_y * img->size_line + item->draw.tex_x
-					* (img->bpp / 8);
-				if(offset >= 0 && offset < img->height * img->size_line)
-				{
-					color = *(unsigned int *)(img->addr + offset);
-					if (get_alpha(color) != 0)
-						draw_pixel_color(&scene->img, stripe, y, color);
-				}
+				color = *(unsigned int *)(img->addr + get_offset(item, img));
+				draw_sprite_pixel(scene, color, x, y);
 				y++;
 			}
 		}
-		stripe++;
+		x++;
 	}
 }
 

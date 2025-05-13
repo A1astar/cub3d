@@ -1,13 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hitbox_wall.c                                      :+:      :+:    :+:   */
+/*   data_enemy_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 15:20:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/04 00:21:11 by algadea          ###   ########.fr       */
+/*   Created: 2025/05/13 11:27:36 by alacroix          #+#    #+#             */
+/*   Updated: 2025/05/13 11:35:47 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+double	linear_interpol(double start, double end, double step)
+{
+	return (start + step * (end - start));
+}

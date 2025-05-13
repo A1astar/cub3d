@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/12 18:11:26 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:45:56 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # include <sys/time.h>
 # include <time.h>
 
-# include "thread.h"
 # include "config.h"
 # include "errors.h"
 # include "map.h"
@@ -73,19 +72,25 @@ int		game_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
 int		main_menu_loop(t_cub3d *cub3d);
 int		main_menu_key_hook(int keynum, t_cub3d *cub3d);
 void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d);
-int		main_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
-int		main_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 void	main_menu_launcher_key_hook(int keynum, t_cub3d *cub3d);
 
 int		level_menu_loop(t_cub3d *cub3d);
 int		level_menu_key_hook(int keynum, t_cub3d *cub3d);
-int		level_menu_mouse_motion_hook(int x, int y, t_cub3d *cub3d);
-int		level_menu_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d);
 
 int		exit_cub3d(t_cub3d *cub3d);
 
 void	player_sword(t_cub3d *cub3d, t_player *player);
 void	player_cast(t_cub3d *cub3d, t_player *player);
+
+void	key_press_w(t_key_state *key_state, t_player *player);
+void	key_press_s(t_key_state *key_state, t_player *player);
+void	key_press_a(t_key_state *key_state, t_player *player);
+void	key_press_d(t_key_state *key_state, t_player *player);
+
+void	key_release_w(t_key_state *key_state, t_player *player);
+void	key_release_s(t_key_state *key_state, t_player *player);
+void	key_release_a(t_key_state *key_state, t_player *player);
+void	key_release_d(t_key_state *key_state, t_player *player);
 
 /*##############################	INIT	##################################*/
 bool	is_rgb_code(char **tab);
@@ -99,8 +104,8 @@ void	init_main_menu_addr(t_cub3d *cub3d);
 void	init_bonus_assets(t_cub3d *cub3d);
 void	init_program(t_cub3d *cub3d, char **argv);
 void	init_mlx(t_cub3d *cub3d, t_window *scene);
-void	init_thread(t_cub3d *cub3d, t_thread *thread);
 void	init_player(t_player *player, t_minimap *minimap);
+void	init_enemy(t_cub3d *cub3d);
 void	init_mandatory_assets(t_cub3d *cub3d, char **assets_paths);
 void	check_asset_duplicates(t_cub3d *cub3d, t_img *texture);
 bool	mandatory_assets_are_missing(t_textures *textures);
@@ -117,6 +122,7 @@ void	load_others_assets(t_cub3d *cub3d, t_item *item, t_textures *textures);
 
 /*##############################	MEMORY	##################################*/
 void	free_t_img(t_window *window, t_img *img);
+void	free_t_textures(t_textures *textures, t_window *window);
 void	free_t_main_menu(t_main_menu *menu, t_window *window);
 void	free_program(t_cub3d *cub3d);
 void	free_t_window(t_window *scene);
@@ -149,15 +155,20 @@ void	check_player_nb(t_cub3d *cub3d, int player_nb);
 void	check_item_nb(t_cub3d *cub3d, int item_nb);
 
 /*##############################	PHYSICS	##################################*/
-bool	entity_collision(double x_origin, double y_origin, double target_x, double target_y);
-bool	can_move_to_north(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
-bool	can_move_to_south(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
-bool	can_move_to_east(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
-bool	can_move_to_west(t_time *time, t_raycast *raycast, t_player *player, t_map *map);
+bool	entity_collision(double x_origin, double y_origin, double target_x,
+			double target_y);
+bool	can_move_to_north(t_time *time, t_raycast *raycast, t_player *player,
+			t_map *map);
+bool	can_move_to_south(t_time *time, t_raycast *raycast, t_player *player,
+			t_map *map);
+bool	can_move_to_east(t_time *time, t_raycast *raycast, t_player *player,
+			t_map *map);
+bool	can_move_to_west(t_time *time, t_raycast *raycast, t_player *player,
+			t_map *map);
 
 /*##############################	RENDERING	##############################*/
 long	get_time(struct timeval *start_time);
-double	get_time_seconds();
+double	get_time_seconds(void);
 double	get_frame_time(struct timeval *start_time);
 void	get_tick(struct timeval *time);
 void	update_frame_rate(t_time *time);
@@ -204,10 +215,13 @@ void	init_item_attributes(t_item *item, t_player *player,
 void	draw_viewmodel(t_img *viewmodel, t_scene *scene, int x_start,
 			int y_start);
 t_img	*select_texture(t_cub3d *cub3d, t_raycast *ray, t_textures *textures);
+void	draw_sprite_pixel(t_scene *scene, unsigned int color, int x, int y);
+int		get_offset(t_item_render *item, t_img *img);
 
-/*##############################	STAT	##################################*/
+/*##############################	DATA	##################################*/
 void	update_game_data(t_cub3d *cub3d);
 void	update_player_data(t_cub3d *cub3d);
 void	update_enemy(t_cub3d *cub3d);
+double	linear_interpol(double start, double end, double step);
 
 #endif

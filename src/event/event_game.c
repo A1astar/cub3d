@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:59:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/12 19:54:07 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:24:40 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 
 	(void)y;
 	last_x = cub3d->window.half_width;
-	if(x == last_x)
+	if (x == last_x)
 		return (0);
 	delta_x = x - last_x;
 	if (delta_x < 0)
@@ -35,7 +35,6 @@ int	game_mouse_press_hook(int keynum, int x, int y, t_cub3d *cub3d)
 {
 	(void)x;
 	(void)y;
-	printf("x = %d | y = %d\n", x, y);
 	player_action_button(keynum, cub3d);
 	return (0);
 }

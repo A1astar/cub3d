@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:27:44 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/12 17:51:52 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:58:02 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	init_minimap(t_window *window, t_minimap *minimap)
 	if (map_height + minimap->y_origin > window->height)
 		minimap->y_origin = window->height - map_height;
 	minimap->x_origin = window->width - minimap->width - (5 * minimap->width);
-	minimap->y_origin = window->height - minimap->height - (5 * minimap->height);
+	minimap->y_origin = window->height - minimap->height - (5
+			* minimap->height);
 }
 
 static void	init_raycast(t_window *window, t_raycast *raycast, t_player *player)
@@ -44,23 +45,6 @@ static void	init_raycast(t_window *window, t_raycast *raycast, t_player *player)
 	raycast->height = window->height;
 }
 
-static void	init_enemy_attr(t_enemy *enemy)
-{
-	enemy->death_anim.frame_count = 3;
-	enemy->death_anim.frame_delay = 5;
-	enemy->death_anim.active = false;
-	enemy->direction = LEFT;
-}
-
-static void	init_enemy(t_cub3d *cub3d)
-{
-	int	i;
-
-	i = 0;
-	while (i < cub3d->nb_enemy)
-		init_enemy_attr(&cub3d->randy[i++]);
-}
-
 void	init_time(t_time *time)
 {
 	gettimeofday(&time->game_start_timeval, NULL);
@@ -74,7 +58,6 @@ void	init_program(t_cub3d *cub3d, char **argv)
 	parsing(cub3d, argv[1]);
 	cub3d->program_state = main_menu;
 	cub3d->rendering_state = normal;
-	// init_thread(cub3d, &cub3d->thread);
 	init_mlx(cub3d, &cub3d->window);
 	load_loadbar(cub3d);
 	init_asset(cub3d);

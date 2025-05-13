@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_key_press.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:58:32 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/07 11:58:33 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 11:11:58 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 
@@ -22,8 +21,7 @@ bool	is_player_button(int keynum)
 
 bool	is_player_action_key(int keynum)
 {
-	if (keynum == XK_q || keynum == XK_e || keynum == XK_r
-		|| keynum == XK_l)
+	if (keynum == XK_q || keynum == XK_e || keynum == XK_r || keynum == XK_l)
 		return (true);
 	return (false);
 }
@@ -31,25 +29,13 @@ bool	is_player_action_key(int keynum)
 void	player_movement_key(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_w)
-	{
-		cub3d->key_state.w = pressed;
-		cub3d->player.movement_w_s++;
-	}
+		key_press_w(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_s)
-	{
-		cub3d->key_state.s = pressed;
-		cub3d->player.movement_w_s--;
-	}
+		key_press_s(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_a)
-	{
-		cub3d->key_state.a = pressed;
-		cub3d->player.movement_a_d--;
-	}
+		key_press_a(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_d)
-	{
-		cub3d->key_state.d = pressed;
-		cub3d->player.movement_a_d++;
-	}
+		key_press_d(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_Left)
 		cub3d->key_state.left = pressed;
 	else if (keynum == XK_Right)

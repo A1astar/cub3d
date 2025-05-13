@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_main_menu.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/11 15:46:18 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 12:27:15 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	render_main_menu_option(t_scene *scene, t_window *window,
 		x = 0;
 		while (x < window->width)
 		{
-			pixel = get_pixel(&main->option[main->index_option_static],
-					x, y);
+			pixel = get_pixel(&main->option[main->index_option_static], x, y);
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
 				*(unsigned int *)pixel = 0x00CCCCCC;

@@ -6,36 +6,35 @@
 #    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/12 17:55:27 by alacroix         ###   ########.fr        #
+#    Updated: 2025/05/13 13:55:32 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ###########################          TARGET         ###########################
 
 NAME				= cub3D
-NAME_BONUS				= cub3D_bonus
+NAME_BONUS			= cub3D_bonus
 MLX					= minilibx-linux/libmlx.a
 LIBFT				= libft/libft.a
 
 ###########################           FLAG          ###########################
 
 CC					= clang
-CFLAGS				= -g3 -Wall -Wextra -Werror -MMD -pthread
+CFLAGS				= -g3 -Wall -Wextra -Werror -MMD
 ifdef GPROF
 	CFLAGS			+= -pg
 endif
 ifdef ASAN
 	CFLAGS			+= -fsanitize=address
 endif
-ifdef TSAN
-	CFLAGS			+= -fsanitize=thread
-endif
+
 LIBFLAGS			= -Llibft -lft -lX11 -lXext -Lminilibx-linux -lmlx -lm
 
 ###########################          INCLUDE        ###########################
 
 INCLUDE_DIR			:= include
-INCLUDE				:= cub3d.h \
+INCLUDE				:= config.h \
+					cub3d.h \
 					elements.h \
 					errors.h \
 					map.h \
@@ -43,7 +42,6 @@ INCLUDE				:= cub3d.h \
 					player.h \
 					render.h \
 					textures.h \
-					thread.h \
 					types.h
 INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
@@ -51,21 +49,24 @@ INCLUDE				:= $(addprefix $(INCLUDE_DIR)/, $(INCLUDE))
 
 SRC_DIR				:= src
 
-SRC_SHARED			:= data/data_player_rotation.c \
+SRC_SHARED			:= data/enemy_utils.c \
 					data/data_enemy.c \
+					data/data_player_rotation.c \
 					data/data_player.c \
 					event/event_exit.c \
 					event/event_game.c \
+					event/event_key_press_utils.c \
+					event/event_key_release_utils.c \
 					event/event_launcher.c \
 					event/event_level_menu.c \
 					event/event_main_menu.c \
+					event/event_player_actions.c \
 					event/event_player_interaction.c \
 					event/event_player_key_press.c \
 					event/event_player_key_release.c \
 					event/event_player_mouse.c \
 					event/event_player_movement.c \
 					event/event.c \
-					event/event_player_actions.c \
 					init/init_asset.c \
 					init/init_assets_utils.c \
 					init/init_background.c \
@@ -79,6 +80,9 @@ SRC_SHARED			:= data/data_player_rotation.c \
 					init/load_env_xpm_files.c \
 					init/load_view_xpm_files.c \
 					init/loading_bar.c \
+					memory/free_game.c \
+					memory/free_graphics.c \
+					memory/free_textures.c \
 					parsing/extract_assets_paths.c \
 					parsing/extract_map.c \
 					parsing/extract_utils.c \
@@ -89,17 +93,18 @@ SRC_SHARED			:= data/data_player_rotation.c \
 					parsing/map_checking.c \
 					parsing/parsing.c \
 					physics/hitbox_player.c \
+					rendering/draw_utils.c \
 					rendering/draw.c \
 					rendering/framerate.c \
 					rendering/raycast_doors.c \
 					rendering/raycast_floor.c \
 					rendering/raycast_map.c \
 					rendering/raycast_update.c \
+					rendering/render_effects.c \
 					rendering/render_enemy.c \
 					rendering/render_floor.c \
 					rendering/render_item_utils.c \
 					rendering/render_item.c \
-					rendering/render_effects.c \
 					rendering/render_raycast.c \
 					rendering/render_viewmodel.c \
 					rendering/rendering_level_menu.c \
@@ -110,10 +115,7 @@ SRC_SHARED			:= data/data_player_rotation.c \
 					rendering/rendering_utils.c \
 					rendering/rendering.c \
 					rendering/select_textures.c \
-					thread/init_thread.c \
 					error.c \
-					memory/free_game.c \
-					memory/free_graphics.c \
 					main.c
 
 SRC_MANDATORY		:= data/data_mandatory_game.c \

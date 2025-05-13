@@ -3,38 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_key_release.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:58:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/09 12:54:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 11:19:58 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 
 void	player_key_release_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_w)
-	{
-		cub3d->key_state.w = release;
-		cub3d->player.movement_w_s--;
-	}
+		key_release_w(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_s)
-	{
-		cub3d->key_state.s = release;
-		cub3d->player.movement_w_s++;
-	}
+		key_release_s(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_a)
-	{
-		cub3d->key_state.a = release;
-		cub3d->player.movement_a_d++;
-	}
+		key_release_a(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_d)
-	{
-		cub3d->key_state.d = release;
-		cub3d->player.movement_a_d--;
-	}
+		key_release_d(&cub3d->key_state, &cub3d->player);
 	else if (keynum == XK_Left)
 	{
 		cub3d->key_state.left = release;
