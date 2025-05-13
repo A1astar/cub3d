@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 16:48:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:21:51 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	render_level_menu_option(t_scene *scene,
 }
 
 void	render_blink(t_scene *scene, t_window *window,
-		t_blink *blink, t_img *level_menu_img)
+				t_blink *blink, t_img *level_menu_img)
 {
 	int		y;
 	int		x;
@@ -100,28 +100,26 @@ void	render_level_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	{
 		render_img(scene, window, &cub3d->level_menu.background);
 		render_level_menu_option(scene, window, &cub3d->level_menu);
-		render_blink(scene, window, &cub3d->level_menu,
+		render_blink(scene, window, &cub3d->level_menu.blink,
 				&cub3d->level_menu.option[cub3d->level_menu.index_option]);
 	}
 	else if (cub3d->level_menu.state == bindings)
 		render_img(scene, window, &cub3d->level_menu.bindings);
 	else if (cub3d->level_menu.state == quit)
 	{
-		render_level_menu_background(&cub3d->scene,
-				&cub3d->window, &cub3d->level_menu);
-		render_level_menu_quit(&cub3d->scene,
-				&cub3d->window, &cub3d->level_menu);
-		render_level_menu_blink(scene, window, &cub3d->level_menu,
+		render_img(&cub3d->scene,
+				&cub3d->window, &cub3d->level_menu.background);
+		render_img(&cub3d->scene, &cub3d->window,
+				&cub3d->level_menu.quit[cub3d->level_menu.index_quit]);
+		render_blink(scene, window, &cub3d->level_menu.blink,
 				&cub3d->level_menu.quit[cub3d->level_menu.index_quit]);
 	}
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
-			scene->img.ptr, 0, 0);
 }
 
 int	level_menu_loop(t_cub3d *cub3d)
 {
 	update_frame_rate(&cub3d->time);
 	render_game(cub3d, &cub3d->window, &cub3d->scene);
-	render_level_menu(cub3d, &cub3d->scene, &cub3d->main_menu);
+	render_level_menu(cub3d, &cub3d->window, &cub3d->scene);
 	return (0);
 }

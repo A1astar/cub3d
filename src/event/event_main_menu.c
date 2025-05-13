@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 16:58:01 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:00:42 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	main_menu_selection(t_cub3d *cub3d)
 
 void	reset_blink_value(t_main_menu *main_menu)
 {
-	main_menu->blink = 0xCC / 4;
+	main_menu->blink.value = 0xCC / 4;
 	main_menu->blink.direction = down;
 }
 

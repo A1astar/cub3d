@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 16:54:36 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:07:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	if (cub3d->main_menu.state == launcher)
 	{
 		render_main_menu_title(scene, window, &cub3d->main_menu);
-		render_blink(scene, window, &cub3d->main_menu,
+		render_blink(scene, window, &cub3d->main_menu.blink,
 			&cub3d->main_menu.launcher_blink);
 	}
 	else if (cub3d->main_menu.state == main_menu_option)
 	{
-		render_blink(scene, window, &cub3d->main_menu,
+		render_blink(scene, window, &cub3d->main_menu.blink,
 			&cub3d->main_menu.option[cub3d->main_menu.index_option]);
 		render_main_menu_option(scene, window, &cub3d->main_menu);
 	}

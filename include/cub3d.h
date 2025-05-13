@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 15:51:24 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:02:33 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,9 @@ void	raycast_floor(t_cub3d *cub3d, t_raycast *raycast, t_player *player);
 void	update_raycast(t_raycast *raycast, t_player *player, int x, int w);
 void	update_ray_step_x(t_raycast *raycast);
 void	update_ray_step_y(t_raycast *raycast);
+void	render_blink(t_scene *scene, t_window *window,
+				t_blink *blink, t_img *level_menu_img);
+void	render_img(t_scene *scene, t_window *window, t_img *img);
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);
 void	render_floor_ray(t_cub3d *cub3d, t_floor_ray *ray, int y);

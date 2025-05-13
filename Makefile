@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/13 14:13:57 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/13 17:18:04 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFT				= libft/libft.a
 ###########################           FLAG          ###########################
 
 CC					= clang
-CFLAGS				= -g3 -Wall -Wextra -Werror -MMD
+CFLAGS				= -g3 -Wall -Wextra -Werror
 ifdef GPROF
 	CFLAGS			+= -pg
 endif
@@ -71,6 +71,8 @@ SRC					:= data/data_enemy_utils.c \
 					init/init_background.c \
 					init/init_bonus_assets.c \
 					init/init_enemy.c \
+					init/init_level_menu_addr.c \
+					init/init_level_menu.c \
 					init/init_main_menu_addr.c \
 					init/init_main_menu.c \
 					init/init_mandatory_assets.c \

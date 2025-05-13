@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:17:49 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 16:48:39 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:26:09 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	init_level_menu_other(t_cub3d *cub3d,
 		free_program(cub3d);
 		exit(EXIT_FAILURE);
 	}
+	printf("here\n");
 }
 
 static void	init_level_menu_quit(t_cub3d *cub3d,
@@ -54,15 +55,15 @@ static void	init_level_menu_option(t_cub3d *cub3d,
 			t_window *window, t_level_menu *level_menu)
 {
 	level_menu->option[0].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-			"asset/main_menu/option/main_menu-option1-720.xpm",
+			"asset/level_menu/level-menu-option1-720.xpm",
 			&level_menu->option[0].width,
 			&level_menu->option[0].height);
 	level_menu->option[1].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-			"asset/main_menu/option/main_menu-option2-720.xpm",
+			"asset/level_menu/level-menu-option2-720.xpm",
 			&level_menu->option[1].width,
 			&level_menu->option[1].height);
 	level_menu->option[2].ptr = mlx_xpm_file_to_image(window->mlx_ptr,
-			"asset/main_menu/option/main_menu-option2-720.xpm",
+			"asset/level_menu/level-menu-option3-720.xpm",
 			&level_menu->option[2].width,
 			&level_menu->option[2].height);
 	if (!level_menu->option[0].ptr || !level_menu->option[1].ptr
@@ -81,7 +82,6 @@ static void	init_level_menu_attributes(t_level_menu *level_menu)
 	level_menu->index_option_static = 1;
 	level_menu->index_quit = 0;
 	level_menu->index_quit_static = 1;
-	level_menu->state = launcher;
 	level_menu->blink.value = 0xCC / 4;
 	level_menu->blink.max = 255 / 4;
 	level_menu->blink.direction = down;

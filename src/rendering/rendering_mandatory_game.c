@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_mandatory_game.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:41:19 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/12 15:43:52 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/13 17:20:56 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene)
 	render_floor(window, scene, &cub3d->map);
 	render_ceiling(window, scene, &cub3d->map);
 	raycast_map(cub3d, &cub3d->raycast, &cub3d->player);
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, scene->img.ptr, 0,
-		0);
 }
 
 int	game_loop(t_cub3d *cub3d)

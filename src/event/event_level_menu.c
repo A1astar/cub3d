@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:57:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 16:57:35 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/13 17:34:53 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	level_menu_option_key_hook(int keynum, t_cub3d *cub3d,
 
 int	level_menu_key_hook(int keynum, t_cub3d *cub3d)
 {
-	if (cub3d->level_menu.state == main_menu_option)
+	if (cub3d->level_menu.state == level_menu_option)
 		level_menu_option_key_hook(keynum, cub3d, &cub3d->level_menu);
 	else if (cub3d->level_menu.state == quit)
 		level_menu_quit_key_hook(keynum, cub3d, &cub3d->level_menu);
