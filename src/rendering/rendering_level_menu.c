@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 23:10:32 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:58:28 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	render_level_menu_option(t_scene *scene,
 		while (x < window->width)
 		{
 			pixel = get_pixel(
-				&level_menu->option[level_menu->index_option_static], x, y);
+					&level_menu->option[level_menu->index_option_static], x, y);
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
 				*(unsigned int *)pixel = 0x00CCCCCC;
@@ -50,6 +50,16 @@ void	update_blink_value(t_blink *blink)
 		blink->value--;
 }
 
+void	update_pixel_value(char **pixel, t_blink *blink)
+{
+	if (blink->direction == down
+		&& *(unsigned *)(*pixel) != 0x00000000)
+		*(unsigned int *)(*pixel) -= 0x00010101 * 4;
+	else if (blink->direction == up
+		&& *(unsigned *)(*pixel) != 0x00FFFFFF)
+		*(unsigned int *)(*pixel) += 0x00010101 * 4;
+}
+
 void	render_blink(t_scene *scene, t_window *window,
 				t_blink *blink, t_img *level_menu_img)
 {
@@ -66,12 +76,7 @@ void	render_blink(t_scene *scene, t_window *window,
 			pixel = get_pixel(level_menu_img, x, y);
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
-				if (blink->direction == down
-					&& *(unsigned *)pixel != 0x00000000)
-					*(unsigned int *)pixel -= 0x00010101 * 4;
-				else if (blink->direction == up
-					&& *(unsigned *)pixel != 0x00FFFFFF)
-					*(unsigned int *)pixel += 0x00010101 * 4;
+				update_pixel_value(&pixel, blink);
 				draw_pixel_asset(&scene->img, x, y, pixel);
 			}
 			x++;

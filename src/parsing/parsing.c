@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:09:18 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 18:52:08 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:44:16 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	extract_data(t_cub3d *cub3d, char *filename)
 	{
 		cub3d->map.raw_data[i] = get_next_line(fd);
 		if (!cub3d->map.raw_data[i] && i < line_count)
-		free_program_and_exit(cub3d, EXIT_FAILURE);
+			free_program_and_exit(cub3d, EXIT_FAILURE);
 		i++;
 	}
 	close(fd);
