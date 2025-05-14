@@ -6,11 +6,26 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:59:26 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 15:41:46 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:49:44 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	reset_key_state(t_key_state *key_state, t_player *player)
+{
+	key_state->w = release;
+	key_state->a = release;
+	key_state->s = release;
+	key_state->d = release;
+	key_state->up = release;
+	key_state->left = release;
+	key_state->down = release;
+	key_state->right = release;
+	key_state->shift_l = release;
+	player->movement_w_s = 0;
+	player->movement_a_d = 0;
+}
 
 int	game_mouse_motion_hook(int x, int y, t_cub3d *cub3d)
 {
@@ -51,7 +66,10 @@ bool	is_player_movement_key(int keynum)
 int	game_key_hook(int keynum, t_cub3d *cub3d)
 {
 	if (keynum == XK_Escape)
+	{
 		cub3d->program_state = level_menu;
+		reset_key_state(&cub3d->key_state, &cub3d->player);
+	}
 	else if (is_player_movement_key(keynum))
 		player_movement_key(keynum, cub3d);
 	else if (is_player_action_key(keynum))

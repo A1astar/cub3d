@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:58:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/14 15:13:25 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:44:13 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,9 @@ void	player_key_release_hook(int keynum, t_cub3d *cub3d)
 	}
 }
 
-void	menu_key_release_hook(int keynum, t_cub3d *cub3d)
-{
-	if (keynum == XK_w)
-		cub3d->key_state.w = release;
-	else if (keynum == XK_Up)
-		cub3d->key_state.up = release;
-	else if (keynum == XK_s)
-		cub3d->key_state.s = release;
-	else if (keynum == XK_Down)
-		cub3d->key_state.down = release;
-}
-
 int	key_release_hook(int keynum, t_cub3d *cub3d)
 {
 	if (cub3d->program_state == game)
 		player_key_release_hook(keynum, cub3d);
-	else if (cub3d->program_state == level_menu
-		|| cub3d->program_state == main_menu)
-		menu_key_release_hook(keynum, cub3d);
 	return (0);
 }

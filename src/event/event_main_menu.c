@@ -6,24 +6,11 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/14 15:11:11 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:34:38 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	release_all_keys(t_key_state *key)
-{
-	key->w = release;
-	key->a = release;
-	key->s = release;
-	key->d = release;
-	key->up = release;
-	key->left = release;
-	key->down = release;
-	key->right = release;
-	key->shift_l = release;
-}
 
 void	main_menu_selection(t_cub3d *cub3d)
 {
