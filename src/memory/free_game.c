@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/14 13:17:34 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:44:02 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	free_t_map(t_map *map)
 
 void	free_program_and_exit(t_cub3d *cub3d, int exit_code)
 {
-	mlx_mouse_show(&cub3d->window.mlx_ptr, &cub3d->window.win_ptr);
 	free_t_textures(&cub3d->textures, &cub3d->item, &cub3d->window);
 	free_t_viewmodel(&cub3d->player.viewmodel, &cub3d->window);
 	free_t_map(&cub3d->map);
