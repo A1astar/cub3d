@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:50:38 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/14 11:27:53 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:02:46 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	free_t_main_menu(t_main_menu *menu, t_window *window)
 
 	nb_img = 0;
 	free_t_img(window, &menu->launcher_title);
+	free_t_img(window, &menu->launcher_blink);
 	while (nb_img < 50)
 	{
-		if (nb_img < 3)
+		if (nb_img < 2)
 			free_t_img(window, &menu->option[nb_img]);
 		free_t_img(window, &menu->background[nb_img]);
 		nb_img++;

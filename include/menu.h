@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:50:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 23:10:55 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:02:18 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ typedef struct s_main_menu
 	t_img	launcher_title;
 	t_img	launcher_blink;
 	t_img	option[2];
-	t_img	test;
 	t_blink	blink;
 }			t_main_menu;
 
