@@ -6,7 +6,7 @@
 #    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/13 17:18:04 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/14 14:22:54 by algadea          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,6 +109,7 @@ SRC					:= data/data_enemy_utils.c \
 					rendering/render_item.c \
 					rendering/render_raycast.c \
 					rendering/render_viewmodel.c \
+					rendering/rendering_blink.c \
 					rendering/rendering_level_menu.c \
 					rendering/rendering_main_menu.c \
 					rendering/rendering_minimap_player.c \

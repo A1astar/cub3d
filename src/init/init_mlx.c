@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:10:37 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 19:05:15 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:30:49 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	init_mlx_mouse(t_window *window)
 {
 	mlx_mouse_move(window->mlx_ptr, window->win_ptr,
 		window->half_width, window->half_height);
+	mlx_mouse_hide(window->mlx_ptr, window->win_ptr);
+	mlx_mouse_show(window->mlx_ptr, window->win_ptr);
 }
 
 void	init_mlx(t_cub3d *cub3d, t_window *window)

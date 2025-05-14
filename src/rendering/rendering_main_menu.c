@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:33:11 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 21:38:54 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:26:12 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	render_main_menu_option(t_scene *scene, t_window *window,
 		while (x < window->width)
 		{
 			pixel = get_pixel(
-				&main_menu->option[main_menu->index_option_static], x, y);
+					&main_menu->option[main_menu->index_option_static], x, y);
 			if (*(unsigned *)pixel != 0xFF000000)
 			{
 				*(unsigned int *)pixel = 0x00CCCCCC;
@@ -102,7 +102,7 @@ void	render_main_menu(t_cub3d *cub3d, t_window *window, t_scene *scene)
 		render_main_menu_option(scene, window, &cub3d->main_menu);
 	}
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
-			scene->img.ptr, 0, 0);
+		scene->img.ptr, 0, 0);
 }
 
 int	main_menu_loop(t_cub3d *cub3d)
