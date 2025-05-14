@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 20:02:20 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 12:00:55 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	load_others_assets(t_cub3d *cub3d, t_item *item, t_textures *textures);
 /*##############################	MEMORY	##################################*/
 void	free_t_img(t_window *window, t_img *img);
 void	free_t_level_menu(t_level_menu *level_menu, t_window *window);
-void	free_t_textures(t_textures *textures, t_window *window);
+void	free_t_textures(t_textures *textures, t_item *item, t_window *window);
 void	free_t_main_menu(t_main_menu *menu, t_window *window);
 void	free_program_and_exit(t_cub3d *cub3d, int exit_code);
 void	free_t_window(t_window *scene);
