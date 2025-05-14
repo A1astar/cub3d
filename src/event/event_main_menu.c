@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:26:46 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/14 11:57:37 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:11:11 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ void	main_menu_option_key_hook(int keynum, t_cub3d *cub3d,
 	else if ((keynum == XK_s || keynum == XK_Down)
 		&& main_menu->index_option != 1)
 	{
-		// if (keynum == XK_s)
-		// 	cub3d->key_state.s = pressed;
-		// else
-		// 	cub3d->key_state.down = pressed;
 		main_menu->index_option++;
 		main_menu->index_option_static--;
 		reset_blink_value(&main_menu->blink);

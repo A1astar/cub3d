@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 16:57:34 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/14 11:54:25 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:05:42 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,12 @@ void	level_menu_option_key_hook(int keynum, t_cub3d *cub3d,
 		&& level_menu->index_option != 0)
 	{
 		level_menu->index_option--;
-		level_menu->index_option_static++;
 		reset_blink_value(&level_menu->blink);
 	}
 	else if ((keynum == XK_s || keynum == XK_Down)
 		&& level_menu->index_option != 2)
 	{
 		level_menu->index_option++;
-		level_menu->index_option_static--;
 		reset_blink_value(&level_menu->blink);
 	}
 	else if (keynum == XK_Return && level_menu->index_option == 0)

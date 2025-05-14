@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:50:57 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/14 12:02:18 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:05:54 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct s_level_menu
 {
 	int		state;
 	int		index_option;
-	int		index_option_static;
 	t_img	option[3];
 	t_img	bindings;
 	t_img	background;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:20:34 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/14 12:00:55 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:17:50 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ void	update_raycast(t_raycast *raycast, t_player *player, int x, int w);
 void	update_ray_step_x(t_raycast *raycast);
 void	update_ray_step_y(t_raycast *raycast);
 void	render_blink(t_scene *scene, t_window *window,
-				t_blink *blink, t_img *level_menu_img);
+			t_blink *blink, t_img *level_menu_img);
 void	render_img(t_scene *scene, t_window *window, t_img *img);
 void	render_game(t_cub3d *cub3d, t_window *window, t_scene *scene);
 void	render_raycast(t_cub3d *cub3d, t_raycast *raycast, int x);

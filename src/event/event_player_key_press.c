@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_player_key_press.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
+/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:58:32 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 11:11:58 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:18:41 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ bool	is_player_action_key(int keynum)
 
 void	player_movement_key(int keynum, t_cub3d *cub3d)
 {
-	if (keynum == XK_w)
+	if (keynum == XK_w && cub3d->key_state.w != pressed)
 		key_press_w(&cub3d->key_state, &cub3d->player);
-	else if (keynum == XK_s)
+	else if (keynum == XK_s && cub3d->key_state.s != pressed)
 		key_press_s(&cub3d->key_state, &cub3d->player);
-	else if (keynum == XK_a)
+	else if (keynum == XK_a && cub3d->key_state.a != pressed)
 		key_press_a(&cub3d->key_state, &cub3d->player);
-	else if (keynum == XK_d)
+	else if (keynum == XK_d && cub3d->key_state.d != pressed)
 		key_press_d(&cub3d->key_state, &cub3d->player);
-	else if (keynum == XK_Left)
+	else if (keynum == XK_Left && cub3d->key_state.left != pressed)
 		cub3d->key_state.left = pressed;
-	else if (keynum == XK_Right)
+	else if (keynum == XK_Right && cub3d->key_state.right != pressed)
 		cub3d->key_state.right = pressed;
-	else if (keynum == XK_Shift_L)
+	else if (keynum == XK_Shift_L && cub3d->key_state.shift_l != pressed)
 		cub3d->key_state.shift_l = pressed;
 }

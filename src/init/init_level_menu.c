@@ -6,7 +6,7 @@
 /*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:17:49 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 23:11:01 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:06:05 by algadea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	init_level_menu_attributes(t_level_menu *level_menu)
 {
 	level_menu->state = level_menu_option;
 	level_menu->index_option = 0;
-	level_menu->index_option_static = 2;
 	level_menu->blink.value = 0xCC / 4;
 	level_menu->blink.max = 255 / 4;
 	level_menu->blink.direction = down;
