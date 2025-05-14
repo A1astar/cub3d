@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: algadea <algadea@student.42.fr>            +#+  +:+       +#+         #
+#    By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/09 23:24:31 by algadea           #+#    #+#              #
-#    Updated: 2025/05/14 14:22:54 by algadea          ###   ########.fr        #
+#    Updated: 2025/05/14 15:22:22 by alacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -180,7 +180,7 @@ $(ASM_DIR)/%.s: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -S $< -o $@
 
 clean:
-	@$(RM) -rf $(OBJ)
+	@$(RM) -rf $(OBJ_DIR)
 	@echo "$(YELLOW)> $(NAME) objects files removed!$(DEFAULT)"
 
 clean-pp:
