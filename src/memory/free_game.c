@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: algadea <algadea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 03:35:04 by algadea           #+#    #+#             */
-/*   Updated: 2025/05/13 19:25:40 by algadea          ###   ########.fr       */
+/*   Updated: 2025/05/14 11:58:19 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	free_t_map(t_map *map)
 
 void	free_program_and_exit(t_cub3d *cub3d, int exit_code)
 {
-	free_t_textures(&cub3d->textures, &cub3d->window);
+	free_t_textures(&cub3d->textures, &cub3d->item, &cub3d->window);
 	free_t_viewmodel(&cub3d->player.viewmodel, &cub3d->window);
 	free_t_map(&cub3d->map);
 	free_t_enemy(cub3d->randy, &cub3d->window);

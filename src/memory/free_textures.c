@@ -6,7 +6,7 @@
 /*   By: alacroix <alacroix@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:59:56 by alacroix          #+#    #+#             */
-/*   Updated: 2025/05/13 12:00:16 by alacroix         ###   ########.fr       */
+/*   Updated: 2025/05/14 12:00:22 by alacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@ void	free_t_loadbar(t_textures *textures, t_window *window)
 	i = 0;
 	while (i < 33)
 		free_t_img(window, &textures->load[i++]);
+}
+
+static void	free_t_slash(t_textures *textures, t_window *window)
+{
+	free_t_img(window, &textures->slash[0]);
+	free_t_img(window, &textures->slash[1]);
+	free_t_img(window, &textures->slash[2]);
+	free_t_img(window, &textures->slash[3]);
+	free_t_img(window, &textures->slash[4]);
+	free_t_img(window, &textures->slash[5]);
+	free_t_img(window, &textures->slash[6]);
+	free_t_img(window, &textures->slash[7]);
+	free_t_img(window, &textures->slash[8]);
 }
 
 static void	free_t_fireball(t_textures *textures, t_window *window)
@@ -38,8 +51,16 @@ static void	free_t_fireball(t_textures *textures, t_window *window)
 	free_t_img(window, &textures->fireball[12]);
 }
 
-void	free_t_textures(t_textures *textures, t_window *window)
+static void	free_t_blood(t_textures *textures, t_window *window)
 {
+	free_t_img(window, &textures->blood[0]);
+	free_t_img(window, &textures->blood[1]);
+	free_t_img(window, &textures->blood[2]);
+}
+
+void	free_t_textures(t_textures *textures, t_item *item, t_window *window)
+{
+	free_t_img(window, &item->sprite);
 	free_t_img(window, &textures->n_wall);
 	free_t_img(window, &textures->s_wall);
 	free_t_img(window, &textures->e_wall);
@@ -58,10 +79,9 @@ void	free_t_textures(t_textures *textures, t_window *window)
 	free_t_img(window, &textures->trip_floor);
 	free_t_img(window, &textures->trip_o_door);
 	free_t_img(window, &textures->trip_c_door);
-	free_t_img(window, &textures->blood[0]);
-	free_t_img(window, &textures->blood[1]);
-	free_t_img(window, &textures->blood[2]);
+	free_t_blood(textures, window);
 	free_t_img(window, &textures->cadaver);
 	free_t_fireball(textures, window);
+	free_t_slash(textures, window);
 	free_t_loadbar(textures, window);
 }
