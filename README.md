@@ -51,7 +51,7 @@ Meet the multiple incarnations of the dark wizard Randy Marsh throughout your jo
 |--------------------------------|--------------------------------|
 | ![](asset/enemy/png/stoned_randy.png) | ![](asset/enemy/png/angry_randy.png) |
 
-| Drunk Randy                    | Godlike Randy (Psychedelic)    |
+| Drunk Randy                    | Godlike Randy                  |
 |--------------------------------|--------------------------------|
 | ![](asset/enemy/png/drunk_randy.png) | ![](asset/enemy/png/godlike_randy.png) |
 
@@ -78,6 +78,6 @@ Meet the multiple incarnations of the dark wizard Randy Marsh throughout your jo
 ```bash
 git clone https://github.com/A1astar/cub3d.git
 cd cub3d
-make
-./cub3d maps/bonus/catacombs.cub
+make bonus
+./cub3d_bonus maps/bonus/catacombs.cub
 ```
